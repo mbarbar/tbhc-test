@@ -31746,6 +31746,7 @@ entry:
   %name.addr = alloca i8*, align 8
   %bytes_bound.addr = alloca i64, align 8
   %source = alloca %struct.randread_source*, align 8, !ctir !1741
+  %s = alloca %struct.randint_source*, align 8, !ctir !1736
   store i8* %name, i8** %name.addr, align 8
   call void @llvm.dbg.declare(metadata i8** %name.addr, metadata !20164, metadata !DIExpression()), !dbg !20165
   store i64 %bytes_bound, i64* %bytes_bound.addr, align 8
@@ -31755,37 +31756,32 @@ entry:
   %1 = load i64, i64* %bytes_bound.addr, align 8, !dbg !20171
   %call = call %struct.randread_source* @randread_new(i8* %0, i64 %1), !dbg !20172
   store %struct.randread_source* %call, %struct.randread_source** %source, align 8, !dbg !20169
-  %2 = load %struct.randread_source*, %struct.randread_source** %source, align 8, !dbg !20173
-  %tobool = icmp ne %struct.randread_source* %2, null, !dbg !20173
-  br i1 %tobool, label %cond.true, label %cond.false, !dbg !20173
-
-cond.true:                                        ; preds = %entry
-  %3 = load %struct.randread_source*, %struct.randread_source** %source, align 8, !dbg !20174
-  %call1 = call %struct.randint_source* @randint_new(%struct.randread_source* %3), !dbg !20175
-  br label %cond.end, !dbg !20173
-
-cond.false:                                       ; preds = %entry
-  br label %cond.end, !dbg !20173
-
-cond.end:                                         ; preds = %cond.false, %cond.true
-  %cond = phi %struct.randint_source* [ %call1, %cond.true ], [ null, %cond.false ], !dbg !20173
-  ret %struct.randint_source* %cond, !dbg !20176
+  call void @llvm.dbg.declare(metadata %struct.randint_source** %s, metadata !20173, metadata !DIExpression()), !dbg !20174
+  %2 = load %struct.randread_source*, %struct.randread_source** %source, align 8, !dbg !20175
+  %call1 = call %struct.randint_source* @randint_new(%struct.randread_source* %2), !dbg !20176
+  store %struct.randint_source* %call1, %struct.randint_source** %s, align 8, !dbg !20174
+  %3 = load %struct.randint_source*, %struct.randint_source** %s, align 8, !dbg !20177
+  %source2 = getelementptr inbounds %struct.randint_source, %struct.randint_source* %3, i32 0, i32 0, !dbg !20178, !ctir !1737
+  %4 = load %struct.randread_source*, %struct.randread_source** %source2, align 8, !dbg !20178, !ctir !1741
+  call void @randread(%struct.randread_source* %4, i8* null, i64 30), !dbg !20179
+  %5 = load %struct.randint_source*, %struct.randint_source** %s, align 8, !dbg !20180
+  ret %struct.randint_source* %5, !dbg !20181
 }
 
 ; Function Attrs: noinline nounwind optnone readonly uwtable
-define dso_local %struct.randread_source* @randint_get_source(%struct.randint_source* %s) #10 !dbg !20177 {
+define dso_local %struct.randread_source* @randint_get_source(%struct.randint_source* %s) #10 !dbg !20182 {
 entry:
   %s.addr = alloca %struct.randint_source*, align 8
   store %struct.randint_source* %s, %struct.randint_source** %s.addr, align 8
-  call void @llvm.dbg.declare(metadata %struct.randint_source** %s.addr, metadata !20182, metadata !DIExpression()), !dbg !20183
-  %0 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20184
-  %source = getelementptr inbounds %struct.randint_source, %struct.randint_source* %0, i32 0, i32 0, !dbg !20185, !ctir !20181
-  %1 = load %struct.randread_source*, %struct.randread_source** %source, align 8, !dbg !20185, !ctir !1741
-  ret %struct.randread_source* %1, !dbg !20186
+  call void @llvm.dbg.declare(metadata %struct.randint_source** %s.addr, metadata !20187, metadata !DIExpression()), !dbg !20188
+  %0 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20189
+  %source = getelementptr inbounds %struct.randint_source, %struct.randint_source* %0, i32 0, i32 0, !dbg !20190, !ctir !20186
+  %1 = load %struct.randread_source*, %struct.randread_source** %source, align 8, !dbg !20190, !ctir !1741
+  ret %struct.randread_source* %1, !dbg !20191
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local i64 @randint_genmax(%struct.randint_source* %s, i64 %genmax) #4 !dbg !20187 {
+define dso_local i64 @randint_genmax(%struct.randint_source* %s, i64 %genmax) #4 !dbg !20192 {
 entry:
   %retval = alloca i64, align 8
   %s.addr = alloca %struct.randint_source*, align 8
@@ -31802,227 +31798,227 @@ entry:
   %last_usable_choice = alloca i64, align 8, !ctir !1745
   %reduced_randnum = alloca i64, align 8, !ctir !1745
   store %struct.randint_source* %s, %struct.randint_source** %s.addr, align 8
-  call void @llvm.dbg.declare(metadata %struct.randint_source** %s.addr, metadata !20190, metadata !DIExpression()), !dbg !20191
+  call void @llvm.dbg.declare(metadata %struct.randint_source** %s.addr, metadata !20195, metadata !DIExpression()), !dbg !20196
   store i64 %genmax, i64* %genmax.addr, align 8
-  call void @llvm.dbg.declare(metadata i64* %genmax.addr, metadata !20192, metadata !DIExpression()), !dbg !20193
-  call void @llvm.dbg.declare(metadata %struct.randread_source** %source, metadata !20194, metadata !DIExpression()), !dbg !20195
-  %0 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20196
-  %source1 = getelementptr inbounds %struct.randint_source, %struct.randint_source* %0, i32 0, i32 0, !dbg !20197, !ctir !1737
-  %1 = load %struct.randread_source*, %struct.randread_source** %source1, align 8, !dbg !20197, !ctir !1741
-  store %struct.randread_source* %1, %struct.randread_source** %source, align 8, !dbg !20195
-  call void @llvm.dbg.declare(metadata i64* %randnum, metadata !20198, metadata !DIExpression()), !dbg !20199
-  %2 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20200
-  %randnum2 = getelementptr inbounds %struct.randint_source, %struct.randint_source* %2, i32 0, i32 1, !dbg !20201, !ctir !1737
-  %3 = load i64, i64* %randnum2, align 8, !dbg !20201, !ctir !1745
-  store i64 %3, i64* %randnum, align 8, !dbg !20199
-  call void @llvm.dbg.declare(metadata i64* %randmax, metadata !20202, metadata !DIExpression()), !dbg !20203
-  %4 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20204
-  %randmax3 = getelementptr inbounds %struct.randint_source, %struct.randint_source* %4, i32 0, i32 2, !dbg !20205, !ctir !1737
-  %5 = load i64, i64* %randmax3, align 8, !dbg !20205, !ctir !1745
-  store i64 %5, i64* %randmax, align 8, !dbg !20203
-  call void @llvm.dbg.declare(metadata i64* %choices, metadata !20206, metadata !DIExpression()), !dbg !20207
-  %6 = load i64, i64* %genmax.addr, align 8, !dbg !20208
-  %add = add i64 %6, 1, !dbg !20209
-  store i64 %add, i64* %choices, align 8, !dbg !20207
-  br label %while.body, !dbg !20210
+  call void @llvm.dbg.declare(metadata i64* %genmax.addr, metadata !20197, metadata !DIExpression()), !dbg !20198
+  call void @llvm.dbg.declare(metadata %struct.randread_source** %source, metadata !20199, metadata !DIExpression()), !dbg !20200
+  %0 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20201
+  %source1 = getelementptr inbounds %struct.randint_source, %struct.randint_source* %0, i32 0, i32 0, !dbg !20202, !ctir !1737
+  %1 = load %struct.randread_source*, %struct.randread_source** %source1, align 8, !dbg !20202, !ctir !1741
+  store %struct.randread_source* %1, %struct.randread_source** %source, align 8, !dbg !20200
+  call void @llvm.dbg.declare(metadata i64* %randnum, metadata !20203, metadata !DIExpression()), !dbg !20204
+  %2 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20205
+  %randnum2 = getelementptr inbounds %struct.randint_source, %struct.randint_source* %2, i32 0, i32 1, !dbg !20206, !ctir !1737
+  %3 = load i64, i64* %randnum2, align 8, !dbg !20206, !ctir !1745
+  store i64 %3, i64* %randnum, align 8, !dbg !20204
+  call void @llvm.dbg.declare(metadata i64* %randmax, metadata !20207, metadata !DIExpression()), !dbg !20208
+  %4 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20209
+  %randmax3 = getelementptr inbounds %struct.randint_source, %struct.randint_source* %4, i32 0, i32 2, !dbg !20210, !ctir !1737
+  %5 = load i64, i64* %randmax3, align 8, !dbg !20210, !ctir !1745
+  store i64 %5, i64* %randmax, align 8, !dbg !20208
+  call void @llvm.dbg.declare(metadata i64* %choices, metadata !20211, metadata !DIExpression()), !dbg !20212
+  %6 = load i64, i64* %genmax.addr, align 8, !dbg !20213
+  %add = add i64 %6, 1, !dbg !20214
+  store i64 %add, i64* %choices, align 8, !dbg !20212
+  br label %while.body, !dbg !20215
 
 while.body:                                       ; preds = %entry, %if.end31
-  %7 = load i64, i64* %randmax, align 8, !dbg !20211
-  %8 = load i64, i64* %genmax.addr, align 8, !dbg !20214
-  %cmp = icmp ult i64 %7, %8, !dbg !20215
-  br i1 %cmp, label %if.then, label %if.end, !dbg !20216
+  %7 = load i64, i64* %randmax, align 8, !dbg !20216
+  %8 = load i64, i64* %genmax.addr, align 8, !dbg !20219
+  %cmp = icmp ult i64 %7, %8, !dbg !20220
+  br i1 %cmp, label %if.then, label %if.end, !dbg !20221
 
 if.then:                                          ; preds = %while.body
-  call void @llvm.dbg.declare(metadata i64* %i, metadata !20217, metadata !DIExpression()), !dbg !20219
-  store i64 0, i64* %i, align 8, !dbg !20219
-  call void @llvm.dbg.declare(metadata i64* %rmax, metadata !20220, metadata !DIExpression()), !dbg !20221
-  %9 = load i64, i64* %randmax, align 8, !dbg !20222
-  store i64 %9, i64* %rmax, align 8, !dbg !20221
-  call void @llvm.dbg.declare(metadata [8 x i8]* %buf, metadata !20223, metadata !DIExpression()), !dbg !20224
-  br label %do.body, !dbg !20225
+  call void @llvm.dbg.declare(metadata i64* %i, metadata !20222, metadata !DIExpression()), !dbg !20224
+  store i64 0, i64* %i, align 8, !dbg !20224
+  call void @llvm.dbg.declare(metadata i64* %rmax, metadata !20225, metadata !DIExpression()), !dbg !20226
+  %9 = load i64, i64* %randmax, align 8, !dbg !20227
+  store i64 %9, i64* %rmax, align 8, !dbg !20226
+  call void @llvm.dbg.declare(metadata [8 x i8]* %buf, metadata !20228, metadata !DIExpression()), !dbg !20229
+  br label %do.body, !dbg !20230
 
 do.body:                                          ; preds = %do.cond, %if.then
-  %10 = load i64, i64* %rmax, align 8, !dbg !20226
-  %call = call i64 @shift_left(i64 %10), !dbg !20228
-  %add4 = add i64 %call, 255, !dbg !20229
-  store i64 %add4, i64* %rmax, align 8, !dbg !20230
-  %11 = load i64, i64* %i, align 8, !dbg !20231
-  %inc = add i64 %11, 1, !dbg !20231
-  store i64 %inc, i64* %i, align 8, !dbg !20231
-  br label %do.cond, !dbg !20232
+  %10 = load i64, i64* %rmax, align 8, !dbg !20231
+  %call = call i64 @shift_left(i64 %10), !dbg !20233
+  %add4 = add i64 %call, 255, !dbg !20234
+  store i64 %add4, i64* %rmax, align 8, !dbg !20235
+  %11 = load i64, i64* %i, align 8, !dbg !20236
+  %inc = add i64 %11, 1, !dbg !20236
+  store i64 %inc, i64* %i, align 8, !dbg !20236
+  br label %do.cond, !dbg !20237
 
 do.cond:                                          ; preds = %do.body
-  %12 = load i64, i64* %rmax, align 8, !dbg !20233
-  %13 = load i64, i64* %genmax.addr, align 8, !dbg !20234
-  %cmp5 = icmp ult i64 %12, %13, !dbg !20235
-  br i1 %cmp5, label %do.body, label %do.end, !dbg !20232, !llvm.loop !20236
+  %12 = load i64, i64* %rmax, align 8, !dbg !20238
+  %13 = load i64, i64* %genmax.addr, align 8, !dbg !20239
+  %cmp5 = icmp ult i64 %12, %13, !dbg !20240
+  br i1 %cmp5, label %do.body, label %do.end, !dbg !20237, !llvm.loop !20241
 
 do.end:                                           ; preds = %do.cond
-  %14 = load %struct.randread_source*, %struct.randread_source** %source, align 8, !dbg !20238
-  %arraydecay = getelementptr inbounds [8 x i8], [8 x i8]* %buf, i64 0, i64 0, !dbg !20239, !ctir !1747
-  %15 = load i64, i64* %i, align 8, !dbg !20240
-  call void @randread(%struct.randread_source* %14, i8* %arraydecay, i64 %15), !dbg !20241
-  store i64 0, i64* %i, align 8, !dbg !20242
-  br label %do.body6, !dbg !20243
+  %14 = load %struct.randread_source*, %struct.randread_source** %source, align 8, !dbg !20243
+  %arraydecay = getelementptr inbounds [8 x i8], [8 x i8]* %buf, i64 0, i64 0, !dbg !20244, !ctir !1747
+  %15 = load i64, i64* %i, align 8, !dbg !20245
+  call void @randread(%struct.randread_source* %14, i8* %arraydecay, i64 %15), !dbg !20246
+  store i64 0, i64* %i, align 8, !dbg !20247
+  br label %do.body6, !dbg !20248
 
 do.body6:                                         ; preds = %do.cond12, %do.end
-  %16 = load i64, i64* %randnum, align 8, !dbg !20244
-  %call7 = call i64 @shift_left(i64 %16), !dbg !20246
-  %17 = load i64, i64* %i, align 8, !dbg !20247
-  %arrayidx = getelementptr inbounds [8 x i8], [8 x i8]* %buf, i64 0, i64 %17, !dbg !20248, !ctir !1747
-  %18 = load i8, i8* %arrayidx, align 1, !dbg !20248
-  %conv = zext i8 %18 to i64, !dbg !20248
-  %add8 = add i64 %call7, %conv, !dbg !20249
-  store i64 %add8, i64* %randnum, align 8, !dbg !20250
-  %19 = load i64, i64* %randmax, align 8, !dbg !20251
-  %call9 = call i64 @shift_left(i64 %19), !dbg !20252
-  %add10 = add i64 %call9, 255, !dbg !20253
-  store i64 %add10, i64* %randmax, align 8, !dbg !20254
-  %20 = load i64, i64* %i, align 8, !dbg !20255
-  %inc11 = add i64 %20, 1, !dbg !20255
-  store i64 %inc11, i64* %i, align 8, !dbg !20255
-  br label %do.cond12, !dbg !20256
+  %16 = load i64, i64* %randnum, align 8, !dbg !20249
+  %call7 = call i64 @shift_left(i64 %16), !dbg !20251
+  %17 = load i64, i64* %i, align 8, !dbg !20252
+  %arrayidx = getelementptr inbounds [8 x i8], [8 x i8]* %buf, i64 0, i64 %17, !dbg !20253, !ctir !1747
+  %18 = load i8, i8* %arrayidx, align 1, !dbg !20253
+  %conv = zext i8 %18 to i64, !dbg !20253
+  %add8 = add i64 %call7, %conv, !dbg !20254
+  store i64 %add8, i64* %randnum, align 8, !dbg !20255
+  %19 = load i64, i64* %randmax, align 8, !dbg !20256
+  %call9 = call i64 @shift_left(i64 %19), !dbg !20257
+  %add10 = add i64 %call9, 255, !dbg !20258
+  store i64 %add10, i64* %randmax, align 8, !dbg !20259
+  %20 = load i64, i64* %i, align 8, !dbg !20260
+  %inc11 = add i64 %20, 1, !dbg !20260
+  store i64 %inc11, i64* %i, align 8, !dbg !20260
+  br label %do.cond12, !dbg !20261
 
 do.cond12:                                        ; preds = %do.body6
-  %21 = load i64, i64* %randmax, align 8, !dbg !20257
-  %22 = load i64, i64* %genmax.addr, align 8, !dbg !20258
-  %cmp13 = icmp ult i64 %21, %22, !dbg !20259
-  br i1 %cmp13, label %do.body6, label %do.end15, !dbg !20256, !llvm.loop !20260
+  %21 = load i64, i64* %randmax, align 8, !dbg !20262
+  %22 = load i64, i64* %genmax.addr, align 8, !dbg !20263
+  %cmp13 = icmp ult i64 %21, %22, !dbg !20264
+  br i1 %cmp13, label %do.body6, label %do.end15, !dbg !20261, !llvm.loop !20265
 
 do.end15:                                         ; preds = %do.cond12
-  br label %if.end, !dbg !20262
+  br label %if.end, !dbg !20267
 
 if.end:                                           ; preds = %do.end15, %while.body
-  %23 = load i64, i64* %randmax, align 8, !dbg !20263
-  %24 = load i64, i64* %genmax.addr, align 8, !dbg !20265
-  %cmp16 = icmp eq i64 %23, %24, !dbg !20266
-  br i1 %cmp16, label %if.then18, label %if.else, !dbg !20267
+  %23 = load i64, i64* %randmax, align 8, !dbg !20268
+  %24 = load i64, i64* %genmax.addr, align 8, !dbg !20270
+  %cmp16 = icmp eq i64 %23, %24, !dbg !20271
+  br i1 %cmp16, label %if.then18, label %if.else, !dbg !20272
 
 if.then18:                                        ; preds = %if.end
-  %25 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20268
-  %randmax19 = getelementptr inbounds %struct.randint_source, %struct.randint_source* %25, i32 0, i32 2, !dbg !20270, !ctir !1737
-  store i64 0, i64* %randmax19, align 8, !dbg !20271, !ctir !1745
-  %26 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20272
-  %randnum20 = getelementptr inbounds %struct.randint_source, %struct.randint_source* %26, i32 0, i32 1, !dbg !20273, !ctir !1737
-  store i64 0, i64* %randnum20, align 8, !dbg !20274, !ctir !1745
-  %27 = load i64, i64* %randnum, align 8, !dbg !20275
-  store i64 %27, i64* %retval, align 8, !dbg !20276
-  br label %return, !dbg !20276
+  %25 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20273
+  %randmax19 = getelementptr inbounds %struct.randint_source, %struct.randint_source* %25, i32 0, i32 2, !dbg !20275, !ctir !1737
+  store i64 0, i64* %randmax19, align 8, !dbg !20276, !ctir !1745
+  %26 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20277
+  %randnum20 = getelementptr inbounds %struct.randint_source, %struct.randint_source* %26, i32 0, i32 1, !dbg !20278, !ctir !1737
+  store i64 0, i64* %randnum20, align 8, !dbg !20279, !ctir !1745
+  %27 = load i64, i64* %randnum, align 8, !dbg !20280
+  store i64 %27, i64* %retval, align 8, !dbg !20281
+  br label %return, !dbg !20281
 
 if.else:                                          ; preds = %if.end
-  call void @llvm.dbg.declare(metadata i64* %excess_choices, metadata !20277, metadata !DIExpression()), !dbg !20279
-  %28 = load i64, i64* %randmax, align 8, !dbg !20280
-  %29 = load i64, i64* %genmax.addr, align 8, !dbg !20281
-  %sub = sub i64 %28, %29, !dbg !20282
-  store i64 %sub, i64* %excess_choices, align 8, !dbg !20279
-  call void @llvm.dbg.declare(metadata i64* %unusable_choices, metadata !20283, metadata !DIExpression()), !dbg !20284
-  %30 = load i64, i64* %excess_choices, align 8, !dbg !20285
-  %31 = load i64, i64* %choices, align 8, !dbg !20286
-  %rem = urem i64 %30, %31, !dbg !20287
-  store i64 %rem, i64* %unusable_choices, align 8, !dbg !20284
-  call void @llvm.dbg.declare(metadata i64* %last_usable_choice, metadata !20288, metadata !DIExpression()), !dbg !20289
-  %32 = load i64, i64* %randmax, align 8, !dbg !20290
-  %33 = load i64, i64* %unusable_choices, align 8, !dbg !20291
-  %sub21 = sub i64 %32, %33, !dbg !20292
-  store i64 %sub21, i64* %last_usable_choice, align 8, !dbg !20289
-  call void @llvm.dbg.declare(metadata i64* %reduced_randnum, metadata !20293, metadata !DIExpression()), !dbg !20294
-  %34 = load i64, i64* %randnum, align 8, !dbg !20295
-  %35 = load i64, i64* %choices, align 8, !dbg !20296
-  %rem22 = urem i64 %34, %35, !dbg !20297
-  store i64 %rem22, i64* %reduced_randnum, align 8, !dbg !20294
-  %36 = load i64, i64* %randnum, align 8, !dbg !20298
-  %37 = load i64, i64* %last_usable_choice, align 8, !dbg !20300
-  %cmp23 = icmp ule i64 %36, %37, !dbg !20301
-  br i1 %cmp23, label %if.then25, label %if.end29, !dbg !20302
+  call void @llvm.dbg.declare(metadata i64* %excess_choices, metadata !20282, metadata !DIExpression()), !dbg !20284
+  %28 = load i64, i64* %randmax, align 8, !dbg !20285
+  %29 = load i64, i64* %genmax.addr, align 8, !dbg !20286
+  %sub = sub i64 %28, %29, !dbg !20287
+  store i64 %sub, i64* %excess_choices, align 8, !dbg !20284
+  call void @llvm.dbg.declare(metadata i64* %unusable_choices, metadata !20288, metadata !DIExpression()), !dbg !20289
+  %30 = load i64, i64* %excess_choices, align 8, !dbg !20290
+  %31 = load i64, i64* %choices, align 8, !dbg !20291
+  %rem = urem i64 %30, %31, !dbg !20292
+  store i64 %rem, i64* %unusable_choices, align 8, !dbg !20289
+  call void @llvm.dbg.declare(metadata i64* %last_usable_choice, metadata !20293, metadata !DIExpression()), !dbg !20294
+  %32 = load i64, i64* %randmax, align 8, !dbg !20295
+  %33 = load i64, i64* %unusable_choices, align 8, !dbg !20296
+  %sub21 = sub i64 %32, %33, !dbg !20297
+  store i64 %sub21, i64* %last_usable_choice, align 8, !dbg !20294
+  call void @llvm.dbg.declare(metadata i64* %reduced_randnum, metadata !20298, metadata !DIExpression()), !dbg !20299
+  %34 = load i64, i64* %randnum, align 8, !dbg !20300
+  %35 = load i64, i64* %choices, align 8, !dbg !20301
+  %rem22 = urem i64 %34, %35, !dbg !20302
+  store i64 %rem22, i64* %reduced_randnum, align 8, !dbg !20299
+  %36 = load i64, i64* %randnum, align 8, !dbg !20303
+  %37 = load i64, i64* %last_usable_choice, align 8, !dbg !20305
+  %cmp23 = icmp ule i64 %36, %37, !dbg !20306
+  br i1 %cmp23, label %if.then25, label %if.end29, !dbg !20307
 
 if.then25:                                        ; preds = %if.else
-  %38 = load i64, i64* %randnum, align 8, !dbg !20303
-  %39 = load i64, i64* %choices, align 8, !dbg !20305
-  %div = udiv i64 %38, %39, !dbg !20306
-  %40 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20307
-  %randnum26 = getelementptr inbounds %struct.randint_source, %struct.randint_source* %40, i32 0, i32 1, !dbg !20308, !ctir !1737
-  store i64 %div, i64* %randnum26, align 8, !dbg !20309, !ctir !1745
-  %41 = load i64, i64* %excess_choices, align 8, !dbg !20310
-  %42 = load i64, i64* %choices, align 8, !dbg !20311
-  %div27 = udiv i64 %41, %42, !dbg !20312
-  %43 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20313
-  %randmax28 = getelementptr inbounds %struct.randint_source, %struct.randint_source* %43, i32 0, i32 2, !dbg !20314, !ctir !1737
-  store i64 %div27, i64* %randmax28, align 8, !dbg !20315, !ctir !1745
-  %44 = load i64, i64* %reduced_randnum, align 8, !dbg !20316
-  store i64 %44, i64* %retval, align 8, !dbg !20317
-  br label %return, !dbg !20317
+  %38 = load i64, i64* %randnum, align 8, !dbg !20308
+  %39 = load i64, i64* %choices, align 8, !dbg !20310
+  %div = udiv i64 %38, %39, !dbg !20311
+  %40 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20312
+  %randnum26 = getelementptr inbounds %struct.randint_source, %struct.randint_source* %40, i32 0, i32 1, !dbg !20313, !ctir !1737
+  store i64 %div, i64* %randnum26, align 8, !dbg !20314, !ctir !1745
+  %41 = load i64, i64* %excess_choices, align 8, !dbg !20315
+  %42 = load i64, i64* %choices, align 8, !dbg !20316
+  %div27 = udiv i64 %41, %42, !dbg !20317
+  %43 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20318
+  %randmax28 = getelementptr inbounds %struct.randint_source, %struct.randint_source* %43, i32 0, i32 2, !dbg !20319, !ctir !1737
+  store i64 %div27, i64* %randmax28, align 8, !dbg !20320, !ctir !1745
+  %44 = load i64, i64* %reduced_randnum, align 8, !dbg !20321
+  store i64 %44, i64* %retval, align 8, !dbg !20322
+  br label %return, !dbg !20322
 
 if.end29:                                         ; preds = %if.else
-  %45 = load i64, i64* %reduced_randnum, align 8, !dbg !20318
-  store i64 %45, i64* %randnum, align 8, !dbg !20319
-  %46 = load i64, i64* %unusable_choices, align 8, !dbg !20320
-  %sub30 = sub i64 %46, 1, !dbg !20321
-  store i64 %sub30, i64* %randmax, align 8, !dbg !20322
+  %45 = load i64, i64* %reduced_randnum, align 8, !dbg !20323
+  store i64 %45, i64* %randnum, align 8, !dbg !20324
+  %46 = load i64, i64* %unusable_choices, align 8, !dbg !20325
+  %sub30 = sub i64 %46, 1, !dbg !20326
+  store i64 %sub30, i64* %randmax, align 8, !dbg !20327
   br label %if.end31
 
 if.end31:                                         ; preds = %if.end29
-  br label %while.body, !dbg !20210, !llvm.loop !20323
+  br label %while.body, !dbg !20215, !llvm.loop !20328
 
 return:                                           ; preds = %if.then25, %if.then18
-  %47 = load i64, i64* %retval, align 8, !dbg !20325
-  ret i64 %47, !dbg !20325
+  %47 = load i64, i64* %retval, align 8, !dbg !20330
+  ret i64 %47, !dbg !20330
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define internal i64 @shift_left(i64 %x) #4 !dbg !20326 {
+define internal i64 @shift_left(i64 %x) #4 !dbg !20331 {
 entry:
   %x.addr = alloca i64, align 8
   store i64 %x, i64* %x.addr, align 8
-  call void @llvm.dbg.declare(metadata i64* %x.addr, metadata !20329, metadata !DIExpression()), !dbg !20330
-  %0 = load i64, i64* %x.addr, align 8, !dbg !20331
-  %shl = shl i64 %0, 8, !dbg !20332
-  ret i64 %shl, !dbg !20333
+  call void @llvm.dbg.declare(metadata i64* %x.addr, metadata !20334, metadata !DIExpression()), !dbg !20335
+  %0 = load i64, i64* %x.addr, align 8, !dbg !20336
+  %shl = shl i64 %0, 8, !dbg !20337
+  ret i64 %shl, !dbg !20338
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local void @randint_free(%struct.randint_source* %s) #4 !dbg !20334 {
+define dso_local void @randint_free(%struct.randint_source* %s) #4 !dbg !20339 {
 entry:
   %s.addr = alloca %struct.randint_source*, align 8
   store %struct.randint_source* %s, %struct.randint_source** %s.addr, align 8
-  call void @llvm.dbg.declare(metadata %struct.randint_source** %s.addr, metadata !20337, metadata !DIExpression()), !dbg !20338
-  %0 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20339
-  %1 = bitcast %struct.randint_source* %0 to i8*, !dbg !20339
-  call void @explicit_bzero(i8* %1, i64 24), !dbg !20340
-  %2 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20341
-  %3 = bitcast %struct.randint_source* %2 to i8*, !dbg !20341
-  call void @free(i8* %3) #9, !dbg !20342
-  ret void, !dbg !20343
+  call void @llvm.dbg.declare(metadata %struct.randint_source** %s.addr, metadata !20342, metadata !DIExpression()), !dbg !20343
+  %0 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20344
+  %1 = bitcast %struct.randint_source* %0 to i8*, !dbg !20344
+  call void @explicit_bzero(i8* %1, i64 24), !dbg !20345
+  %2 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20346
+  %3 = bitcast %struct.randint_source* %2 to i8*, !dbg !20346
+  call void @free(i8* %3) #9, !dbg !20347
+  ret void, !dbg !20348
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local i32 @randint_all_free(%struct.randint_source* %s) #4 !dbg !20344 {
+define dso_local i32 @randint_all_free(%struct.randint_source* %s) #4 !dbg !20349 {
 entry:
   %s.addr = alloca %struct.randint_source*, align 8
   %r = alloca i32, align 4, !ctir !5
   %e = alloca i32, align 4, !ctir !5
   store %struct.randint_source* %s, %struct.randint_source** %s.addr, align 8
-  call void @llvm.dbg.declare(metadata %struct.randint_source** %s.addr, metadata !20347, metadata !DIExpression()), !dbg !20348
-  call void @llvm.dbg.declare(metadata i32* %r, metadata !20349, metadata !DIExpression()), !dbg !20350
-  %0 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20351
-  %source = getelementptr inbounds %struct.randint_source, %struct.randint_source* %0, i32 0, i32 0, !dbg !20352, !ctir !1737
-  %1 = load %struct.randread_source*, %struct.randread_source** %source, align 8, !dbg !20352, !ctir !1741
-  %call = call i32 @randread_free(%struct.randread_source* %1), !dbg !20353
-  store i32 %call, i32* %r, align 4, !dbg !20350
-  call void @llvm.dbg.declare(metadata i32* %e, metadata !20354, metadata !DIExpression()), !dbg !20355
-  %call1 = call i32* @__errno_location() #16, !dbg !20356
-  %2 = load i32, i32* %call1, align 4, !dbg !20356, !ctir !5
-  store i32 %2, i32* %e, align 4, !dbg !20355
-  %3 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20357
-  call void @randint_free(%struct.randint_source* %3), !dbg !20358
-  %4 = load i32, i32* %e, align 4, !dbg !20359
-  %call2 = call i32* @__errno_location() #16, !dbg !20360
-  store i32 %4, i32* %call2, align 4, !dbg !20361, !ctir !5
-  %5 = load i32, i32* %r, align 4, !dbg !20362
-  ret i32 %5, !dbg !20363
+  call void @llvm.dbg.declare(metadata %struct.randint_source** %s.addr, metadata !20352, metadata !DIExpression()), !dbg !20353
+  call void @llvm.dbg.declare(metadata i32* %r, metadata !20354, metadata !DIExpression()), !dbg !20355
+  %0 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20356
+  %source = getelementptr inbounds %struct.randint_source, %struct.randint_source* %0, i32 0, i32 0, !dbg !20357, !ctir !1737
+  %1 = load %struct.randread_source*, %struct.randread_source** %source, align 8, !dbg !20357, !ctir !1741
+  %call = call i32 @randread_free(%struct.randread_source* %1), !dbg !20358
+  store i32 %call, i32* %r, align 4, !dbg !20355
+  call void @llvm.dbg.declare(metadata i32* %e, metadata !20359, metadata !DIExpression()), !dbg !20360
+  %call1 = call i32* @__errno_location() #16, !dbg !20361
+  %2 = load i32, i32* %call1, align 4, !dbg !20361, !ctir !5
+  store i32 %2, i32* %e, align 4, !dbg !20360
+  %3 = load %struct.randint_source*, %struct.randint_source** %s.addr, align 8, !dbg !20362
+  call void @randint_free(%struct.randint_source* %3), !dbg !20363
+  %4 = load i32, i32* %e, align 4, !dbg !20364
+  %call2 = call i32* @__errno_location() #16, !dbg !20365
+  store i32 %4, i32* %call2, align 4, !dbg !20366, !ctir !5
+  %5 = load i32, i32* %r, align 4, !dbg !20367
+  ret i32 %5, !dbg !20368
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local %struct.randread_source* @randread_new(i8* %name, i64 %bytes_bound) #4 !dbg !20364 {
+define dso_local %struct.randread_source* @randread_new(i8* %name, i64 %bytes_bound) #4 !dbg !20369 {
 entry:
   %retval = alloca %struct.randread_source*, align 8
   %name.addr = alloca i8*, align 8
@@ -32030,137 +32026,137 @@ entry:
   %source = alloca %struct._IO_FILE*, align 8, !ctir !1751
   %s = alloca %struct.randread_source*, align 8, !ctir !1791
   store i8* %name, i8** %name.addr, align 8
-  call void @llvm.dbg.declare(metadata i8** %name.addr, metadata !20367, metadata !DIExpression()), !dbg !20368
+  call void @llvm.dbg.declare(metadata i8** %name.addr, metadata !20372, metadata !DIExpression()), !dbg !20373
   store i64 %bytes_bound, i64* %bytes_bound.addr, align 8
-  call void @llvm.dbg.declare(metadata i64* %bytes_bound.addr, metadata !20369, metadata !DIExpression()), !dbg !20370
-  %0 = load i64, i64* %bytes_bound.addr, align 8, !dbg !20371
-  %cmp = icmp eq i64 %0, 0, !dbg !20373
-  br i1 %cmp, label %if.then, label %if.else, !dbg !20374
+  call void @llvm.dbg.declare(metadata i64* %bytes_bound.addr, metadata !20374, metadata !DIExpression()), !dbg !20375
+  %0 = load i64, i64* %bytes_bound.addr, align 8, !dbg !20376
+  %cmp = icmp eq i64 %0, 0, !dbg !20378
+  br i1 %cmp, label %if.then, label %if.else, !dbg !20379
 
 if.then:                                          ; preds = %entry
-  %call = call %struct.randread_source* @simple_new(%struct._IO_FILE* null, i8* null), !dbg !20375
-  store %struct.randread_source* %call, %struct.randread_source** %retval, align 8, !dbg !20376
-  br label %return, !dbg !20376
+  %call = call %struct.randread_source* @simple_new(%struct._IO_FILE* null, i8* null), !dbg !20380
+  store %struct.randread_source* %call, %struct.randread_source** %retval, align 8, !dbg !20381
+  br label %return, !dbg !20381
 
 if.else:                                          ; preds = %entry
-  call void @llvm.dbg.declare(metadata %struct._IO_FILE** %source, metadata !20377, metadata !DIExpression()), !dbg !20379
-  store %struct._IO_FILE* null, %struct._IO_FILE** %source, align 8, !dbg !20379
-  call void @llvm.dbg.declare(metadata %struct.randread_source** %s, metadata !20380, metadata !DIExpression()), !dbg !20381
-  %1 = load i8*, i8** %name.addr, align 8, !dbg !20382
-  %tobool = icmp ne i8* %1, null, !dbg !20382
-  br i1 %tobool, label %if.then1, label %if.end5, !dbg !20384
+  call void @llvm.dbg.declare(metadata %struct._IO_FILE** %source, metadata !20382, metadata !DIExpression()), !dbg !20384
+  store %struct._IO_FILE* null, %struct._IO_FILE** %source, align 8, !dbg !20384
+  call void @llvm.dbg.declare(metadata %struct.randread_source** %s, metadata !20385, metadata !DIExpression()), !dbg !20386
+  %1 = load i8*, i8** %name.addr, align 8, !dbg !20387
+  %tobool = icmp ne i8* %1, null, !dbg !20387
+  br i1 %tobool, label %if.then1, label %if.end5, !dbg !20389
 
 if.then1:                                         ; preds = %if.else
-  %2 = load i8*, i8** %name.addr, align 8, !dbg !20385
-  %call2 = call %struct._IO_FILE* @fopen_safer(i8* %2, i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.520, i64 0, i64 0)), !dbg !20387
-  store %struct._IO_FILE* %call2, %struct._IO_FILE** %source, align 8, !dbg !20388
-  %tobool3 = icmp ne %struct._IO_FILE* %call2, null, !dbg !20388
-  br i1 %tobool3, label %if.end, label %if.then4, !dbg !20389
+  %2 = load i8*, i8** %name.addr, align 8, !dbg !20390
+  %call2 = call %struct._IO_FILE* @fopen_safer(i8* %2, i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.520, i64 0, i64 0)), !dbg !20392
+  store %struct._IO_FILE* %call2, %struct._IO_FILE** %source, align 8, !dbg !20393
+  %tobool3 = icmp ne %struct._IO_FILE* %call2, null, !dbg !20393
+  br i1 %tobool3, label %if.end, label %if.then4, !dbg !20394
 
 if.then4:                                         ; preds = %if.then1
-  store %struct.randread_source* null, %struct.randread_source** %retval, align 8, !dbg !20390
-  br label %return, !dbg !20390
+  store %struct.randread_source* null, %struct.randread_source** %retval, align 8, !dbg !20395
+  br label %return, !dbg !20395
 
 if.end:                                           ; preds = %if.then1
-  br label %if.end5, !dbg !20391
+  br label %if.end5, !dbg !20396
 
 if.end5:                                          ; preds = %if.end, %if.else
-  %3 = load %struct._IO_FILE*, %struct._IO_FILE** %source, align 8, !dbg !20392
-  %4 = load i8*, i8** %name.addr, align 8, !dbg !20393
-  %call6 = call %struct.randread_source* @simple_new(%struct._IO_FILE* %3, i8* %4), !dbg !20394
-  store %struct.randread_source* %call6, %struct.randread_source** %s, align 8, !dbg !20395
-  %5 = load %struct._IO_FILE*, %struct._IO_FILE** %source, align 8, !dbg !20396
-  %tobool7 = icmp ne %struct._IO_FILE* %5, null, !dbg !20396
-  br i1 %tobool7, label %if.then8, label %if.else11, !dbg !20398
+  %3 = load %struct._IO_FILE*, %struct._IO_FILE** %source, align 8, !dbg !20397
+  %4 = load i8*, i8** %name.addr, align 8, !dbg !20398
+  %call6 = call %struct.randread_source* @simple_new(%struct._IO_FILE* %3, i8* %4), !dbg !20399
+  store %struct.randread_source* %call6, %struct.randread_source** %s, align 8, !dbg !20400
+  %5 = load %struct._IO_FILE*, %struct._IO_FILE** %source, align 8, !dbg !20401
+  %tobool7 = icmp ne %struct._IO_FILE* %5, null, !dbg !20401
+  br i1 %tobool7, label %if.then8, label %if.else11, !dbg !20403
 
 if.then8:                                         ; preds = %if.end5
-  %6 = load %struct._IO_FILE*, %struct._IO_FILE** %source, align 8, !dbg !20399
-  %7 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20400
-  %buf = getelementptr inbounds %struct.randread_source, %struct.randread_source* %7, i32 0, i32 3, !dbg !20401, !ctir !1792
-  %c = bitcast %union.anon.87* %buf to [4096 x i8]*, !dbg !20402
-  %arraydecay = getelementptr inbounds [4096 x i8], [4096 x i8]* %c, i64 0, i64 0, !dbg !20400, !ctir !353
-  %8 = load i64, i64* %bytes_bound.addr, align 8, !dbg !20403
-  %cmp9 = icmp ult i64 4096, %8, !dbg !20403
-  br i1 %cmp9, label %cond.true, label %cond.false, !dbg !20403
+  %6 = load %struct._IO_FILE*, %struct._IO_FILE** %source, align 8, !dbg !20404
+  %7 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20405
+  %buf = getelementptr inbounds %struct.randread_source, %struct.randread_source* %7, i32 0, i32 3, !dbg !20406, !ctir !1792
+  %c = bitcast %union.anon.87* %buf to [4096 x i8]*, !dbg !20407
+  %arraydecay = getelementptr inbounds [4096 x i8], [4096 x i8]* %c, i64 0, i64 0, !dbg !20405, !ctir !353
+  %8 = load i64, i64* %bytes_bound.addr, align 8, !dbg !20408
+  %cmp9 = icmp ult i64 4096, %8, !dbg !20408
+  br i1 %cmp9, label %cond.true, label %cond.false, !dbg !20408
 
 cond.true:                                        ; preds = %if.then8
-  br label %cond.end, !dbg !20403
+  br label %cond.end, !dbg !20408
 
 cond.false:                                       ; preds = %if.then8
-  %9 = load i64, i64* %bytes_bound.addr, align 8, !dbg !20403
-  br label %cond.end, !dbg !20403
+  %9 = load i64, i64* %bytes_bound.addr, align 8, !dbg !20408
+  br label %cond.end, !dbg !20408
 
 cond.end:                                         ; preds = %cond.false, %cond.true
-  %cond = phi i64 [ 4096, %cond.true ], [ %9, %cond.false ], !dbg !20403
-  %call10 = call i32 @setvbuf(%struct._IO_FILE* %6, i8* %arraydecay, i32 0, i64 %cond) #9, !dbg !20404
-  br label %if.end19, !dbg !20404
+  %cond = phi i64 [ 4096, %cond.true ], [ %9, %cond.false ], !dbg !20408
+  %call10 = call i32 @setvbuf(%struct._IO_FILE* %6, i8* %arraydecay, i32 0, i64 %cond) #9, !dbg !20409
+  br label %if.end19, !dbg !20409
 
 if.else11:                                        ; preds = %if.end5
-  %10 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20405
-  %buf12 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %10, i32 0, i32 3, !dbg !20407, !ctir !1792
-  %isaac = bitcast %union.anon.87* %buf12 to %struct.isaac*, !dbg !20408
-  %buffered = getelementptr inbounds %struct.isaac, %struct.isaac* %isaac, i32 0, i32 0, !dbg !20409, !ctir !1806
-  store i64 0, i64* %buffered, align 8, !dbg !20410, !ctir !52
-  %11 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20411
-  %buf13 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %11, i32 0, i32 3, !dbg !20412, !ctir !1792
-  %isaac14 = bitcast %union.anon.87* %buf13 to %struct.isaac*, !dbg !20413
-  %state = getelementptr inbounds %struct.isaac, %struct.isaac* %isaac14, i32 0, i32 1, !dbg !20414, !ctir !1806
-  %m = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %state, i32 0, i32 0, !dbg !20415, !ctir !1810
-  %arraydecay15 = getelementptr inbounds [256 x i64], [256 x i64]* %m, i64 0, i64 0, !dbg !20411, !ctir !1814
-  %12 = bitcast i64* %arraydecay15 to i8*, !dbg !20411
-  %13 = load i64, i64* %bytes_bound.addr, align 8, !dbg !20416
-  call void @get_nonce(i8* %12, i64 2048, i64 %13), !dbg !20417
-  %14 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20418
-  %buf16 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %14, i32 0, i32 3, !dbg !20419, !ctir !1792
-  %isaac17 = bitcast %union.anon.87* %buf16 to %struct.isaac*, !dbg !20420
-  %state18 = getelementptr inbounds %struct.isaac, %struct.isaac* %isaac17, i32 0, i32 1, !dbg !20421, !ctir !1806
-  call void @isaac_seed(%struct.isaac_state* %state18), !dbg !20422
+  %10 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20410
+  %buf12 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %10, i32 0, i32 3, !dbg !20412, !ctir !1792
+  %isaac = bitcast %union.anon.87* %buf12 to %struct.isaac*, !dbg !20413
+  %buffered = getelementptr inbounds %struct.isaac, %struct.isaac* %isaac, i32 0, i32 0, !dbg !20414, !ctir !1806
+  store i64 0, i64* %buffered, align 8, !dbg !20415, !ctir !52
+  %11 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20416
+  %buf13 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %11, i32 0, i32 3, !dbg !20417, !ctir !1792
+  %isaac14 = bitcast %union.anon.87* %buf13 to %struct.isaac*, !dbg !20418
+  %state = getelementptr inbounds %struct.isaac, %struct.isaac* %isaac14, i32 0, i32 1, !dbg !20419, !ctir !1806
+  %m = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %state, i32 0, i32 0, !dbg !20420, !ctir !1810
+  %arraydecay15 = getelementptr inbounds [256 x i64], [256 x i64]* %m, i64 0, i64 0, !dbg !20416, !ctir !1814
+  %12 = bitcast i64* %arraydecay15 to i8*, !dbg !20416
+  %13 = load i64, i64* %bytes_bound.addr, align 8, !dbg !20421
+  call void @get_nonce(i8* %12, i64 2048, i64 %13), !dbg !20422
+  %14 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20423
+  %buf16 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %14, i32 0, i32 3, !dbg !20424, !ctir !1792
+  %isaac17 = bitcast %union.anon.87* %buf16 to %struct.isaac*, !dbg !20425
+  %state18 = getelementptr inbounds %struct.isaac, %struct.isaac* %isaac17, i32 0, i32 1, !dbg !20426, !ctir !1806
+  call void @isaac_seed(%struct.isaac_state* %state18), !dbg !20427
   br label %if.end19
 
 if.end19:                                         ; preds = %if.else11, %cond.end
-  %15 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20423
-  store %struct.randread_source* %15, %struct.randread_source** %retval, align 8, !dbg !20424
-  br label %return, !dbg !20424
+  %15 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20428
+  store %struct.randread_source* %15, %struct.randread_source** %retval, align 8, !dbg !20429
+  br label %return, !dbg !20429
 
 return:                                           ; preds = %if.end19, %if.then4, %if.then
-  %16 = load %struct.randread_source*, %struct.randread_source** %retval, align 8, !dbg !20425
-  ret %struct.randread_source* %16, !dbg !20425
+  %16 = load %struct.randread_source*, %struct.randread_source** %retval, align 8, !dbg !20430
+  ret %struct.randread_source* %16, !dbg !20430
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define internal %struct.randread_source* @simple_new(%struct._IO_FILE* %source, i8* %handler_arg) #4 !dbg !20426 {
+define internal %struct.randread_source* @simple_new(%struct._IO_FILE* %source, i8* %handler_arg) #4 !dbg !20431 {
 entry:
   %source.addr = alloca %struct._IO_FILE*, align 8
   %handler_arg.addr = alloca i8*, align 8
   %s = alloca %struct.randread_source*, align 8, !ctir !1791
   store %struct._IO_FILE* %source, %struct._IO_FILE** %source.addr, align 8
-  call void @llvm.dbg.declare(metadata %struct._IO_FILE** %source.addr, metadata !20429, metadata !DIExpression()), !dbg !20430
+  call void @llvm.dbg.declare(metadata %struct._IO_FILE** %source.addr, metadata !20434, metadata !DIExpression()), !dbg !20435
   store i8* %handler_arg, i8** %handler_arg.addr, align 8
-  call void @llvm.dbg.declare(metadata i8** %handler_arg.addr, metadata !20431, metadata !DIExpression()), !dbg !20432
-  call void @llvm.dbg.declare(metadata %struct.randread_source** %s, metadata !20433, metadata !DIExpression()), !dbg !20434
-  %call = call noalias i8* @xmalloc(i64 4152), !dbg !20435
-  %0 = bitcast i8* %call to %struct.randread_source*, !dbg !20435
-  store %struct.randread_source* %0, %struct.randread_source** %s, align 8, !dbg !20434
-  %1 = load %struct._IO_FILE*, %struct._IO_FILE** %source.addr, align 8, !dbg !20436
-  %2 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20437
-  %source1 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %2, i32 0, i32 0, !dbg !20438, !ctir !1792
-  store %struct._IO_FILE* %1, %struct._IO_FILE** %source1, align 8, !dbg !20439, !ctir !1751
-  %3 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20440
-  %handler = getelementptr inbounds %struct.randread_source, %struct.randread_source* %3, i32 0, i32 1, !dbg !20441, !ctir !1792
-  store void (i8*)* @randread_error, void (i8*)** %handler, align 8, !dbg !20442, !ctir !1797
-  %4 = load i8*, i8** %handler_arg.addr, align 8, !dbg !20443
-  %5 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20444
-  %handler_arg2 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %5, i32 0, i32 2, !dbg !20445, !ctir !1792
-  store i8* %4, i8** %handler_arg2, align 8, !dbg !20446, !ctir !685
-  %6 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20447
-  ret %struct.randread_source* %6, !dbg !20448
+  call void @llvm.dbg.declare(metadata i8** %handler_arg.addr, metadata !20436, metadata !DIExpression()), !dbg !20437
+  call void @llvm.dbg.declare(metadata %struct.randread_source** %s, metadata !20438, metadata !DIExpression()), !dbg !20439
+  %call = call noalias i8* @xmalloc(i64 4152), !dbg !20440
+  %0 = bitcast i8* %call to %struct.randread_source*, !dbg !20440
+  store %struct.randread_source* %0, %struct.randread_source** %s, align 8, !dbg !20439
+  %1 = load %struct._IO_FILE*, %struct._IO_FILE** %source.addr, align 8, !dbg !20441
+  %2 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20442
+  %source1 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %2, i32 0, i32 0, !dbg !20443, !ctir !1792
+  store %struct._IO_FILE* %1, %struct._IO_FILE** %source1, align 8, !dbg !20444, !ctir !1751
+  %3 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20445
+  %handler = getelementptr inbounds %struct.randread_source, %struct.randread_source* %3, i32 0, i32 1, !dbg !20446, !ctir !1792
+  store void (i8*)* @randread_error, void (i8*)** %handler, align 8, !dbg !20447, !ctir !1797
+  %4 = load i8*, i8** %handler_arg.addr, align 8, !dbg !20448
+  %5 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20449
+  %handler_arg2 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %5, i32 0, i32 2, !dbg !20450, !ctir !1792
+  store i8* %4, i8** %handler_arg2, align 8, !dbg !20451, !ctir !685
+  %6 = load %struct.randread_source*, %struct.randread_source** %s, align 8, !dbg !20452
+  ret %struct.randread_source* %6, !dbg !20453
 }
 
 ; Function Attrs: nounwind
 declare dso_local i32 @setvbuf(%struct._IO_FILE*, i8*, i32, i64) #2
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define internal void @get_nonce(i8* %buffer, i64 %bufsize, i64 %bytes_bound) #4 !dbg !20449 {
+define internal void @get_nonce(i8* %buffer, i64 %bufsize, i64 %bytes_bound) #4 !dbg !20454 {
 entry:
   %buffer.addr = alloca i8*, align 8
   %bufsize.addr = alloca i64, align 8
@@ -32168,7 +32164,7 @@ entry:
   %buf = alloca i8*, align 8, !ctir !7
   %seeded = alloca i64, align 8, !ctir !661
   %fd = alloca i32, align 4, !ctir !5
-  %v = alloca %struct.timespec, align 8, !ctir !20452
+  %v = alloca %struct.timespec, align 8, !ctir !20457
   %nbytes = alloca i64, align 8, !ctir !52
   %v19 = alloca i32, align 4, !ctir !108
   %nbytes20 = alloca i64, align 8, !ctir !52
@@ -32179,262 +32175,262 @@ entry:
   %v64 = alloca i32, align 4, !ctir !124
   %nbytes65 = alloca i64, align 8, !ctir !52
   store i8* %buffer, i8** %buffer.addr, align 8
-  call void @llvm.dbg.declare(metadata i8** %buffer.addr, metadata !20456, metadata !DIExpression()), !dbg !20457
+  call void @llvm.dbg.declare(metadata i8** %buffer.addr, metadata !20461, metadata !DIExpression()), !dbg !20462
   store i64 %bufsize, i64* %bufsize.addr, align 8
-  call void @llvm.dbg.declare(metadata i64* %bufsize.addr, metadata !20458, metadata !DIExpression()), !dbg !20459
+  call void @llvm.dbg.declare(metadata i64* %bufsize.addr, metadata !20463, metadata !DIExpression()), !dbg !20464
   store i64 %bytes_bound, i64* %bytes_bound.addr, align 8
-  call void @llvm.dbg.declare(metadata i64* %bytes_bound.addr, metadata !20460, metadata !DIExpression()), !dbg !20461
-  call void @llvm.dbg.declare(metadata i8** %buf, metadata !20462, metadata !DIExpression()), !dbg !20463
-  %0 = load i8*, i8** %buffer.addr, align 8, !dbg !20464
-  store i8* %0, i8** %buf, align 8, !dbg !20463
-  call void @llvm.dbg.declare(metadata i64* %seeded, metadata !20465, metadata !DIExpression()), !dbg !20466
-  store i64 0, i64* %seeded, align 8, !dbg !20466
-  call void @llvm.dbg.declare(metadata i32* %fd, metadata !20467, metadata !DIExpression()), !dbg !20468
-  %call = call i32 (i8*, i32, ...) @open(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.3.521, i64 0, i64 0), i32 0), !dbg !20469
-  store i32 %call, i32* %fd, align 4, !dbg !20468
-  %1 = load i32, i32* %fd, align 4, !dbg !20470
-  %cmp = icmp sle i32 0, %1, !dbg !20472
-  br i1 %cmp, label %if.then, label %if.end6, !dbg !20473
+  call void @llvm.dbg.declare(metadata i64* %bytes_bound.addr, metadata !20465, metadata !DIExpression()), !dbg !20466
+  call void @llvm.dbg.declare(metadata i8** %buf, metadata !20467, metadata !DIExpression()), !dbg !20468
+  %0 = load i8*, i8** %buffer.addr, align 8, !dbg !20469
+  store i8* %0, i8** %buf, align 8, !dbg !20468
+  call void @llvm.dbg.declare(metadata i64* %seeded, metadata !20470, metadata !DIExpression()), !dbg !20471
+  store i64 0, i64* %seeded, align 8, !dbg !20471
+  call void @llvm.dbg.declare(metadata i32* %fd, metadata !20472, metadata !DIExpression()), !dbg !20473
+  %call = call i32 (i8*, i32, ...) @open(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.3.521, i64 0, i64 0), i32 0), !dbg !20474
+  store i32 %call, i32* %fd, align 4, !dbg !20473
+  %1 = load i32, i32* %fd, align 4, !dbg !20475
+  %cmp = icmp sle i32 0, %1, !dbg !20477
+  br i1 %cmp, label %if.then, label %if.end6, !dbg !20478
 
 if.then:                                          ; preds = %entry
-  %2 = load i32, i32* %fd, align 4, !dbg !20474
-  %3 = load i8*, i8** %buf, align 8, !dbg !20476
-  %4 = load i64, i64* %bufsize.addr, align 8, !dbg !20477
-  %5 = load i64, i64* %bytes_bound.addr, align 8, !dbg !20477
-  %cmp1 = icmp ult i64 %4, %5, !dbg !20477
-  br i1 %cmp1, label %cond.true, label %cond.false, !dbg !20477
+  %2 = load i32, i32* %fd, align 4, !dbg !20479
+  %3 = load i8*, i8** %buf, align 8, !dbg !20481
+  %4 = load i64, i64* %bufsize.addr, align 8, !dbg !20482
+  %5 = load i64, i64* %bytes_bound.addr, align 8, !dbg !20482
+  %cmp1 = icmp ult i64 %4, %5, !dbg !20482
+  br i1 %cmp1, label %cond.true, label %cond.false, !dbg !20482
 
 cond.true:                                        ; preds = %if.then
-  %6 = load i64, i64* %bufsize.addr, align 8, !dbg !20477
-  br label %cond.end, !dbg !20477
+  %6 = load i64, i64* %bufsize.addr, align 8, !dbg !20482
+  br label %cond.end, !dbg !20482
 
 cond.false:                                       ; preds = %if.then
-  %7 = load i64, i64* %bytes_bound.addr, align 8, !dbg !20477
-  br label %cond.end, !dbg !20477
+  %7 = load i64, i64* %bytes_bound.addr, align 8, !dbg !20482
+  br label %cond.end, !dbg !20482
 
 cond.end:                                         ; preds = %cond.false, %cond.true
-  %cond = phi i64 [ %6, %cond.true ], [ %7, %cond.false ], !dbg !20477
-  %call2 = call i64 @read(i32 %2, i8* %3, i64 %cond), !dbg !20478
-  store i64 %call2, i64* %seeded, align 8, !dbg !20479
-  %8 = load i64, i64* %seeded, align 8, !dbg !20480
-  %cmp3 = icmp slt i64 %8, 0, !dbg !20482
-  br i1 %cmp3, label %if.then4, label %if.end, !dbg !20483
+  %cond = phi i64 [ %6, %cond.true ], [ %7, %cond.false ], !dbg !20482
+  %call2 = call i64 @read(i32 %2, i8* %3, i64 %cond), !dbg !20483
+  store i64 %call2, i64* %seeded, align 8, !dbg !20484
+  %8 = load i64, i64* %seeded, align 8, !dbg !20485
+  %cmp3 = icmp slt i64 %8, 0, !dbg !20487
+  br i1 %cmp3, label %if.then4, label %if.end, !dbg !20488
 
 if.then4:                                         ; preds = %cond.end
-  store i64 0, i64* %seeded, align 8, !dbg !20484
-  br label %if.end, !dbg !20485
+  store i64 0, i64* %seeded, align 8, !dbg !20489
+  br label %if.end, !dbg !20490
 
 if.end:                                           ; preds = %if.then4, %cond.end
-  %9 = load i32, i32* %fd, align 4, !dbg !20486
-  %call5 = call i32 @close(i32 %9), !dbg !20487
-  br label %if.end6, !dbg !20488
+  %9 = load i32, i32* %fd, align 4, !dbg !20491
+  %call5 = call i32 @close(i32 %9), !dbg !20492
+  br label %if.end6, !dbg !20493
 
 if.end6:                                          ; preds = %if.end, %entry
-  %10 = load i64, i64* %seeded, align 8, !dbg !20489
-  %11 = load i64, i64* %bufsize.addr, align 8, !dbg !20489
-  %cmp7 = icmp ult i64 %10, %11, !dbg !20489
-  br i1 %cmp7, label %if.then8, label %if.end16, !dbg !20491
+  %10 = load i64, i64* %seeded, align 8, !dbg !20494
+  %11 = load i64, i64* %bufsize.addr, align 8, !dbg !20494
+  %cmp7 = icmp ult i64 %10, %11, !dbg !20494
+  br i1 %cmp7, label %if.then8, label %if.end16, !dbg !20496
 
 if.then8:                                         ; preds = %if.end6
-  call void @llvm.dbg.declare(metadata %struct.timespec* %v, metadata !20492, metadata !DIExpression()), !dbg !20494
-  call void @llvm.dbg.declare(metadata i64* %nbytes, metadata !20495, metadata !DIExpression()), !dbg !20494
-  %12 = load i64, i64* %bufsize.addr, align 8, !dbg !20494
-  %13 = load i64, i64* %seeded, align 8, !dbg !20494
-  %sub = sub i64 %12, %13, !dbg !20494
-  %cmp9 = icmp ult i64 16, %sub, !dbg !20494
-  br i1 %cmp9, label %cond.true10, label %cond.false11, !dbg !20494
+  call void @llvm.dbg.declare(metadata %struct.timespec* %v, metadata !20497, metadata !DIExpression()), !dbg !20499
+  call void @llvm.dbg.declare(metadata i64* %nbytes, metadata !20500, metadata !DIExpression()), !dbg !20499
+  %12 = load i64, i64* %bufsize.addr, align 8, !dbg !20499
+  %13 = load i64, i64* %seeded, align 8, !dbg !20499
+  %sub = sub i64 %12, %13, !dbg !20499
+  %cmp9 = icmp ult i64 16, %sub, !dbg !20499
+  br i1 %cmp9, label %cond.true10, label %cond.false11, !dbg !20499
 
 cond.true10:                                      ; preds = %if.then8
-  br label %cond.end13, !dbg !20494
+  br label %cond.end13, !dbg !20499
 
 cond.false11:                                     ; preds = %if.then8
-  %14 = load i64, i64* %bufsize.addr, align 8, !dbg !20494
-  %15 = load i64, i64* %seeded, align 8, !dbg !20494
-  %sub12 = sub i64 %14, %15, !dbg !20494
-  br label %cond.end13, !dbg !20494
+  %14 = load i64, i64* %bufsize.addr, align 8, !dbg !20499
+  %15 = load i64, i64* %seeded, align 8, !dbg !20499
+  %sub12 = sub i64 %14, %15, !dbg !20499
+  br label %cond.end13, !dbg !20499
 
 cond.end13:                                       ; preds = %cond.false11, %cond.true10
-  %cond14 = phi i64 [ 16, %cond.true10 ], [ %sub12, %cond.false11 ], !dbg !20494
-  store i64 %cond14, i64* %nbytes, align 8, !dbg !20494
-  %call15 = call i32 @gettimeofday(%struct.timespec* %v, %struct.timezone* null) #9, !dbg !20494
-  %16 = load i8*, i8** %buf, align 8, !dbg !20494
-  %17 = load i64, i64* %seeded, align 8, !dbg !20494
-  %add.ptr = getelementptr inbounds i8, i8* %16, i64 %17, !dbg !20494, !ctir !8
-  %18 = bitcast %struct.timespec* %v to i8*, !dbg !20494
-  %19 = load i64, i64* %nbytes, align 8, !dbg !20494
-  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %add.ptr, i8* align 8 %18, i64 %19, i1 false), !dbg !20494
-  %20 = load i64, i64* %nbytes, align 8, !dbg !20494
-  %21 = load i64, i64* %seeded, align 8, !dbg !20494
-  %add = add i64 %21, %20, !dbg !20494
-  store i64 %add, i64* %seeded, align 8, !dbg !20494
-  br label %if.end16, !dbg !20494
+  %cond14 = phi i64 [ 16, %cond.true10 ], [ %sub12, %cond.false11 ], !dbg !20499
+  store i64 %cond14, i64* %nbytes, align 8, !dbg !20499
+  %call15 = call i32 @gettimeofday(%struct.timespec* %v, %struct.timezone* null) #9, !dbg !20499
+  %16 = load i8*, i8** %buf, align 8, !dbg !20499
+  %17 = load i64, i64* %seeded, align 8, !dbg !20499
+  %add.ptr = getelementptr inbounds i8, i8* %16, i64 %17, !dbg !20499, !ctir !8
+  %18 = bitcast %struct.timespec* %v to i8*, !dbg !20499
+  %19 = load i64, i64* %nbytes, align 8, !dbg !20499
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %add.ptr, i8* align 8 %18, i64 %19, i1 false), !dbg !20499
+  %20 = load i64, i64* %nbytes, align 8, !dbg !20499
+  %21 = load i64, i64* %seeded, align 8, !dbg !20499
+  %add = add i64 %21, %20, !dbg !20499
+  store i64 %add, i64* %seeded, align 8, !dbg !20499
+  br label %if.end16, !dbg !20499
 
 if.end16:                                         ; preds = %cond.end13, %if.end6
-  %22 = load i64, i64* %seeded, align 8, !dbg !20496
-  %23 = load i64, i64* %bufsize.addr, align 8, !dbg !20496
-  %cmp17 = icmp ult i64 %22, %23, !dbg !20496
-  br i1 %cmp17, label %if.then18, label %if.end31, !dbg !20498
+  %22 = load i64, i64* %seeded, align 8, !dbg !20501
+  %23 = load i64, i64* %bufsize.addr, align 8, !dbg !20501
+  %cmp17 = icmp ult i64 %22, %23, !dbg !20501
+  br i1 %cmp17, label %if.then18, label %if.end31, !dbg !20503
 
 if.then18:                                        ; preds = %if.end16
-  call void @llvm.dbg.declare(metadata i32* %v19, metadata !20499, metadata !DIExpression()), !dbg !20501
-  call void @llvm.dbg.declare(metadata i64* %nbytes20, metadata !20502, metadata !DIExpression()), !dbg !20501
-  %24 = load i64, i64* %bufsize.addr, align 8, !dbg !20501
-  %25 = load i64, i64* %seeded, align 8, !dbg !20501
-  %sub21 = sub i64 %24, %25, !dbg !20501
-  %cmp22 = icmp ult i64 4, %sub21, !dbg !20501
-  br i1 %cmp22, label %cond.true23, label %cond.false24, !dbg !20501
+  call void @llvm.dbg.declare(metadata i32* %v19, metadata !20504, metadata !DIExpression()), !dbg !20506
+  call void @llvm.dbg.declare(metadata i64* %nbytes20, metadata !20507, metadata !DIExpression()), !dbg !20506
+  %24 = load i64, i64* %bufsize.addr, align 8, !dbg !20506
+  %25 = load i64, i64* %seeded, align 8, !dbg !20506
+  %sub21 = sub i64 %24, %25, !dbg !20506
+  %cmp22 = icmp ult i64 4, %sub21, !dbg !20506
+  br i1 %cmp22, label %cond.true23, label %cond.false24, !dbg !20506
 
 cond.true23:                                      ; preds = %if.then18
-  br label %cond.end26, !dbg !20501
+  br label %cond.end26, !dbg !20506
 
 cond.false24:                                     ; preds = %if.then18
-  %26 = load i64, i64* %bufsize.addr, align 8, !dbg !20501
-  %27 = load i64, i64* %seeded, align 8, !dbg !20501
-  %sub25 = sub i64 %26, %27, !dbg !20501
-  br label %cond.end26, !dbg !20501
+  %26 = load i64, i64* %bufsize.addr, align 8, !dbg !20506
+  %27 = load i64, i64* %seeded, align 8, !dbg !20506
+  %sub25 = sub i64 %26, %27, !dbg !20506
+  br label %cond.end26, !dbg !20506
 
 cond.end26:                                       ; preds = %cond.false24, %cond.true23
-  %cond27 = phi i64 [ 4, %cond.true23 ], [ %sub25, %cond.false24 ], !dbg !20501
-  store i64 %cond27, i64* %nbytes20, align 8, !dbg !20501
-  %call28 = call i32 @getpid() #9, !dbg !20501
-  store i32 %call28, i32* %v19, align 4, !dbg !20501
-  %28 = load i8*, i8** %buf, align 8, !dbg !20501
-  %29 = load i64, i64* %seeded, align 8, !dbg !20501
-  %add.ptr29 = getelementptr inbounds i8, i8* %28, i64 %29, !dbg !20501, !ctir !8
-  %30 = bitcast i32* %v19 to i8*, !dbg !20501
-  %31 = load i64, i64* %nbytes20, align 8, !dbg !20501
-  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %add.ptr29, i8* align 4 %30, i64 %31, i1 false), !dbg !20501
-  %32 = load i64, i64* %nbytes20, align 8, !dbg !20501
-  %33 = load i64, i64* %seeded, align 8, !dbg !20501
-  %add30 = add i64 %33, %32, !dbg !20501
-  store i64 %add30, i64* %seeded, align 8, !dbg !20501
-  br label %if.end31, !dbg !20501
+  %cond27 = phi i64 [ 4, %cond.true23 ], [ %sub25, %cond.false24 ], !dbg !20506
+  store i64 %cond27, i64* %nbytes20, align 8, !dbg !20506
+  %call28 = call i32 @getpid() #9, !dbg !20506
+  store i32 %call28, i32* %v19, align 4, !dbg !20506
+  %28 = load i8*, i8** %buf, align 8, !dbg !20506
+  %29 = load i64, i64* %seeded, align 8, !dbg !20506
+  %add.ptr29 = getelementptr inbounds i8, i8* %28, i64 %29, !dbg !20506, !ctir !8
+  %30 = bitcast i32* %v19 to i8*, !dbg !20506
+  %31 = load i64, i64* %nbytes20, align 8, !dbg !20506
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %add.ptr29, i8* align 4 %30, i64 %31, i1 false), !dbg !20506
+  %32 = load i64, i64* %nbytes20, align 8, !dbg !20506
+  %33 = load i64, i64* %seeded, align 8, !dbg !20506
+  %add30 = add i64 %33, %32, !dbg !20506
+  store i64 %add30, i64* %seeded, align 8, !dbg !20506
+  br label %if.end31, !dbg !20506
 
 if.end31:                                         ; preds = %cond.end26, %if.end16
-  %34 = load i64, i64* %seeded, align 8, !dbg !20503
-  %35 = load i64, i64* %bufsize.addr, align 8, !dbg !20503
-  %cmp32 = icmp ult i64 %34, %35, !dbg !20503
-  br i1 %cmp32, label %if.then33, label %if.end46, !dbg !20505
+  %34 = load i64, i64* %seeded, align 8, !dbg !20508
+  %35 = load i64, i64* %bufsize.addr, align 8, !dbg !20508
+  %cmp32 = icmp ult i64 %34, %35, !dbg !20508
+  br i1 %cmp32, label %if.then33, label %if.end46, !dbg !20510
 
 if.then33:                                        ; preds = %if.end31
-  call void @llvm.dbg.declare(metadata i32* %v34, metadata !20506, metadata !DIExpression()), !dbg !20508
-  call void @llvm.dbg.declare(metadata i64* %nbytes35, metadata !20509, metadata !DIExpression()), !dbg !20508
-  %36 = load i64, i64* %bufsize.addr, align 8, !dbg !20508
-  %37 = load i64, i64* %seeded, align 8, !dbg !20508
-  %sub36 = sub i64 %36, %37, !dbg !20508
-  %cmp37 = icmp ult i64 4, %sub36, !dbg !20508
-  br i1 %cmp37, label %cond.true38, label %cond.false39, !dbg !20508
+  call void @llvm.dbg.declare(metadata i32* %v34, metadata !20511, metadata !DIExpression()), !dbg !20513
+  call void @llvm.dbg.declare(metadata i64* %nbytes35, metadata !20514, metadata !DIExpression()), !dbg !20513
+  %36 = load i64, i64* %bufsize.addr, align 8, !dbg !20513
+  %37 = load i64, i64* %seeded, align 8, !dbg !20513
+  %sub36 = sub i64 %36, %37, !dbg !20513
+  %cmp37 = icmp ult i64 4, %sub36, !dbg !20513
+  br i1 %cmp37, label %cond.true38, label %cond.false39, !dbg !20513
 
 cond.true38:                                      ; preds = %if.then33
-  br label %cond.end41, !dbg !20508
+  br label %cond.end41, !dbg !20513
 
 cond.false39:                                     ; preds = %if.then33
-  %38 = load i64, i64* %bufsize.addr, align 8, !dbg !20508
-  %39 = load i64, i64* %seeded, align 8, !dbg !20508
-  %sub40 = sub i64 %38, %39, !dbg !20508
-  br label %cond.end41, !dbg !20508
+  %38 = load i64, i64* %bufsize.addr, align 8, !dbg !20513
+  %39 = load i64, i64* %seeded, align 8, !dbg !20513
+  %sub40 = sub i64 %38, %39, !dbg !20513
+  br label %cond.end41, !dbg !20513
 
 cond.end41:                                       ; preds = %cond.false39, %cond.true38
-  %cond42 = phi i64 [ 4, %cond.true38 ], [ %sub40, %cond.false39 ], !dbg !20508
-  store i64 %cond42, i64* %nbytes35, align 8, !dbg !20508
-  %call43 = call i32 @getppid() #9, !dbg !20508
-  store i32 %call43, i32* %v34, align 4, !dbg !20508
-  %40 = load i8*, i8** %buf, align 8, !dbg !20508
-  %41 = load i64, i64* %seeded, align 8, !dbg !20508
-  %add.ptr44 = getelementptr inbounds i8, i8* %40, i64 %41, !dbg !20508, !ctir !8
-  %42 = bitcast i32* %v34 to i8*, !dbg !20508
-  %43 = load i64, i64* %nbytes35, align 8, !dbg !20508
-  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %add.ptr44, i8* align 4 %42, i64 %43, i1 false), !dbg !20508
-  %44 = load i64, i64* %nbytes35, align 8, !dbg !20508
-  %45 = load i64, i64* %seeded, align 8, !dbg !20508
-  %add45 = add i64 %45, %44, !dbg !20508
-  store i64 %add45, i64* %seeded, align 8, !dbg !20508
-  br label %if.end46, !dbg !20508
+  %cond42 = phi i64 [ 4, %cond.true38 ], [ %sub40, %cond.false39 ], !dbg !20513
+  store i64 %cond42, i64* %nbytes35, align 8, !dbg !20513
+  %call43 = call i32 @getppid() #9, !dbg !20513
+  store i32 %call43, i32* %v34, align 4, !dbg !20513
+  %40 = load i8*, i8** %buf, align 8, !dbg !20513
+  %41 = load i64, i64* %seeded, align 8, !dbg !20513
+  %add.ptr44 = getelementptr inbounds i8, i8* %40, i64 %41, !dbg !20513, !ctir !8
+  %42 = bitcast i32* %v34 to i8*, !dbg !20513
+  %43 = load i64, i64* %nbytes35, align 8, !dbg !20513
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %add.ptr44, i8* align 4 %42, i64 %43, i1 false), !dbg !20513
+  %44 = load i64, i64* %nbytes35, align 8, !dbg !20513
+  %45 = load i64, i64* %seeded, align 8, !dbg !20513
+  %add45 = add i64 %45, %44, !dbg !20513
+  store i64 %add45, i64* %seeded, align 8, !dbg !20513
+  br label %if.end46, !dbg !20513
 
 if.end46:                                         ; preds = %cond.end41, %if.end31
-  %46 = load i64, i64* %seeded, align 8, !dbg !20510
-  %47 = load i64, i64* %bufsize.addr, align 8, !dbg !20510
-  %cmp47 = icmp ult i64 %46, %47, !dbg !20510
-  br i1 %cmp47, label %if.then48, label %if.end61, !dbg !20512
+  %46 = load i64, i64* %seeded, align 8, !dbg !20515
+  %47 = load i64, i64* %bufsize.addr, align 8, !dbg !20515
+  %cmp47 = icmp ult i64 %46, %47, !dbg !20515
+  br i1 %cmp47, label %if.then48, label %if.end61, !dbg !20517
 
 if.then48:                                        ; preds = %if.end46
-  call void @llvm.dbg.declare(metadata i32* %v49, metadata !20513, metadata !DIExpression()), !dbg !20515
-  call void @llvm.dbg.declare(metadata i64* %nbytes50, metadata !20516, metadata !DIExpression()), !dbg !20515
-  %48 = load i64, i64* %bufsize.addr, align 8, !dbg !20515
-  %49 = load i64, i64* %seeded, align 8, !dbg !20515
-  %sub51 = sub i64 %48, %49, !dbg !20515
-  %cmp52 = icmp ult i64 4, %sub51, !dbg !20515
-  br i1 %cmp52, label %cond.true53, label %cond.false54, !dbg !20515
+  call void @llvm.dbg.declare(metadata i32* %v49, metadata !20518, metadata !DIExpression()), !dbg !20520
+  call void @llvm.dbg.declare(metadata i64* %nbytes50, metadata !20521, metadata !DIExpression()), !dbg !20520
+  %48 = load i64, i64* %bufsize.addr, align 8, !dbg !20520
+  %49 = load i64, i64* %seeded, align 8, !dbg !20520
+  %sub51 = sub i64 %48, %49, !dbg !20520
+  %cmp52 = icmp ult i64 4, %sub51, !dbg !20520
+  br i1 %cmp52, label %cond.true53, label %cond.false54, !dbg !20520
 
 cond.true53:                                      ; preds = %if.then48
-  br label %cond.end56, !dbg !20515
+  br label %cond.end56, !dbg !20520
 
 cond.false54:                                     ; preds = %if.then48
-  %50 = load i64, i64* %bufsize.addr, align 8, !dbg !20515
-  %51 = load i64, i64* %seeded, align 8, !dbg !20515
-  %sub55 = sub i64 %50, %51, !dbg !20515
-  br label %cond.end56, !dbg !20515
+  %50 = load i64, i64* %bufsize.addr, align 8, !dbg !20520
+  %51 = load i64, i64* %seeded, align 8, !dbg !20520
+  %sub55 = sub i64 %50, %51, !dbg !20520
+  br label %cond.end56, !dbg !20520
 
 cond.end56:                                       ; preds = %cond.false54, %cond.true53
-  %cond57 = phi i64 [ 4, %cond.true53 ], [ %sub55, %cond.false54 ], !dbg !20515
-  store i64 %cond57, i64* %nbytes50, align 8, !dbg !20515
-  %call58 = call i32 @getuid() #9, !dbg !20515
-  store i32 %call58, i32* %v49, align 4, !dbg !20515
-  %52 = load i8*, i8** %buf, align 8, !dbg !20515
-  %53 = load i64, i64* %seeded, align 8, !dbg !20515
-  %add.ptr59 = getelementptr inbounds i8, i8* %52, i64 %53, !dbg !20515, !ctir !8
-  %54 = bitcast i32* %v49 to i8*, !dbg !20515
-  %55 = load i64, i64* %nbytes50, align 8, !dbg !20515
-  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %add.ptr59, i8* align 4 %54, i64 %55, i1 false), !dbg !20515
-  %56 = load i64, i64* %nbytes50, align 8, !dbg !20515
-  %57 = load i64, i64* %seeded, align 8, !dbg !20515
-  %add60 = add i64 %57, %56, !dbg !20515
-  store i64 %add60, i64* %seeded, align 8, !dbg !20515
-  br label %if.end61, !dbg !20515
+  %cond57 = phi i64 [ 4, %cond.true53 ], [ %sub55, %cond.false54 ], !dbg !20520
+  store i64 %cond57, i64* %nbytes50, align 8, !dbg !20520
+  %call58 = call i32 @getuid() #9, !dbg !20520
+  store i32 %call58, i32* %v49, align 4, !dbg !20520
+  %52 = load i8*, i8** %buf, align 8, !dbg !20520
+  %53 = load i64, i64* %seeded, align 8, !dbg !20520
+  %add.ptr59 = getelementptr inbounds i8, i8* %52, i64 %53, !dbg !20520, !ctir !8
+  %54 = bitcast i32* %v49 to i8*, !dbg !20520
+  %55 = load i64, i64* %nbytes50, align 8, !dbg !20520
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %add.ptr59, i8* align 4 %54, i64 %55, i1 false), !dbg !20520
+  %56 = load i64, i64* %nbytes50, align 8, !dbg !20520
+  %57 = load i64, i64* %seeded, align 8, !dbg !20520
+  %add60 = add i64 %57, %56, !dbg !20520
+  store i64 %add60, i64* %seeded, align 8, !dbg !20520
+  br label %if.end61, !dbg !20520
 
 if.end61:                                         ; preds = %cond.end56, %if.end46
-  %58 = load i64, i64* %seeded, align 8, !dbg !20517
-  %59 = load i64, i64* %bufsize.addr, align 8, !dbg !20517
-  %cmp62 = icmp ult i64 %58, %59, !dbg !20517
-  br i1 %cmp62, label %if.then63, label %if.end76, !dbg !20519
+  %58 = load i64, i64* %seeded, align 8, !dbg !20522
+  %59 = load i64, i64* %bufsize.addr, align 8, !dbg !20522
+  %cmp62 = icmp ult i64 %58, %59, !dbg !20522
+  br i1 %cmp62, label %if.then63, label %if.end76, !dbg !20524
 
 if.then63:                                        ; preds = %if.end61
-  call void @llvm.dbg.declare(metadata i32* %v64, metadata !20520, metadata !DIExpression()), !dbg !20522
-  call void @llvm.dbg.declare(metadata i64* %nbytes65, metadata !20523, metadata !DIExpression()), !dbg !20522
-  %60 = load i64, i64* %bufsize.addr, align 8, !dbg !20522
-  %61 = load i64, i64* %seeded, align 8, !dbg !20522
-  %sub66 = sub i64 %60, %61, !dbg !20522
-  %cmp67 = icmp ult i64 4, %sub66, !dbg !20522
-  br i1 %cmp67, label %cond.true68, label %cond.false69, !dbg !20522
+  call void @llvm.dbg.declare(metadata i32* %v64, metadata !20525, metadata !DIExpression()), !dbg !20527
+  call void @llvm.dbg.declare(metadata i64* %nbytes65, metadata !20528, metadata !DIExpression()), !dbg !20527
+  %60 = load i64, i64* %bufsize.addr, align 8, !dbg !20527
+  %61 = load i64, i64* %seeded, align 8, !dbg !20527
+  %sub66 = sub i64 %60, %61, !dbg !20527
+  %cmp67 = icmp ult i64 4, %sub66, !dbg !20527
+  br i1 %cmp67, label %cond.true68, label %cond.false69, !dbg !20527
 
 cond.true68:                                      ; preds = %if.then63
-  br label %cond.end71, !dbg !20522
+  br label %cond.end71, !dbg !20527
 
 cond.false69:                                     ; preds = %if.then63
-  %62 = load i64, i64* %bufsize.addr, align 8, !dbg !20522
-  %63 = load i64, i64* %seeded, align 8, !dbg !20522
-  %sub70 = sub i64 %62, %63, !dbg !20522
-  br label %cond.end71, !dbg !20522
+  %62 = load i64, i64* %bufsize.addr, align 8, !dbg !20527
+  %63 = load i64, i64* %seeded, align 8, !dbg !20527
+  %sub70 = sub i64 %62, %63, !dbg !20527
+  br label %cond.end71, !dbg !20527
 
 cond.end71:                                       ; preds = %cond.false69, %cond.true68
-  %cond72 = phi i64 [ 4, %cond.true68 ], [ %sub70, %cond.false69 ], !dbg !20522
-  store i64 %cond72, i64* %nbytes65, align 8, !dbg !20522
-  %call73 = call i32 @getgid() #9, !dbg !20522
-  store i32 %call73, i32* %v64, align 4, !dbg !20522
-  %64 = load i8*, i8** %buf, align 8, !dbg !20522
-  %65 = load i64, i64* %seeded, align 8, !dbg !20522
-  %add.ptr74 = getelementptr inbounds i8, i8* %64, i64 %65, !dbg !20522, !ctir !8
-  %66 = bitcast i32* %v64 to i8*, !dbg !20522
-  %67 = load i64, i64* %nbytes65, align 8, !dbg !20522
-  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %add.ptr74, i8* align 4 %66, i64 %67, i1 false), !dbg !20522
-  %68 = load i64, i64* %nbytes65, align 8, !dbg !20522
-  %69 = load i64, i64* %seeded, align 8, !dbg !20522
-  %add75 = add i64 %69, %68, !dbg !20522
-  store i64 %add75, i64* %seeded, align 8, !dbg !20522
-  br label %if.end76, !dbg !20522
+  %cond72 = phi i64 [ 4, %cond.true68 ], [ %sub70, %cond.false69 ], !dbg !20527
+  store i64 %cond72, i64* %nbytes65, align 8, !dbg !20527
+  %call73 = call i32 @getgid() #9, !dbg !20527
+  store i32 %call73, i32* %v64, align 4, !dbg !20527
+  %64 = load i8*, i8** %buf, align 8, !dbg !20527
+  %65 = load i64, i64* %seeded, align 8, !dbg !20527
+  %add.ptr74 = getelementptr inbounds i8, i8* %64, i64 %65, !dbg !20527, !ctir !8
+  %66 = bitcast i32* %v64 to i8*, !dbg !20527
+  %67 = load i64, i64* %nbytes65, align 8, !dbg !20527
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %add.ptr74, i8* align 4 %66, i64 %67, i1 false), !dbg !20527
+  %68 = load i64, i64* %nbytes65, align 8, !dbg !20527
+  %69 = load i64, i64* %seeded, align 8, !dbg !20527
+  %add75 = add i64 %69, %68, !dbg !20527
+  store i64 %add75, i64* %seeded, align 8, !dbg !20527
+  br label %if.end76, !dbg !20527
 
 if.end76:                                         ; preds = %cond.end71, %if.end61
-  ret void, !dbg !20524
+  ret void, !dbg !20529
 }
 
 ; Function Attrs: nounwind
@@ -32447,116 +32443,116 @@ declare dso_local i32 @getpid() #2
 declare dso_local i32 @getppid() #2
 
 ; Function Attrs: noinline noreturn nounwind optnone uwtable
-define internal void @randread_error(i8* %file_name) #0 !dbg !20525 {
+define internal void @randread_error(i8* %file_name) #0 !dbg !20530 {
 entry:
   %file_name.addr = alloca i8*, align 8
   store i8* %file_name, i8** %file_name.addr, align 8
-  call void @llvm.dbg.declare(metadata i8** %file_name.addr, metadata !20526, metadata !DIExpression()), !dbg !20527
-  %0 = load i8*, i8** %file_name.addr, align 8, !dbg !20528
-  %tobool = icmp ne i8* %0, null, !dbg !20528
-  br i1 %tobool, label %if.then, label %if.end, !dbg !20530
+  call void @llvm.dbg.declare(metadata i8** %file_name.addr, metadata !20531, metadata !DIExpression()), !dbg !20532
+  %0 = load i8*, i8** %file_name.addr, align 8, !dbg !20533
+  %tobool = icmp ne i8* %0, null, !dbg !20533
+  br i1 %tobool, label %if.then, label %if.end, !dbg !20535
 
 if.then:                                          ; preds = %entry
-  %1 = load volatile i32, i32* @exit_failure, align 4, !dbg !20531
-  %call = call i32* @__errno_location() #16, !dbg !20532
-  %2 = load i32, i32* %call, align 4, !dbg !20532, !ctir !5
-  %call1 = call i32* @__errno_location() #16, !dbg !20533
-  %3 = load i32, i32* %call1, align 4, !dbg !20533, !ctir !5
-  %cmp = icmp eq i32 %3, 0, !dbg !20534
-  br i1 %cmp, label %cond.true, label %cond.false, !dbg !20533
+  %1 = load volatile i32, i32* @exit_failure, align 4, !dbg !20536
+  %call = call i32* @__errno_location() #16, !dbg !20537
+  %2 = load i32, i32* %call, align 4, !dbg !20537, !ctir !5
+  %call1 = call i32* @__errno_location() #16, !dbg !20538
+  %3 = load i32, i32* %call1, align 4, !dbg !20538, !ctir !5
+  %cmp = icmp eq i32 %3, 0, !dbg !20539
+  br i1 %cmp, label %cond.true, label %cond.false, !dbg !20538
 
 cond.true:                                        ; preds = %if.then
-  %call2 = call i8* @gettext(i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.1.522, i64 0, i64 0)) #9, !dbg !20535
-  br label %cond.end, !dbg !20533
+  %call2 = call i8* @gettext(i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.1.522, i64 0, i64 0)) #9, !dbg !20540
+  br label %cond.end, !dbg !20538
 
 cond.false:                                       ; preds = %if.then
-  %call3 = call i8* @gettext(i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2.523, i64 0, i64 0)) #9, !dbg !20536
-  br label %cond.end, !dbg !20533
+  %call3 = call i8* @gettext(i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str.2.523, i64 0, i64 0)) #9, !dbg !20541
+  br label %cond.end, !dbg !20538
 
 cond.end:                                         ; preds = %cond.false, %cond.true
-  %cond = phi i8* [ %call2, %cond.true ], [ %call3, %cond.false ], !dbg !20533
-  %4 = load i8*, i8** %file_name.addr, align 8, !dbg !20537
-  %call4 = call i8* @quote(i8* %4), !dbg !20538
-  call void (i32, i32, i8*, ...) @error(i32 %1, i32 %2, i8* %cond, i8* %call4), !dbg !20539
-  br label %if.end, !dbg !20539
+  %cond = phi i8* [ %call2, %cond.true ], [ %call3, %cond.false ], !dbg !20538
+  %4 = load i8*, i8** %file_name.addr, align 8, !dbg !20542
+  %call4 = call i8* @quote(i8* %4), !dbg !20543
+  call void (i32, i32, i8*, ...) @error(i32 %1, i32 %2, i8* %cond, i8* %call4), !dbg !20544
+  br label %if.end, !dbg !20544
 
 if.end:                                           ; preds = %cond.end, %entry
-  call void @abort() #13, !dbg !20540
-  unreachable, !dbg !20540
+  call void @abort() #13, !dbg !20545
+  unreachable, !dbg !20545
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local void @randread_set_handler(%struct.randread_source* %s, void (i8*)* %handler) #4 !dbg !20541 {
+define dso_local void @randread_set_handler(%struct.randread_source* %s, void (i8*)* %handler) #4 !dbg !20546 {
 entry:
   %s.addr = alloca %struct.randread_source*, align 8
   %handler.addr = alloca void (i8*)*, align 8
   store %struct.randread_source* %s, %struct.randread_source** %s.addr, align 8
-  call void @llvm.dbg.declare(metadata %struct.randread_source** %s.addr, metadata !20544, metadata !DIExpression()), !dbg !20545
+  call void @llvm.dbg.declare(metadata %struct.randread_source** %s.addr, metadata !20549, metadata !DIExpression()), !dbg !20550
   store void (i8*)* %handler, void (i8*)** %handler.addr, align 8
-  call void @llvm.dbg.declare(metadata void (i8*)** %handler.addr, metadata !20546, metadata !DIExpression()), !dbg !20547
-  %0 = load void (i8*)*, void (i8*)** %handler.addr, align 8, !dbg !20548
-  %1 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20549
-  %handler1 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %1, i32 0, i32 1, !dbg !20550, !ctir !1792
-  store void (i8*)* %0, void (i8*)** %handler1, align 8, !dbg !20551, !ctir !1797
-  ret void, !dbg !20552
+  call void @llvm.dbg.declare(metadata void (i8*)** %handler.addr, metadata !20551, metadata !DIExpression()), !dbg !20552
+  %0 = load void (i8*)*, void (i8*)** %handler.addr, align 8, !dbg !20553
+  %1 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20554
+  %handler1 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %1, i32 0, i32 1, !dbg !20555, !ctir !1792
+  store void (i8*)* %0, void (i8*)** %handler1, align 8, !dbg !20556, !ctir !1797
+  ret void, !dbg !20557
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local void @randread_set_handler_arg(%struct.randread_source* %s, i8* %handler_arg) #4 !dbg !20553 {
+define dso_local void @randread_set_handler_arg(%struct.randread_source* %s, i8* %handler_arg) #4 !dbg !20558 {
 entry:
   %s.addr = alloca %struct.randread_source*, align 8
   %handler_arg.addr = alloca i8*, align 8
   store %struct.randread_source* %s, %struct.randread_source** %s.addr, align 8
-  call void @llvm.dbg.declare(metadata %struct.randread_source** %s.addr, metadata !20556, metadata !DIExpression()), !dbg !20557
+  call void @llvm.dbg.declare(metadata %struct.randread_source** %s.addr, metadata !20561, metadata !DIExpression()), !dbg !20562
   store i8* %handler_arg, i8** %handler_arg.addr, align 8
-  call void @llvm.dbg.declare(metadata i8** %handler_arg.addr, metadata !20558, metadata !DIExpression()), !dbg !20559
-  %0 = load i8*, i8** %handler_arg.addr, align 8, !dbg !20560
-  %1 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20561
-  %handler_arg1 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %1, i32 0, i32 2, !dbg !20562, !ctir !1792
-  store i8* %0, i8** %handler_arg1, align 8, !dbg !20563, !ctir !685
-  ret void, !dbg !20564
+  call void @llvm.dbg.declare(metadata i8** %handler_arg.addr, metadata !20563, metadata !DIExpression()), !dbg !20564
+  %0 = load i8*, i8** %handler_arg.addr, align 8, !dbg !20565
+  %1 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20566
+  %handler_arg1 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %1, i32 0, i32 2, !dbg !20567, !ctir !1792
+  store i8* %0, i8** %handler_arg1, align 8, !dbg !20568, !ctir !685
+  ret void, !dbg !20569
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local void @randread(%struct.randread_source* %s, i8* %buf, i64 %size) #4 !dbg !20565 {
+define dso_local void @randread(%struct.randread_source* %s, i8* %buf, i64 %size) #4 !dbg !20570 {
 entry:
   %s.addr = alloca %struct.randread_source*, align 8
   %buf.addr = alloca i8*, align 8
   %size.addr = alloca i64, align 8
   store %struct.randread_source* %s, %struct.randread_source** %s.addr, align 8
-  call void @llvm.dbg.declare(metadata %struct.randread_source** %s.addr, metadata !20568, metadata !DIExpression()), !dbg !20569
+  call void @llvm.dbg.declare(metadata %struct.randread_source** %s.addr, metadata !20573, metadata !DIExpression()), !dbg !20574
   store i8* %buf, i8** %buf.addr, align 8
-  call void @llvm.dbg.declare(metadata i8** %buf.addr, metadata !20570, metadata !DIExpression()), !dbg !20571
+  call void @llvm.dbg.declare(metadata i8** %buf.addr, metadata !20575, metadata !DIExpression()), !dbg !20576
   store i64 %size, i64* %size.addr, align 8
-  call void @llvm.dbg.declare(metadata i64* %size.addr, metadata !20572, metadata !DIExpression()), !dbg !20573
-  %0 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20574
-  %source = getelementptr inbounds %struct.randread_source, %struct.randread_source* %0, i32 0, i32 0, !dbg !20576, !ctir !1792
-  %1 = load %struct._IO_FILE*, %struct._IO_FILE** %source, align 8, !dbg !20576, !ctir !1751
-  %tobool = icmp ne %struct._IO_FILE* %1, null, !dbg !20574
-  br i1 %tobool, label %if.then, label %if.else, !dbg !20577
+  call void @llvm.dbg.declare(metadata i64* %size.addr, metadata !20577, metadata !DIExpression()), !dbg !20578
+  %0 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20579
+  %source = getelementptr inbounds %struct.randread_source, %struct.randread_source* %0, i32 0, i32 0, !dbg !20581, !ctir !1792
+  %1 = load %struct._IO_FILE*, %struct._IO_FILE** %source, align 8, !dbg !20581, !ctir !1751
+  %tobool = icmp ne %struct._IO_FILE* %1, null, !dbg !20579
+  br i1 %tobool, label %if.then, label %if.else, !dbg !20582
 
 if.then:                                          ; preds = %entry
-  %2 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20578
-  %3 = load i8*, i8** %buf.addr, align 8, !dbg !20579
-  %4 = load i64, i64* %size.addr, align 8, !dbg !20580
-  call void @readsource(%struct.randread_source* %2, i8* %3, i64 %4), !dbg !20581
-  br label %if.end, !dbg !20581
+  %2 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20583
+  %3 = load i8*, i8** %buf.addr, align 8, !dbg !20584
+  %4 = load i64, i64* %size.addr, align 8, !dbg !20585
+  call void @readsource(%struct.randread_source* %2, i8* %3, i64 %4), !dbg !20586
+  br label %if.end, !dbg !20586
 
 if.else:                                          ; preds = %entry
-  %5 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20582
-  %buf1 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %5, i32 0, i32 3, !dbg !20583, !ctir !1792
-  %isaac = bitcast %union.anon.87* %buf1 to %struct.isaac*, !dbg !20584
-  %6 = load i8*, i8** %buf.addr, align 8, !dbg !20585
-  %7 = load i64, i64* %size.addr, align 8, !dbg !20586
-  call void @readisaac(%struct.isaac* %isaac, i8* %6, i64 %7), !dbg !20587
+  %5 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20587
+  %buf1 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %5, i32 0, i32 3, !dbg !20588, !ctir !1792
+  %isaac = bitcast %union.anon.87* %buf1 to %struct.isaac*, !dbg !20589
+  %6 = load i8*, i8** %buf.addr, align 8, !dbg !20590
+  %7 = load i64, i64* %size.addr, align 8, !dbg !20591
+  call void @readisaac(%struct.isaac* %isaac, i8* %6, i64 %7), !dbg !20592
   br label %if.end
 
 if.end:                                           ; preds = %if.else, %if.then
-  ret void, !dbg !20588
+  ret void, !dbg !20593
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define internal void @readsource(%struct.randread_source* %s, i8* %p, i64 %size) #4 !dbg !20589 {
+define internal void @readsource(%struct.randread_source* %s, i8* %p, i64 %size) #4 !dbg !20594 {
 entry:
   %s.addr = alloca %struct.randread_source*, align 8
   %p.addr = alloca i8*, align 8
@@ -32564,75 +32560,75 @@ entry:
   %inbytes = alloca i64, align 8, !ctir !52
   %fread_errno = alloca i32, align 4, !ctir !5
   store %struct.randread_source* %s, %struct.randread_source** %s.addr, align 8
-  call void @llvm.dbg.declare(metadata %struct.randread_source** %s.addr, metadata !20593, metadata !DIExpression()), !dbg !20594
+  call void @llvm.dbg.declare(metadata %struct.randread_source** %s.addr, metadata !20598, metadata !DIExpression()), !dbg !20599
   store i8* %p, i8** %p.addr, align 8
-  call void @llvm.dbg.declare(metadata i8** %p.addr, metadata !20595, metadata !DIExpression()), !dbg !20596
+  call void @llvm.dbg.declare(metadata i8** %p.addr, metadata !20600, metadata !DIExpression()), !dbg !20601
   store i64 %size, i64* %size.addr, align 8
-  call void @llvm.dbg.declare(metadata i64* %size.addr, metadata !20597, metadata !DIExpression()), !dbg !20598
-  br label %while.body, !dbg !20599
+  call void @llvm.dbg.declare(metadata i64* %size.addr, metadata !20602, metadata !DIExpression()), !dbg !20603
+  br label %while.body, !dbg !20604
 
 while.body:                                       ; preds = %entry, %cond.end
-  call void @llvm.dbg.declare(metadata i64* %inbytes, metadata !20600, metadata !DIExpression()), !dbg !20602
-  %0 = load i8*, i8** %p.addr, align 8, !dbg !20603
-  %1 = load i64, i64* %size.addr, align 8, !dbg !20603
-  %2 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20603
-  %source = getelementptr inbounds %struct.randread_source, %struct.randread_source* %2, i32 0, i32 0, !dbg !20603, !ctir !1792
-  %3 = load %struct._IO_FILE*, %struct._IO_FILE** %source, align 8, !dbg !20603, !ctir !1751
-  %call = call i64 @fread_unlocked(i8* %0, i64 1, i64 %1, %struct._IO_FILE* %3), !dbg !20603
-  store i64 %call, i64* %inbytes, align 8, !dbg !20602
-  call void @llvm.dbg.declare(metadata i32* %fread_errno, metadata !20604, metadata !DIExpression()), !dbg !20605
-  %call1 = call i32* @__errno_location() #16, !dbg !20606
-  %4 = load i32, i32* %call1, align 4, !dbg !20606, !ctir !5
-  store i32 %4, i32* %fread_errno, align 4, !dbg !20605
-  %5 = load i64, i64* %inbytes, align 8, !dbg !20607
-  %6 = load i8*, i8** %p.addr, align 8, !dbg !20608
-  %add.ptr = getelementptr inbounds i8, i8* %6, i64 %5, !dbg !20608, !ctir !585
-  store i8* %add.ptr, i8** %p.addr, align 8, !dbg !20608
-  %7 = load i64, i64* %inbytes, align 8, !dbg !20609
-  %8 = load i64, i64* %size.addr, align 8, !dbg !20610
-  %sub = sub i64 %8, %7, !dbg !20610
-  store i64 %sub, i64* %size.addr, align 8, !dbg !20610
-  %9 = load i64, i64* %size.addr, align 8, !dbg !20611
-  %cmp = icmp eq i64 %9, 0, !dbg !20613
-  br i1 %cmp, label %if.then, label %if.end, !dbg !20614
+  call void @llvm.dbg.declare(metadata i64* %inbytes, metadata !20605, metadata !DIExpression()), !dbg !20607
+  %0 = load i8*, i8** %p.addr, align 8, !dbg !20608
+  %1 = load i64, i64* %size.addr, align 8, !dbg !20608
+  %2 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20608
+  %source = getelementptr inbounds %struct.randread_source, %struct.randread_source* %2, i32 0, i32 0, !dbg !20608, !ctir !1792
+  %3 = load %struct._IO_FILE*, %struct._IO_FILE** %source, align 8, !dbg !20608, !ctir !1751
+  %call = call i64 @fread_unlocked(i8* %0, i64 1, i64 %1, %struct._IO_FILE* %3), !dbg !20608
+  store i64 %call, i64* %inbytes, align 8, !dbg !20607
+  call void @llvm.dbg.declare(metadata i32* %fread_errno, metadata !20609, metadata !DIExpression()), !dbg !20610
+  %call1 = call i32* @__errno_location() #16, !dbg !20611
+  %4 = load i32, i32* %call1, align 4, !dbg !20611, !ctir !5
+  store i32 %4, i32* %fread_errno, align 4, !dbg !20610
+  %5 = load i64, i64* %inbytes, align 8, !dbg !20612
+  %6 = load i8*, i8** %p.addr, align 8, !dbg !20613
+  %add.ptr = getelementptr inbounds i8, i8* %6, i64 %5, !dbg !20613, !ctir !585
+  store i8* %add.ptr, i8** %p.addr, align 8, !dbg !20613
+  %7 = load i64, i64* %inbytes, align 8, !dbg !20614
+  %8 = load i64, i64* %size.addr, align 8, !dbg !20615
+  %sub = sub i64 %8, %7, !dbg !20615
+  store i64 %sub, i64* %size.addr, align 8, !dbg !20615
+  %9 = load i64, i64* %size.addr, align 8, !dbg !20616
+  %cmp = icmp eq i64 %9, 0, !dbg !20618
+  br i1 %cmp, label %if.then, label %if.end, !dbg !20619
 
 if.then:                                          ; preds = %while.body
-  br label %while.end, !dbg !20615
+  br label %while.end, !dbg !20620
 
 if.end:                                           ; preds = %while.body
-  %10 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20616
-  %source2 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %10, i32 0, i32 0, !dbg !20616, !ctir !1792
-  %11 = load %struct._IO_FILE*, %struct._IO_FILE** %source2, align 8, !dbg !20616, !ctir !1751
-  %call3 = call i32 @ferror_unlocked(%struct._IO_FILE* %11) #9, !dbg !20616
-  %tobool = icmp ne i32 %call3, 0, !dbg !20616
-  br i1 %tobool, label %cond.true, label %cond.false, !dbg !20616
+  %10 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20621
+  %source2 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %10, i32 0, i32 0, !dbg !20621, !ctir !1792
+  %11 = load %struct._IO_FILE*, %struct._IO_FILE** %source2, align 8, !dbg !20621, !ctir !1751
+  %call3 = call i32 @ferror_unlocked(%struct._IO_FILE* %11) #9, !dbg !20621
+  %tobool = icmp ne i32 %call3, 0, !dbg !20621
+  br i1 %tobool, label %cond.true, label %cond.false, !dbg !20621
 
 cond.true:                                        ; preds = %if.end
-  %12 = load i32, i32* %fread_errno, align 4, !dbg !20617
-  br label %cond.end, !dbg !20616
+  %12 = load i32, i32* %fread_errno, align 4, !dbg !20622
+  br label %cond.end, !dbg !20621
 
 cond.false:                                       ; preds = %if.end
-  br label %cond.end, !dbg !20616
+  br label %cond.end, !dbg !20621
 
 cond.end:                                         ; preds = %cond.false, %cond.true
-  %cond = phi i32 [ %12, %cond.true ], [ 0, %cond.false ], !dbg !20616
-  %call4 = call i32* @__errno_location() #16, !dbg !20618
-  store i32 %cond, i32* %call4, align 4, !dbg !20619, !ctir !5
-  %13 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20620
-  %handler = getelementptr inbounds %struct.randread_source, %struct.randread_source* %13, i32 0, i32 1, !dbg !20621, !ctir !1792
-  %14 = load void (i8*)*, void (i8*)** %handler, align 8, !dbg !20621, !ctir !1797
-  %15 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20622
-  %handler_arg = getelementptr inbounds %struct.randread_source, %struct.randread_source* %15, i32 0, i32 2, !dbg !20623, !ctir !1792
-  %16 = load i8*, i8** %handler_arg, align 8, !dbg !20623, !ctir !685
-  call void %14(i8* %16), !dbg !20620
-  br label %while.body, !dbg !20599, !llvm.loop !20624
+  %cond = phi i32 [ %12, %cond.true ], [ 0, %cond.false ], !dbg !20621
+  %call4 = call i32* @__errno_location() #16, !dbg !20623
+  store i32 %cond, i32* %call4, align 4, !dbg !20624, !ctir !5
+  %13 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20625
+  %handler = getelementptr inbounds %struct.randread_source, %struct.randread_source* %13, i32 0, i32 1, !dbg !20626, !ctir !1792
+  %14 = load void (i8*)*, void (i8*)** %handler, align 8, !dbg !20626, !ctir !1797
+  %15 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20627
+  %handler_arg = getelementptr inbounds %struct.randread_source, %struct.randread_source* %15, i32 0, i32 2, !dbg !20628, !ctir !1792
+  %16 = load i8*, i8** %handler_arg, align 8, !dbg !20628, !ctir !685
+  call void %14(i8* %16), !dbg !20625
+  br label %while.body, !dbg !20604, !llvm.loop !20629
 
 while.end:                                        ; preds = %if.then
-  ret void, !dbg !20626
+  ret void, !dbg !20631
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define internal void @readisaac(%struct.isaac* %isaac, i8* %p, i64 %size) #4 !dbg !20627 {
+define internal void @readisaac(%struct.isaac* %isaac, i8* %p, i64 %size) #4 !dbg !20632 {
 entry:
   %isaac.addr = alloca %struct.isaac*, align 8
   %p.addr = alloca i8*, align 8
@@ -32641,169 +32637,169 @@ entry:
   %char_p = alloca i8*, align 8, !ctir !7
   %wp = alloca i64*, align 8, !ctir !1828
   store %struct.isaac* %isaac, %struct.isaac** %isaac.addr, align 8
-  call void @llvm.dbg.declare(metadata %struct.isaac** %isaac.addr, metadata !20631, metadata !DIExpression()), !dbg !20632
+  call void @llvm.dbg.declare(metadata %struct.isaac** %isaac.addr, metadata !20636, metadata !DIExpression()), !dbg !20637
   store i8* %p, i8** %p.addr, align 8
-  call void @llvm.dbg.declare(metadata i8** %p.addr, metadata !20633, metadata !DIExpression()), !dbg !20634
+  call void @llvm.dbg.declare(metadata i8** %p.addr, metadata !20638, metadata !DIExpression()), !dbg !20639
   store i64 %size, i64* %size.addr, align 8
-  call void @llvm.dbg.declare(metadata i64* %size.addr, metadata !20635, metadata !DIExpression()), !dbg !20636
-  call void @llvm.dbg.declare(metadata i64* %inbytes, metadata !20637, metadata !DIExpression()), !dbg !20638
-  %0 = load %struct.isaac*, %struct.isaac** %isaac.addr, align 8, !dbg !20639
-  %buffered = getelementptr inbounds %struct.isaac, %struct.isaac* %0, i32 0, i32 0, !dbg !20640, !ctir !1806
-  %1 = load i64, i64* %buffered, align 8, !dbg !20640, !ctir !52
-  store i64 %1, i64* %inbytes, align 8, !dbg !20638
-  br label %while.body, !dbg !20641
+  call void @llvm.dbg.declare(metadata i64* %size.addr, metadata !20640, metadata !DIExpression()), !dbg !20641
+  call void @llvm.dbg.declare(metadata i64* %inbytes, metadata !20642, metadata !DIExpression()), !dbg !20643
+  %0 = load %struct.isaac*, %struct.isaac** %isaac.addr, align 8, !dbg !20644
+  %buffered = getelementptr inbounds %struct.isaac, %struct.isaac* %0, i32 0, i32 0, !dbg !20645, !ctir !1806
+  %1 = load i64, i64* %buffered, align 8, !dbg !20645, !ctir !52
+  store i64 %1, i64* %inbytes, align 8, !dbg !20643
+  br label %while.body, !dbg !20646
 
 while.body:                                       ; preds = %entry, %if.end22
-  call void @llvm.dbg.declare(metadata i8** %char_p, metadata !20642, metadata !DIExpression()), !dbg !20644
-  %2 = load i8*, i8** %p.addr, align 8, !dbg !20645
-  store i8* %2, i8** %char_p, align 8, !dbg !20644
-  %3 = load i64, i64* %size.addr, align 8, !dbg !20646
-  %4 = load i64, i64* %inbytes, align 8, !dbg !20648
-  %cmp = icmp ule i64 %3, %4, !dbg !20649
-  br i1 %cmp, label %if.then, label %if.end, !dbg !20650
+  call void @llvm.dbg.declare(metadata i8** %char_p, metadata !20647, metadata !DIExpression()), !dbg !20649
+  %2 = load i8*, i8** %p.addr, align 8, !dbg !20650
+  store i8* %2, i8** %char_p, align 8, !dbg !20649
+  %3 = load i64, i64* %size.addr, align 8, !dbg !20651
+  %4 = load i64, i64* %inbytes, align 8, !dbg !20653
+  %cmp = icmp ule i64 %3, %4, !dbg !20654
+  br i1 %cmp, label %if.then, label %if.end, !dbg !20655
 
 if.then:                                          ; preds = %while.body
-  %5 = load i8*, i8** %p.addr, align 8, !dbg !20651
-  %6 = load %struct.isaac*, %struct.isaac** %isaac.addr, align 8, !dbg !20653
-  %data = getelementptr inbounds %struct.isaac, %struct.isaac* %6, i32 0, i32 2, !dbg !20654, !ctir !1806
-  %b = bitcast %union.anon.0* %data to [2048 x i8]*, !dbg !20655
-  %arraydecay = getelementptr inbounds [2048 x i8], [2048 x i8]* %b, i64 0, i64 0, !dbg !20653, !ctir !1825
-  %add.ptr = getelementptr inbounds i8, i8* %arraydecay, i64 2048, !dbg !20656, !ctir !585
-  %7 = load i64, i64* %inbytes, align 8, !dbg !20657
-  %idx.neg = sub i64 0, %7, !dbg !20658
-  %add.ptr1 = getelementptr inbounds i8, i8* %add.ptr, i64 %idx.neg, !dbg !20658, !ctir !585
-  %8 = load i64, i64* %size.addr, align 8, !dbg !20659
-  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %5, i8* align 1 %add.ptr1, i64 %8, i1 false), !dbg !20660
-  %9 = load i64, i64* %inbytes, align 8, !dbg !20661
-  %10 = load i64, i64* %size.addr, align 8, !dbg !20662
-  %sub = sub i64 %9, %10, !dbg !20663
-  %11 = load %struct.isaac*, %struct.isaac** %isaac.addr, align 8, !dbg !20664
-  %buffered2 = getelementptr inbounds %struct.isaac, %struct.isaac* %11, i32 0, i32 0, !dbg !20665, !ctir !1806
-  store i64 %sub, i64* %buffered2, align 8, !dbg !20666, !ctir !52
-  br label %return, !dbg !20667
+  %5 = load i8*, i8** %p.addr, align 8, !dbg !20656
+  %6 = load %struct.isaac*, %struct.isaac** %isaac.addr, align 8, !dbg !20658
+  %data = getelementptr inbounds %struct.isaac, %struct.isaac* %6, i32 0, i32 2, !dbg !20659, !ctir !1806
+  %b = bitcast %union.anon.0* %data to [2048 x i8]*, !dbg !20660
+  %arraydecay = getelementptr inbounds [2048 x i8], [2048 x i8]* %b, i64 0, i64 0, !dbg !20658, !ctir !1825
+  %add.ptr = getelementptr inbounds i8, i8* %arraydecay, i64 2048, !dbg !20661, !ctir !585
+  %7 = load i64, i64* %inbytes, align 8, !dbg !20662
+  %idx.neg = sub i64 0, %7, !dbg !20663
+  %add.ptr1 = getelementptr inbounds i8, i8* %add.ptr, i64 %idx.neg, !dbg !20663, !ctir !585
+  %8 = load i64, i64* %size.addr, align 8, !dbg !20664
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %5, i8* align 1 %add.ptr1, i64 %8, i1 false), !dbg !20665
+  %9 = load i64, i64* %inbytes, align 8, !dbg !20666
+  %10 = load i64, i64* %size.addr, align 8, !dbg !20667
+  %sub = sub i64 %9, %10, !dbg !20668
+  %11 = load %struct.isaac*, %struct.isaac** %isaac.addr, align 8, !dbg !20669
+  %buffered2 = getelementptr inbounds %struct.isaac, %struct.isaac* %11, i32 0, i32 0, !dbg !20670, !ctir !1806
+  store i64 %sub, i64* %buffered2, align 8, !dbg !20671, !ctir !52
+  br label %return, !dbg !20672
 
 if.end:                                           ; preds = %while.body
-  %12 = load i8*, i8** %p.addr, align 8, !dbg !20668
-  %13 = load %struct.isaac*, %struct.isaac** %isaac.addr, align 8, !dbg !20669
-  %data3 = getelementptr inbounds %struct.isaac, %struct.isaac* %13, i32 0, i32 2, !dbg !20670, !ctir !1806
-  %b4 = bitcast %union.anon.0* %data3 to [2048 x i8]*, !dbg !20671
-  %arraydecay5 = getelementptr inbounds [2048 x i8], [2048 x i8]* %b4, i64 0, i64 0, !dbg !20669, !ctir !1825
-  %add.ptr6 = getelementptr inbounds i8, i8* %arraydecay5, i64 2048, !dbg !20672, !ctir !585
-  %14 = load i64, i64* %inbytes, align 8, !dbg !20673
-  %idx.neg7 = sub i64 0, %14, !dbg !20674
-  %add.ptr8 = getelementptr inbounds i8, i8* %add.ptr6, i64 %idx.neg7, !dbg !20674, !ctir !585
-  %15 = load i64, i64* %inbytes, align 8, !dbg !20675
-  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %12, i8* align 1 %add.ptr8, i64 %15, i1 false), !dbg !20676
-  %16 = load i8*, i8** %char_p, align 8, !dbg !20677
-  %17 = load i64, i64* %inbytes, align 8, !dbg !20678
-  %add.ptr9 = getelementptr inbounds i8, i8* %16, i64 %17, !dbg !20679, !ctir !8
-  store i8* %add.ptr9, i8** %p.addr, align 8, !dbg !20680
-  %18 = load i64, i64* %inbytes, align 8, !dbg !20681
-  %19 = load i64, i64* %size.addr, align 8, !dbg !20682
-  %sub10 = sub i64 %19, %18, !dbg !20682
-  store i64 %sub10, i64* %size.addr, align 8, !dbg !20682
-  %20 = load i8*, i8** %p.addr, align 8, !dbg !20683
-  %21 = ptrtoint i8* %20 to i64, !dbg !20683
-  %rem = urem i64 %21, 8, !dbg !20683
-  %cmp11 = icmp eq i64 %rem, 0, !dbg !20683
-  br i1 %cmp11, label %if.then12, label %if.end22, !dbg !20685
+  %12 = load i8*, i8** %p.addr, align 8, !dbg !20673
+  %13 = load %struct.isaac*, %struct.isaac** %isaac.addr, align 8, !dbg !20674
+  %data3 = getelementptr inbounds %struct.isaac, %struct.isaac* %13, i32 0, i32 2, !dbg !20675, !ctir !1806
+  %b4 = bitcast %union.anon.0* %data3 to [2048 x i8]*, !dbg !20676
+  %arraydecay5 = getelementptr inbounds [2048 x i8], [2048 x i8]* %b4, i64 0, i64 0, !dbg !20674, !ctir !1825
+  %add.ptr6 = getelementptr inbounds i8, i8* %arraydecay5, i64 2048, !dbg !20677, !ctir !585
+  %14 = load i64, i64* %inbytes, align 8, !dbg !20678
+  %idx.neg7 = sub i64 0, %14, !dbg !20679
+  %add.ptr8 = getelementptr inbounds i8, i8* %add.ptr6, i64 %idx.neg7, !dbg !20679, !ctir !585
+  %15 = load i64, i64* %inbytes, align 8, !dbg !20680
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 1 %12, i8* align 1 %add.ptr8, i64 %15, i1 false), !dbg !20681
+  %16 = load i8*, i8** %char_p, align 8, !dbg !20682
+  %17 = load i64, i64* %inbytes, align 8, !dbg !20683
+  %add.ptr9 = getelementptr inbounds i8, i8* %16, i64 %17, !dbg !20684, !ctir !8
+  store i8* %add.ptr9, i8** %p.addr, align 8, !dbg !20685
+  %18 = load i64, i64* %inbytes, align 8, !dbg !20686
+  %19 = load i64, i64* %size.addr, align 8, !dbg !20687
+  %sub10 = sub i64 %19, %18, !dbg !20687
+  store i64 %sub10, i64* %size.addr, align 8, !dbg !20687
+  %20 = load i8*, i8** %p.addr, align 8, !dbg !20688
+  %21 = ptrtoint i8* %20 to i64, !dbg !20688
+  %rem = urem i64 %21, 8, !dbg !20688
+  %cmp11 = icmp eq i64 %rem, 0, !dbg !20688
+  br i1 %cmp11, label %if.then12, label %if.end22, !dbg !20690
 
 if.then12:                                        ; preds = %if.end
-  call void @llvm.dbg.declare(metadata i64** %wp, metadata !20686, metadata !DIExpression()), !dbg !20688
-  %22 = load i8*, i8** %p.addr, align 8, !dbg !20689
-  %23 = bitcast i8* %22 to i64*, !dbg !20689
-  store i64* %23, i64** %wp, align 8, !dbg !20688
-  br label %while.cond13, !dbg !20690
+  call void @llvm.dbg.declare(metadata i64** %wp, metadata !20691, metadata !DIExpression()), !dbg !20693
+  %22 = load i8*, i8** %p.addr, align 8, !dbg !20694
+  %23 = bitcast i8* %22 to i64*, !dbg !20694
+  store i64* %23, i64** %wp, align 8, !dbg !20693
+  br label %while.cond13, !dbg !20695
 
 while.cond13:                                     ; preds = %if.end21, %if.then12
-  %24 = load i64, i64* %size.addr, align 8, !dbg !20691
-  %cmp14 = icmp ule i64 2048, %24, !dbg !20692
-  br i1 %cmp14, label %while.body15, label %while.end, !dbg !20690
+  %24 = load i64, i64* %size.addr, align 8, !dbg !20696
+  %cmp14 = icmp ule i64 2048, %24, !dbg !20697
+  br i1 %cmp14, label %while.body15, label %while.end, !dbg !20695
 
 while.body15:                                     ; preds = %while.cond13
-  %25 = load %struct.isaac*, %struct.isaac** %isaac.addr, align 8, !dbg !20693
-  %state = getelementptr inbounds %struct.isaac, %struct.isaac* %25, i32 0, i32 1, !dbg !20695, !ctir !1806
-  %26 = load i64*, i64** %wp, align 8, !dbg !20696
-  call void @isaac_refill(%struct.isaac_state* %state, i64* %26), !dbg !20697
-  %27 = load i64*, i64** %wp, align 8, !dbg !20698
-  %add.ptr16 = getelementptr inbounds i64, i64* %27, i64 256, !dbg !20698, !ctir !1815
-  store i64* %add.ptr16, i64** %wp, align 8, !dbg !20698
-  %28 = load i64, i64* %size.addr, align 8, !dbg !20699
-  %sub17 = sub i64 %28, 2048, !dbg !20699
-  store i64 %sub17, i64* %size.addr, align 8, !dbg !20699
-  %29 = load i64, i64* %size.addr, align 8, !dbg !20700
-  %cmp18 = icmp eq i64 %29, 0, !dbg !20702
-  br i1 %cmp18, label %if.then19, label %if.end21, !dbg !20703
+  %25 = load %struct.isaac*, %struct.isaac** %isaac.addr, align 8, !dbg !20698
+  %state = getelementptr inbounds %struct.isaac, %struct.isaac* %25, i32 0, i32 1, !dbg !20700, !ctir !1806
+  %26 = load i64*, i64** %wp, align 8, !dbg !20701
+  call void @isaac_refill(%struct.isaac_state* %state, i64* %26), !dbg !20702
+  %27 = load i64*, i64** %wp, align 8, !dbg !20703
+  %add.ptr16 = getelementptr inbounds i64, i64* %27, i64 256, !dbg !20703, !ctir !1815
+  store i64* %add.ptr16, i64** %wp, align 8, !dbg !20703
+  %28 = load i64, i64* %size.addr, align 8, !dbg !20704
+  %sub17 = sub i64 %28, 2048, !dbg !20704
+  store i64 %sub17, i64* %size.addr, align 8, !dbg !20704
+  %29 = load i64, i64* %size.addr, align 8, !dbg !20705
+  %cmp18 = icmp eq i64 %29, 0, !dbg !20707
+  br i1 %cmp18, label %if.then19, label %if.end21, !dbg !20708
 
 if.then19:                                        ; preds = %while.body15
-  %30 = load %struct.isaac*, %struct.isaac** %isaac.addr, align 8, !dbg !20704
-  %buffered20 = getelementptr inbounds %struct.isaac, %struct.isaac* %30, i32 0, i32 0, !dbg !20706, !ctir !1806
-  store i64 0, i64* %buffered20, align 8, !dbg !20707, !ctir !52
-  br label %return, !dbg !20708
+  %30 = load %struct.isaac*, %struct.isaac** %isaac.addr, align 8, !dbg !20709
+  %buffered20 = getelementptr inbounds %struct.isaac, %struct.isaac* %30, i32 0, i32 0, !dbg !20711, !ctir !1806
+  store i64 0, i64* %buffered20, align 8, !dbg !20712, !ctir !52
+  br label %return, !dbg !20713
 
 if.end21:                                         ; preds = %while.body15
-  br label %while.cond13, !dbg !20690, !llvm.loop !20709
+  br label %while.cond13, !dbg !20695, !llvm.loop !20714
 
 while.end:                                        ; preds = %while.cond13
-  %31 = load i64*, i64** %wp, align 8, !dbg !20711
-  %32 = bitcast i64* %31 to i8*, !dbg !20711
-  store i8* %32, i8** %p.addr, align 8, !dbg !20712
-  br label %if.end22, !dbg !20713
+  %31 = load i64*, i64** %wp, align 8, !dbg !20716
+  %32 = bitcast i64* %31 to i8*, !dbg !20716
+  store i8* %32, i8** %p.addr, align 8, !dbg !20717
+  br label %if.end22, !dbg !20718
 
 if.end22:                                         ; preds = %while.end, %if.end
-  %33 = load %struct.isaac*, %struct.isaac** %isaac.addr, align 8, !dbg !20714
-  %state23 = getelementptr inbounds %struct.isaac, %struct.isaac* %33, i32 0, i32 1, !dbg !20715, !ctir !1806
-  %34 = load %struct.isaac*, %struct.isaac** %isaac.addr, align 8, !dbg !20716
-  %data24 = getelementptr inbounds %struct.isaac, %struct.isaac* %34, i32 0, i32 2, !dbg !20717, !ctir !1806
-  %w = bitcast %union.anon.0* %data24 to [256 x i64]*, !dbg !20718
-  %arraydecay25 = getelementptr inbounds [256 x i64], [256 x i64]* %w, i64 0, i64 0, !dbg !20716, !ctir !1814
-  call void @isaac_refill(%struct.isaac_state* %state23, i64* %arraydecay25), !dbg !20719
-  store i64 2048, i64* %inbytes, align 8, !dbg !20720
-  br label %while.body, !dbg !20641, !llvm.loop !20721
+  %33 = load %struct.isaac*, %struct.isaac** %isaac.addr, align 8, !dbg !20719
+  %state23 = getelementptr inbounds %struct.isaac, %struct.isaac* %33, i32 0, i32 1, !dbg !20720, !ctir !1806
+  %34 = load %struct.isaac*, %struct.isaac** %isaac.addr, align 8, !dbg !20721
+  %data24 = getelementptr inbounds %struct.isaac, %struct.isaac* %34, i32 0, i32 2, !dbg !20722, !ctir !1806
+  %w = bitcast %union.anon.0* %data24 to [256 x i64]*, !dbg !20723
+  %arraydecay25 = getelementptr inbounds [256 x i64], [256 x i64]* %w, i64 0, i64 0, !dbg !20721, !ctir !1814
+  call void @isaac_refill(%struct.isaac_state* %state23, i64* %arraydecay25), !dbg !20724
+  store i64 2048, i64* %inbytes, align 8, !dbg !20725
+  br label %while.body, !dbg !20646, !llvm.loop !20726
 
 return:                                           ; preds = %if.then19, %if.then
-  ret void, !dbg !20723
+  ret void, !dbg !20728
 }
 
 declare dso_local i64 @fread_unlocked(i8*, i64, i64, %struct._IO_FILE*) #3
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local i32 @randread_free(%struct.randread_source* %s) #4 !dbg !20724 {
+define dso_local i32 @randread_free(%struct.randread_source* %s) #4 !dbg !20729 {
 entry:
   %s.addr = alloca %struct.randread_source*, align 8
   %source = alloca %struct._IO_FILE*, align 8, !ctir !1751
   store %struct.randread_source* %s, %struct.randread_source** %s.addr, align 8
-  call void @llvm.dbg.declare(metadata %struct.randread_source** %s.addr, metadata !20727, metadata !DIExpression()), !dbg !20728
-  call void @llvm.dbg.declare(metadata %struct._IO_FILE** %source, metadata !20729, metadata !DIExpression()), !dbg !20730
-  %0 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20731
-  %source1 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %0, i32 0, i32 0, !dbg !20732, !ctir !1792
-  %1 = load %struct._IO_FILE*, %struct._IO_FILE** %source1, align 8, !dbg !20732, !ctir !1751
-  store %struct._IO_FILE* %1, %struct._IO_FILE** %source, align 8, !dbg !20730
-  %2 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20733
-  %3 = bitcast %struct.randread_source* %2 to i8*, !dbg !20733
-  call void @explicit_bzero(i8* %3, i64 4152), !dbg !20734
-  %4 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20735
-  %5 = bitcast %struct.randread_source* %4 to i8*, !dbg !20735
-  call void @free(i8* %5) #9, !dbg !20736
-  %6 = load %struct._IO_FILE*, %struct._IO_FILE** %source, align 8, !dbg !20737
-  %tobool = icmp ne %struct._IO_FILE* %6, null, !dbg !20737
-  br i1 %tobool, label %cond.true, label %cond.false, !dbg !20737
+  call void @llvm.dbg.declare(metadata %struct.randread_source** %s.addr, metadata !20732, metadata !DIExpression()), !dbg !20733
+  call void @llvm.dbg.declare(metadata %struct._IO_FILE** %source, metadata !20734, metadata !DIExpression()), !dbg !20735
+  %0 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20736
+  %source1 = getelementptr inbounds %struct.randread_source, %struct.randread_source* %0, i32 0, i32 0, !dbg !20737, !ctir !1792
+  %1 = load %struct._IO_FILE*, %struct._IO_FILE** %source1, align 8, !dbg !20737, !ctir !1751
+  store %struct._IO_FILE* %1, %struct._IO_FILE** %source, align 8, !dbg !20735
+  %2 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20738
+  %3 = bitcast %struct.randread_source* %2 to i8*, !dbg !20738
+  call void @explicit_bzero(i8* %3, i64 4152), !dbg !20739
+  %4 = load %struct.randread_source*, %struct.randread_source** %s.addr, align 8, !dbg !20740
+  %5 = bitcast %struct.randread_source* %4 to i8*, !dbg !20740
+  call void @free(i8* %5) #9, !dbg !20741
+  %6 = load %struct._IO_FILE*, %struct._IO_FILE** %source, align 8, !dbg !20742
+  %tobool = icmp ne %struct._IO_FILE* %6, null, !dbg !20742
+  br i1 %tobool, label %cond.true, label %cond.false, !dbg !20742
 
 cond.true:                                        ; preds = %entry
-  %7 = load %struct._IO_FILE*, %struct._IO_FILE** %source, align 8, !dbg !20738
-  %call = call i32 @rpl_fclose(%struct._IO_FILE* %7), !dbg !20739
-  br label %cond.end, !dbg !20737
+  %7 = load %struct._IO_FILE*, %struct._IO_FILE** %source, align 8, !dbg !20743
+  %call = call i32 @rpl_fclose(%struct._IO_FILE* %7), !dbg !20744
+  br label %cond.end, !dbg !20742
 
 cond.false:                                       ; preds = %entry
-  br label %cond.end, !dbg !20737
+  br label %cond.end, !dbg !20742
 
 cond.end:                                         ; preds = %cond.false, %cond.true
-  %cond = phi i32 [ %call, %cond.true ], [ 0, %cond.false ], !dbg !20737
-  ret i32 %cond, !dbg !20740
+  %cond = phi i32 [ %call, %cond.true ], [ 0, %cond.false ], !dbg !20742
+  ret i32 %cond, !dbg !20745
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local void @isaac_refill(%struct.isaac_state* %s, i64* %result) #4 !dbg !20741 {
+define dso_local void @isaac_refill(%struct.isaac_state* %s, i64* %result) #4 !dbg !20746 {
 entry:
   %s.addr = alloca %struct.isaac_state*, align 8
   %result.addr = alloca i64*, align 8
@@ -32828,428 +32824,428 @@ entry:
   %x153 = alloca i64, align 8, !ctir !1815
   %y154 = alloca i64, align 8, !ctir !1815
   store %struct.isaac_state* %s, %struct.isaac_state** %s.addr, align 8
-  call void @llvm.dbg.declare(metadata %struct.isaac_state** %s.addr, metadata !20752, metadata !DIExpression()), !dbg !20753
+  call void @llvm.dbg.declare(metadata %struct.isaac_state** %s.addr, metadata !20757, metadata !DIExpression()), !dbg !20758
   store i64* %result, i64** %result.addr, align 8
-  call void @llvm.dbg.declare(metadata i64** %result.addr, metadata !20754, metadata !DIExpression()), !dbg !20755
-  call void @llvm.dbg.declare(metadata i64* %a, metadata !20756, metadata !DIExpression()), !dbg !20757
-  %0 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20758
-  %a1 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %0, i32 0, i32 1, !dbg !20759, !ctir !20746
-  %1 = load i64, i64* %a1, align 8, !dbg !20759, !ctir !1815
-  store i64 %1, i64* %a, align 8, !dbg !20757
-  call void @llvm.dbg.declare(metadata i64* %b, metadata !20760, metadata !DIExpression()), !dbg !20761
-  %2 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20762
-  %b2 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %2, i32 0, i32 2, !dbg !20763, !ctir !20746
-  %3 = load i64, i64* %b2, align 8, !dbg !20763, !ctir !1815
-  %4 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20764
-  %c = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %4, i32 0, i32 3, !dbg !20765, !ctir !20746
-  %5 = load i64, i64* %c, align 8, !dbg !20766, !ctir !1815
-  %inc = add i64 %5, 1, !dbg !20766
-  store i64 %inc, i64* %c, align 8, !dbg !20766, !ctir !1815
-  %add = add i64 %3, %inc, !dbg !20767
-  store i64 %add, i64* %b, align 8, !dbg !20761
-  call void @llvm.dbg.declare(metadata i64** %m, metadata !20768, metadata !DIExpression()), !dbg !20769
-  %6 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20770
-  %m3 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %6, i32 0, i32 0, !dbg !20771, !ctir !20746
-  %arraydecay = getelementptr inbounds [256 x i64], [256 x i64]* %m3, i64 0, i64 0, !dbg !20770, !ctir !1814
-  store i64* %arraydecay, i64** %m, align 8, !dbg !20769
-  call void @llvm.dbg.declare(metadata i64** %r, metadata !20772, metadata !DIExpression()), !dbg !20773
-  %7 = load i64*, i64** %result.addr, align 8, !dbg !20774
-  store i64* %7, i64** %r, align 8, !dbg !20773
-  br label %do.body, !dbg !20775
+  call void @llvm.dbg.declare(metadata i64** %result.addr, metadata !20759, metadata !DIExpression()), !dbg !20760
+  call void @llvm.dbg.declare(metadata i64* %a, metadata !20761, metadata !DIExpression()), !dbg !20762
+  %0 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20763
+  %a1 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %0, i32 0, i32 1, !dbg !20764, !ctir !20751
+  %1 = load i64, i64* %a1, align 8, !dbg !20764, !ctir !1815
+  store i64 %1, i64* %a, align 8, !dbg !20762
+  call void @llvm.dbg.declare(metadata i64* %b, metadata !20765, metadata !DIExpression()), !dbg !20766
+  %2 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20767
+  %b2 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %2, i32 0, i32 2, !dbg !20768, !ctir !20751
+  %3 = load i64, i64* %b2, align 8, !dbg !20768, !ctir !1815
+  %4 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20769
+  %c = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %4, i32 0, i32 3, !dbg !20770, !ctir !20751
+  %5 = load i64, i64* %c, align 8, !dbg !20771, !ctir !1815
+  %inc = add i64 %5, 1, !dbg !20771
+  store i64 %inc, i64* %c, align 8, !dbg !20771, !ctir !1815
+  %add = add i64 %3, %inc, !dbg !20772
+  store i64 %add, i64* %b, align 8, !dbg !20766
+  call void @llvm.dbg.declare(metadata i64** %m, metadata !20773, metadata !DIExpression()), !dbg !20774
+  %6 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20775
+  %m3 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %6, i32 0, i32 0, !dbg !20776, !ctir !20751
+  %arraydecay = getelementptr inbounds [256 x i64], [256 x i64]* %m3, i64 0, i64 0, !dbg !20775, !ctir !1814
+  store i64* %arraydecay, i64** %m, align 8, !dbg !20774
+  call void @llvm.dbg.declare(metadata i64** %r, metadata !20777, metadata !DIExpression()), !dbg !20778
+  %7 = load i64*, i64** %result.addr, align 8, !dbg !20779
+  store i64* %7, i64** %r, align 8, !dbg !20778
+  br label %do.body, !dbg !20780
 
 do.body:                                          ; preds = %do.cond, %entry
-  call void @llvm.dbg.declare(metadata i64* %x, metadata !20776, metadata !DIExpression()), !dbg !20779
-  call void @llvm.dbg.declare(metadata i64* %y, metadata !20780, metadata !DIExpression()), !dbg !20779
-  %8 = load i64, i64* %a, align 8, !dbg !20779
-  %9 = load i64, i64* %a, align 8, !dbg !20779
-  %shl = shl i64 %9, 21, !dbg !20779
-  %xor = xor i64 %8, %shl, !dbg !20779
-  %neg = xor i64 %xor, -1, !dbg !20779
-  %xor4 = xor i64 0, %neg, !dbg !20779
-  %10 = load i64*, i64** %m, align 8, !dbg !20779
-  %arrayidx = getelementptr inbounds i64, i64* %10, i64 128, !dbg !20779, !ctir !1828
-  %11 = load i64, i64* %arrayidx, align 8, !dbg !20779
-  %add5 = add i64 %xor4, %11, !dbg !20779
-  store i64 %add5, i64* %a, align 8, !dbg !20779
-  %12 = load i64*, i64** %m, align 8, !dbg !20779
-  %arrayidx6 = getelementptr inbounds i64, i64* %12, i64 0, !dbg !20779, !ctir !1828
-  %13 = load i64, i64* %arrayidx6, align 8, !dbg !20779
-  store i64 %13, i64* %x, align 8, !dbg !20779
-  %14 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20779
-  %m7 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %14, i32 0, i32 0, !dbg !20779, !ctir !20746
-  %arraydecay8 = getelementptr inbounds [256 x i64], [256 x i64]* %m7, i64 0, i64 0, !dbg !20779, !ctir !1814
-  %15 = load i64, i64* %x, align 8, !dbg !20779
-  %call = call i64 @ind(i64* %arraydecay8, i64 %15), !dbg !20779
-  %16 = load i64, i64* %a, align 8, !dbg !20779
-  %add9 = add i64 %call, %16, !dbg !20779
-  %17 = load i64, i64* %b, align 8, !dbg !20779
-  %add10 = add i64 %add9, %17, !dbg !20779
-  store i64 %add10, i64* %y, align 8, !dbg !20779
-  %18 = load i64*, i64** %m, align 8, !dbg !20779
-  %arrayidx11 = getelementptr inbounds i64, i64* %18, i64 0, !dbg !20779, !ctir !1828
-  store i64 %add10, i64* %arrayidx11, align 8, !dbg !20779
-  %19 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20779
-  %m12 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %19, i32 0, i32 0, !dbg !20779, !ctir !20746
-  %arraydecay13 = getelementptr inbounds [256 x i64], [256 x i64]* %m12, i64 0, i64 0, !dbg !20779, !ctir !1814
-  %20 = load i64, i64* %y, align 8, !dbg !20779
-  %shr = lshr i64 %20, 8, !dbg !20779
-  %call14 = call i64 @ind(i64* %arraydecay13, i64 %shr), !dbg !20779
-  %21 = load i64, i64* %x, align 8, !dbg !20779
-  %add15 = add i64 %call14, %21, !dbg !20779
-  %call16 = call i64 @just(i64 %add15), !dbg !20779
-  store i64 %call16, i64* %b, align 8, !dbg !20779
-  %22 = load i64*, i64** %r, align 8, !dbg !20779
-  %arrayidx17 = getelementptr inbounds i64, i64* %22, i64 0, !dbg !20779, !ctir !1828
-  store i64 %call16, i64* %arrayidx17, align 8, !dbg !20779
-  call void @llvm.dbg.declare(metadata i64* %x18, metadata !20781, metadata !DIExpression()), !dbg !20783
-  call void @llvm.dbg.declare(metadata i64* %y19, metadata !20784, metadata !DIExpression()), !dbg !20783
-  %23 = load i64, i64* %a, align 8, !dbg !20783
-  %24 = load i64, i64* %a, align 8, !dbg !20783
-  %call20 = call i64 @just(i64 %24), !dbg !20783
-  %shr21 = lshr i64 %call20, 5, !dbg !20783
-  %xor22 = xor i64 %23, %shr21, !dbg !20783
-  %xor23 = xor i64 0, %xor22, !dbg !20783
-  %25 = load i64*, i64** %m, align 8, !dbg !20783
-  %arrayidx24 = getelementptr inbounds i64, i64* %25, i64 129, !dbg !20783, !ctir !1828
-  %26 = load i64, i64* %arrayidx24, align 8, !dbg !20783
-  %add25 = add i64 %xor23, %26, !dbg !20783
-  store i64 %add25, i64* %a, align 8, !dbg !20783
-  %27 = load i64*, i64** %m, align 8, !dbg !20783
-  %arrayidx26 = getelementptr inbounds i64, i64* %27, i64 1, !dbg !20783, !ctir !1828
-  %28 = load i64, i64* %arrayidx26, align 8, !dbg !20783
-  store i64 %28, i64* %x18, align 8, !dbg !20783
-  %29 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20783
-  %m27 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %29, i32 0, i32 0, !dbg !20783, !ctir !20746
-  %arraydecay28 = getelementptr inbounds [256 x i64], [256 x i64]* %m27, i64 0, i64 0, !dbg !20783, !ctir !1814
-  %30 = load i64, i64* %x18, align 8, !dbg !20783
-  %call29 = call i64 @ind(i64* %arraydecay28, i64 %30), !dbg !20783
-  %31 = load i64, i64* %a, align 8, !dbg !20783
-  %add30 = add i64 %call29, %31, !dbg !20783
-  %32 = load i64, i64* %b, align 8, !dbg !20783
-  %add31 = add i64 %add30, %32, !dbg !20783
-  store i64 %add31, i64* %y19, align 8, !dbg !20783
-  %33 = load i64*, i64** %m, align 8, !dbg !20783
-  %arrayidx32 = getelementptr inbounds i64, i64* %33, i64 1, !dbg !20783, !ctir !1828
-  store i64 %add31, i64* %arrayidx32, align 8, !dbg !20783
-  %34 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20783
-  %m33 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %34, i32 0, i32 0, !dbg !20783, !ctir !20746
-  %arraydecay34 = getelementptr inbounds [256 x i64], [256 x i64]* %m33, i64 0, i64 0, !dbg !20783, !ctir !1814
-  %35 = load i64, i64* %y19, align 8, !dbg !20783
-  %shr35 = lshr i64 %35, 8, !dbg !20783
-  %call36 = call i64 @ind(i64* %arraydecay34, i64 %shr35), !dbg !20783
-  %36 = load i64, i64* %x18, align 8, !dbg !20783
-  %add37 = add i64 %call36, %36, !dbg !20783
-  %call38 = call i64 @just(i64 %add37), !dbg !20783
-  store i64 %call38, i64* %b, align 8, !dbg !20783
-  %37 = load i64*, i64** %r, align 8, !dbg !20783
-  %arrayidx39 = getelementptr inbounds i64, i64* %37, i64 1, !dbg !20783, !ctir !1828
-  store i64 %call38, i64* %arrayidx39, align 8, !dbg !20783
-  call void @llvm.dbg.declare(metadata i64* %x40, metadata !20785, metadata !DIExpression()), !dbg !20787
-  call void @llvm.dbg.declare(metadata i64* %y41, metadata !20788, metadata !DIExpression()), !dbg !20787
-  %38 = load i64, i64* %a, align 8, !dbg !20787
-  %39 = load i64, i64* %a, align 8, !dbg !20787
-  %shl42 = shl i64 %39, 12, !dbg !20787
-  %xor43 = xor i64 %38, %shl42, !dbg !20787
-  %xor44 = xor i64 0, %xor43, !dbg !20787
-  %40 = load i64*, i64** %m, align 8, !dbg !20787
-  %arrayidx45 = getelementptr inbounds i64, i64* %40, i64 130, !dbg !20787, !ctir !1828
-  %41 = load i64, i64* %arrayidx45, align 8, !dbg !20787
-  %add46 = add i64 %xor44, %41, !dbg !20787
-  store i64 %add46, i64* %a, align 8, !dbg !20787
-  %42 = load i64*, i64** %m, align 8, !dbg !20787
-  %arrayidx47 = getelementptr inbounds i64, i64* %42, i64 2, !dbg !20787, !ctir !1828
-  %43 = load i64, i64* %arrayidx47, align 8, !dbg !20787
-  store i64 %43, i64* %x40, align 8, !dbg !20787
-  %44 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20787
-  %m48 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %44, i32 0, i32 0, !dbg !20787, !ctir !20746
-  %arraydecay49 = getelementptr inbounds [256 x i64], [256 x i64]* %m48, i64 0, i64 0, !dbg !20787, !ctir !1814
-  %45 = load i64, i64* %x40, align 8, !dbg !20787
-  %call50 = call i64 @ind(i64* %arraydecay49, i64 %45), !dbg !20787
-  %46 = load i64, i64* %a, align 8, !dbg !20787
-  %add51 = add i64 %call50, %46, !dbg !20787
-  %47 = load i64, i64* %b, align 8, !dbg !20787
-  %add52 = add i64 %add51, %47, !dbg !20787
-  store i64 %add52, i64* %y41, align 8, !dbg !20787
-  %48 = load i64*, i64** %m, align 8, !dbg !20787
-  %arrayidx53 = getelementptr inbounds i64, i64* %48, i64 2, !dbg !20787, !ctir !1828
-  store i64 %add52, i64* %arrayidx53, align 8, !dbg !20787
-  %49 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20787
-  %m54 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %49, i32 0, i32 0, !dbg !20787, !ctir !20746
-  %arraydecay55 = getelementptr inbounds [256 x i64], [256 x i64]* %m54, i64 0, i64 0, !dbg !20787, !ctir !1814
-  %50 = load i64, i64* %y41, align 8, !dbg !20787
-  %shr56 = lshr i64 %50, 8, !dbg !20787
-  %call57 = call i64 @ind(i64* %arraydecay55, i64 %shr56), !dbg !20787
-  %51 = load i64, i64* %x40, align 8, !dbg !20787
-  %add58 = add i64 %call57, %51, !dbg !20787
-  %call59 = call i64 @just(i64 %add58), !dbg !20787
-  store i64 %call59, i64* %b, align 8, !dbg !20787
-  %52 = load i64*, i64** %r, align 8, !dbg !20787
-  %arrayidx60 = getelementptr inbounds i64, i64* %52, i64 2, !dbg !20787, !ctir !1828
-  store i64 %call59, i64* %arrayidx60, align 8, !dbg !20787
-  call void @llvm.dbg.declare(metadata i64* %x61, metadata !20789, metadata !DIExpression()), !dbg !20791
-  call void @llvm.dbg.declare(metadata i64* %y62, metadata !20792, metadata !DIExpression()), !dbg !20791
-  %53 = load i64, i64* %a, align 8, !dbg !20791
-  %54 = load i64, i64* %a, align 8, !dbg !20791
-  %call63 = call i64 @just(i64 %54), !dbg !20791
-  %shr64 = lshr i64 %call63, 33, !dbg !20791
-  %xor65 = xor i64 %53, %shr64, !dbg !20791
-  %xor66 = xor i64 0, %xor65, !dbg !20791
-  %55 = load i64*, i64** %m, align 8, !dbg !20791
-  %arrayidx67 = getelementptr inbounds i64, i64* %55, i64 131, !dbg !20791, !ctir !1828
-  %56 = load i64, i64* %arrayidx67, align 8, !dbg !20791
-  %add68 = add i64 %xor66, %56, !dbg !20791
-  store i64 %add68, i64* %a, align 8, !dbg !20791
-  %57 = load i64*, i64** %m, align 8, !dbg !20791
-  %arrayidx69 = getelementptr inbounds i64, i64* %57, i64 3, !dbg !20791, !ctir !1828
-  %58 = load i64, i64* %arrayidx69, align 8, !dbg !20791
-  store i64 %58, i64* %x61, align 8, !dbg !20791
-  %59 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20791
-  %m70 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %59, i32 0, i32 0, !dbg !20791, !ctir !20746
-  %arraydecay71 = getelementptr inbounds [256 x i64], [256 x i64]* %m70, i64 0, i64 0, !dbg !20791, !ctir !1814
-  %60 = load i64, i64* %x61, align 8, !dbg !20791
-  %call72 = call i64 @ind(i64* %arraydecay71, i64 %60), !dbg !20791
-  %61 = load i64, i64* %a, align 8, !dbg !20791
-  %add73 = add i64 %call72, %61, !dbg !20791
-  %62 = load i64, i64* %b, align 8, !dbg !20791
-  %add74 = add i64 %add73, %62, !dbg !20791
-  store i64 %add74, i64* %y62, align 8, !dbg !20791
-  %63 = load i64*, i64** %m, align 8, !dbg !20791
-  %arrayidx75 = getelementptr inbounds i64, i64* %63, i64 3, !dbg !20791, !ctir !1828
-  store i64 %add74, i64* %arrayidx75, align 8, !dbg !20791
-  %64 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20791
-  %m76 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %64, i32 0, i32 0, !dbg !20791, !ctir !20746
-  %arraydecay77 = getelementptr inbounds [256 x i64], [256 x i64]* %m76, i64 0, i64 0, !dbg !20791, !ctir !1814
-  %65 = load i64, i64* %y62, align 8, !dbg !20791
-  %shr78 = lshr i64 %65, 8, !dbg !20791
-  %call79 = call i64 @ind(i64* %arraydecay77, i64 %shr78), !dbg !20791
-  %66 = load i64, i64* %x61, align 8, !dbg !20791
-  %add80 = add i64 %call79, %66, !dbg !20791
-  %call81 = call i64 @just(i64 %add80), !dbg !20791
-  store i64 %call81, i64* %b, align 8, !dbg !20791
-  %67 = load i64*, i64** %r, align 8, !dbg !20791
-  %arrayidx82 = getelementptr inbounds i64, i64* %67, i64 3, !dbg !20791, !ctir !1828
-  store i64 %call81, i64* %arrayidx82, align 8, !dbg !20791
-  %68 = load i64*, i64** %r, align 8, !dbg !20793
-  %add.ptr = getelementptr inbounds i64, i64* %68, i64 4, !dbg !20793, !ctir !1815
-  store i64* %add.ptr, i64** %r, align 8, !dbg !20793
-  br label %do.cond, !dbg !20794
+  call void @llvm.dbg.declare(metadata i64* %x, metadata !20781, metadata !DIExpression()), !dbg !20784
+  call void @llvm.dbg.declare(metadata i64* %y, metadata !20785, metadata !DIExpression()), !dbg !20784
+  %8 = load i64, i64* %a, align 8, !dbg !20784
+  %9 = load i64, i64* %a, align 8, !dbg !20784
+  %shl = shl i64 %9, 21, !dbg !20784
+  %xor = xor i64 %8, %shl, !dbg !20784
+  %neg = xor i64 %xor, -1, !dbg !20784
+  %xor4 = xor i64 0, %neg, !dbg !20784
+  %10 = load i64*, i64** %m, align 8, !dbg !20784
+  %arrayidx = getelementptr inbounds i64, i64* %10, i64 128, !dbg !20784, !ctir !1828
+  %11 = load i64, i64* %arrayidx, align 8, !dbg !20784
+  %add5 = add i64 %xor4, %11, !dbg !20784
+  store i64 %add5, i64* %a, align 8, !dbg !20784
+  %12 = load i64*, i64** %m, align 8, !dbg !20784
+  %arrayidx6 = getelementptr inbounds i64, i64* %12, i64 0, !dbg !20784, !ctir !1828
+  %13 = load i64, i64* %arrayidx6, align 8, !dbg !20784
+  store i64 %13, i64* %x, align 8, !dbg !20784
+  %14 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20784
+  %m7 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %14, i32 0, i32 0, !dbg !20784, !ctir !20751
+  %arraydecay8 = getelementptr inbounds [256 x i64], [256 x i64]* %m7, i64 0, i64 0, !dbg !20784, !ctir !1814
+  %15 = load i64, i64* %x, align 8, !dbg !20784
+  %call = call i64 @ind(i64* %arraydecay8, i64 %15), !dbg !20784
+  %16 = load i64, i64* %a, align 8, !dbg !20784
+  %add9 = add i64 %call, %16, !dbg !20784
+  %17 = load i64, i64* %b, align 8, !dbg !20784
+  %add10 = add i64 %add9, %17, !dbg !20784
+  store i64 %add10, i64* %y, align 8, !dbg !20784
+  %18 = load i64*, i64** %m, align 8, !dbg !20784
+  %arrayidx11 = getelementptr inbounds i64, i64* %18, i64 0, !dbg !20784, !ctir !1828
+  store i64 %add10, i64* %arrayidx11, align 8, !dbg !20784
+  %19 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20784
+  %m12 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %19, i32 0, i32 0, !dbg !20784, !ctir !20751
+  %arraydecay13 = getelementptr inbounds [256 x i64], [256 x i64]* %m12, i64 0, i64 0, !dbg !20784, !ctir !1814
+  %20 = load i64, i64* %y, align 8, !dbg !20784
+  %shr = lshr i64 %20, 8, !dbg !20784
+  %call14 = call i64 @ind(i64* %arraydecay13, i64 %shr), !dbg !20784
+  %21 = load i64, i64* %x, align 8, !dbg !20784
+  %add15 = add i64 %call14, %21, !dbg !20784
+  %call16 = call i64 @just(i64 %add15), !dbg !20784
+  store i64 %call16, i64* %b, align 8, !dbg !20784
+  %22 = load i64*, i64** %r, align 8, !dbg !20784
+  %arrayidx17 = getelementptr inbounds i64, i64* %22, i64 0, !dbg !20784, !ctir !1828
+  store i64 %call16, i64* %arrayidx17, align 8, !dbg !20784
+  call void @llvm.dbg.declare(metadata i64* %x18, metadata !20786, metadata !DIExpression()), !dbg !20788
+  call void @llvm.dbg.declare(metadata i64* %y19, metadata !20789, metadata !DIExpression()), !dbg !20788
+  %23 = load i64, i64* %a, align 8, !dbg !20788
+  %24 = load i64, i64* %a, align 8, !dbg !20788
+  %call20 = call i64 @just(i64 %24), !dbg !20788
+  %shr21 = lshr i64 %call20, 5, !dbg !20788
+  %xor22 = xor i64 %23, %shr21, !dbg !20788
+  %xor23 = xor i64 0, %xor22, !dbg !20788
+  %25 = load i64*, i64** %m, align 8, !dbg !20788
+  %arrayidx24 = getelementptr inbounds i64, i64* %25, i64 129, !dbg !20788, !ctir !1828
+  %26 = load i64, i64* %arrayidx24, align 8, !dbg !20788
+  %add25 = add i64 %xor23, %26, !dbg !20788
+  store i64 %add25, i64* %a, align 8, !dbg !20788
+  %27 = load i64*, i64** %m, align 8, !dbg !20788
+  %arrayidx26 = getelementptr inbounds i64, i64* %27, i64 1, !dbg !20788, !ctir !1828
+  %28 = load i64, i64* %arrayidx26, align 8, !dbg !20788
+  store i64 %28, i64* %x18, align 8, !dbg !20788
+  %29 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20788
+  %m27 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %29, i32 0, i32 0, !dbg !20788, !ctir !20751
+  %arraydecay28 = getelementptr inbounds [256 x i64], [256 x i64]* %m27, i64 0, i64 0, !dbg !20788, !ctir !1814
+  %30 = load i64, i64* %x18, align 8, !dbg !20788
+  %call29 = call i64 @ind(i64* %arraydecay28, i64 %30), !dbg !20788
+  %31 = load i64, i64* %a, align 8, !dbg !20788
+  %add30 = add i64 %call29, %31, !dbg !20788
+  %32 = load i64, i64* %b, align 8, !dbg !20788
+  %add31 = add i64 %add30, %32, !dbg !20788
+  store i64 %add31, i64* %y19, align 8, !dbg !20788
+  %33 = load i64*, i64** %m, align 8, !dbg !20788
+  %arrayidx32 = getelementptr inbounds i64, i64* %33, i64 1, !dbg !20788, !ctir !1828
+  store i64 %add31, i64* %arrayidx32, align 8, !dbg !20788
+  %34 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20788
+  %m33 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %34, i32 0, i32 0, !dbg !20788, !ctir !20751
+  %arraydecay34 = getelementptr inbounds [256 x i64], [256 x i64]* %m33, i64 0, i64 0, !dbg !20788, !ctir !1814
+  %35 = load i64, i64* %y19, align 8, !dbg !20788
+  %shr35 = lshr i64 %35, 8, !dbg !20788
+  %call36 = call i64 @ind(i64* %arraydecay34, i64 %shr35), !dbg !20788
+  %36 = load i64, i64* %x18, align 8, !dbg !20788
+  %add37 = add i64 %call36, %36, !dbg !20788
+  %call38 = call i64 @just(i64 %add37), !dbg !20788
+  store i64 %call38, i64* %b, align 8, !dbg !20788
+  %37 = load i64*, i64** %r, align 8, !dbg !20788
+  %arrayidx39 = getelementptr inbounds i64, i64* %37, i64 1, !dbg !20788, !ctir !1828
+  store i64 %call38, i64* %arrayidx39, align 8, !dbg !20788
+  call void @llvm.dbg.declare(metadata i64* %x40, metadata !20790, metadata !DIExpression()), !dbg !20792
+  call void @llvm.dbg.declare(metadata i64* %y41, metadata !20793, metadata !DIExpression()), !dbg !20792
+  %38 = load i64, i64* %a, align 8, !dbg !20792
+  %39 = load i64, i64* %a, align 8, !dbg !20792
+  %shl42 = shl i64 %39, 12, !dbg !20792
+  %xor43 = xor i64 %38, %shl42, !dbg !20792
+  %xor44 = xor i64 0, %xor43, !dbg !20792
+  %40 = load i64*, i64** %m, align 8, !dbg !20792
+  %arrayidx45 = getelementptr inbounds i64, i64* %40, i64 130, !dbg !20792, !ctir !1828
+  %41 = load i64, i64* %arrayidx45, align 8, !dbg !20792
+  %add46 = add i64 %xor44, %41, !dbg !20792
+  store i64 %add46, i64* %a, align 8, !dbg !20792
+  %42 = load i64*, i64** %m, align 8, !dbg !20792
+  %arrayidx47 = getelementptr inbounds i64, i64* %42, i64 2, !dbg !20792, !ctir !1828
+  %43 = load i64, i64* %arrayidx47, align 8, !dbg !20792
+  store i64 %43, i64* %x40, align 8, !dbg !20792
+  %44 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20792
+  %m48 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %44, i32 0, i32 0, !dbg !20792, !ctir !20751
+  %arraydecay49 = getelementptr inbounds [256 x i64], [256 x i64]* %m48, i64 0, i64 0, !dbg !20792, !ctir !1814
+  %45 = load i64, i64* %x40, align 8, !dbg !20792
+  %call50 = call i64 @ind(i64* %arraydecay49, i64 %45), !dbg !20792
+  %46 = load i64, i64* %a, align 8, !dbg !20792
+  %add51 = add i64 %call50, %46, !dbg !20792
+  %47 = load i64, i64* %b, align 8, !dbg !20792
+  %add52 = add i64 %add51, %47, !dbg !20792
+  store i64 %add52, i64* %y41, align 8, !dbg !20792
+  %48 = load i64*, i64** %m, align 8, !dbg !20792
+  %arrayidx53 = getelementptr inbounds i64, i64* %48, i64 2, !dbg !20792, !ctir !1828
+  store i64 %add52, i64* %arrayidx53, align 8, !dbg !20792
+  %49 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20792
+  %m54 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %49, i32 0, i32 0, !dbg !20792, !ctir !20751
+  %arraydecay55 = getelementptr inbounds [256 x i64], [256 x i64]* %m54, i64 0, i64 0, !dbg !20792, !ctir !1814
+  %50 = load i64, i64* %y41, align 8, !dbg !20792
+  %shr56 = lshr i64 %50, 8, !dbg !20792
+  %call57 = call i64 @ind(i64* %arraydecay55, i64 %shr56), !dbg !20792
+  %51 = load i64, i64* %x40, align 8, !dbg !20792
+  %add58 = add i64 %call57, %51, !dbg !20792
+  %call59 = call i64 @just(i64 %add58), !dbg !20792
+  store i64 %call59, i64* %b, align 8, !dbg !20792
+  %52 = load i64*, i64** %r, align 8, !dbg !20792
+  %arrayidx60 = getelementptr inbounds i64, i64* %52, i64 2, !dbg !20792, !ctir !1828
+  store i64 %call59, i64* %arrayidx60, align 8, !dbg !20792
+  call void @llvm.dbg.declare(metadata i64* %x61, metadata !20794, metadata !DIExpression()), !dbg !20796
+  call void @llvm.dbg.declare(metadata i64* %y62, metadata !20797, metadata !DIExpression()), !dbg !20796
+  %53 = load i64, i64* %a, align 8, !dbg !20796
+  %54 = load i64, i64* %a, align 8, !dbg !20796
+  %call63 = call i64 @just(i64 %54), !dbg !20796
+  %shr64 = lshr i64 %call63, 33, !dbg !20796
+  %xor65 = xor i64 %53, %shr64, !dbg !20796
+  %xor66 = xor i64 0, %xor65, !dbg !20796
+  %55 = load i64*, i64** %m, align 8, !dbg !20796
+  %arrayidx67 = getelementptr inbounds i64, i64* %55, i64 131, !dbg !20796, !ctir !1828
+  %56 = load i64, i64* %arrayidx67, align 8, !dbg !20796
+  %add68 = add i64 %xor66, %56, !dbg !20796
+  store i64 %add68, i64* %a, align 8, !dbg !20796
+  %57 = load i64*, i64** %m, align 8, !dbg !20796
+  %arrayidx69 = getelementptr inbounds i64, i64* %57, i64 3, !dbg !20796, !ctir !1828
+  %58 = load i64, i64* %arrayidx69, align 8, !dbg !20796
+  store i64 %58, i64* %x61, align 8, !dbg !20796
+  %59 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20796
+  %m70 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %59, i32 0, i32 0, !dbg !20796, !ctir !20751
+  %arraydecay71 = getelementptr inbounds [256 x i64], [256 x i64]* %m70, i64 0, i64 0, !dbg !20796, !ctir !1814
+  %60 = load i64, i64* %x61, align 8, !dbg !20796
+  %call72 = call i64 @ind(i64* %arraydecay71, i64 %60), !dbg !20796
+  %61 = load i64, i64* %a, align 8, !dbg !20796
+  %add73 = add i64 %call72, %61, !dbg !20796
+  %62 = load i64, i64* %b, align 8, !dbg !20796
+  %add74 = add i64 %add73, %62, !dbg !20796
+  store i64 %add74, i64* %y62, align 8, !dbg !20796
+  %63 = load i64*, i64** %m, align 8, !dbg !20796
+  %arrayidx75 = getelementptr inbounds i64, i64* %63, i64 3, !dbg !20796, !ctir !1828
+  store i64 %add74, i64* %arrayidx75, align 8, !dbg !20796
+  %64 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20796
+  %m76 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %64, i32 0, i32 0, !dbg !20796, !ctir !20751
+  %arraydecay77 = getelementptr inbounds [256 x i64], [256 x i64]* %m76, i64 0, i64 0, !dbg !20796, !ctir !1814
+  %65 = load i64, i64* %y62, align 8, !dbg !20796
+  %shr78 = lshr i64 %65, 8, !dbg !20796
+  %call79 = call i64 @ind(i64* %arraydecay77, i64 %shr78), !dbg !20796
+  %66 = load i64, i64* %x61, align 8, !dbg !20796
+  %add80 = add i64 %call79, %66, !dbg !20796
+  %call81 = call i64 @just(i64 %add80), !dbg !20796
+  store i64 %call81, i64* %b, align 8, !dbg !20796
+  %67 = load i64*, i64** %r, align 8, !dbg !20796
+  %arrayidx82 = getelementptr inbounds i64, i64* %67, i64 3, !dbg !20796, !ctir !1828
+  store i64 %call81, i64* %arrayidx82, align 8, !dbg !20796
+  %68 = load i64*, i64** %r, align 8, !dbg !20798
+  %add.ptr = getelementptr inbounds i64, i64* %68, i64 4, !dbg !20798, !ctir !1815
+  store i64* %add.ptr, i64** %r, align 8, !dbg !20798
+  br label %do.cond, !dbg !20799
 
 do.cond:                                          ; preds = %do.body
-  %69 = load i64*, i64** %m, align 8, !dbg !20795
-  %add.ptr83 = getelementptr inbounds i64, i64* %69, i64 4, !dbg !20795, !ctir !1815
-  store i64* %add.ptr83, i64** %m, align 8, !dbg !20795
-  %70 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20796
-  %m84 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %70, i32 0, i32 0, !dbg !20797, !ctir !20746
-  %arraydecay85 = getelementptr inbounds [256 x i64], [256 x i64]* %m84, i64 0, i64 0, !dbg !20796, !ctir !1814
-  %add.ptr86 = getelementptr inbounds i64, i64* %arraydecay85, i64 128, !dbg !20798, !ctir !1815
-  %cmp = icmp ult i64* %add.ptr83, %add.ptr86, !dbg !20799
-  br i1 %cmp, label %do.body, label %do.end, !dbg !20794, !llvm.loop !20800
+  %69 = load i64*, i64** %m, align 8, !dbg !20800
+  %add.ptr83 = getelementptr inbounds i64, i64* %69, i64 4, !dbg !20800, !ctir !1815
+  store i64* %add.ptr83, i64** %m, align 8, !dbg !20800
+  %70 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20801
+  %m84 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %70, i32 0, i32 0, !dbg !20802, !ctir !20751
+  %arraydecay85 = getelementptr inbounds [256 x i64], [256 x i64]* %m84, i64 0, i64 0, !dbg !20801, !ctir !1814
+  %add.ptr86 = getelementptr inbounds i64, i64* %arraydecay85, i64 128, !dbg !20803, !ctir !1815
+  %cmp = icmp ult i64* %add.ptr83, %add.ptr86, !dbg !20804
+  br i1 %cmp, label %do.body, label %do.end, !dbg !20799, !llvm.loop !20805
 
 do.end:                                           ; preds = %do.cond
-  br label %do.body87, !dbg !20802
+  br label %do.body87, !dbg !20807
 
 do.body87:                                        ; preds = %do.cond176, %do.end
-  call void @llvm.dbg.declare(metadata i64* %x88, metadata !20803, metadata !DIExpression()), !dbg !20806
-  call void @llvm.dbg.declare(metadata i64* %y89, metadata !20807, metadata !DIExpression()), !dbg !20806
-  %71 = load i64, i64* %a, align 8, !dbg !20806
-  %72 = load i64, i64* %a, align 8, !dbg !20806
-  %shl90 = shl i64 %72, 21, !dbg !20806
-  %xor91 = xor i64 %71, %shl90, !dbg !20806
-  %neg92 = xor i64 %xor91, -1, !dbg !20806
-  %xor93 = xor i64 0, %neg92, !dbg !20806
-  %73 = load i64*, i64** %m, align 8, !dbg !20806
-  %arrayidx94 = getelementptr inbounds i64, i64* %73, i64 -128, !dbg !20806, !ctir !1828
-  %74 = load i64, i64* %arrayidx94, align 8, !dbg !20806
-  %add95 = add i64 %xor93, %74, !dbg !20806
-  store i64 %add95, i64* %a, align 8, !dbg !20806
-  %75 = load i64*, i64** %m, align 8, !dbg !20806
-  %arrayidx96 = getelementptr inbounds i64, i64* %75, i64 0, !dbg !20806, !ctir !1828
-  %76 = load i64, i64* %arrayidx96, align 8, !dbg !20806
-  store i64 %76, i64* %x88, align 8, !dbg !20806
-  %77 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20806
-  %m97 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %77, i32 0, i32 0, !dbg !20806, !ctir !20746
-  %arraydecay98 = getelementptr inbounds [256 x i64], [256 x i64]* %m97, i64 0, i64 0, !dbg !20806, !ctir !1814
-  %78 = load i64, i64* %x88, align 8, !dbg !20806
-  %call99 = call i64 @ind(i64* %arraydecay98, i64 %78), !dbg !20806
-  %79 = load i64, i64* %a, align 8, !dbg !20806
-  %add100 = add i64 %call99, %79, !dbg !20806
-  %80 = load i64, i64* %b, align 8, !dbg !20806
-  %add101 = add i64 %add100, %80, !dbg !20806
-  store i64 %add101, i64* %y89, align 8, !dbg !20806
-  %81 = load i64*, i64** %m, align 8, !dbg !20806
-  %arrayidx102 = getelementptr inbounds i64, i64* %81, i64 0, !dbg !20806, !ctir !1828
-  store i64 %add101, i64* %arrayidx102, align 8, !dbg !20806
-  %82 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20806
-  %m103 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %82, i32 0, i32 0, !dbg !20806, !ctir !20746
-  %arraydecay104 = getelementptr inbounds [256 x i64], [256 x i64]* %m103, i64 0, i64 0, !dbg !20806, !ctir !1814
-  %83 = load i64, i64* %y89, align 8, !dbg !20806
-  %shr105 = lshr i64 %83, 8, !dbg !20806
-  %call106 = call i64 @ind(i64* %arraydecay104, i64 %shr105), !dbg !20806
-  %84 = load i64, i64* %x88, align 8, !dbg !20806
-  %add107 = add i64 %call106, %84, !dbg !20806
-  %call108 = call i64 @just(i64 %add107), !dbg !20806
-  store i64 %call108, i64* %b, align 8, !dbg !20806
-  %85 = load i64*, i64** %r, align 8, !dbg !20806
-  %arrayidx109 = getelementptr inbounds i64, i64* %85, i64 0, !dbg !20806, !ctir !1828
-  store i64 %call108, i64* %arrayidx109, align 8, !dbg !20806
-  call void @llvm.dbg.declare(metadata i64* %x110, metadata !20808, metadata !DIExpression()), !dbg !20810
-  call void @llvm.dbg.declare(metadata i64* %y111, metadata !20811, metadata !DIExpression()), !dbg !20810
-  %86 = load i64, i64* %a, align 8, !dbg !20810
-  %87 = load i64, i64* %a, align 8, !dbg !20810
-  %call112 = call i64 @just(i64 %87), !dbg !20810
-  %shr113 = lshr i64 %call112, 5, !dbg !20810
-  %xor114 = xor i64 %86, %shr113, !dbg !20810
-  %xor115 = xor i64 0, %xor114, !dbg !20810
-  %88 = load i64*, i64** %m, align 8, !dbg !20810
-  %arrayidx116 = getelementptr inbounds i64, i64* %88, i64 -127, !dbg !20810, !ctir !1828
-  %89 = load i64, i64* %arrayidx116, align 8, !dbg !20810
-  %add117 = add i64 %xor115, %89, !dbg !20810
-  store i64 %add117, i64* %a, align 8, !dbg !20810
-  %90 = load i64*, i64** %m, align 8, !dbg !20810
-  %arrayidx118 = getelementptr inbounds i64, i64* %90, i64 1, !dbg !20810, !ctir !1828
-  %91 = load i64, i64* %arrayidx118, align 8, !dbg !20810
-  store i64 %91, i64* %x110, align 8, !dbg !20810
-  %92 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20810
-  %m119 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %92, i32 0, i32 0, !dbg !20810, !ctir !20746
-  %arraydecay120 = getelementptr inbounds [256 x i64], [256 x i64]* %m119, i64 0, i64 0, !dbg !20810, !ctir !1814
-  %93 = load i64, i64* %x110, align 8, !dbg !20810
-  %call121 = call i64 @ind(i64* %arraydecay120, i64 %93), !dbg !20810
-  %94 = load i64, i64* %a, align 8, !dbg !20810
-  %add122 = add i64 %call121, %94, !dbg !20810
-  %95 = load i64, i64* %b, align 8, !dbg !20810
-  %add123 = add i64 %add122, %95, !dbg !20810
-  store i64 %add123, i64* %y111, align 8, !dbg !20810
-  %96 = load i64*, i64** %m, align 8, !dbg !20810
-  %arrayidx124 = getelementptr inbounds i64, i64* %96, i64 1, !dbg !20810, !ctir !1828
-  store i64 %add123, i64* %arrayidx124, align 8, !dbg !20810
-  %97 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20810
-  %m125 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %97, i32 0, i32 0, !dbg !20810, !ctir !20746
-  %arraydecay126 = getelementptr inbounds [256 x i64], [256 x i64]* %m125, i64 0, i64 0, !dbg !20810, !ctir !1814
-  %98 = load i64, i64* %y111, align 8, !dbg !20810
-  %shr127 = lshr i64 %98, 8, !dbg !20810
-  %call128 = call i64 @ind(i64* %arraydecay126, i64 %shr127), !dbg !20810
-  %99 = load i64, i64* %x110, align 8, !dbg !20810
-  %add129 = add i64 %call128, %99, !dbg !20810
-  %call130 = call i64 @just(i64 %add129), !dbg !20810
-  store i64 %call130, i64* %b, align 8, !dbg !20810
-  %100 = load i64*, i64** %r, align 8, !dbg !20810
-  %arrayidx131 = getelementptr inbounds i64, i64* %100, i64 1, !dbg !20810, !ctir !1828
-  store i64 %call130, i64* %arrayidx131, align 8, !dbg !20810
-  call void @llvm.dbg.declare(metadata i64* %x132, metadata !20812, metadata !DIExpression()), !dbg !20814
-  call void @llvm.dbg.declare(metadata i64* %y133, metadata !20815, metadata !DIExpression()), !dbg !20814
-  %101 = load i64, i64* %a, align 8, !dbg !20814
-  %102 = load i64, i64* %a, align 8, !dbg !20814
-  %shl134 = shl i64 %102, 12, !dbg !20814
-  %xor135 = xor i64 %101, %shl134, !dbg !20814
-  %xor136 = xor i64 0, %xor135, !dbg !20814
-  %103 = load i64*, i64** %m, align 8, !dbg !20814
-  %arrayidx137 = getelementptr inbounds i64, i64* %103, i64 -126, !dbg !20814, !ctir !1828
-  %104 = load i64, i64* %arrayidx137, align 8, !dbg !20814
-  %add138 = add i64 %xor136, %104, !dbg !20814
-  store i64 %add138, i64* %a, align 8, !dbg !20814
-  %105 = load i64*, i64** %m, align 8, !dbg !20814
-  %arrayidx139 = getelementptr inbounds i64, i64* %105, i64 2, !dbg !20814, !ctir !1828
-  %106 = load i64, i64* %arrayidx139, align 8, !dbg !20814
-  store i64 %106, i64* %x132, align 8, !dbg !20814
-  %107 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20814
-  %m140 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %107, i32 0, i32 0, !dbg !20814, !ctir !20746
-  %arraydecay141 = getelementptr inbounds [256 x i64], [256 x i64]* %m140, i64 0, i64 0, !dbg !20814, !ctir !1814
-  %108 = load i64, i64* %x132, align 8, !dbg !20814
-  %call142 = call i64 @ind(i64* %arraydecay141, i64 %108), !dbg !20814
-  %109 = load i64, i64* %a, align 8, !dbg !20814
-  %add143 = add i64 %call142, %109, !dbg !20814
-  %110 = load i64, i64* %b, align 8, !dbg !20814
-  %add144 = add i64 %add143, %110, !dbg !20814
-  store i64 %add144, i64* %y133, align 8, !dbg !20814
-  %111 = load i64*, i64** %m, align 8, !dbg !20814
-  %arrayidx145 = getelementptr inbounds i64, i64* %111, i64 2, !dbg !20814, !ctir !1828
-  store i64 %add144, i64* %arrayidx145, align 8, !dbg !20814
-  %112 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20814
-  %m146 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %112, i32 0, i32 0, !dbg !20814, !ctir !20746
-  %arraydecay147 = getelementptr inbounds [256 x i64], [256 x i64]* %m146, i64 0, i64 0, !dbg !20814, !ctir !1814
-  %113 = load i64, i64* %y133, align 8, !dbg !20814
-  %shr148 = lshr i64 %113, 8, !dbg !20814
-  %call149 = call i64 @ind(i64* %arraydecay147, i64 %shr148), !dbg !20814
-  %114 = load i64, i64* %x132, align 8, !dbg !20814
-  %add150 = add i64 %call149, %114, !dbg !20814
-  %call151 = call i64 @just(i64 %add150), !dbg !20814
-  store i64 %call151, i64* %b, align 8, !dbg !20814
-  %115 = load i64*, i64** %r, align 8, !dbg !20814
-  %arrayidx152 = getelementptr inbounds i64, i64* %115, i64 2, !dbg !20814, !ctir !1828
-  store i64 %call151, i64* %arrayidx152, align 8, !dbg !20814
-  call void @llvm.dbg.declare(metadata i64* %x153, metadata !20816, metadata !DIExpression()), !dbg !20818
-  call void @llvm.dbg.declare(metadata i64* %y154, metadata !20819, metadata !DIExpression()), !dbg !20818
-  %116 = load i64, i64* %a, align 8, !dbg !20818
-  %117 = load i64, i64* %a, align 8, !dbg !20818
-  %call155 = call i64 @just(i64 %117), !dbg !20818
-  %shr156 = lshr i64 %call155, 33, !dbg !20818
-  %xor157 = xor i64 %116, %shr156, !dbg !20818
-  %xor158 = xor i64 0, %xor157, !dbg !20818
-  %118 = load i64*, i64** %m, align 8, !dbg !20818
-  %arrayidx159 = getelementptr inbounds i64, i64* %118, i64 -125, !dbg !20818, !ctir !1828
-  %119 = load i64, i64* %arrayidx159, align 8, !dbg !20818
-  %add160 = add i64 %xor158, %119, !dbg !20818
-  store i64 %add160, i64* %a, align 8, !dbg !20818
-  %120 = load i64*, i64** %m, align 8, !dbg !20818
-  %arrayidx161 = getelementptr inbounds i64, i64* %120, i64 3, !dbg !20818, !ctir !1828
-  %121 = load i64, i64* %arrayidx161, align 8, !dbg !20818
-  store i64 %121, i64* %x153, align 8, !dbg !20818
-  %122 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20818
-  %m162 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %122, i32 0, i32 0, !dbg !20818, !ctir !20746
-  %arraydecay163 = getelementptr inbounds [256 x i64], [256 x i64]* %m162, i64 0, i64 0, !dbg !20818, !ctir !1814
-  %123 = load i64, i64* %x153, align 8, !dbg !20818
-  %call164 = call i64 @ind(i64* %arraydecay163, i64 %123), !dbg !20818
-  %124 = load i64, i64* %a, align 8, !dbg !20818
-  %add165 = add i64 %call164, %124, !dbg !20818
-  %125 = load i64, i64* %b, align 8, !dbg !20818
-  %add166 = add i64 %add165, %125, !dbg !20818
-  store i64 %add166, i64* %y154, align 8, !dbg !20818
-  %126 = load i64*, i64** %m, align 8, !dbg !20818
-  %arrayidx167 = getelementptr inbounds i64, i64* %126, i64 3, !dbg !20818, !ctir !1828
-  store i64 %add166, i64* %arrayidx167, align 8, !dbg !20818
-  %127 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20818
-  %m168 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %127, i32 0, i32 0, !dbg !20818, !ctir !20746
-  %arraydecay169 = getelementptr inbounds [256 x i64], [256 x i64]* %m168, i64 0, i64 0, !dbg !20818, !ctir !1814
-  %128 = load i64, i64* %y154, align 8, !dbg !20818
-  %shr170 = lshr i64 %128, 8, !dbg !20818
-  %call171 = call i64 @ind(i64* %arraydecay169, i64 %shr170), !dbg !20818
-  %129 = load i64, i64* %x153, align 8, !dbg !20818
-  %add172 = add i64 %call171, %129, !dbg !20818
-  %call173 = call i64 @just(i64 %add172), !dbg !20818
-  store i64 %call173, i64* %b, align 8, !dbg !20818
-  %130 = load i64*, i64** %r, align 8, !dbg !20818
-  %arrayidx174 = getelementptr inbounds i64, i64* %130, i64 3, !dbg !20818, !ctir !1828
-  store i64 %call173, i64* %arrayidx174, align 8, !dbg !20818
-  %131 = load i64*, i64** %r, align 8, !dbg !20820
-  %add.ptr175 = getelementptr inbounds i64, i64* %131, i64 4, !dbg !20820, !ctir !1815
-  store i64* %add.ptr175, i64** %r, align 8, !dbg !20820
-  br label %do.cond176, !dbg !20821
+  call void @llvm.dbg.declare(metadata i64* %x88, metadata !20808, metadata !DIExpression()), !dbg !20811
+  call void @llvm.dbg.declare(metadata i64* %y89, metadata !20812, metadata !DIExpression()), !dbg !20811
+  %71 = load i64, i64* %a, align 8, !dbg !20811
+  %72 = load i64, i64* %a, align 8, !dbg !20811
+  %shl90 = shl i64 %72, 21, !dbg !20811
+  %xor91 = xor i64 %71, %shl90, !dbg !20811
+  %neg92 = xor i64 %xor91, -1, !dbg !20811
+  %xor93 = xor i64 0, %neg92, !dbg !20811
+  %73 = load i64*, i64** %m, align 8, !dbg !20811
+  %arrayidx94 = getelementptr inbounds i64, i64* %73, i64 -128, !dbg !20811, !ctir !1828
+  %74 = load i64, i64* %arrayidx94, align 8, !dbg !20811
+  %add95 = add i64 %xor93, %74, !dbg !20811
+  store i64 %add95, i64* %a, align 8, !dbg !20811
+  %75 = load i64*, i64** %m, align 8, !dbg !20811
+  %arrayidx96 = getelementptr inbounds i64, i64* %75, i64 0, !dbg !20811, !ctir !1828
+  %76 = load i64, i64* %arrayidx96, align 8, !dbg !20811
+  store i64 %76, i64* %x88, align 8, !dbg !20811
+  %77 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20811
+  %m97 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %77, i32 0, i32 0, !dbg !20811, !ctir !20751
+  %arraydecay98 = getelementptr inbounds [256 x i64], [256 x i64]* %m97, i64 0, i64 0, !dbg !20811, !ctir !1814
+  %78 = load i64, i64* %x88, align 8, !dbg !20811
+  %call99 = call i64 @ind(i64* %arraydecay98, i64 %78), !dbg !20811
+  %79 = load i64, i64* %a, align 8, !dbg !20811
+  %add100 = add i64 %call99, %79, !dbg !20811
+  %80 = load i64, i64* %b, align 8, !dbg !20811
+  %add101 = add i64 %add100, %80, !dbg !20811
+  store i64 %add101, i64* %y89, align 8, !dbg !20811
+  %81 = load i64*, i64** %m, align 8, !dbg !20811
+  %arrayidx102 = getelementptr inbounds i64, i64* %81, i64 0, !dbg !20811, !ctir !1828
+  store i64 %add101, i64* %arrayidx102, align 8, !dbg !20811
+  %82 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20811
+  %m103 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %82, i32 0, i32 0, !dbg !20811, !ctir !20751
+  %arraydecay104 = getelementptr inbounds [256 x i64], [256 x i64]* %m103, i64 0, i64 0, !dbg !20811, !ctir !1814
+  %83 = load i64, i64* %y89, align 8, !dbg !20811
+  %shr105 = lshr i64 %83, 8, !dbg !20811
+  %call106 = call i64 @ind(i64* %arraydecay104, i64 %shr105), !dbg !20811
+  %84 = load i64, i64* %x88, align 8, !dbg !20811
+  %add107 = add i64 %call106, %84, !dbg !20811
+  %call108 = call i64 @just(i64 %add107), !dbg !20811
+  store i64 %call108, i64* %b, align 8, !dbg !20811
+  %85 = load i64*, i64** %r, align 8, !dbg !20811
+  %arrayidx109 = getelementptr inbounds i64, i64* %85, i64 0, !dbg !20811, !ctir !1828
+  store i64 %call108, i64* %arrayidx109, align 8, !dbg !20811
+  call void @llvm.dbg.declare(metadata i64* %x110, metadata !20813, metadata !DIExpression()), !dbg !20815
+  call void @llvm.dbg.declare(metadata i64* %y111, metadata !20816, metadata !DIExpression()), !dbg !20815
+  %86 = load i64, i64* %a, align 8, !dbg !20815
+  %87 = load i64, i64* %a, align 8, !dbg !20815
+  %call112 = call i64 @just(i64 %87), !dbg !20815
+  %shr113 = lshr i64 %call112, 5, !dbg !20815
+  %xor114 = xor i64 %86, %shr113, !dbg !20815
+  %xor115 = xor i64 0, %xor114, !dbg !20815
+  %88 = load i64*, i64** %m, align 8, !dbg !20815
+  %arrayidx116 = getelementptr inbounds i64, i64* %88, i64 -127, !dbg !20815, !ctir !1828
+  %89 = load i64, i64* %arrayidx116, align 8, !dbg !20815
+  %add117 = add i64 %xor115, %89, !dbg !20815
+  store i64 %add117, i64* %a, align 8, !dbg !20815
+  %90 = load i64*, i64** %m, align 8, !dbg !20815
+  %arrayidx118 = getelementptr inbounds i64, i64* %90, i64 1, !dbg !20815, !ctir !1828
+  %91 = load i64, i64* %arrayidx118, align 8, !dbg !20815
+  store i64 %91, i64* %x110, align 8, !dbg !20815
+  %92 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20815
+  %m119 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %92, i32 0, i32 0, !dbg !20815, !ctir !20751
+  %arraydecay120 = getelementptr inbounds [256 x i64], [256 x i64]* %m119, i64 0, i64 0, !dbg !20815, !ctir !1814
+  %93 = load i64, i64* %x110, align 8, !dbg !20815
+  %call121 = call i64 @ind(i64* %arraydecay120, i64 %93), !dbg !20815
+  %94 = load i64, i64* %a, align 8, !dbg !20815
+  %add122 = add i64 %call121, %94, !dbg !20815
+  %95 = load i64, i64* %b, align 8, !dbg !20815
+  %add123 = add i64 %add122, %95, !dbg !20815
+  store i64 %add123, i64* %y111, align 8, !dbg !20815
+  %96 = load i64*, i64** %m, align 8, !dbg !20815
+  %arrayidx124 = getelementptr inbounds i64, i64* %96, i64 1, !dbg !20815, !ctir !1828
+  store i64 %add123, i64* %arrayidx124, align 8, !dbg !20815
+  %97 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20815
+  %m125 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %97, i32 0, i32 0, !dbg !20815, !ctir !20751
+  %arraydecay126 = getelementptr inbounds [256 x i64], [256 x i64]* %m125, i64 0, i64 0, !dbg !20815, !ctir !1814
+  %98 = load i64, i64* %y111, align 8, !dbg !20815
+  %shr127 = lshr i64 %98, 8, !dbg !20815
+  %call128 = call i64 @ind(i64* %arraydecay126, i64 %shr127), !dbg !20815
+  %99 = load i64, i64* %x110, align 8, !dbg !20815
+  %add129 = add i64 %call128, %99, !dbg !20815
+  %call130 = call i64 @just(i64 %add129), !dbg !20815
+  store i64 %call130, i64* %b, align 8, !dbg !20815
+  %100 = load i64*, i64** %r, align 8, !dbg !20815
+  %arrayidx131 = getelementptr inbounds i64, i64* %100, i64 1, !dbg !20815, !ctir !1828
+  store i64 %call130, i64* %arrayidx131, align 8, !dbg !20815
+  call void @llvm.dbg.declare(metadata i64* %x132, metadata !20817, metadata !DIExpression()), !dbg !20819
+  call void @llvm.dbg.declare(metadata i64* %y133, metadata !20820, metadata !DIExpression()), !dbg !20819
+  %101 = load i64, i64* %a, align 8, !dbg !20819
+  %102 = load i64, i64* %a, align 8, !dbg !20819
+  %shl134 = shl i64 %102, 12, !dbg !20819
+  %xor135 = xor i64 %101, %shl134, !dbg !20819
+  %xor136 = xor i64 0, %xor135, !dbg !20819
+  %103 = load i64*, i64** %m, align 8, !dbg !20819
+  %arrayidx137 = getelementptr inbounds i64, i64* %103, i64 -126, !dbg !20819, !ctir !1828
+  %104 = load i64, i64* %arrayidx137, align 8, !dbg !20819
+  %add138 = add i64 %xor136, %104, !dbg !20819
+  store i64 %add138, i64* %a, align 8, !dbg !20819
+  %105 = load i64*, i64** %m, align 8, !dbg !20819
+  %arrayidx139 = getelementptr inbounds i64, i64* %105, i64 2, !dbg !20819, !ctir !1828
+  %106 = load i64, i64* %arrayidx139, align 8, !dbg !20819
+  store i64 %106, i64* %x132, align 8, !dbg !20819
+  %107 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20819
+  %m140 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %107, i32 0, i32 0, !dbg !20819, !ctir !20751
+  %arraydecay141 = getelementptr inbounds [256 x i64], [256 x i64]* %m140, i64 0, i64 0, !dbg !20819, !ctir !1814
+  %108 = load i64, i64* %x132, align 8, !dbg !20819
+  %call142 = call i64 @ind(i64* %arraydecay141, i64 %108), !dbg !20819
+  %109 = load i64, i64* %a, align 8, !dbg !20819
+  %add143 = add i64 %call142, %109, !dbg !20819
+  %110 = load i64, i64* %b, align 8, !dbg !20819
+  %add144 = add i64 %add143, %110, !dbg !20819
+  store i64 %add144, i64* %y133, align 8, !dbg !20819
+  %111 = load i64*, i64** %m, align 8, !dbg !20819
+  %arrayidx145 = getelementptr inbounds i64, i64* %111, i64 2, !dbg !20819, !ctir !1828
+  store i64 %add144, i64* %arrayidx145, align 8, !dbg !20819
+  %112 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20819
+  %m146 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %112, i32 0, i32 0, !dbg !20819, !ctir !20751
+  %arraydecay147 = getelementptr inbounds [256 x i64], [256 x i64]* %m146, i64 0, i64 0, !dbg !20819, !ctir !1814
+  %113 = load i64, i64* %y133, align 8, !dbg !20819
+  %shr148 = lshr i64 %113, 8, !dbg !20819
+  %call149 = call i64 @ind(i64* %arraydecay147, i64 %shr148), !dbg !20819
+  %114 = load i64, i64* %x132, align 8, !dbg !20819
+  %add150 = add i64 %call149, %114, !dbg !20819
+  %call151 = call i64 @just(i64 %add150), !dbg !20819
+  store i64 %call151, i64* %b, align 8, !dbg !20819
+  %115 = load i64*, i64** %r, align 8, !dbg !20819
+  %arrayidx152 = getelementptr inbounds i64, i64* %115, i64 2, !dbg !20819, !ctir !1828
+  store i64 %call151, i64* %arrayidx152, align 8, !dbg !20819
+  call void @llvm.dbg.declare(metadata i64* %x153, metadata !20821, metadata !DIExpression()), !dbg !20823
+  call void @llvm.dbg.declare(metadata i64* %y154, metadata !20824, metadata !DIExpression()), !dbg !20823
+  %116 = load i64, i64* %a, align 8, !dbg !20823
+  %117 = load i64, i64* %a, align 8, !dbg !20823
+  %call155 = call i64 @just(i64 %117), !dbg !20823
+  %shr156 = lshr i64 %call155, 33, !dbg !20823
+  %xor157 = xor i64 %116, %shr156, !dbg !20823
+  %xor158 = xor i64 0, %xor157, !dbg !20823
+  %118 = load i64*, i64** %m, align 8, !dbg !20823
+  %arrayidx159 = getelementptr inbounds i64, i64* %118, i64 -125, !dbg !20823, !ctir !1828
+  %119 = load i64, i64* %arrayidx159, align 8, !dbg !20823
+  %add160 = add i64 %xor158, %119, !dbg !20823
+  store i64 %add160, i64* %a, align 8, !dbg !20823
+  %120 = load i64*, i64** %m, align 8, !dbg !20823
+  %arrayidx161 = getelementptr inbounds i64, i64* %120, i64 3, !dbg !20823, !ctir !1828
+  %121 = load i64, i64* %arrayidx161, align 8, !dbg !20823
+  store i64 %121, i64* %x153, align 8, !dbg !20823
+  %122 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20823
+  %m162 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %122, i32 0, i32 0, !dbg !20823, !ctir !20751
+  %arraydecay163 = getelementptr inbounds [256 x i64], [256 x i64]* %m162, i64 0, i64 0, !dbg !20823, !ctir !1814
+  %123 = load i64, i64* %x153, align 8, !dbg !20823
+  %call164 = call i64 @ind(i64* %arraydecay163, i64 %123), !dbg !20823
+  %124 = load i64, i64* %a, align 8, !dbg !20823
+  %add165 = add i64 %call164, %124, !dbg !20823
+  %125 = load i64, i64* %b, align 8, !dbg !20823
+  %add166 = add i64 %add165, %125, !dbg !20823
+  store i64 %add166, i64* %y154, align 8, !dbg !20823
+  %126 = load i64*, i64** %m, align 8, !dbg !20823
+  %arrayidx167 = getelementptr inbounds i64, i64* %126, i64 3, !dbg !20823, !ctir !1828
+  store i64 %add166, i64* %arrayidx167, align 8, !dbg !20823
+  %127 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20823
+  %m168 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %127, i32 0, i32 0, !dbg !20823, !ctir !20751
+  %arraydecay169 = getelementptr inbounds [256 x i64], [256 x i64]* %m168, i64 0, i64 0, !dbg !20823, !ctir !1814
+  %128 = load i64, i64* %y154, align 8, !dbg !20823
+  %shr170 = lshr i64 %128, 8, !dbg !20823
+  %call171 = call i64 @ind(i64* %arraydecay169, i64 %shr170), !dbg !20823
+  %129 = load i64, i64* %x153, align 8, !dbg !20823
+  %add172 = add i64 %call171, %129, !dbg !20823
+  %call173 = call i64 @just(i64 %add172), !dbg !20823
+  store i64 %call173, i64* %b, align 8, !dbg !20823
+  %130 = load i64*, i64** %r, align 8, !dbg !20823
+  %arrayidx174 = getelementptr inbounds i64, i64* %130, i64 3, !dbg !20823, !ctir !1828
+  store i64 %call173, i64* %arrayidx174, align 8, !dbg !20823
+  %131 = load i64*, i64** %r, align 8, !dbg !20825
+  %add.ptr175 = getelementptr inbounds i64, i64* %131, i64 4, !dbg !20825, !ctir !1815
+  store i64* %add.ptr175, i64** %r, align 8, !dbg !20825
+  br label %do.cond176, !dbg !20826
 
 do.cond176:                                       ; preds = %do.body87
-  %132 = load i64*, i64** %m, align 8, !dbg !20822
-  %add.ptr177 = getelementptr inbounds i64, i64* %132, i64 4, !dbg !20822, !ctir !1815
-  store i64* %add.ptr177, i64** %m, align 8, !dbg !20822
-  %133 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20823
-  %m178 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %133, i32 0, i32 0, !dbg !20824, !ctir !20746
-  %arraydecay179 = getelementptr inbounds [256 x i64], [256 x i64]* %m178, i64 0, i64 0, !dbg !20823, !ctir !1814
-  %add.ptr180 = getelementptr inbounds i64, i64* %arraydecay179, i64 256, !dbg !20825, !ctir !1815
-  %cmp181 = icmp ult i64* %add.ptr177, %add.ptr180, !dbg !20826
-  br i1 %cmp181, label %do.body87, label %do.end182, !dbg !20821, !llvm.loop !20827
+  %132 = load i64*, i64** %m, align 8, !dbg !20827
+  %add.ptr177 = getelementptr inbounds i64, i64* %132, i64 4, !dbg !20827, !ctir !1815
+  store i64* %add.ptr177, i64** %m, align 8, !dbg !20827
+  %133 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20828
+  %m178 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %133, i32 0, i32 0, !dbg !20829, !ctir !20751
+  %arraydecay179 = getelementptr inbounds [256 x i64], [256 x i64]* %m178, i64 0, i64 0, !dbg !20828, !ctir !1814
+  %add.ptr180 = getelementptr inbounds i64, i64* %arraydecay179, i64 256, !dbg !20830, !ctir !1815
+  %cmp181 = icmp ult i64* %add.ptr177, %add.ptr180, !dbg !20831
+  br i1 %cmp181, label %do.body87, label %do.end182, !dbg !20826, !llvm.loop !20832
 
 do.end182:                                        ; preds = %do.cond176
-  %134 = load i64, i64* %a, align 8, !dbg !20829
-  %135 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20830
-  %a183 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %135, i32 0, i32 1, !dbg !20831, !ctir !20746
-  store i64 %134, i64* %a183, align 8, !dbg !20832, !ctir !1815
-  %136 = load i64, i64* %b, align 8, !dbg !20833
-  %137 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20834
-  %b184 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %137, i32 0, i32 2, !dbg !20835, !ctir !20746
-  store i64 %136, i64* %b184, align 8, !dbg !20836, !ctir !1815
-  ret void, !dbg !20837
+  %134 = load i64, i64* %a, align 8, !dbg !20834
+  %135 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20835
+  %a183 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %135, i32 0, i32 1, !dbg !20836, !ctir !20751
+  store i64 %134, i64* %a183, align 8, !dbg !20837, !ctir !1815
+  %136 = load i64, i64* %b, align 8, !dbg !20838
+  %137 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20839
+  %b184 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %137, i32 0, i32 2, !dbg !20840, !ctir !20751
+  store i64 %136, i64* %b184, align 8, !dbg !20841, !ctir !1815
+  ret void, !dbg !20842
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define internal i64 @ind(i64* %m, i64 %x) #4 !dbg !20838 {
+define internal i64 @ind(i64* %m, i64 %x) #4 !dbg !20843 {
 entry:
   %m.addr = alloca i64*, align 8
   %x.addr = alloca i64, align 8
@@ -33258,48 +33254,48 @@ entry:
   %word_p = alloca i8*, align 8, !ctir !685
   %p = alloca i64*, align 8, !ctir !1832
   store i64* %m, i64** %m.addr, align 8
-  call void @llvm.dbg.declare(metadata i64** %m.addr, metadata !20841, metadata !DIExpression()), !dbg !20842
+  call void @llvm.dbg.declare(metadata i64** %m.addr, metadata !20846, metadata !DIExpression()), !dbg !20847
   store i64 %x, i64* %x.addr, align 8
-  call void @llvm.dbg.declare(metadata i64* %x.addr, metadata !20843, metadata !DIExpression()), !dbg !20844
-  call void @llvm.dbg.declare(metadata i8** %void_m, metadata !20845, metadata !DIExpression()), !dbg !20848
-  %0 = load i64*, i64** %m.addr, align 8, !dbg !20849
-  %1 = bitcast i64* %0 to i8*, !dbg !20849
-  store i8* %1, i8** %void_m, align 8, !dbg !20848
-  call void @llvm.dbg.declare(metadata i8** %base_p, metadata !20850, metadata !DIExpression()), !dbg !20851
-  %2 = load i8*, i8** %void_m, align 8, !dbg !20852
-  store i8* %2, i8** %base_p, align 8, !dbg !20851
-  call void @llvm.dbg.declare(metadata i8** %word_p, metadata !20853, metadata !DIExpression()), !dbg !20854
-  %3 = load i8*, i8** %base_p, align 8, !dbg !20855
-  %4 = load i64, i64* %x.addr, align 8, !dbg !20856
-  %and = and i64 %4, 2040, !dbg !20857
-  %add.ptr = getelementptr inbounds i8, i8* %3, i64 %and, !dbg !20858, !ctir !181
-  store i8* %add.ptr, i8** %word_p, align 8, !dbg !20854
-  call void @llvm.dbg.declare(metadata i64** %p, metadata !20859, metadata !DIExpression()), !dbg !20860
-  %5 = load i8*, i8** %word_p, align 8, !dbg !20861
-  %6 = bitcast i8* %5 to i64*, !dbg !20861
-  store i64* %6, i64** %p, align 8, !dbg !20860
-  %7 = load i64*, i64** %p, align 8, !dbg !20862
-  %8 = load i64, i64* %7, align 8, !dbg !20863, !ctir !1833
-  ret i64 %8, !dbg !20864
+  call void @llvm.dbg.declare(metadata i64* %x.addr, metadata !20848, metadata !DIExpression()), !dbg !20849
+  call void @llvm.dbg.declare(metadata i8** %void_m, metadata !20850, metadata !DIExpression()), !dbg !20853
+  %0 = load i64*, i64** %m.addr, align 8, !dbg !20854
+  %1 = bitcast i64* %0 to i8*, !dbg !20854
+  store i8* %1, i8** %void_m, align 8, !dbg !20853
+  call void @llvm.dbg.declare(metadata i8** %base_p, metadata !20855, metadata !DIExpression()), !dbg !20856
+  %2 = load i8*, i8** %void_m, align 8, !dbg !20857
+  store i8* %2, i8** %base_p, align 8, !dbg !20856
+  call void @llvm.dbg.declare(metadata i8** %word_p, metadata !20858, metadata !DIExpression()), !dbg !20859
+  %3 = load i8*, i8** %base_p, align 8, !dbg !20860
+  %4 = load i64, i64* %x.addr, align 8, !dbg !20861
+  %and = and i64 %4, 2040, !dbg !20862
+  %add.ptr = getelementptr inbounds i8, i8* %3, i64 %and, !dbg !20863, !ctir !181
+  store i8* %add.ptr, i8** %word_p, align 8, !dbg !20859
+  call void @llvm.dbg.declare(metadata i64** %p, metadata !20864, metadata !DIExpression()), !dbg !20865
+  %5 = load i8*, i8** %word_p, align 8, !dbg !20866
+  %6 = bitcast i8* %5 to i64*, !dbg !20866
+  store i64* %6, i64** %p, align 8, !dbg !20865
+  %7 = load i64*, i64** %p, align 8, !dbg !20867
+  %8 = load i64, i64* %7, align 8, !dbg !20868, !ctir !1833
+  ret i64 %8, !dbg !20869
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define internal i64 @just(i64 %a) #4 !dbg !20865 {
+define internal i64 @just(i64 %a) #4 !dbg !20870 {
 entry:
   %a.addr = alloca i64, align 8
   %desired_bits = alloca i64, align 8, !ctir !1815
   store i64 %a, i64* %a.addr, align 8
-  call void @llvm.dbg.declare(metadata i64* %a.addr, metadata !20868, metadata !DIExpression()), !dbg !20869
-  call void @llvm.dbg.declare(metadata i64* %desired_bits, metadata !20870, metadata !DIExpression()), !dbg !20871
-  store i64 -1, i64* %desired_bits, align 8, !dbg !20871
-  %0 = load i64, i64* %a.addr, align 8, !dbg !20872
-  %1 = load i64, i64* %desired_bits, align 8, !dbg !20873
-  %and = and i64 %0, %1, !dbg !20874
-  ret i64 %and, !dbg !20875
+  call void @llvm.dbg.declare(metadata i64* %a.addr, metadata !20873, metadata !DIExpression()), !dbg !20874
+  call void @llvm.dbg.declare(metadata i64* %desired_bits, metadata !20875, metadata !DIExpression()), !dbg !20876
+  store i64 -1, i64* %desired_bits, align 8, !dbg !20876
+  %0 = load i64, i64* %a.addr, align 8, !dbg !20877
+  %1 = load i64, i64* %desired_bits, align 8, !dbg !20878
+  %and = and i64 %0, %1, !dbg !20879
+  ret i64 %and, !dbg !20880
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local void @isaac_seed(%struct.isaac_state* %s) #4 !dbg !20876 {
+define dso_local void @isaac_seed(%struct.isaac_state* %s) #4 !dbg !20881 {
 entry:
   %s.addr = alloca %struct.isaac_state*, align 8
   %a = alloca i64, align 8, !ctir !1815
@@ -33313,601 +33309,601 @@ entry:
   %i = alloca i32, align 4, !ctir !5
   %i99 = alloca i32, align 4, !ctir !5
   store %struct.isaac_state* %s, %struct.isaac_state** %s.addr, align 8
-  call void @llvm.dbg.declare(metadata %struct.isaac_state** %s.addr, metadata !20879, metadata !DIExpression()), !dbg !20880
-  call void @llvm.dbg.declare(metadata i64* %a, metadata !20881, metadata !DIExpression()), !dbg !20882
-  store i64 7240739780546808700, i64* %a, align 8, !dbg !20882
-  call void @llvm.dbg.declare(metadata i64* %b, metadata !20883, metadata !DIExpression()), !dbg !20884
-  store i64 -5046086420515862430, i64* %b, align 8, !dbg !20884
-  call void @llvm.dbg.declare(metadata i64* %c, metadata !20885, metadata !DIExpression()), !dbg !20886
-  store i64 -8354558816804203872, i64* %c, align 8, !dbg !20886
-  call void @llvm.dbg.declare(metadata i64* %d, metadata !20887, metadata !DIExpression()), !dbg !20888
-  store i64 -5576812576440232668, i64* %d, align 8, !dbg !20888
-  call void @llvm.dbg.declare(metadata i64* %e, metadata !20889, metadata !DIExpression()), !dbg !20890
-  store i64 -9011610652101975858, i64* %e, align 8, !dbg !20890
-  call void @llvm.dbg.declare(metadata i64* %f, metadata !20891, metadata !DIExpression()), !dbg !20892
-  store i64 5259722845879046933, i64* %f, align 8, !dbg !20892
-  call void @llvm.dbg.declare(metadata i64* %g, metadata !20893, metadata !DIExpression()), !dbg !20894
-  store i64 -5865837416287532563, i64* %g, align 8, !dbg !20894
-  call void @llvm.dbg.declare(metadata i64* %h, metadata !20895, metadata !DIExpression()), !dbg !20896
-  store i64 -7424904924229222229, i64* %h, align 8, !dbg !20896
-  call void @llvm.dbg.declare(metadata i32* %i, metadata !20897, metadata !DIExpression()), !dbg !20899
-  store i32 0, i32* %i, align 4, !dbg !20900
-  br label %for.cond, !dbg !20900
+  call void @llvm.dbg.declare(metadata %struct.isaac_state** %s.addr, metadata !20884, metadata !DIExpression()), !dbg !20885
+  call void @llvm.dbg.declare(metadata i64* %a, metadata !20886, metadata !DIExpression()), !dbg !20887
+  store i64 7240739780546808700, i64* %a, align 8, !dbg !20887
+  call void @llvm.dbg.declare(metadata i64* %b, metadata !20888, metadata !DIExpression()), !dbg !20889
+  store i64 -5046086420515862430, i64* %b, align 8, !dbg !20889
+  call void @llvm.dbg.declare(metadata i64* %c, metadata !20890, metadata !DIExpression()), !dbg !20891
+  store i64 -8354558816804203872, i64* %c, align 8, !dbg !20891
+  call void @llvm.dbg.declare(metadata i64* %d, metadata !20892, metadata !DIExpression()), !dbg !20893
+  store i64 -5576812576440232668, i64* %d, align 8, !dbg !20893
+  call void @llvm.dbg.declare(metadata i64* %e, metadata !20894, metadata !DIExpression()), !dbg !20895
+  store i64 -9011610652101975858, i64* %e, align 8, !dbg !20895
+  call void @llvm.dbg.declare(metadata i64* %f, metadata !20896, metadata !DIExpression()), !dbg !20897
+  store i64 5259722845879046933, i64* %f, align 8, !dbg !20897
+  call void @llvm.dbg.declare(metadata i64* %g, metadata !20898, metadata !DIExpression()), !dbg !20899
+  store i64 -5865837416287532563, i64* %g, align 8, !dbg !20899
+  call void @llvm.dbg.declare(metadata i64* %h, metadata !20900, metadata !DIExpression()), !dbg !20901
+  store i64 -7424904924229222229, i64* %h, align 8, !dbg !20901
+  call void @llvm.dbg.declare(metadata i32* %i, metadata !20902, metadata !DIExpression()), !dbg !20904
+  store i32 0, i32* %i, align 4, !dbg !20905
+  br label %for.cond, !dbg !20905
 
 for.cond:                                         ; preds = %for.inc, %entry
-  %0 = load i32, i32* %i, align 4, !dbg !20902
-  %cmp = icmp slt i32 %0, 256, !dbg !20902
-  br i1 %cmp, label %for.body, label %for.end, !dbg !20900
+  %0 = load i32, i32* %i, align 4, !dbg !20907
+  %cmp = icmp slt i32 %0, 256, !dbg !20907
+  br i1 %cmp, label %for.body, label %for.end, !dbg !20905
 
 for.body:                                         ; preds = %for.cond
-  %1 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20904
-  %m = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %1, i32 0, i32 0, !dbg !20904, !ctir !20746
-  %2 = load i32, i32* %i, align 4, !dbg !20904
-  %idxprom = sext i32 %2 to i64, !dbg !20904
-  %arrayidx = getelementptr inbounds [256 x i64], [256 x i64]* %m, i64 0, i64 %idxprom, !dbg !20904, !ctir !1814
-  %3 = load i64, i64* %arrayidx, align 8, !dbg !20904
-  %4 = load i64, i64* %a, align 8, !dbg !20904
-  %add = add i64 %4, %3, !dbg !20904
-  store i64 %add, i64* %a, align 8, !dbg !20904
-  %5 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20904
-  %m1 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %5, i32 0, i32 0, !dbg !20904, !ctir !20746
-  %6 = load i32, i32* %i, align 4, !dbg !20904
-  %add2 = add nsw i32 %6, 1, !dbg !20904
-  %idxprom3 = sext i32 %add2 to i64, !dbg !20904
-  %arrayidx4 = getelementptr inbounds [256 x i64], [256 x i64]* %m1, i64 0, i64 %idxprom3, !dbg !20904, !ctir !1814
-  %7 = load i64, i64* %arrayidx4, align 8, !dbg !20904
-  %8 = load i64, i64* %b, align 8, !dbg !20904
-  %add5 = add i64 %8, %7, !dbg !20904
-  store i64 %add5, i64* %b, align 8, !dbg !20904
-  %9 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20904
-  %m6 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %9, i32 0, i32 0, !dbg !20904, !ctir !20746
-  %10 = load i32, i32* %i, align 4, !dbg !20904
-  %add7 = add nsw i32 %10, 2, !dbg !20904
-  %idxprom8 = sext i32 %add7 to i64, !dbg !20904
-  %arrayidx9 = getelementptr inbounds [256 x i64], [256 x i64]* %m6, i64 0, i64 %idxprom8, !dbg !20904, !ctir !1814
-  %11 = load i64, i64* %arrayidx9, align 8, !dbg !20904
-  %12 = load i64, i64* %c, align 8, !dbg !20904
-  %add10 = add i64 %12, %11, !dbg !20904
-  store i64 %add10, i64* %c, align 8, !dbg !20904
-  %13 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20904
-  %m11 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %13, i32 0, i32 0, !dbg !20904, !ctir !20746
-  %14 = load i32, i32* %i, align 4, !dbg !20904
-  %add12 = add nsw i32 %14, 3, !dbg !20904
-  %idxprom13 = sext i32 %add12 to i64, !dbg !20904
-  %arrayidx14 = getelementptr inbounds [256 x i64], [256 x i64]* %m11, i64 0, i64 %idxprom13, !dbg !20904, !ctir !1814
-  %15 = load i64, i64* %arrayidx14, align 8, !dbg !20904
-  %16 = load i64, i64* %d, align 8, !dbg !20904
-  %add15 = add i64 %16, %15, !dbg !20904
-  store i64 %add15, i64* %d, align 8, !dbg !20904
-  %17 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20904
-  %m16 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %17, i32 0, i32 0, !dbg !20904, !ctir !20746
-  %18 = load i32, i32* %i, align 4, !dbg !20904
-  %add17 = add nsw i32 %18, 4, !dbg !20904
-  %idxprom18 = sext i32 %add17 to i64, !dbg !20904
-  %arrayidx19 = getelementptr inbounds [256 x i64], [256 x i64]* %m16, i64 0, i64 %idxprom18, !dbg !20904, !ctir !1814
-  %19 = load i64, i64* %arrayidx19, align 8, !dbg !20904
-  %20 = load i64, i64* %e, align 8, !dbg !20904
-  %add20 = add i64 %20, %19, !dbg !20904
-  store i64 %add20, i64* %e, align 8, !dbg !20904
-  %21 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20904
-  %m21 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %21, i32 0, i32 0, !dbg !20904, !ctir !20746
-  %22 = load i32, i32* %i, align 4, !dbg !20904
-  %add22 = add nsw i32 %22, 5, !dbg !20904
-  %idxprom23 = sext i32 %add22 to i64, !dbg !20904
-  %arrayidx24 = getelementptr inbounds [256 x i64], [256 x i64]* %m21, i64 0, i64 %idxprom23, !dbg !20904, !ctir !1814
-  %23 = load i64, i64* %arrayidx24, align 8, !dbg !20904
-  %24 = load i64, i64* %f, align 8, !dbg !20904
-  %add25 = add i64 %24, %23, !dbg !20904
-  store i64 %add25, i64* %f, align 8, !dbg !20904
-  %25 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20904
-  %m26 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %25, i32 0, i32 0, !dbg !20904, !ctir !20746
-  %26 = load i32, i32* %i, align 4, !dbg !20904
-  %add27 = add nsw i32 %26, 6, !dbg !20904
-  %idxprom28 = sext i32 %add27 to i64, !dbg !20904
-  %arrayidx29 = getelementptr inbounds [256 x i64], [256 x i64]* %m26, i64 0, i64 %idxprom28, !dbg !20904, !ctir !1814
-  %27 = load i64, i64* %arrayidx29, align 8, !dbg !20904
-  %28 = load i64, i64* %g, align 8, !dbg !20904
-  %add30 = add i64 %28, %27, !dbg !20904
-  store i64 %add30, i64* %g, align 8, !dbg !20904
-  %29 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20904
-  %m31 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %29, i32 0, i32 0, !dbg !20904, !ctir !20746
-  %30 = load i32, i32* %i, align 4, !dbg !20904
-  %add32 = add nsw i32 %30, 7, !dbg !20904
-  %idxprom33 = sext i32 %add32 to i64, !dbg !20904
-  %arrayidx34 = getelementptr inbounds [256 x i64], [256 x i64]* %m31, i64 0, i64 %idxprom33, !dbg !20904, !ctir !1814
-  %31 = load i64, i64* %arrayidx34, align 8, !dbg !20904
-  %32 = load i64, i64* %h, align 8, !dbg !20904
-  %add35 = add i64 %32, %31, !dbg !20904
-  store i64 %add35, i64* %h, align 8, !dbg !20904
-  %33 = load i64, i64* %e, align 8, !dbg !20906
-  %34 = load i64, i64* %a, align 8, !dbg !20906
-  %sub = sub i64 %34, %33, !dbg !20906
-  store i64 %sub, i64* %a, align 8, !dbg !20906
-  %35 = load i64, i64* %h, align 8, !dbg !20906
-  %call = call i64 @just(i64 %35), !dbg !20906
-  %shr = lshr i64 %call, 9, !dbg !20906
-  %36 = load i64, i64* %f, align 8, !dbg !20906
-  %xor = xor i64 %36, %shr, !dbg !20906
-  store i64 %xor, i64* %f, align 8, !dbg !20906
-  %37 = load i64, i64* %a, align 8, !dbg !20906
-  %38 = load i64, i64* %h, align 8, !dbg !20906
-  %add36 = add i64 %38, %37, !dbg !20906
-  store i64 %add36, i64* %h, align 8, !dbg !20906
-  %39 = load i64, i64* %f, align 8, !dbg !20906
-  %40 = load i64, i64* %b, align 8, !dbg !20906
-  %sub37 = sub i64 %40, %39, !dbg !20906
-  store i64 %sub37, i64* %b, align 8, !dbg !20906
-  %41 = load i64, i64* %a, align 8, !dbg !20906
-  %shl = shl i64 %41, 9, !dbg !20906
-  %42 = load i64, i64* %g, align 8, !dbg !20906
-  %xor38 = xor i64 %42, %shl, !dbg !20906
-  store i64 %xor38, i64* %g, align 8, !dbg !20906
-  %43 = load i64, i64* %b, align 8, !dbg !20906
-  %44 = load i64, i64* %a, align 8, !dbg !20906
-  %add39 = add i64 %44, %43, !dbg !20906
-  store i64 %add39, i64* %a, align 8, !dbg !20906
-  %45 = load i64, i64* %g, align 8, !dbg !20906
-  %46 = load i64, i64* %c, align 8, !dbg !20906
-  %sub40 = sub i64 %46, %45, !dbg !20906
-  store i64 %sub40, i64* %c, align 8, !dbg !20906
-  %47 = load i64, i64* %b, align 8, !dbg !20906
-  %call41 = call i64 @just(i64 %47), !dbg !20906
-  %shr42 = lshr i64 %call41, 23, !dbg !20906
-  %48 = load i64, i64* %h, align 8, !dbg !20906
-  %xor43 = xor i64 %48, %shr42, !dbg !20906
-  store i64 %xor43, i64* %h, align 8, !dbg !20906
-  %49 = load i64, i64* %c, align 8, !dbg !20906
-  %50 = load i64, i64* %b, align 8, !dbg !20906
-  %add44 = add i64 %50, %49, !dbg !20906
-  store i64 %add44, i64* %b, align 8, !dbg !20906
-  %51 = load i64, i64* %h, align 8, !dbg !20906
-  %52 = load i64, i64* %d, align 8, !dbg !20906
-  %sub45 = sub i64 %52, %51, !dbg !20906
-  store i64 %sub45, i64* %d, align 8, !dbg !20906
-  %53 = load i64, i64* %c, align 8, !dbg !20906
-  %shl46 = shl i64 %53, 15, !dbg !20906
-  %54 = load i64, i64* %a, align 8, !dbg !20906
-  %xor47 = xor i64 %54, %shl46, !dbg !20906
-  store i64 %xor47, i64* %a, align 8, !dbg !20906
-  %55 = load i64, i64* %d, align 8, !dbg !20906
-  %56 = load i64, i64* %c, align 8, !dbg !20906
-  %add48 = add i64 %56, %55, !dbg !20906
-  store i64 %add48, i64* %c, align 8, !dbg !20906
-  %57 = load i64, i64* %a, align 8, !dbg !20906
-  %58 = load i64, i64* %e, align 8, !dbg !20906
-  %sub49 = sub i64 %58, %57, !dbg !20906
-  store i64 %sub49, i64* %e, align 8, !dbg !20906
-  %59 = load i64, i64* %d, align 8, !dbg !20906
-  %call50 = call i64 @just(i64 %59), !dbg !20906
-  %shr51 = lshr i64 %call50, 14, !dbg !20906
-  %60 = load i64, i64* %b, align 8, !dbg !20906
-  %xor52 = xor i64 %60, %shr51, !dbg !20906
-  store i64 %xor52, i64* %b, align 8, !dbg !20906
-  %61 = load i64, i64* %e, align 8, !dbg !20906
-  %62 = load i64, i64* %d, align 8, !dbg !20906
-  %add53 = add i64 %62, %61, !dbg !20906
-  store i64 %add53, i64* %d, align 8, !dbg !20906
-  %63 = load i64, i64* %b, align 8, !dbg !20906
-  %64 = load i64, i64* %f, align 8, !dbg !20906
-  %sub54 = sub i64 %64, %63, !dbg !20906
-  store i64 %sub54, i64* %f, align 8, !dbg !20906
-  %65 = load i64, i64* %e, align 8, !dbg !20906
-  %shl55 = shl i64 %65, 20, !dbg !20906
-  %66 = load i64, i64* %c, align 8, !dbg !20906
-  %xor56 = xor i64 %66, %shl55, !dbg !20906
-  store i64 %xor56, i64* %c, align 8, !dbg !20906
-  %67 = load i64, i64* %f, align 8, !dbg !20906
-  %68 = load i64, i64* %e, align 8, !dbg !20906
-  %add57 = add i64 %68, %67, !dbg !20906
-  store i64 %add57, i64* %e, align 8, !dbg !20906
-  %69 = load i64, i64* %c, align 8, !dbg !20906
-  %70 = load i64, i64* %g, align 8, !dbg !20906
-  %sub58 = sub i64 %70, %69, !dbg !20906
-  store i64 %sub58, i64* %g, align 8, !dbg !20906
-  %71 = load i64, i64* %f, align 8, !dbg !20906
-  %call59 = call i64 @just(i64 %71), !dbg !20906
-  %shr60 = lshr i64 %call59, 17, !dbg !20906
-  %72 = load i64, i64* %d, align 8, !dbg !20906
-  %xor61 = xor i64 %72, %shr60, !dbg !20906
-  store i64 %xor61, i64* %d, align 8, !dbg !20906
-  %73 = load i64, i64* %g, align 8, !dbg !20906
-  %74 = load i64, i64* %f, align 8, !dbg !20906
-  %add62 = add i64 %74, %73, !dbg !20906
-  store i64 %add62, i64* %f, align 8, !dbg !20906
-  %75 = load i64, i64* %d, align 8, !dbg !20906
-  %76 = load i64, i64* %h, align 8, !dbg !20906
-  %sub63 = sub i64 %76, %75, !dbg !20906
-  store i64 %sub63, i64* %h, align 8, !dbg !20906
-  %77 = load i64, i64* %g, align 8, !dbg !20906
-  %shl64 = shl i64 %77, 14, !dbg !20906
-  %78 = load i64, i64* %e, align 8, !dbg !20906
-  %xor65 = xor i64 %78, %shl64, !dbg !20906
-  store i64 %xor65, i64* %e, align 8, !dbg !20906
-  %79 = load i64, i64* %h, align 8, !dbg !20906
-  %80 = load i64, i64* %g, align 8, !dbg !20906
-  %add66 = add i64 %80, %79, !dbg !20906
-  store i64 %add66, i64* %g, align 8, !dbg !20906
-  %81 = load i64, i64* %a, align 8, !dbg !20904
-  %82 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20904
-  %m67 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %82, i32 0, i32 0, !dbg !20904, !ctir !20746
-  %83 = load i32, i32* %i, align 4, !dbg !20904
-  %idxprom68 = sext i32 %83 to i64, !dbg !20904
-  %arrayidx69 = getelementptr inbounds [256 x i64], [256 x i64]* %m67, i64 0, i64 %idxprom68, !dbg !20904, !ctir !1814
-  store i64 %81, i64* %arrayidx69, align 8, !dbg !20904
-  %84 = load i64, i64* %b, align 8, !dbg !20904
-  %85 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20904
-  %m70 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %85, i32 0, i32 0, !dbg !20904, !ctir !20746
-  %86 = load i32, i32* %i, align 4, !dbg !20904
-  %add71 = add nsw i32 %86, 1, !dbg !20904
-  %idxprom72 = sext i32 %add71 to i64, !dbg !20904
-  %arrayidx73 = getelementptr inbounds [256 x i64], [256 x i64]* %m70, i64 0, i64 %idxprom72, !dbg !20904, !ctir !1814
-  store i64 %84, i64* %arrayidx73, align 8, !dbg !20904
-  %87 = load i64, i64* %c, align 8, !dbg !20904
-  %88 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20904
-  %m74 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %88, i32 0, i32 0, !dbg !20904, !ctir !20746
-  %89 = load i32, i32* %i, align 4, !dbg !20904
-  %add75 = add nsw i32 %89, 2, !dbg !20904
-  %idxprom76 = sext i32 %add75 to i64, !dbg !20904
-  %arrayidx77 = getelementptr inbounds [256 x i64], [256 x i64]* %m74, i64 0, i64 %idxprom76, !dbg !20904, !ctir !1814
-  store i64 %87, i64* %arrayidx77, align 8, !dbg !20904
-  %90 = load i64, i64* %d, align 8, !dbg !20904
-  %91 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20904
-  %m78 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %91, i32 0, i32 0, !dbg !20904, !ctir !20746
-  %92 = load i32, i32* %i, align 4, !dbg !20904
-  %add79 = add nsw i32 %92, 3, !dbg !20904
-  %idxprom80 = sext i32 %add79 to i64, !dbg !20904
-  %arrayidx81 = getelementptr inbounds [256 x i64], [256 x i64]* %m78, i64 0, i64 %idxprom80, !dbg !20904, !ctir !1814
-  store i64 %90, i64* %arrayidx81, align 8, !dbg !20904
-  %93 = load i64, i64* %e, align 8, !dbg !20904
-  %94 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20904
-  %m82 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %94, i32 0, i32 0, !dbg !20904, !ctir !20746
-  %95 = load i32, i32* %i, align 4, !dbg !20904
-  %add83 = add nsw i32 %95, 4, !dbg !20904
-  %idxprom84 = sext i32 %add83 to i64, !dbg !20904
-  %arrayidx85 = getelementptr inbounds [256 x i64], [256 x i64]* %m82, i64 0, i64 %idxprom84, !dbg !20904, !ctir !1814
-  store i64 %93, i64* %arrayidx85, align 8, !dbg !20904
-  %96 = load i64, i64* %f, align 8, !dbg !20904
-  %97 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20904
-  %m86 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %97, i32 0, i32 0, !dbg !20904, !ctir !20746
-  %98 = load i32, i32* %i, align 4, !dbg !20904
-  %add87 = add nsw i32 %98, 5, !dbg !20904
-  %idxprom88 = sext i32 %add87 to i64, !dbg !20904
-  %arrayidx89 = getelementptr inbounds [256 x i64], [256 x i64]* %m86, i64 0, i64 %idxprom88, !dbg !20904, !ctir !1814
-  store i64 %96, i64* %arrayidx89, align 8, !dbg !20904
-  %99 = load i64, i64* %g, align 8, !dbg !20904
-  %100 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20904
-  %m90 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %100, i32 0, i32 0, !dbg !20904, !ctir !20746
-  %101 = load i32, i32* %i, align 4, !dbg !20904
-  %add91 = add nsw i32 %101, 6, !dbg !20904
-  %idxprom92 = sext i32 %add91 to i64, !dbg !20904
-  %arrayidx93 = getelementptr inbounds [256 x i64], [256 x i64]* %m90, i64 0, i64 %idxprom92, !dbg !20904, !ctir !1814
-  store i64 %99, i64* %arrayidx93, align 8, !dbg !20904
-  %102 = load i64, i64* %h, align 8, !dbg !20904
-  %103 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20904
-  %m94 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %103, i32 0, i32 0, !dbg !20904, !ctir !20746
-  %104 = load i32, i32* %i, align 4, !dbg !20904
-  %add95 = add nsw i32 %104, 7, !dbg !20904
-  %idxprom96 = sext i32 %add95 to i64, !dbg !20904
-  %arrayidx97 = getelementptr inbounds [256 x i64], [256 x i64]* %m94, i64 0, i64 %idxprom96, !dbg !20904, !ctir !1814
-  store i64 %102, i64* %arrayidx97, align 8, !dbg !20904
-  br label %for.inc, !dbg !20904
+  %1 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20909
+  %m = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %1, i32 0, i32 0, !dbg !20909, !ctir !20751
+  %2 = load i32, i32* %i, align 4, !dbg !20909
+  %idxprom = sext i32 %2 to i64, !dbg !20909
+  %arrayidx = getelementptr inbounds [256 x i64], [256 x i64]* %m, i64 0, i64 %idxprom, !dbg !20909, !ctir !1814
+  %3 = load i64, i64* %arrayidx, align 8, !dbg !20909
+  %4 = load i64, i64* %a, align 8, !dbg !20909
+  %add = add i64 %4, %3, !dbg !20909
+  store i64 %add, i64* %a, align 8, !dbg !20909
+  %5 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20909
+  %m1 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %5, i32 0, i32 0, !dbg !20909, !ctir !20751
+  %6 = load i32, i32* %i, align 4, !dbg !20909
+  %add2 = add nsw i32 %6, 1, !dbg !20909
+  %idxprom3 = sext i32 %add2 to i64, !dbg !20909
+  %arrayidx4 = getelementptr inbounds [256 x i64], [256 x i64]* %m1, i64 0, i64 %idxprom3, !dbg !20909, !ctir !1814
+  %7 = load i64, i64* %arrayidx4, align 8, !dbg !20909
+  %8 = load i64, i64* %b, align 8, !dbg !20909
+  %add5 = add i64 %8, %7, !dbg !20909
+  store i64 %add5, i64* %b, align 8, !dbg !20909
+  %9 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20909
+  %m6 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %9, i32 0, i32 0, !dbg !20909, !ctir !20751
+  %10 = load i32, i32* %i, align 4, !dbg !20909
+  %add7 = add nsw i32 %10, 2, !dbg !20909
+  %idxprom8 = sext i32 %add7 to i64, !dbg !20909
+  %arrayidx9 = getelementptr inbounds [256 x i64], [256 x i64]* %m6, i64 0, i64 %idxprom8, !dbg !20909, !ctir !1814
+  %11 = load i64, i64* %arrayidx9, align 8, !dbg !20909
+  %12 = load i64, i64* %c, align 8, !dbg !20909
+  %add10 = add i64 %12, %11, !dbg !20909
+  store i64 %add10, i64* %c, align 8, !dbg !20909
+  %13 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20909
+  %m11 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %13, i32 0, i32 0, !dbg !20909, !ctir !20751
+  %14 = load i32, i32* %i, align 4, !dbg !20909
+  %add12 = add nsw i32 %14, 3, !dbg !20909
+  %idxprom13 = sext i32 %add12 to i64, !dbg !20909
+  %arrayidx14 = getelementptr inbounds [256 x i64], [256 x i64]* %m11, i64 0, i64 %idxprom13, !dbg !20909, !ctir !1814
+  %15 = load i64, i64* %arrayidx14, align 8, !dbg !20909
+  %16 = load i64, i64* %d, align 8, !dbg !20909
+  %add15 = add i64 %16, %15, !dbg !20909
+  store i64 %add15, i64* %d, align 8, !dbg !20909
+  %17 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20909
+  %m16 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %17, i32 0, i32 0, !dbg !20909, !ctir !20751
+  %18 = load i32, i32* %i, align 4, !dbg !20909
+  %add17 = add nsw i32 %18, 4, !dbg !20909
+  %idxprom18 = sext i32 %add17 to i64, !dbg !20909
+  %arrayidx19 = getelementptr inbounds [256 x i64], [256 x i64]* %m16, i64 0, i64 %idxprom18, !dbg !20909, !ctir !1814
+  %19 = load i64, i64* %arrayidx19, align 8, !dbg !20909
+  %20 = load i64, i64* %e, align 8, !dbg !20909
+  %add20 = add i64 %20, %19, !dbg !20909
+  store i64 %add20, i64* %e, align 8, !dbg !20909
+  %21 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20909
+  %m21 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %21, i32 0, i32 0, !dbg !20909, !ctir !20751
+  %22 = load i32, i32* %i, align 4, !dbg !20909
+  %add22 = add nsw i32 %22, 5, !dbg !20909
+  %idxprom23 = sext i32 %add22 to i64, !dbg !20909
+  %arrayidx24 = getelementptr inbounds [256 x i64], [256 x i64]* %m21, i64 0, i64 %idxprom23, !dbg !20909, !ctir !1814
+  %23 = load i64, i64* %arrayidx24, align 8, !dbg !20909
+  %24 = load i64, i64* %f, align 8, !dbg !20909
+  %add25 = add i64 %24, %23, !dbg !20909
+  store i64 %add25, i64* %f, align 8, !dbg !20909
+  %25 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20909
+  %m26 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %25, i32 0, i32 0, !dbg !20909, !ctir !20751
+  %26 = load i32, i32* %i, align 4, !dbg !20909
+  %add27 = add nsw i32 %26, 6, !dbg !20909
+  %idxprom28 = sext i32 %add27 to i64, !dbg !20909
+  %arrayidx29 = getelementptr inbounds [256 x i64], [256 x i64]* %m26, i64 0, i64 %idxprom28, !dbg !20909, !ctir !1814
+  %27 = load i64, i64* %arrayidx29, align 8, !dbg !20909
+  %28 = load i64, i64* %g, align 8, !dbg !20909
+  %add30 = add i64 %28, %27, !dbg !20909
+  store i64 %add30, i64* %g, align 8, !dbg !20909
+  %29 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20909
+  %m31 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %29, i32 0, i32 0, !dbg !20909, !ctir !20751
+  %30 = load i32, i32* %i, align 4, !dbg !20909
+  %add32 = add nsw i32 %30, 7, !dbg !20909
+  %idxprom33 = sext i32 %add32 to i64, !dbg !20909
+  %arrayidx34 = getelementptr inbounds [256 x i64], [256 x i64]* %m31, i64 0, i64 %idxprom33, !dbg !20909, !ctir !1814
+  %31 = load i64, i64* %arrayidx34, align 8, !dbg !20909
+  %32 = load i64, i64* %h, align 8, !dbg !20909
+  %add35 = add i64 %32, %31, !dbg !20909
+  store i64 %add35, i64* %h, align 8, !dbg !20909
+  %33 = load i64, i64* %e, align 8, !dbg !20911
+  %34 = load i64, i64* %a, align 8, !dbg !20911
+  %sub = sub i64 %34, %33, !dbg !20911
+  store i64 %sub, i64* %a, align 8, !dbg !20911
+  %35 = load i64, i64* %h, align 8, !dbg !20911
+  %call = call i64 @just(i64 %35), !dbg !20911
+  %shr = lshr i64 %call, 9, !dbg !20911
+  %36 = load i64, i64* %f, align 8, !dbg !20911
+  %xor = xor i64 %36, %shr, !dbg !20911
+  store i64 %xor, i64* %f, align 8, !dbg !20911
+  %37 = load i64, i64* %a, align 8, !dbg !20911
+  %38 = load i64, i64* %h, align 8, !dbg !20911
+  %add36 = add i64 %38, %37, !dbg !20911
+  store i64 %add36, i64* %h, align 8, !dbg !20911
+  %39 = load i64, i64* %f, align 8, !dbg !20911
+  %40 = load i64, i64* %b, align 8, !dbg !20911
+  %sub37 = sub i64 %40, %39, !dbg !20911
+  store i64 %sub37, i64* %b, align 8, !dbg !20911
+  %41 = load i64, i64* %a, align 8, !dbg !20911
+  %shl = shl i64 %41, 9, !dbg !20911
+  %42 = load i64, i64* %g, align 8, !dbg !20911
+  %xor38 = xor i64 %42, %shl, !dbg !20911
+  store i64 %xor38, i64* %g, align 8, !dbg !20911
+  %43 = load i64, i64* %b, align 8, !dbg !20911
+  %44 = load i64, i64* %a, align 8, !dbg !20911
+  %add39 = add i64 %44, %43, !dbg !20911
+  store i64 %add39, i64* %a, align 8, !dbg !20911
+  %45 = load i64, i64* %g, align 8, !dbg !20911
+  %46 = load i64, i64* %c, align 8, !dbg !20911
+  %sub40 = sub i64 %46, %45, !dbg !20911
+  store i64 %sub40, i64* %c, align 8, !dbg !20911
+  %47 = load i64, i64* %b, align 8, !dbg !20911
+  %call41 = call i64 @just(i64 %47), !dbg !20911
+  %shr42 = lshr i64 %call41, 23, !dbg !20911
+  %48 = load i64, i64* %h, align 8, !dbg !20911
+  %xor43 = xor i64 %48, %shr42, !dbg !20911
+  store i64 %xor43, i64* %h, align 8, !dbg !20911
+  %49 = load i64, i64* %c, align 8, !dbg !20911
+  %50 = load i64, i64* %b, align 8, !dbg !20911
+  %add44 = add i64 %50, %49, !dbg !20911
+  store i64 %add44, i64* %b, align 8, !dbg !20911
+  %51 = load i64, i64* %h, align 8, !dbg !20911
+  %52 = load i64, i64* %d, align 8, !dbg !20911
+  %sub45 = sub i64 %52, %51, !dbg !20911
+  store i64 %sub45, i64* %d, align 8, !dbg !20911
+  %53 = load i64, i64* %c, align 8, !dbg !20911
+  %shl46 = shl i64 %53, 15, !dbg !20911
+  %54 = load i64, i64* %a, align 8, !dbg !20911
+  %xor47 = xor i64 %54, %shl46, !dbg !20911
+  store i64 %xor47, i64* %a, align 8, !dbg !20911
+  %55 = load i64, i64* %d, align 8, !dbg !20911
+  %56 = load i64, i64* %c, align 8, !dbg !20911
+  %add48 = add i64 %56, %55, !dbg !20911
+  store i64 %add48, i64* %c, align 8, !dbg !20911
+  %57 = load i64, i64* %a, align 8, !dbg !20911
+  %58 = load i64, i64* %e, align 8, !dbg !20911
+  %sub49 = sub i64 %58, %57, !dbg !20911
+  store i64 %sub49, i64* %e, align 8, !dbg !20911
+  %59 = load i64, i64* %d, align 8, !dbg !20911
+  %call50 = call i64 @just(i64 %59), !dbg !20911
+  %shr51 = lshr i64 %call50, 14, !dbg !20911
+  %60 = load i64, i64* %b, align 8, !dbg !20911
+  %xor52 = xor i64 %60, %shr51, !dbg !20911
+  store i64 %xor52, i64* %b, align 8, !dbg !20911
+  %61 = load i64, i64* %e, align 8, !dbg !20911
+  %62 = load i64, i64* %d, align 8, !dbg !20911
+  %add53 = add i64 %62, %61, !dbg !20911
+  store i64 %add53, i64* %d, align 8, !dbg !20911
+  %63 = load i64, i64* %b, align 8, !dbg !20911
+  %64 = load i64, i64* %f, align 8, !dbg !20911
+  %sub54 = sub i64 %64, %63, !dbg !20911
+  store i64 %sub54, i64* %f, align 8, !dbg !20911
+  %65 = load i64, i64* %e, align 8, !dbg !20911
+  %shl55 = shl i64 %65, 20, !dbg !20911
+  %66 = load i64, i64* %c, align 8, !dbg !20911
+  %xor56 = xor i64 %66, %shl55, !dbg !20911
+  store i64 %xor56, i64* %c, align 8, !dbg !20911
+  %67 = load i64, i64* %f, align 8, !dbg !20911
+  %68 = load i64, i64* %e, align 8, !dbg !20911
+  %add57 = add i64 %68, %67, !dbg !20911
+  store i64 %add57, i64* %e, align 8, !dbg !20911
+  %69 = load i64, i64* %c, align 8, !dbg !20911
+  %70 = load i64, i64* %g, align 8, !dbg !20911
+  %sub58 = sub i64 %70, %69, !dbg !20911
+  store i64 %sub58, i64* %g, align 8, !dbg !20911
+  %71 = load i64, i64* %f, align 8, !dbg !20911
+  %call59 = call i64 @just(i64 %71), !dbg !20911
+  %shr60 = lshr i64 %call59, 17, !dbg !20911
+  %72 = load i64, i64* %d, align 8, !dbg !20911
+  %xor61 = xor i64 %72, %shr60, !dbg !20911
+  store i64 %xor61, i64* %d, align 8, !dbg !20911
+  %73 = load i64, i64* %g, align 8, !dbg !20911
+  %74 = load i64, i64* %f, align 8, !dbg !20911
+  %add62 = add i64 %74, %73, !dbg !20911
+  store i64 %add62, i64* %f, align 8, !dbg !20911
+  %75 = load i64, i64* %d, align 8, !dbg !20911
+  %76 = load i64, i64* %h, align 8, !dbg !20911
+  %sub63 = sub i64 %76, %75, !dbg !20911
+  store i64 %sub63, i64* %h, align 8, !dbg !20911
+  %77 = load i64, i64* %g, align 8, !dbg !20911
+  %shl64 = shl i64 %77, 14, !dbg !20911
+  %78 = load i64, i64* %e, align 8, !dbg !20911
+  %xor65 = xor i64 %78, %shl64, !dbg !20911
+  store i64 %xor65, i64* %e, align 8, !dbg !20911
+  %79 = load i64, i64* %h, align 8, !dbg !20911
+  %80 = load i64, i64* %g, align 8, !dbg !20911
+  %add66 = add i64 %80, %79, !dbg !20911
+  store i64 %add66, i64* %g, align 8, !dbg !20911
+  %81 = load i64, i64* %a, align 8, !dbg !20909
+  %82 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20909
+  %m67 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %82, i32 0, i32 0, !dbg !20909, !ctir !20751
+  %83 = load i32, i32* %i, align 4, !dbg !20909
+  %idxprom68 = sext i32 %83 to i64, !dbg !20909
+  %arrayidx69 = getelementptr inbounds [256 x i64], [256 x i64]* %m67, i64 0, i64 %idxprom68, !dbg !20909, !ctir !1814
+  store i64 %81, i64* %arrayidx69, align 8, !dbg !20909
+  %84 = load i64, i64* %b, align 8, !dbg !20909
+  %85 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20909
+  %m70 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %85, i32 0, i32 0, !dbg !20909, !ctir !20751
+  %86 = load i32, i32* %i, align 4, !dbg !20909
+  %add71 = add nsw i32 %86, 1, !dbg !20909
+  %idxprom72 = sext i32 %add71 to i64, !dbg !20909
+  %arrayidx73 = getelementptr inbounds [256 x i64], [256 x i64]* %m70, i64 0, i64 %idxprom72, !dbg !20909, !ctir !1814
+  store i64 %84, i64* %arrayidx73, align 8, !dbg !20909
+  %87 = load i64, i64* %c, align 8, !dbg !20909
+  %88 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20909
+  %m74 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %88, i32 0, i32 0, !dbg !20909, !ctir !20751
+  %89 = load i32, i32* %i, align 4, !dbg !20909
+  %add75 = add nsw i32 %89, 2, !dbg !20909
+  %idxprom76 = sext i32 %add75 to i64, !dbg !20909
+  %arrayidx77 = getelementptr inbounds [256 x i64], [256 x i64]* %m74, i64 0, i64 %idxprom76, !dbg !20909, !ctir !1814
+  store i64 %87, i64* %arrayidx77, align 8, !dbg !20909
+  %90 = load i64, i64* %d, align 8, !dbg !20909
+  %91 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20909
+  %m78 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %91, i32 0, i32 0, !dbg !20909, !ctir !20751
+  %92 = load i32, i32* %i, align 4, !dbg !20909
+  %add79 = add nsw i32 %92, 3, !dbg !20909
+  %idxprom80 = sext i32 %add79 to i64, !dbg !20909
+  %arrayidx81 = getelementptr inbounds [256 x i64], [256 x i64]* %m78, i64 0, i64 %idxprom80, !dbg !20909, !ctir !1814
+  store i64 %90, i64* %arrayidx81, align 8, !dbg !20909
+  %93 = load i64, i64* %e, align 8, !dbg !20909
+  %94 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20909
+  %m82 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %94, i32 0, i32 0, !dbg !20909, !ctir !20751
+  %95 = load i32, i32* %i, align 4, !dbg !20909
+  %add83 = add nsw i32 %95, 4, !dbg !20909
+  %idxprom84 = sext i32 %add83 to i64, !dbg !20909
+  %arrayidx85 = getelementptr inbounds [256 x i64], [256 x i64]* %m82, i64 0, i64 %idxprom84, !dbg !20909, !ctir !1814
+  store i64 %93, i64* %arrayidx85, align 8, !dbg !20909
+  %96 = load i64, i64* %f, align 8, !dbg !20909
+  %97 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20909
+  %m86 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %97, i32 0, i32 0, !dbg !20909, !ctir !20751
+  %98 = load i32, i32* %i, align 4, !dbg !20909
+  %add87 = add nsw i32 %98, 5, !dbg !20909
+  %idxprom88 = sext i32 %add87 to i64, !dbg !20909
+  %arrayidx89 = getelementptr inbounds [256 x i64], [256 x i64]* %m86, i64 0, i64 %idxprom88, !dbg !20909, !ctir !1814
+  store i64 %96, i64* %arrayidx89, align 8, !dbg !20909
+  %99 = load i64, i64* %g, align 8, !dbg !20909
+  %100 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20909
+  %m90 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %100, i32 0, i32 0, !dbg !20909, !ctir !20751
+  %101 = load i32, i32* %i, align 4, !dbg !20909
+  %add91 = add nsw i32 %101, 6, !dbg !20909
+  %idxprom92 = sext i32 %add91 to i64, !dbg !20909
+  %arrayidx93 = getelementptr inbounds [256 x i64], [256 x i64]* %m90, i64 0, i64 %idxprom92, !dbg !20909, !ctir !1814
+  store i64 %99, i64* %arrayidx93, align 8, !dbg !20909
+  %102 = load i64, i64* %h, align 8, !dbg !20909
+  %103 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20909
+  %m94 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %103, i32 0, i32 0, !dbg !20909, !ctir !20751
+  %104 = load i32, i32* %i, align 4, !dbg !20909
+  %add95 = add nsw i32 %104, 7, !dbg !20909
+  %idxprom96 = sext i32 %add95 to i64, !dbg !20909
+  %arrayidx97 = getelementptr inbounds [256 x i64], [256 x i64]* %m94, i64 0, i64 %idxprom96, !dbg !20909, !ctir !1814
+  store i64 %102, i64* %arrayidx97, align 8, !dbg !20909
+  br label %for.inc, !dbg !20909
 
 for.inc:                                          ; preds = %for.body
-  %105 = load i32, i32* %i, align 4, !dbg !20902
-  %add98 = add nsw i32 %105, 8, !dbg !20902
-  store i32 %add98, i32* %i, align 4, !dbg !20902
-  br label %for.cond, !dbg !20902, !llvm.loop !20908
+  %105 = load i32, i32* %i, align 4, !dbg !20907
+  %add98 = add nsw i32 %105, 8, !dbg !20907
+  store i32 %add98, i32* %i, align 4, !dbg !20907
+  br label %for.cond, !dbg !20907, !llvm.loop !20913
 
 for.end:                                          ; preds = %for.cond
-  call void @llvm.dbg.declare(metadata i32* %i99, metadata !20909, metadata !DIExpression()), !dbg !20911
-  store i32 0, i32* %i99, align 4, !dbg !20912
-  br label %for.cond100, !dbg !20912
+  call void @llvm.dbg.declare(metadata i32* %i99, metadata !20914, metadata !DIExpression()), !dbg !20916
+  store i32 0, i32* %i99, align 4, !dbg !20917
+  br label %for.cond100, !dbg !20917
 
 for.cond100:                                      ; preds = %for.inc209, %for.end
-  %106 = load i32, i32* %i99, align 4, !dbg !20914
-  %cmp101 = icmp slt i32 %106, 256, !dbg !20914
-  br i1 %cmp101, label %for.body102, label %for.end211, !dbg !20912
+  %106 = load i32, i32* %i99, align 4, !dbg !20919
+  %cmp101 = icmp slt i32 %106, 256, !dbg !20919
+  br i1 %cmp101, label %for.body102, label %for.end211, !dbg !20917
 
 for.body102:                                      ; preds = %for.cond100
-  %107 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20916
-  %m103 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %107, i32 0, i32 0, !dbg !20916, !ctir !20746
-  %108 = load i32, i32* %i99, align 4, !dbg !20916
-  %idxprom104 = sext i32 %108 to i64, !dbg !20916
-  %arrayidx105 = getelementptr inbounds [256 x i64], [256 x i64]* %m103, i64 0, i64 %idxprom104, !dbg !20916, !ctir !1814
-  %109 = load i64, i64* %arrayidx105, align 8, !dbg !20916
-  %110 = load i64, i64* %a, align 8, !dbg !20916
-  %add106 = add i64 %110, %109, !dbg !20916
-  store i64 %add106, i64* %a, align 8, !dbg !20916
-  %111 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20916
-  %m107 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %111, i32 0, i32 0, !dbg !20916, !ctir !20746
-  %112 = load i32, i32* %i99, align 4, !dbg !20916
-  %add108 = add nsw i32 %112, 1, !dbg !20916
-  %idxprom109 = sext i32 %add108 to i64, !dbg !20916
-  %arrayidx110 = getelementptr inbounds [256 x i64], [256 x i64]* %m107, i64 0, i64 %idxprom109, !dbg !20916, !ctir !1814
-  %113 = load i64, i64* %arrayidx110, align 8, !dbg !20916
-  %114 = load i64, i64* %b, align 8, !dbg !20916
-  %add111 = add i64 %114, %113, !dbg !20916
-  store i64 %add111, i64* %b, align 8, !dbg !20916
-  %115 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20916
-  %m112 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %115, i32 0, i32 0, !dbg !20916, !ctir !20746
-  %116 = load i32, i32* %i99, align 4, !dbg !20916
-  %add113 = add nsw i32 %116, 2, !dbg !20916
-  %idxprom114 = sext i32 %add113 to i64, !dbg !20916
-  %arrayidx115 = getelementptr inbounds [256 x i64], [256 x i64]* %m112, i64 0, i64 %idxprom114, !dbg !20916, !ctir !1814
-  %117 = load i64, i64* %arrayidx115, align 8, !dbg !20916
-  %118 = load i64, i64* %c, align 8, !dbg !20916
-  %add116 = add i64 %118, %117, !dbg !20916
-  store i64 %add116, i64* %c, align 8, !dbg !20916
-  %119 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20916
-  %m117 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %119, i32 0, i32 0, !dbg !20916, !ctir !20746
-  %120 = load i32, i32* %i99, align 4, !dbg !20916
-  %add118 = add nsw i32 %120, 3, !dbg !20916
-  %idxprom119 = sext i32 %add118 to i64, !dbg !20916
-  %arrayidx120 = getelementptr inbounds [256 x i64], [256 x i64]* %m117, i64 0, i64 %idxprom119, !dbg !20916, !ctir !1814
-  %121 = load i64, i64* %arrayidx120, align 8, !dbg !20916
-  %122 = load i64, i64* %d, align 8, !dbg !20916
-  %add121 = add i64 %122, %121, !dbg !20916
-  store i64 %add121, i64* %d, align 8, !dbg !20916
-  %123 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20916
-  %m122 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %123, i32 0, i32 0, !dbg !20916, !ctir !20746
-  %124 = load i32, i32* %i99, align 4, !dbg !20916
-  %add123 = add nsw i32 %124, 4, !dbg !20916
-  %idxprom124 = sext i32 %add123 to i64, !dbg !20916
-  %arrayidx125 = getelementptr inbounds [256 x i64], [256 x i64]* %m122, i64 0, i64 %idxprom124, !dbg !20916, !ctir !1814
-  %125 = load i64, i64* %arrayidx125, align 8, !dbg !20916
-  %126 = load i64, i64* %e, align 8, !dbg !20916
-  %add126 = add i64 %126, %125, !dbg !20916
-  store i64 %add126, i64* %e, align 8, !dbg !20916
-  %127 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20916
-  %m127 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %127, i32 0, i32 0, !dbg !20916, !ctir !20746
-  %128 = load i32, i32* %i99, align 4, !dbg !20916
-  %add128 = add nsw i32 %128, 5, !dbg !20916
-  %idxprom129 = sext i32 %add128 to i64, !dbg !20916
-  %arrayidx130 = getelementptr inbounds [256 x i64], [256 x i64]* %m127, i64 0, i64 %idxprom129, !dbg !20916, !ctir !1814
-  %129 = load i64, i64* %arrayidx130, align 8, !dbg !20916
-  %130 = load i64, i64* %f, align 8, !dbg !20916
-  %add131 = add i64 %130, %129, !dbg !20916
-  store i64 %add131, i64* %f, align 8, !dbg !20916
-  %131 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20916
-  %m132 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %131, i32 0, i32 0, !dbg !20916, !ctir !20746
-  %132 = load i32, i32* %i99, align 4, !dbg !20916
-  %add133 = add nsw i32 %132, 6, !dbg !20916
-  %idxprom134 = sext i32 %add133 to i64, !dbg !20916
-  %arrayidx135 = getelementptr inbounds [256 x i64], [256 x i64]* %m132, i64 0, i64 %idxprom134, !dbg !20916, !ctir !1814
-  %133 = load i64, i64* %arrayidx135, align 8, !dbg !20916
-  %134 = load i64, i64* %g, align 8, !dbg !20916
-  %add136 = add i64 %134, %133, !dbg !20916
-  store i64 %add136, i64* %g, align 8, !dbg !20916
-  %135 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20916
-  %m137 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %135, i32 0, i32 0, !dbg !20916, !ctir !20746
-  %136 = load i32, i32* %i99, align 4, !dbg !20916
-  %add138 = add nsw i32 %136, 7, !dbg !20916
-  %idxprom139 = sext i32 %add138 to i64, !dbg !20916
-  %arrayidx140 = getelementptr inbounds [256 x i64], [256 x i64]* %m137, i64 0, i64 %idxprom139, !dbg !20916, !ctir !1814
-  %137 = load i64, i64* %arrayidx140, align 8, !dbg !20916
-  %138 = load i64, i64* %h, align 8, !dbg !20916
-  %add141 = add i64 %138, %137, !dbg !20916
-  store i64 %add141, i64* %h, align 8, !dbg !20916
-  %139 = load i64, i64* %e, align 8, !dbg !20918
-  %140 = load i64, i64* %a, align 8, !dbg !20918
-  %sub142 = sub i64 %140, %139, !dbg !20918
-  store i64 %sub142, i64* %a, align 8, !dbg !20918
-  %141 = load i64, i64* %h, align 8, !dbg !20918
-  %call143 = call i64 @just(i64 %141), !dbg !20918
-  %shr144 = lshr i64 %call143, 9, !dbg !20918
-  %142 = load i64, i64* %f, align 8, !dbg !20918
-  %xor145 = xor i64 %142, %shr144, !dbg !20918
-  store i64 %xor145, i64* %f, align 8, !dbg !20918
-  %143 = load i64, i64* %a, align 8, !dbg !20918
-  %144 = load i64, i64* %h, align 8, !dbg !20918
-  %add146 = add i64 %144, %143, !dbg !20918
-  store i64 %add146, i64* %h, align 8, !dbg !20918
-  %145 = load i64, i64* %f, align 8, !dbg !20918
-  %146 = load i64, i64* %b, align 8, !dbg !20918
-  %sub147 = sub i64 %146, %145, !dbg !20918
-  store i64 %sub147, i64* %b, align 8, !dbg !20918
-  %147 = load i64, i64* %a, align 8, !dbg !20918
-  %shl148 = shl i64 %147, 9, !dbg !20918
-  %148 = load i64, i64* %g, align 8, !dbg !20918
-  %xor149 = xor i64 %148, %shl148, !dbg !20918
-  store i64 %xor149, i64* %g, align 8, !dbg !20918
-  %149 = load i64, i64* %b, align 8, !dbg !20918
-  %150 = load i64, i64* %a, align 8, !dbg !20918
-  %add150 = add i64 %150, %149, !dbg !20918
-  store i64 %add150, i64* %a, align 8, !dbg !20918
-  %151 = load i64, i64* %g, align 8, !dbg !20918
-  %152 = load i64, i64* %c, align 8, !dbg !20918
-  %sub151 = sub i64 %152, %151, !dbg !20918
-  store i64 %sub151, i64* %c, align 8, !dbg !20918
-  %153 = load i64, i64* %b, align 8, !dbg !20918
-  %call152 = call i64 @just(i64 %153), !dbg !20918
-  %shr153 = lshr i64 %call152, 23, !dbg !20918
-  %154 = load i64, i64* %h, align 8, !dbg !20918
-  %xor154 = xor i64 %154, %shr153, !dbg !20918
-  store i64 %xor154, i64* %h, align 8, !dbg !20918
-  %155 = load i64, i64* %c, align 8, !dbg !20918
-  %156 = load i64, i64* %b, align 8, !dbg !20918
-  %add155 = add i64 %156, %155, !dbg !20918
-  store i64 %add155, i64* %b, align 8, !dbg !20918
-  %157 = load i64, i64* %h, align 8, !dbg !20918
-  %158 = load i64, i64* %d, align 8, !dbg !20918
-  %sub156 = sub i64 %158, %157, !dbg !20918
-  store i64 %sub156, i64* %d, align 8, !dbg !20918
-  %159 = load i64, i64* %c, align 8, !dbg !20918
-  %shl157 = shl i64 %159, 15, !dbg !20918
-  %160 = load i64, i64* %a, align 8, !dbg !20918
-  %xor158 = xor i64 %160, %shl157, !dbg !20918
-  store i64 %xor158, i64* %a, align 8, !dbg !20918
-  %161 = load i64, i64* %d, align 8, !dbg !20918
-  %162 = load i64, i64* %c, align 8, !dbg !20918
-  %add159 = add i64 %162, %161, !dbg !20918
-  store i64 %add159, i64* %c, align 8, !dbg !20918
-  %163 = load i64, i64* %a, align 8, !dbg !20918
-  %164 = load i64, i64* %e, align 8, !dbg !20918
-  %sub160 = sub i64 %164, %163, !dbg !20918
-  store i64 %sub160, i64* %e, align 8, !dbg !20918
-  %165 = load i64, i64* %d, align 8, !dbg !20918
-  %call161 = call i64 @just(i64 %165), !dbg !20918
-  %shr162 = lshr i64 %call161, 14, !dbg !20918
-  %166 = load i64, i64* %b, align 8, !dbg !20918
-  %xor163 = xor i64 %166, %shr162, !dbg !20918
-  store i64 %xor163, i64* %b, align 8, !dbg !20918
-  %167 = load i64, i64* %e, align 8, !dbg !20918
-  %168 = load i64, i64* %d, align 8, !dbg !20918
-  %add164 = add i64 %168, %167, !dbg !20918
-  store i64 %add164, i64* %d, align 8, !dbg !20918
-  %169 = load i64, i64* %b, align 8, !dbg !20918
-  %170 = load i64, i64* %f, align 8, !dbg !20918
-  %sub165 = sub i64 %170, %169, !dbg !20918
-  store i64 %sub165, i64* %f, align 8, !dbg !20918
-  %171 = load i64, i64* %e, align 8, !dbg !20918
-  %shl166 = shl i64 %171, 20, !dbg !20918
-  %172 = load i64, i64* %c, align 8, !dbg !20918
-  %xor167 = xor i64 %172, %shl166, !dbg !20918
-  store i64 %xor167, i64* %c, align 8, !dbg !20918
-  %173 = load i64, i64* %f, align 8, !dbg !20918
-  %174 = load i64, i64* %e, align 8, !dbg !20918
-  %add168 = add i64 %174, %173, !dbg !20918
-  store i64 %add168, i64* %e, align 8, !dbg !20918
-  %175 = load i64, i64* %c, align 8, !dbg !20918
-  %176 = load i64, i64* %g, align 8, !dbg !20918
-  %sub169 = sub i64 %176, %175, !dbg !20918
-  store i64 %sub169, i64* %g, align 8, !dbg !20918
-  %177 = load i64, i64* %f, align 8, !dbg !20918
-  %call170 = call i64 @just(i64 %177), !dbg !20918
-  %shr171 = lshr i64 %call170, 17, !dbg !20918
-  %178 = load i64, i64* %d, align 8, !dbg !20918
-  %xor172 = xor i64 %178, %shr171, !dbg !20918
-  store i64 %xor172, i64* %d, align 8, !dbg !20918
-  %179 = load i64, i64* %g, align 8, !dbg !20918
-  %180 = load i64, i64* %f, align 8, !dbg !20918
-  %add173 = add i64 %180, %179, !dbg !20918
-  store i64 %add173, i64* %f, align 8, !dbg !20918
-  %181 = load i64, i64* %d, align 8, !dbg !20918
-  %182 = load i64, i64* %h, align 8, !dbg !20918
-  %sub174 = sub i64 %182, %181, !dbg !20918
-  store i64 %sub174, i64* %h, align 8, !dbg !20918
-  %183 = load i64, i64* %g, align 8, !dbg !20918
-  %shl175 = shl i64 %183, 14, !dbg !20918
-  %184 = load i64, i64* %e, align 8, !dbg !20918
-  %xor176 = xor i64 %184, %shl175, !dbg !20918
-  store i64 %xor176, i64* %e, align 8, !dbg !20918
-  %185 = load i64, i64* %h, align 8, !dbg !20918
-  %186 = load i64, i64* %g, align 8, !dbg !20918
-  %add177 = add i64 %186, %185, !dbg !20918
-  store i64 %add177, i64* %g, align 8, !dbg !20918
-  %187 = load i64, i64* %a, align 8, !dbg !20916
-  %188 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20916
-  %m178 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %188, i32 0, i32 0, !dbg !20916, !ctir !20746
-  %189 = load i32, i32* %i99, align 4, !dbg !20916
-  %idxprom179 = sext i32 %189 to i64, !dbg !20916
-  %arrayidx180 = getelementptr inbounds [256 x i64], [256 x i64]* %m178, i64 0, i64 %idxprom179, !dbg !20916, !ctir !1814
-  store i64 %187, i64* %arrayidx180, align 8, !dbg !20916
-  %190 = load i64, i64* %b, align 8, !dbg !20916
-  %191 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20916
-  %m181 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %191, i32 0, i32 0, !dbg !20916, !ctir !20746
-  %192 = load i32, i32* %i99, align 4, !dbg !20916
-  %add182 = add nsw i32 %192, 1, !dbg !20916
-  %idxprom183 = sext i32 %add182 to i64, !dbg !20916
-  %arrayidx184 = getelementptr inbounds [256 x i64], [256 x i64]* %m181, i64 0, i64 %idxprom183, !dbg !20916, !ctir !1814
-  store i64 %190, i64* %arrayidx184, align 8, !dbg !20916
-  %193 = load i64, i64* %c, align 8, !dbg !20916
-  %194 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20916
-  %m185 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %194, i32 0, i32 0, !dbg !20916, !ctir !20746
-  %195 = load i32, i32* %i99, align 4, !dbg !20916
-  %add186 = add nsw i32 %195, 2, !dbg !20916
-  %idxprom187 = sext i32 %add186 to i64, !dbg !20916
-  %arrayidx188 = getelementptr inbounds [256 x i64], [256 x i64]* %m185, i64 0, i64 %idxprom187, !dbg !20916, !ctir !1814
-  store i64 %193, i64* %arrayidx188, align 8, !dbg !20916
-  %196 = load i64, i64* %d, align 8, !dbg !20916
-  %197 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20916
-  %m189 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %197, i32 0, i32 0, !dbg !20916, !ctir !20746
-  %198 = load i32, i32* %i99, align 4, !dbg !20916
-  %add190 = add nsw i32 %198, 3, !dbg !20916
-  %idxprom191 = sext i32 %add190 to i64, !dbg !20916
-  %arrayidx192 = getelementptr inbounds [256 x i64], [256 x i64]* %m189, i64 0, i64 %idxprom191, !dbg !20916, !ctir !1814
-  store i64 %196, i64* %arrayidx192, align 8, !dbg !20916
-  %199 = load i64, i64* %e, align 8, !dbg !20916
-  %200 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20916
-  %m193 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %200, i32 0, i32 0, !dbg !20916, !ctir !20746
-  %201 = load i32, i32* %i99, align 4, !dbg !20916
-  %add194 = add nsw i32 %201, 4, !dbg !20916
-  %idxprom195 = sext i32 %add194 to i64, !dbg !20916
-  %arrayidx196 = getelementptr inbounds [256 x i64], [256 x i64]* %m193, i64 0, i64 %idxprom195, !dbg !20916, !ctir !1814
-  store i64 %199, i64* %arrayidx196, align 8, !dbg !20916
-  %202 = load i64, i64* %f, align 8, !dbg !20916
-  %203 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20916
-  %m197 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %203, i32 0, i32 0, !dbg !20916, !ctir !20746
-  %204 = load i32, i32* %i99, align 4, !dbg !20916
-  %add198 = add nsw i32 %204, 5, !dbg !20916
-  %idxprom199 = sext i32 %add198 to i64, !dbg !20916
-  %arrayidx200 = getelementptr inbounds [256 x i64], [256 x i64]* %m197, i64 0, i64 %idxprom199, !dbg !20916, !ctir !1814
-  store i64 %202, i64* %arrayidx200, align 8, !dbg !20916
-  %205 = load i64, i64* %g, align 8, !dbg !20916
-  %206 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20916
-  %m201 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %206, i32 0, i32 0, !dbg !20916, !ctir !20746
-  %207 = load i32, i32* %i99, align 4, !dbg !20916
-  %add202 = add nsw i32 %207, 6, !dbg !20916
-  %idxprom203 = sext i32 %add202 to i64, !dbg !20916
-  %arrayidx204 = getelementptr inbounds [256 x i64], [256 x i64]* %m201, i64 0, i64 %idxprom203, !dbg !20916, !ctir !1814
-  store i64 %205, i64* %arrayidx204, align 8, !dbg !20916
-  %208 = load i64, i64* %h, align 8, !dbg !20916
-  %209 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20916
-  %m205 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %209, i32 0, i32 0, !dbg !20916, !ctir !20746
-  %210 = load i32, i32* %i99, align 4, !dbg !20916
-  %add206 = add nsw i32 %210, 7, !dbg !20916
-  %idxprom207 = sext i32 %add206 to i64, !dbg !20916
-  %arrayidx208 = getelementptr inbounds [256 x i64], [256 x i64]* %m205, i64 0, i64 %idxprom207, !dbg !20916, !ctir !1814
-  store i64 %208, i64* %arrayidx208, align 8, !dbg !20916
-  br label %for.inc209, !dbg !20916
+  %107 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20921
+  %m103 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %107, i32 0, i32 0, !dbg !20921, !ctir !20751
+  %108 = load i32, i32* %i99, align 4, !dbg !20921
+  %idxprom104 = sext i32 %108 to i64, !dbg !20921
+  %arrayidx105 = getelementptr inbounds [256 x i64], [256 x i64]* %m103, i64 0, i64 %idxprom104, !dbg !20921, !ctir !1814
+  %109 = load i64, i64* %arrayidx105, align 8, !dbg !20921
+  %110 = load i64, i64* %a, align 8, !dbg !20921
+  %add106 = add i64 %110, %109, !dbg !20921
+  store i64 %add106, i64* %a, align 8, !dbg !20921
+  %111 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20921
+  %m107 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %111, i32 0, i32 0, !dbg !20921, !ctir !20751
+  %112 = load i32, i32* %i99, align 4, !dbg !20921
+  %add108 = add nsw i32 %112, 1, !dbg !20921
+  %idxprom109 = sext i32 %add108 to i64, !dbg !20921
+  %arrayidx110 = getelementptr inbounds [256 x i64], [256 x i64]* %m107, i64 0, i64 %idxprom109, !dbg !20921, !ctir !1814
+  %113 = load i64, i64* %arrayidx110, align 8, !dbg !20921
+  %114 = load i64, i64* %b, align 8, !dbg !20921
+  %add111 = add i64 %114, %113, !dbg !20921
+  store i64 %add111, i64* %b, align 8, !dbg !20921
+  %115 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20921
+  %m112 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %115, i32 0, i32 0, !dbg !20921, !ctir !20751
+  %116 = load i32, i32* %i99, align 4, !dbg !20921
+  %add113 = add nsw i32 %116, 2, !dbg !20921
+  %idxprom114 = sext i32 %add113 to i64, !dbg !20921
+  %arrayidx115 = getelementptr inbounds [256 x i64], [256 x i64]* %m112, i64 0, i64 %idxprom114, !dbg !20921, !ctir !1814
+  %117 = load i64, i64* %arrayidx115, align 8, !dbg !20921
+  %118 = load i64, i64* %c, align 8, !dbg !20921
+  %add116 = add i64 %118, %117, !dbg !20921
+  store i64 %add116, i64* %c, align 8, !dbg !20921
+  %119 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20921
+  %m117 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %119, i32 0, i32 0, !dbg !20921, !ctir !20751
+  %120 = load i32, i32* %i99, align 4, !dbg !20921
+  %add118 = add nsw i32 %120, 3, !dbg !20921
+  %idxprom119 = sext i32 %add118 to i64, !dbg !20921
+  %arrayidx120 = getelementptr inbounds [256 x i64], [256 x i64]* %m117, i64 0, i64 %idxprom119, !dbg !20921, !ctir !1814
+  %121 = load i64, i64* %arrayidx120, align 8, !dbg !20921
+  %122 = load i64, i64* %d, align 8, !dbg !20921
+  %add121 = add i64 %122, %121, !dbg !20921
+  store i64 %add121, i64* %d, align 8, !dbg !20921
+  %123 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20921
+  %m122 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %123, i32 0, i32 0, !dbg !20921, !ctir !20751
+  %124 = load i32, i32* %i99, align 4, !dbg !20921
+  %add123 = add nsw i32 %124, 4, !dbg !20921
+  %idxprom124 = sext i32 %add123 to i64, !dbg !20921
+  %arrayidx125 = getelementptr inbounds [256 x i64], [256 x i64]* %m122, i64 0, i64 %idxprom124, !dbg !20921, !ctir !1814
+  %125 = load i64, i64* %arrayidx125, align 8, !dbg !20921
+  %126 = load i64, i64* %e, align 8, !dbg !20921
+  %add126 = add i64 %126, %125, !dbg !20921
+  store i64 %add126, i64* %e, align 8, !dbg !20921
+  %127 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20921
+  %m127 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %127, i32 0, i32 0, !dbg !20921, !ctir !20751
+  %128 = load i32, i32* %i99, align 4, !dbg !20921
+  %add128 = add nsw i32 %128, 5, !dbg !20921
+  %idxprom129 = sext i32 %add128 to i64, !dbg !20921
+  %arrayidx130 = getelementptr inbounds [256 x i64], [256 x i64]* %m127, i64 0, i64 %idxprom129, !dbg !20921, !ctir !1814
+  %129 = load i64, i64* %arrayidx130, align 8, !dbg !20921
+  %130 = load i64, i64* %f, align 8, !dbg !20921
+  %add131 = add i64 %130, %129, !dbg !20921
+  store i64 %add131, i64* %f, align 8, !dbg !20921
+  %131 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20921
+  %m132 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %131, i32 0, i32 0, !dbg !20921, !ctir !20751
+  %132 = load i32, i32* %i99, align 4, !dbg !20921
+  %add133 = add nsw i32 %132, 6, !dbg !20921
+  %idxprom134 = sext i32 %add133 to i64, !dbg !20921
+  %arrayidx135 = getelementptr inbounds [256 x i64], [256 x i64]* %m132, i64 0, i64 %idxprom134, !dbg !20921, !ctir !1814
+  %133 = load i64, i64* %arrayidx135, align 8, !dbg !20921
+  %134 = load i64, i64* %g, align 8, !dbg !20921
+  %add136 = add i64 %134, %133, !dbg !20921
+  store i64 %add136, i64* %g, align 8, !dbg !20921
+  %135 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20921
+  %m137 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %135, i32 0, i32 0, !dbg !20921, !ctir !20751
+  %136 = load i32, i32* %i99, align 4, !dbg !20921
+  %add138 = add nsw i32 %136, 7, !dbg !20921
+  %idxprom139 = sext i32 %add138 to i64, !dbg !20921
+  %arrayidx140 = getelementptr inbounds [256 x i64], [256 x i64]* %m137, i64 0, i64 %idxprom139, !dbg !20921, !ctir !1814
+  %137 = load i64, i64* %arrayidx140, align 8, !dbg !20921
+  %138 = load i64, i64* %h, align 8, !dbg !20921
+  %add141 = add i64 %138, %137, !dbg !20921
+  store i64 %add141, i64* %h, align 8, !dbg !20921
+  %139 = load i64, i64* %e, align 8, !dbg !20923
+  %140 = load i64, i64* %a, align 8, !dbg !20923
+  %sub142 = sub i64 %140, %139, !dbg !20923
+  store i64 %sub142, i64* %a, align 8, !dbg !20923
+  %141 = load i64, i64* %h, align 8, !dbg !20923
+  %call143 = call i64 @just(i64 %141), !dbg !20923
+  %shr144 = lshr i64 %call143, 9, !dbg !20923
+  %142 = load i64, i64* %f, align 8, !dbg !20923
+  %xor145 = xor i64 %142, %shr144, !dbg !20923
+  store i64 %xor145, i64* %f, align 8, !dbg !20923
+  %143 = load i64, i64* %a, align 8, !dbg !20923
+  %144 = load i64, i64* %h, align 8, !dbg !20923
+  %add146 = add i64 %144, %143, !dbg !20923
+  store i64 %add146, i64* %h, align 8, !dbg !20923
+  %145 = load i64, i64* %f, align 8, !dbg !20923
+  %146 = load i64, i64* %b, align 8, !dbg !20923
+  %sub147 = sub i64 %146, %145, !dbg !20923
+  store i64 %sub147, i64* %b, align 8, !dbg !20923
+  %147 = load i64, i64* %a, align 8, !dbg !20923
+  %shl148 = shl i64 %147, 9, !dbg !20923
+  %148 = load i64, i64* %g, align 8, !dbg !20923
+  %xor149 = xor i64 %148, %shl148, !dbg !20923
+  store i64 %xor149, i64* %g, align 8, !dbg !20923
+  %149 = load i64, i64* %b, align 8, !dbg !20923
+  %150 = load i64, i64* %a, align 8, !dbg !20923
+  %add150 = add i64 %150, %149, !dbg !20923
+  store i64 %add150, i64* %a, align 8, !dbg !20923
+  %151 = load i64, i64* %g, align 8, !dbg !20923
+  %152 = load i64, i64* %c, align 8, !dbg !20923
+  %sub151 = sub i64 %152, %151, !dbg !20923
+  store i64 %sub151, i64* %c, align 8, !dbg !20923
+  %153 = load i64, i64* %b, align 8, !dbg !20923
+  %call152 = call i64 @just(i64 %153), !dbg !20923
+  %shr153 = lshr i64 %call152, 23, !dbg !20923
+  %154 = load i64, i64* %h, align 8, !dbg !20923
+  %xor154 = xor i64 %154, %shr153, !dbg !20923
+  store i64 %xor154, i64* %h, align 8, !dbg !20923
+  %155 = load i64, i64* %c, align 8, !dbg !20923
+  %156 = load i64, i64* %b, align 8, !dbg !20923
+  %add155 = add i64 %156, %155, !dbg !20923
+  store i64 %add155, i64* %b, align 8, !dbg !20923
+  %157 = load i64, i64* %h, align 8, !dbg !20923
+  %158 = load i64, i64* %d, align 8, !dbg !20923
+  %sub156 = sub i64 %158, %157, !dbg !20923
+  store i64 %sub156, i64* %d, align 8, !dbg !20923
+  %159 = load i64, i64* %c, align 8, !dbg !20923
+  %shl157 = shl i64 %159, 15, !dbg !20923
+  %160 = load i64, i64* %a, align 8, !dbg !20923
+  %xor158 = xor i64 %160, %shl157, !dbg !20923
+  store i64 %xor158, i64* %a, align 8, !dbg !20923
+  %161 = load i64, i64* %d, align 8, !dbg !20923
+  %162 = load i64, i64* %c, align 8, !dbg !20923
+  %add159 = add i64 %162, %161, !dbg !20923
+  store i64 %add159, i64* %c, align 8, !dbg !20923
+  %163 = load i64, i64* %a, align 8, !dbg !20923
+  %164 = load i64, i64* %e, align 8, !dbg !20923
+  %sub160 = sub i64 %164, %163, !dbg !20923
+  store i64 %sub160, i64* %e, align 8, !dbg !20923
+  %165 = load i64, i64* %d, align 8, !dbg !20923
+  %call161 = call i64 @just(i64 %165), !dbg !20923
+  %shr162 = lshr i64 %call161, 14, !dbg !20923
+  %166 = load i64, i64* %b, align 8, !dbg !20923
+  %xor163 = xor i64 %166, %shr162, !dbg !20923
+  store i64 %xor163, i64* %b, align 8, !dbg !20923
+  %167 = load i64, i64* %e, align 8, !dbg !20923
+  %168 = load i64, i64* %d, align 8, !dbg !20923
+  %add164 = add i64 %168, %167, !dbg !20923
+  store i64 %add164, i64* %d, align 8, !dbg !20923
+  %169 = load i64, i64* %b, align 8, !dbg !20923
+  %170 = load i64, i64* %f, align 8, !dbg !20923
+  %sub165 = sub i64 %170, %169, !dbg !20923
+  store i64 %sub165, i64* %f, align 8, !dbg !20923
+  %171 = load i64, i64* %e, align 8, !dbg !20923
+  %shl166 = shl i64 %171, 20, !dbg !20923
+  %172 = load i64, i64* %c, align 8, !dbg !20923
+  %xor167 = xor i64 %172, %shl166, !dbg !20923
+  store i64 %xor167, i64* %c, align 8, !dbg !20923
+  %173 = load i64, i64* %f, align 8, !dbg !20923
+  %174 = load i64, i64* %e, align 8, !dbg !20923
+  %add168 = add i64 %174, %173, !dbg !20923
+  store i64 %add168, i64* %e, align 8, !dbg !20923
+  %175 = load i64, i64* %c, align 8, !dbg !20923
+  %176 = load i64, i64* %g, align 8, !dbg !20923
+  %sub169 = sub i64 %176, %175, !dbg !20923
+  store i64 %sub169, i64* %g, align 8, !dbg !20923
+  %177 = load i64, i64* %f, align 8, !dbg !20923
+  %call170 = call i64 @just(i64 %177), !dbg !20923
+  %shr171 = lshr i64 %call170, 17, !dbg !20923
+  %178 = load i64, i64* %d, align 8, !dbg !20923
+  %xor172 = xor i64 %178, %shr171, !dbg !20923
+  store i64 %xor172, i64* %d, align 8, !dbg !20923
+  %179 = load i64, i64* %g, align 8, !dbg !20923
+  %180 = load i64, i64* %f, align 8, !dbg !20923
+  %add173 = add i64 %180, %179, !dbg !20923
+  store i64 %add173, i64* %f, align 8, !dbg !20923
+  %181 = load i64, i64* %d, align 8, !dbg !20923
+  %182 = load i64, i64* %h, align 8, !dbg !20923
+  %sub174 = sub i64 %182, %181, !dbg !20923
+  store i64 %sub174, i64* %h, align 8, !dbg !20923
+  %183 = load i64, i64* %g, align 8, !dbg !20923
+  %shl175 = shl i64 %183, 14, !dbg !20923
+  %184 = load i64, i64* %e, align 8, !dbg !20923
+  %xor176 = xor i64 %184, %shl175, !dbg !20923
+  store i64 %xor176, i64* %e, align 8, !dbg !20923
+  %185 = load i64, i64* %h, align 8, !dbg !20923
+  %186 = load i64, i64* %g, align 8, !dbg !20923
+  %add177 = add i64 %186, %185, !dbg !20923
+  store i64 %add177, i64* %g, align 8, !dbg !20923
+  %187 = load i64, i64* %a, align 8, !dbg !20921
+  %188 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20921
+  %m178 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %188, i32 0, i32 0, !dbg !20921, !ctir !20751
+  %189 = load i32, i32* %i99, align 4, !dbg !20921
+  %idxprom179 = sext i32 %189 to i64, !dbg !20921
+  %arrayidx180 = getelementptr inbounds [256 x i64], [256 x i64]* %m178, i64 0, i64 %idxprom179, !dbg !20921, !ctir !1814
+  store i64 %187, i64* %arrayidx180, align 8, !dbg !20921
+  %190 = load i64, i64* %b, align 8, !dbg !20921
+  %191 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20921
+  %m181 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %191, i32 0, i32 0, !dbg !20921, !ctir !20751
+  %192 = load i32, i32* %i99, align 4, !dbg !20921
+  %add182 = add nsw i32 %192, 1, !dbg !20921
+  %idxprom183 = sext i32 %add182 to i64, !dbg !20921
+  %arrayidx184 = getelementptr inbounds [256 x i64], [256 x i64]* %m181, i64 0, i64 %idxprom183, !dbg !20921, !ctir !1814
+  store i64 %190, i64* %arrayidx184, align 8, !dbg !20921
+  %193 = load i64, i64* %c, align 8, !dbg !20921
+  %194 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20921
+  %m185 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %194, i32 0, i32 0, !dbg !20921, !ctir !20751
+  %195 = load i32, i32* %i99, align 4, !dbg !20921
+  %add186 = add nsw i32 %195, 2, !dbg !20921
+  %idxprom187 = sext i32 %add186 to i64, !dbg !20921
+  %arrayidx188 = getelementptr inbounds [256 x i64], [256 x i64]* %m185, i64 0, i64 %idxprom187, !dbg !20921, !ctir !1814
+  store i64 %193, i64* %arrayidx188, align 8, !dbg !20921
+  %196 = load i64, i64* %d, align 8, !dbg !20921
+  %197 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20921
+  %m189 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %197, i32 0, i32 0, !dbg !20921, !ctir !20751
+  %198 = load i32, i32* %i99, align 4, !dbg !20921
+  %add190 = add nsw i32 %198, 3, !dbg !20921
+  %idxprom191 = sext i32 %add190 to i64, !dbg !20921
+  %arrayidx192 = getelementptr inbounds [256 x i64], [256 x i64]* %m189, i64 0, i64 %idxprom191, !dbg !20921, !ctir !1814
+  store i64 %196, i64* %arrayidx192, align 8, !dbg !20921
+  %199 = load i64, i64* %e, align 8, !dbg !20921
+  %200 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20921
+  %m193 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %200, i32 0, i32 0, !dbg !20921, !ctir !20751
+  %201 = load i32, i32* %i99, align 4, !dbg !20921
+  %add194 = add nsw i32 %201, 4, !dbg !20921
+  %idxprom195 = sext i32 %add194 to i64, !dbg !20921
+  %arrayidx196 = getelementptr inbounds [256 x i64], [256 x i64]* %m193, i64 0, i64 %idxprom195, !dbg !20921, !ctir !1814
+  store i64 %199, i64* %arrayidx196, align 8, !dbg !20921
+  %202 = load i64, i64* %f, align 8, !dbg !20921
+  %203 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20921
+  %m197 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %203, i32 0, i32 0, !dbg !20921, !ctir !20751
+  %204 = load i32, i32* %i99, align 4, !dbg !20921
+  %add198 = add nsw i32 %204, 5, !dbg !20921
+  %idxprom199 = sext i32 %add198 to i64, !dbg !20921
+  %arrayidx200 = getelementptr inbounds [256 x i64], [256 x i64]* %m197, i64 0, i64 %idxprom199, !dbg !20921, !ctir !1814
+  store i64 %202, i64* %arrayidx200, align 8, !dbg !20921
+  %205 = load i64, i64* %g, align 8, !dbg !20921
+  %206 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20921
+  %m201 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %206, i32 0, i32 0, !dbg !20921, !ctir !20751
+  %207 = load i32, i32* %i99, align 4, !dbg !20921
+  %add202 = add nsw i32 %207, 6, !dbg !20921
+  %idxprom203 = sext i32 %add202 to i64, !dbg !20921
+  %arrayidx204 = getelementptr inbounds [256 x i64], [256 x i64]* %m201, i64 0, i64 %idxprom203, !dbg !20921, !ctir !1814
+  store i64 %205, i64* %arrayidx204, align 8, !dbg !20921
+  %208 = load i64, i64* %h, align 8, !dbg !20921
+  %209 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20921
+  %m205 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %209, i32 0, i32 0, !dbg !20921, !ctir !20751
+  %210 = load i32, i32* %i99, align 4, !dbg !20921
+  %add206 = add nsw i32 %210, 7, !dbg !20921
+  %idxprom207 = sext i32 %add206 to i64, !dbg !20921
+  %arrayidx208 = getelementptr inbounds [256 x i64], [256 x i64]* %m205, i64 0, i64 %idxprom207, !dbg !20921, !ctir !1814
+  store i64 %208, i64* %arrayidx208, align 8, !dbg !20921
+  br label %for.inc209, !dbg !20921
 
 for.inc209:                                       ; preds = %for.body102
-  %211 = load i32, i32* %i99, align 4, !dbg !20914
-  %add210 = add nsw i32 %211, 8, !dbg !20914
-  store i32 %add210, i32* %i99, align 4, !dbg !20914
-  br label %for.cond100, !dbg !20914, !llvm.loop !20920
+  %211 = load i32, i32* %i99, align 4, !dbg !20919
+  %add210 = add nsw i32 %211, 8, !dbg !20919
+  store i32 %add210, i32* %i99, align 4, !dbg !20919
+  br label %for.cond100, !dbg !20919, !llvm.loop !20925
 
 for.end211:                                       ; preds = %for.cond100
-  %212 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20921
-  %c212 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %212, i32 0, i32 3, !dbg !20922, !ctir !20746
-  store i64 0, i64* %c212, align 8, !dbg !20923, !ctir !1815
-  %213 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20924
-  %b213 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %213, i32 0, i32 2, !dbg !20925, !ctir !20746
-  store i64 0, i64* %b213, align 8, !dbg !20926, !ctir !1815
-  %214 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20927
-  %a214 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %214, i32 0, i32 1, !dbg !20928, !ctir !20746
-  store i64 0, i64* %a214, align 8, !dbg !20929, !ctir !1815
-  ret void, !dbg !20930
+  %212 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20926
+  %c212 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %212, i32 0, i32 3, !dbg !20927, !ctir !20751
+  store i64 0, i64* %c212, align 8, !dbg !20928, !ctir !1815
+  %213 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20929
+  %b213 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %213, i32 0, i32 2, !dbg !20930, !ctir !20751
+  store i64 0, i64* %b213, align 8, !dbg !20931, !ctir !1815
+  %214 = load %struct.isaac_state*, %struct.isaac_state** %s.addr, align 8, !dbg !20932
+  %a214 = getelementptr inbounds %struct.isaac_state, %struct.isaac_state* %214, i32 0, i32 1, !dbg !20933, !ctir !20751
+  store i64 0, i64* %a214, align 8, !dbg !20934, !ctir !1815
+  ret void, !dbg !20935
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local i32 @dup_safer(i32 %fd) #4 !dbg !20931 {
+define dso_local i32 @dup_safer(i32 %fd) #4 !dbg !20936 {
 entry:
   %fd.addr = alloca i32, align 4
   store i32 %fd, i32* %fd.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %fd.addr, metadata !20933, metadata !DIExpression()), !dbg !20934
-  %0 = load i32, i32* %fd.addr, align 4, !dbg !20935
-  %call = call i32 (i32, i32, ...) @rpl_fcntl(i32 %0, i32 0, i32 3), !dbg !20936
-  ret i32 %call, !dbg !20937
+  call void @llvm.dbg.declare(metadata i32* %fd.addr, metadata !20938, metadata !DIExpression()), !dbg !20939
+  %0 = load i32, i32* %fd.addr, align 4, !dbg !20940
+  %call = call i32 (i32, i32, ...) @rpl_fcntl(i32 %0, i32 0, i32 3), !dbg !20941
+  ret i32 %call, !dbg !20942
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local void @explicit_bzero(i8* nonnull %s, i64 %len) #4 !dbg !20938 {
+define dso_local void @explicit_bzero(i8* nonnull %s, i64 %len) #4 !dbg !20943 {
 entry:
   %s.addr = alloca i8*, align 8
   %len.addr = alloca i64, align 8
   store i8* %s, i8** %s.addr, align 8
-  call void @llvm.dbg.declare(metadata i8** %s.addr, metadata !20942, metadata !DIExpression()), !dbg !20943
+  call void @llvm.dbg.declare(metadata i8** %s.addr, metadata !20947, metadata !DIExpression()), !dbg !20948
   store i64 %len, i64* %len.addr, align 8
-  call void @llvm.dbg.declare(metadata i64* %len.addr, metadata !20944, metadata !DIExpression()), !dbg !20945
-  %0 = load i8*, i8** %s.addr, align 8, !dbg !20946
-  %1 = load i64, i64* %len.addr, align 8, !dbg !20947
-  call void @llvm.memset.p0i8.i64(i8* align 1 %0, i8 0, i64 %1, i1 false), !dbg !20948
-  ret void, !dbg !20949
+  call void @llvm.dbg.declare(metadata i64* %len.addr, metadata !20949, metadata !DIExpression()), !dbg !20950
+  %0 = load i8*, i8** %s.addr, align 8, !dbg !20951
+  %1 = load i64, i64* %len.addr, align 8, !dbg !20952
+  call void @llvm.memset.p0i8.i64(i8* align 1 %0, i8 0, i64 %1, i1 false), !dbg !20953
+  ret void, !dbg !20954
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local i32 @rpl_fclose(%struct._IO_FILE* nonnull %fp) #4 !dbg !20950 {
+define dso_local i32 @rpl_fclose(%struct._IO_FILE* nonnull %fp) #4 !dbg !20955 {
 entry:
   %retval = alloca i32, align 4
   %fp.addr = alloca %struct._IO_FILE*, align 8
@@ -33915,79 +33911,79 @@ entry:
   %fd = alloca i32, align 4, !ctir !5
   %result = alloca i32, align 4, !ctir !5
   store %struct._IO_FILE* %fp, %struct._IO_FILE** %fp.addr, align 8
-  call void @llvm.dbg.declare(metadata %struct._IO_FILE** %fp.addr, metadata !20994, metadata !DIExpression()), !dbg !20995
-  call void @llvm.dbg.declare(metadata i32* %saved_errno, metadata !20996, metadata !DIExpression()), !dbg !20997
-  store i32 0, i32* %saved_errno, align 4, !dbg !20997
-  call void @llvm.dbg.declare(metadata i32* %fd, metadata !20998, metadata !DIExpression()), !dbg !20999
-  call void @llvm.dbg.declare(metadata i32* %result, metadata !21000, metadata !DIExpression()), !dbg !21001
-  store i32 0, i32* %result, align 4, !dbg !21001
-  %0 = load %struct._IO_FILE*, %struct._IO_FILE** %fp.addr, align 8, !dbg !21002
-  %call = call i32 @fileno(%struct._IO_FILE* %0) #9, !dbg !21003
-  store i32 %call, i32* %fd, align 4, !dbg !21004
-  %1 = load i32, i32* %fd, align 4, !dbg !21005
-  %cmp = icmp slt i32 %1, 0, !dbg !21007
-  br i1 %cmp, label %if.then, label %if.end, !dbg !21008
+  call void @llvm.dbg.declare(metadata %struct._IO_FILE** %fp.addr, metadata !20999, metadata !DIExpression()), !dbg !21000
+  call void @llvm.dbg.declare(metadata i32* %saved_errno, metadata !21001, metadata !DIExpression()), !dbg !21002
+  store i32 0, i32* %saved_errno, align 4, !dbg !21002
+  call void @llvm.dbg.declare(metadata i32* %fd, metadata !21003, metadata !DIExpression()), !dbg !21004
+  call void @llvm.dbg.declare(metadata i32* %result, metadata !21005, metadata !DIExpression()), !dbg !21006
+  store i32 0, i32* %result, align 4, !dbg !21006
+  %0 = load %struct._IO_FILE*, %struct._IO_FILE** %fp.addr, align 8, !dbg !21007
+  %call = call i32 @fileno(%struct._IO_FILE* %0) #9, !dbg !21008
+  store i32 %call, i32* %fd, align 4, !dbg !21009
+  %1 = load i32, i32* %fd, align 4, !dbg !21010
+  %cmp = icmp slt i32 %1, 0, !dbg !21012
+  br i1 %cmp, label %if.then, label %if.end, !dbg !21013
 
 if.then:                                          ; preds = %entry
-  %2 = load %struct._IO_FILE*, %struct._IO_FILE** %fp.addr, align 8, !dbg !21009
-  %call1 = call i32 @fclose(%struct._IO_FILE* %2), !dbg !21010
-  store i32 %call1, i32* %retval, align 4, !dbg !21011
-  br label %return, !dbg !21011
+  %2 = load %struct._IO_FILE*, %struct._IO_FILE** %fp.addr, align 8, !dbg !21014
+  %call1 = call i32 @fclose(%struct._IO_FILE* %2), !dbg !21015
+  store i32 %call1, i32* %retval, align 4, !dbg !21016
+  br label %return, !dbg !21016
 
 if.end:                                           ; preds = %entry
-  %3 = load %struct._IO_FILE*, %struct._IO_FILE** %fp.addr, align 8, !dbg !21012
-  %call2 = call i32 @__freading(%struct._IO_FILE* %3) #9, !dbg !21012
-  %cmp3 = icmp ne i32 %call2, 0, !dbg !21012
-  br i1 %cmp3, label %lor.lhs.false, label %land.lhs.true, !dbg !21014
+  %3 = load %struct._IO_FILE*, %struct._IO_FILE** %fp.addr, align 8, !dbg !21017
+  %call2 = call i32 @__freading(%struct._IO_FILE* %3) #9, !dbg !21017
+  %cmp3 = icmp ne i32 %call2, 0, !dbg !21017
+  br i1 %cmp3, label %lor.lhs.false, label %land.lhs.true, !dbg !21019
 
 lor.lhs.false:                                    ; preds = %if.end
-  %4 = load %struct._IO_FILE*, %struct._IO_FILE** %fp.addr, align 8, !dbg !21015
-  %call4 = call i32 @fileno(%struct._IO_FILE* %4) #9, !dbg !21016
-  %call5 = call i64 @lseek(i32 %call4, i64 0, i32 1) #9, !dbg !21017
-  %cmp6 = icmp ne i64 %call5, -1, !dbg !21018
-  br i1 %cmp6, label %land.lhs.true, label %if.end10, !dbg !21019
+  %4 = load %struct._IO_FILE*, %struct._IO_FILE** %fp.addr, align 8, !dbg !21020
+  %call4 = call i32 @fileno(%struct._IO_FILE* %4) #9, !dbg !21021
+  %call5 = call i64 @lseek(i32 %call4, i64 0, i32 1) #9, !dbg !21022
+  %cmp6 = icmp ne i64 %call5, -1, !dbg !21023
+  br i1 %cmp6, label %land.lhs.true, label %if.end10, !dbg !21024
 
 land.lhs.true:                                    ; preds = %lor.lhs.false, %if.end
-  %5 = load %struct._IO_FILE*, %struct._IO_FILE** %fp.addr, align 8, !dbg !21020
-  %call7 = call i32 @rpl_fflush(%struct._IO_FILE* %5), !dbg !21021
-  %tobool = icmp ne i32 %call7, 0, !dbg !21021
-  br i1 %tobool, label %if.then8, label %if.end10, !dbg !21022
+  %5 = load %struct._IO_FILE*, %struct._IO_FILE** %fp.addr, align 8, !dbg !21025
+  %call7 = call i32 @rpl_fflush(%struct._IO_FILE* %5), !dbg !21026
+  %tobool = icmp ne i32 %call7, 0, !dbg !21026
+  br i1 %tobool, label %if.then8, label %if.end10, !dbg !21027
 
 if.then8:                                         ; preds = %land.lhs.true
-  %call9 = call i32* @__errno_location() #16, !dbg !21023
-  %6 = load i32, i32* %call9, align 4, !dbg !21023, !ctir !5
-  store i32 %6, i32* %saved_errno, align 4, !dbg !21024
-  br label %if.end10, !dbg !21025
+  %call9 = call i32* @__errno_location() #16, !dbg !21028
+  %6 = load i32, i32* %call9, align 4, !dbg !21028, !ctir !5
+  store i32 %6, i32* %saved_errno, align 4, !dbg !21029
+  br label %if.end10, !dbg !21030
 
 if.end10:                                         ; preds = %if.then8, %land.lhs.true, %lor.lhs.false
-  %7 = load %struct._IO_FILE*, %struct._IO_FILE** %fp.addr, align 8, !dbg !21026
-  %call11 = call i32 @fclose(%struct._IO_FILE* %7), !dbg !21027
-  store i32 %call11, i32* %result, align 4, !dbg !21028
-  %8 = load i32, i32* %saved_errno, align 4, !dbg !21029
-  %cmp12 = icmp ne i32 %8, 0, !dbg !21031
-  br i1 %cmp12, label %if.then13, label %if.end15, !dbg !21032
+  %7 = load %struct._IO_FILE*, %struct._IO_FILE** %fp.addr, align 8, !dbg !21031
+  %call11 = call i32 @fclose(%struct._IO_FILE* %7), !dbg !21032
+  store i32 %call11, i32* %result, align 4, !dbg !21033
+  %8 = load i32, i32* %saved_errno, align 4, !dbg !21034
+  %cmp12 = icmp ne i32 %8, 0, !dbg !21036
+  br i1 %cmp12, label %if.then13, label %if.end15, !dbg !21037
 
 if.then13:                                        ; preds = %if.end10
-  %9 = load i32, i32* %saved_errno, align 4, !dbg !21033
-  %call14 = call i32* @__errno_location() #16, !dbg !21035
-  store i32 %9, i32* %call14, align 4, !dbg !21036, !ctir !5
-  store i32 -1, i32* %result, align 4, !dbg !21037
-  br label %if.end15, !dbg !21038
+  %9 = load i32, i32* %saved_errno, align 4, !dbg !21038
+  %call14 = call i32* @__errno_location() #16, !dbg !21040
+  store i32 %9, i32* %call14, align 4, !dbg !21041, !ctir !5
+  store i32 -1, i32* %result, align 4, !dbg !21042
+  br label %if.end15, !dbg !21043
 
 if.end15:                                         ; preds = %if.then13, %if.end10
-  %10 = load i32, i32* %result, align 4, !dbg !21039
-  store i32 %10, i32* %retval, align 4, !dbg !21040
-  br label %return, !dbg !21040
+  %10 = load i32, i32* %result, align 4, !dbg !21044
+  store i32 %10, i32* %retval, align 4, !dbg !21045
+  br label %return, !dbg !21045
 
 return:                                           ; preds = %if.end15, %if.then
-  %11 = load i32, i32* %retval, align 4, !dbg !21041
-  ret i32 %11, !dbg !21041
+  %11 = load i32, i32* %retval, align 4, !dbg !21046
+  ret i32 %11, !dbg !21046
 }
 
 declare dso_local i32 @fclose(%struct._IO_FILE*) #3
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local i32 @rpl_fcntl(i32 %fd, i32 %action, ...) #4 !dbg !21042 {
+define dso_local i32 @rpl_fcntl(i32 %fd, i32 %action, ...) #4 !dbg !21047 {
 entry:
   %fd.addr = alloca i32, align 4
   %action.addr = alloca i32, align 4
@@ -33998,93 +33994,93 @@ entry:
   %x = alloca i32, align 4, !ctir !5
   %p = alloca i8*, align 8, !ctir !47
   store i32 %fd, i32* %fd.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %fd.addr, metadata !21045, metadata !DIExpression()), !dbg !21046
+  call void @llvm.dbg.declare(metadata i32* %fd.addr, metadata !21050, metadata !DIExpression()), !dbg !21051
   store i32 %action, i32* %action.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %action.addr, metadata !21047, metadata !DIExpression()), !dbg !21048
-  call void @llvm.dbg.declare(metadata [1 x %struct.__va_list_tag]* %arg, metadata !21049, metadata !DIExpression()), !dbg !21050
-  call void @llvm.dbg.declare(metadata i32* %result, metadata !21051, metadata !DIExpression()), !dbg !21052
-  store i32 -1, i32* %result, align 4, !dbg !21052
-  %arraydecay = getelementptr inbounds [1 x %struct.__va_list_tag], [1 x %struct.__va_list_tag]* %arg, i64 0, i64 0, !dbg !21053, !ctir !1175
-  %arraydecay1 = bitcast %struct.__va_list_tag* %arraydecay to i8*, !dbg !21053
-  call void @llvm.va_start(i8* %arraydecay1), !dbg !21053
-  %0 = load i32, i32* %action.addr, align 4, !dbg !21054
+  call void @llvm.dbg.declare(metadata i32* %action.addr, metadata !21052, metadata !DIExpression()), !dbg !21053
+  call void @llvm.dbg.declare(metadata [1 x %struct.__va_list_tag]* %arg, metadata !21054, metadata !DIExpression()), !dbg !21055
+  call void @llvm.dbg.declare(metadata i32* %result, metadata !21056, metadata !DIExpression()), !dbg !21057
+  store i32 -1, i32* %result, align 4, !dbg !21057
+  %arraydecay = getelementptr inbounds [1 x %struct.__va_list_tag], [1 x %struct.__va_list_tag]* %arg, i64 0, i64 0, !dbg !21058, !ctir !1175
+  %arraydecay1 = bitcast %struct.__va_list_tag* %arraydecay to i8*, !dbg !21058
+  call void @llvm.va_start(i8* %arraydecay1), !dbg !21058
+  %0 = load i32, i32* %action.addr, align 4, !dbg !21059
   switch i32 %0, label %sw.default [
     i32 0, label %sw.bb
     i32 1030, label %sw.bb3
-  ], !dbg !21055
+  ], !dbg !21060
 
 sw.bb:                                            ; preds = %entry
-  call void @llvm.dbg.declare(metadata i32* %target, metadata !21056, metadata !DIExpression()), !dbg !21059
-  %arraydecay2 = getelementptr inbounds [1 x %struct.__va_list_tag], [1 x %struct.__va_list_tag]* %arg, i64 0, i64 0, !dbg !21060, !ctir !1175
-  %gp_offset_p = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay2, i32 0, i32 0, !dbg !21060
-  %gp_offset = load i32, i32* %gp_offset_p, align 16, !dbg !21060
-  %fits_in_gp = icmp ule i32 %gp_offset, 40, !dbg !21060
-  br i1 %fits_in_gp, label %vaarg.in_reg, label %vaarg.in_mem, !dbg !21060
+  call void @llvm.dbg.declare(metadata i32* %target, metadata !21061, metadata !DIExpression()), !dbg !21064
+  %arraydecay2 = getelementptr inbounds [1 x %struct.__va_list_tag], [1 x %struct.__va_list_tag]* %arg, i64 0, i64 0, !dbg !21065, !ctir !1175
+  %gp_offset_p = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay2, i32 0, i32 0, !dbg !21065
+  %gp_offset = load i32, i32* %gp_offset_p, align 16, !dbg !21065
+  %fits_in_gp = icmp ule i32 %gp_offset, 40, !dbg !21065
+  br i1 %fits_in_gp, label %vaarg.in_reg, label %vaarg.in_mem, !dbg !21065
 
 vaarg.in_reg:                                     ; preds = %sw.bb
-  %1 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay2, i32 0, i32 3, !dbg !21060
-  %reg_save_area = load i8*, i8** %1, align 16, !dbg !21060
-  %2 = getelementptr i8, i8* %reg_save_area, i32 %gp_offset, !dbg !21060
-  %3 = bitcast i8* %2 to i32*, !dbg !21060
-  %4 = add i32 %gp_offset, 8, !dbg !21060
-  store i32 %4, i32* %gp_offset_p, align 16, !dbg !21060
-  br label %vaarg.end, !dbg !21060
+  %1 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay2, i32 0, i32 3, !dbg !21065
+  %reg_save_area = load i8*, i8** %1, align 16, !dbg !21065
+  %2 = getelementptr i8, i8* %reg_save_area, i32 %gp_offset, !dbg !21065
+  %3 = bitcast i8* %2 to i32*, !dbg !21065
+  %4 = add i32 %gp_offset, 8, !dbg !21065
+  store i32 %4, i32* %gp_offset_p, align 16, !dbg !21065
+  br label %vaarg.end, !dbg !21065
 
 vaarg.in_mem:                                     ; preds = %sw.bb
-  %overflow_arg_area_p = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay2, i32 0, i32 2, !dbg !21060
-  %overflow_arg_area = load i8*, i8** %overflow_arg_area_p, align 8, !dbg !21060
-  %5 = bitcast i8* %overflow_arg_area to i32*, !dbg !21060
-  %overflow_arg_area.next = getelementptr i8, i8* %overflow_arg_area, i32 8, !dbg !21060
-  store i8* %overflow_arg_area.next, i8** %overflow_arg_area_p, align 8, !dbg !21060
-  br label %vaarg.end, !dbg !21060
+  %overflow_arg_area_p = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay2, i32 0, i32 2, !dbg !21065
+  %overflow_arg_area = load i8*, i8** %overflow_arg_area_p, align 8, !dbg !21065
+  %5 = bitcast i8* %overflow_arg_area to i32*, !dbg !21065
+  %overflow_arg_area.next = getelementptr i8, i8* %overflow_arg_area, i32 8, !dbg !21065
+  store i8* %overflow_arg_area.next, i8** %overflow_arg_area_p, align 8, !dbg !21065
+  br label %vaarg.end, !dbg !21065
 
 vaarg.end:                                        ; preds = %vaarg.in_mem, %vaarg.in_reg
-  %vaarg.addr = phi i32* [ %3, %vaarg.in_reg ], [ %5, %vaarg.in_mem ], !dbg !21060
-  %6 = load i32, i32* %vaarg.addr, align 4, !dbg !21060
-  store i32 %6, i32* %target, align 4, !dbg !21059
-  %7 = load i32, i32* %fd.addr, align 4, !dbg !21061
-  %8 = load i32, i32* %target, align 4, !dbg !21062
-  %call = call i32 @rpl_fcntl_DUPFD(i32 %7, i32 %8), !dbg !21063
-  store i32 %call, i32* %result, align 4, !dbg !21064
-  br label %sw.epilog48, !dbg !21065
+  %vaarg.addr = phi i32* [ %3, %vaarg.in_reg ], [ %5, %vaarg.in_mem ], !dbg !21065
+  %6 = load i32, i32* %vaarg.addr, align 4, !dbg !21065
+  store i32 %6, i32* %target, align 4, !dbg !21064
+  %7 = load i32, i32* %fd.addr, align 4, !dbg !21066
+  %8 = load i32, i32* %target, align 4, !dbg !21067
+  %call = call i32 @rpl_fcntl_DUPFD(i32 %7, i32 %8), !dbg !21068
+  store i32 %call, i32* %result, align 4, !dbg !21069
+  br label %sw.epilog48, !dbg !21070
 
 sw.bb3:                                           ; preds = %entry
-  call void @llvm.dbg.declare(metadata i32* %target4, metadata !21066, metadata !DIExpression()), !dbg !21068
-  %arraydecay5 = getelementptr inbounds [1 x %struct.__va_list_tag], [1 x %struct.__va_list_tag]* %arg, i64 0, i64 0, !dbg !21069, !ctir !1175
-  %gp_offset_p6 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay5, i32 0, i32 0, !dbg !21069
-  %gp_offset7 = load i32, i32* %gp_offset_p6, align 16, !dbg !21069
-  %fits_in_gp8 = icmp ule i32 %gp_offset7, 40, !dbg !21069
-  br i1 %fits_in_gp8, label %vaarg.in_reg9, label %vaarg.in_mem11, !dbg !21069
+  call void @llvm.dbg.declare(metadata i32* %target4, metadata !21071, metadata !DIExpression()), !dbg !21073
+  %arraydecay5 = getelementptr inbounds [1 x %struct.__va_list_tag], [1 x %struct.__va_list_tag]* %arg, i64 0, i64 0, !dbg !21074, !ctir !1175
+  %gp_offset_p6 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay5, i32 0, i32 0, !dbg !21074
+  %gp_offset7 = load i32, i32* %gp_offset_p6, align 16, !dbg !21074
+  %fits_in_gp8 = icmp ule i32 %gp_offset7, 40, !dbg !21074
+  br i1 %fits_in_gp8, label %vaarg.in_reg9, label %vaarg.in_mem11, !dbg !21074
 
 vaarg.in_reg9:                                    ; preds = %sw.bb3
-  %9 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay5, i32 0, i32 3, !dbg !21069
-  %reg_save_area10 = load i8*, i8** %9, align 16, !dbg !21069
-  %10 = getelementptr i8, i8* %reg_save_area10, i32 %gp_offset7, !dbg !21069
-  %11 = bitcast i8* %10 to i32*, !dbg !21069
-  %12 = add i32 %gp_offset7, 8, !dbg !21069
-  store i32 %12, i32* %gp_offset_p6, align 16, !dbg !21069
-  br label %vaarg.end15, !dbg !21069
+  %9 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay5, i32 0, i32 3, !dbg !21074
+  %reg_save_area10 = load i8*, i8** %9, align 16, !dbg !21074
+  %10 = getelementptr i8, i8* %reg_save_area10, i32 %gp_offset7, !dbg !21074
+  %11 = bitcast i8* %10 to i32*, !dbg !21074
+  %12 = add i32 %gp_offset7, 8, !dbg !21074
+  store i32 %12, i32* %gp_offset_p6, align 16, !dbg !21074
+  br label %vaarg.end15, !dbg !21074
 
 vaarg.in_mem11:                                   ; preds = %sw.bb3
-  %overflow_arg_area_p12 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay5, i32 0, i32 2, !dbg !21069
-  %overflow_arg_area13 = load i8*, i8** %overflow_arg_area_p12, align 8, !dbg !21069
-  %13 = bitcast i8* %overflow_arg_area13 to i32*, !dbg !21069
-  %overflow_arg_area.next14 = getelementptr i8, i8* %overflow_arg_area13, i32 8, !dbg !21069
-  store i8* %overflow_arg_area.next14, i8** %overflow_arg_area_p12, align 8, !dbg !21069
-  br label %vaarg.end15, !dbg !21069
+  %overflow_arg_area_p12 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay5, i32 0, i32 2, !dbg !21074
+  %overflow_arg_area13 = load i8*, i8** %overflow_arg_area_p12, align 8, !dbg !21074
+  %13 = bitcast i8* %overflow_arg_area13 to i32*, !dbg !21074
+  %overflow_arg_area.next14 = getelementptr i8, i8* %overflow_arg_area13, i32 8, !dbg !21074
+  store i8* %overflow_arg_area.next14, i8** %overflow_arg_area_p12, align 8, !dbg !21074
+  br label %vaarg.end15, !dbg !21074
 
 vaarg.end15:                                      ; preds = %vaarg.in_mem11, %vaarg.in_reg9
-  %vaarg.addr16 = phi i32* [ %11, %vaarg.in_reg9 ], [ %13, %vaarg.in_mem11 ], !dbg !21069
-  %14 = load i32, i32* %vaarg.addr16, align 4, !dbg !21069
-  store i32 %14, i32* %target4, align 4, !dbg !21068
-  %15 = load i32, i32* %fd.addr, align 4, !dbg !21070
-  %16 = load i32, i32* %target4, align 4, !dbg !21071
-  %call17 = call i32 @rpl_fcntl_DUPFD_CLOEXEC(i32 %15, i32 %16), !dbg !21072
-  store i32 %call17, i32* %result, align 4, !dbg !21073
-  br label %sw.epilog48, !dbg !21074
+  %vaarg.addr16 = phi i32* [ %11, %vaarg.in_reg9 ], [ %13, %vaarg.in_mem11 ], !dbg !21074
+  %14 = load i32, i32* %vaarg.addr16, align 4, !dbg !21074
+  store i32 %14, i32* %target4, align 4, !dbg !21073
+  %15 = load i32, i32* %fd.addr, align 4, !dbg !21075
+  %16 = load i32, i32* %target4, align 4, !dbg !21076
+  %call17 = call i32 @rpl_fcntl_DUPFD_CLOEXEC(i32 %15, i32 %16), !dbg !21077
+  store i32 %call17, i32* %result, align 4, !dbg !21078
+  br label %sw.epilog48, !dbg !21079
 
 sw.default:                                       ; preds = %entry
-  %17 = load i32, i32* %action.addr, align 4, !dbg !21075
+  %17 = load i32, i32* %action.addr, align 4, !dbg !21080
   switch i32 %17, label %sw.default34 [
     i32 1, label %sw.bb18
     i32 3, label %sw.bb18
@@ -34101,115 +34097,115 @@ sw.default:                                       ; preds = %entry
     i32 8, label %sw.bb20
     i32 1031, label %sw.bb20
     i32 10, label %sw.bb20
-  ], !dbg !21077
+  ], !dbg !21082
 
 sw.bb18:                                          ; preds = %sw.default, %sw.default, %sw.default, %sw.default, %sw.default, %sw.default
-  %18 = load i32, i32* %fd.addr, align 4, !dbg !21078
-  %19 = load i32, i32* %action.addr, align 4, !dbg !21080
-  %call19 = call i32 (i32, i32, ...) @fcntl(i32 %18, i32 %19), !dbg !21081
-  store i32 %call19, i32* %result, align 4, !dbg !21082
-  br label %sw.epilog, !dbg !21083
+  %18 = load i32, i32* %fd.addr, align 4, !dbg !21083
+  %19 = load i32, i32* %action.addr, align 4, !dbg !21085
+  %call19 = call i32 (i32, i32, ...) @fcntl(i32 %18, i32 %19), !dbg !21086
+  store i32 %call19, i32* %result, align 4, !dbg !21087
+  br label %sw.epilog, !dbg !21088
 
 sw.bb20:                                          ; preds = %sw.default, %sw.default, %sw.default, %sw.default, %sw.default, %sw.default, %sw.default, %sw.default, %sw.default
-  call void @llvm.dbg.declare(metadata i32* %x, metadata !21084, metadata !DIExpression()), !dbg !21086
-  %arraydecay21 = getelementptr inbounds [1 x %struct.__va_list_tag], [1 x %struct.__va_list_tag]* %arg, i64 0, i64 0, !dbg !21087, !ctir !1175
-  %gp_offset_p22 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay21, i32 0, i32 0, !dbg !21087
-  %gp_offset23 = load i32, i32* %gp_offset_p22, align 16, !dbg !21087
-  %fits_in_gp24 = icmp ule i32 %gp_offset23, 40, !dbg !21087
-  br i1 %fits_in_gp24, label %vaarg.in_reg25, label %vaarg.in_mem27, !dbg !21087
+  call void @llvm.dbg.declare(metadata i32* %x, metadata !21089, metadata !DIExpression()), !dbg !21091
+  %arraydecay21 = getelementptr inbounds [1 x %struct.__va_list_tag], [1 x %struct.__va_list_tag]* %arg, i64 0, i64 0, !dbg !21092, !ctir !1175
+  %gp_offset_p22 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay21, i32 0, i32 0, !dbg !21092
+  %gp_offset23 = load i32, i32* %gp_offset_p22, align 16, !dbg !21092
+  %fits_in_gp24 = icmp ule i32 %gp_offset23, 40, !dbg !21092
+  br i1 %fits_in_gp24, label %vaarg.in_reg25, label %vaarg.in_mem27, !dbg !21092
 
 vaarg.in_reg25:                                   ; preds = %sw.bb20
-  %20 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay21, i32 0, i32 3, !dbg !21087
-  %reg_save_area26 = load i8*, i8** %20, align 16, !dbg !21087
-  %21 = getelementptr i8, i8* %reg_save_area26, i32 %gp_offset23, !dbg !21087
-  %22 = bitcast i8* %21 to i32*, !dbg !21087
-  %23 = add i32 %gp_offset23, 8, !dbg !21087
-  store i32 %23, i32* %gp_offset_p22, align 16, !dbg !21087
-  br label %vaarg.end31, !dbg !21087
+  %20 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay21, i32 0, i32 3, !dbg !21092
+  %reg_save_area26 = load i8*, i8** %20, align 16, !dbg !21092
+  %21 = getelementptr i8, i8* %reg_save_area26, i32 %gp_offset23, !dbg !21092
+  %22 = bitcast i8* %21 to i32*, !dbg !21092
+  %23 = add i32 %gp_offset23, 8, !dbg !21092
+  store i32 %23, i32* %gp_offset_p22, align 16, !dbg !21092
+  br label %vaarg.end31, !dbg !21092
 
 vaarg.in_mem27:                                   ; preds = %sw.bb20
-  %overflow_arg_area_p28 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay21, i32 0, i32 2, !dbg !21087
-  %overflow_arg_area29 = load i8*, i8** %overflow_arg_area_p28, align 8, !dbg !21087
-  %24 = bitcast i8* %overflow_arg_area29 to i32*, !dbg !21087
-  %overflow_arg_area.next30 = getelementptr i8, i8* %overflow_arg_area29, i32 8, !dbg !21087
-  store i8* %overflow_arg_area.next30, i8** %overflow_arg_area_p28, align 8, !dbg !21087
-  br label %vaarg.end31, !dbg !21087
+  %overflow_arg_area_p28 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay21, i32 0, i32 2, !dbg !21092
+  %overflow_arg_area29 = load i8*, i8** %overflow_arg_area_p28, align 8, !dbg !21092
+  %24 = bitcast i8* %overflow_arg_area29 to i32*, !dbg !21092
+  %overflow_arg_area.next30 = getelementptr i8, i8* %overflow_arg_area29, i32 8, !dbg !21092
+  store i8* %overflow_arg_area.next30, i8** %overflow_arg_area_p28, align 8, !dbg !21092
+  br label %vaarg.end31, !dbg !21092
 
 vaarg.end31:                                      ; preds = %vaarg.in_mem27, %vaarg.in_reg25
-  %vaarg.addr32 = phi i32* [ %22, %vaarg.in_reg25 ], [ %24, %vaarg.in_mem27 ], !dbg !21087
-  %25 = load i32, i32* %vaarg.addr32, align 4, !dbg !21087
-  store i32 %25, i32* %x, align 4, !dbg !21086
-  %26 = load i32, i32* %fd.addr, align 4, !dbg !21088
-  %27 = load i32, i32* %action.addr, align 4, !dbg !21089
-  %28 = load i32, i32* %x, align 4, !dbg !21090
-  %call33 = call i32 (i32, i32, ...) @fcntl(i32 %26, i32 %27, i32 %28), !dbg !21091
-  store i32 %call33, i32* %result, align 4, !dbg !21092
-  br label %sw.epilog, !dbg !21093
+  %vaarg.addr32 = phi i32* [ %22, %vaarg.in_reg25 ], [ %24, %vaarg.in_mem27 ], !dbg !21092
+  %25 = load i32, i32* %vaarg.addr32, align 4, !dbg !21092
+  store i32 %25, i32* %x, align 4, !dbg !21091
+  %26 = load i32, i32* %fd.addr, align 4, !dbg !21093
+  %27 = load i32, i32* %action.addr, align 4, !dbg !21094
+  %28 = load i32, i32* %x, align 4, !dbg !21095
+  %call33 = call i32 (i32, i32, ...) @fcntl(i32 %26, i32 %27, i32 %28), !dbg !21096
+  store i32 %call33, i32* %result, align 4, !dbg !21097
+  br label %sw.epilog, !dbg !21098
 
 sw.default34:                                     ; preds = %sw.default
-  call void @llvm.dbg.declare(metadata i8** %p, metadata !21094, metadata !DIExpression()), !dbg !21096
-  %arraydecay35 = getelementptr inbounds [1 x %struct.__va_list_tag], [1 x %struct.__va_list_tag]* %arg, i64 0, i64 0, !dbg !21097, !ctir !1175
-  %gp_offset_p36 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay35, i32 0, i32 0, !dbg !21097
-  %gp_offset37 = load i32, i32* %gp_offset_p36, align 16, !dbg !21097
-  %fits_in_gp38 = icmp ule i32 %gp_offset37, 40, !dbg !21097
-  br i1 %fits_in_gp38, label %vaarg.in_reg39, label %vaarg.in_mem41, !dbg !21097
+  call void @llvm.dbg.declare(metadata i8** %p, metadata !21099, metadata !DIExpression()), !dbg !21101
+  %arraydecay35 = getelementptr inbounds [1 x %struct.__va_list_tag], [1 x %struct.__va_list_tag]* %arg, i64 0, i64 0, !dbg !21102, !ctir !1175
+  %gp_offset_p36 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay35, i32 0, i32 0, !dbg !21102
+  %gp_offset37 = load i32, i32* %gp_offset_p36, align 16, !dbg !21102
+  %fits_in_gp38 = icmp ule i32 %gp_offset37, 40, !dbg !21102
+  br i1 %fits_in_gp38, label %vaarg.in_reg39, label %vaarg.in_mem41, !dbg !21102
 
 vaarg.in_reg39:                                   ; preds = %sw.default34
-  %29 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay35, i32 0, i32 3, !dbg !21097
-  %reg_save_area40 = load i8*, i8** %29, align 16, !dbg !21097
-  %30 = getelementptr i8, i8* %reg_save_area40, i32 %gp_offset37, !dbg !21097
-  %31 = bitcast i8* %30 to i8**, !dbg !21097
-  %32 = add i32 %gp_offset37, 8, !dbg !21097
-  store i32 %32, i32* %gp_offset_p36, align 16, !dbg !21097
-  br label %vaarg.end45, !dbg !21097
+  %29 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay35, i32 0, i32 3, !dbg !21102
+  %reg_save_area40 = load i8*, i8** %29, align 16, !dbg !21102
+  %30 = getelementptr i8, i8* %reg_save_area40, i32 %gp_offset37, !dbg !21102
+  %31 = bitcast i8* %30 to i8**, !dbg !21102
+  %32 = add i32 %gp_offset37, 8, !dbg !21102
+  store i32 %32, i32* %gp_offset_p36, align 16, !dbg !21102
+  br label %vaarg.end45, !dbg !21102
 
 vaarg.in_mem41:                                   ; preds = %sw.default34
-  %overflow_arg_area_p42 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay35, i32 0, i32 2, !dbg !21097
-  %overflow_arg_area43 = load i8*, i8** %overflow_arg_area_p42, align 8, !dbg !21097
-  %33 = bitcast i8* %overflow_arg_area43 to i8**, !dbg !21097
-  %overflow_arg_area.next44 = getelementptr i8, i8* %overflow_arg_area43, i32 8, !dbg !21097
-  store i8* %overflow_arg_area.next44, i8** %overflow_arg_area_p42, align 8, !dbg !21097
-  br label %vaarg.end45, !dbg !21097
+  %overflow_arg_area_p42 = getelementptr inbounds %struct.__va_list_tag, %struct.__va_list_tag* %arraydecay35, i32 0, i32 2, !dbg !21102
+  %overflow_arg_area43 = load i8*, i8** %overflow_arg_area_p42, align 8, !dbg !21102
+  %33 = bitcast i8* %overflow_arg_area43 to i8**, !dbg !21102
+  %overflow_arg_area.next44 = getelementptr i8, i8* %overflow_arg_area43, i32 8, !dbg !21102
+  store i8* %overflow_arg_area.next44, i8** %overflow_arg_area_p42, align 8, !dbg !21102
+  br label %vaarg.end45, !dbg !21102
 
 vaarg.end45:                                      ; preds = %vaarg.in_mem41, %vaarg.in_reg39
-  %vaarg.addr46 = phi i8** [ %31, %vaarg.in_reg39 ], [ %33, %vaarg.in_mem41 ], !dbg !21097
-  %34 = load i8*, i8** %vaarg.addr46, align 8, !dbg !21097
-  store i8* %34, i8** %p, align 8, !dbg !21096
-  %35 = load i32, i32* %fd.addr, align 4, !dbg !21098
-  %36 = load i32, i32* %action.addr, align 4, !dbg !21099
-  %37 = load i8*, i8** %p, align 8, !dbg !21100
-  %call47 = call i32 (i32, i32, ...) @fcntl(i32 %35, i32 %36, i8* %37), !dbg !21101
-  store i32 %call47, i32* %result, align 4, !dbg !21102
-  br label %sw.epilog, !dbg !21103
+  %vaarg.addr46 = phi i8** [ %31, %vaarg.in_reg39 ], [ %33, %vaarg.in_mem41 ], !dbg !21102
+  %34 = load i8*, i8** %vaarg.addr46, align 8, !dbg !21102
+  store i8* %34, i8** %p, align 8, !dbg !21101
+  %35 = load i32, i32* %fd.addr, align 4, !dbg !21103
+  %36 = load i32, i32* %action.addr, align 4, !dbg !21104
+  %37 = load i8*, i8** %p, align 8, !dbg !21105
+  %call47 = call i32 (i32, i32, ...) @fcntl(i32 %35, i32 %36, i8* %37), !dbg !21106
+  store i32 %call47, i32* %result, align 4, !dbg !21107
+  br label %sw.epilog, !dbg !21108
 
 sw.epilog:                                        ; preds = %vaarg.end45, %vaarg.end31, %sw.bb18
-  br label %sw.epilog48, !dbg !21104
+  br label %sw.epilog48, !dbg !21109
 
 sw.epilog48:                                      ; preds = %sw.epilog, %vaarg.end15, %vaarg.end
-  %arraydecay49 = getelementptr inbounds [1 x %struct.__va_list_tag], [1 x %struct.__va_list_tag]* %arg, i64 0, i64 0, !dbg !21105, !ctir !1175
-  %arraydecay4950 = bitcast %struct.__va_list_tag* %arraydecay49 to i8*, !dbg !21105
-  call void @llvm.va_end(i8* %arraydecay4950), !dbg !21105
-  %38 = load i32, i32* %result, align 4, !dbg !21106
-  ret i32 %38, !dbg !21107
+  %arraydecay49 = getelementptr inbounds [1 x %struct.__va_list_tag], [1 x %struct.__va_list_tag]* %arg, i64 0, i64 0, !dbg !21110, !ctir !1175
+  %arraydecay4950 = bitcast %struct.__va_list_tag* %arraydecay49 to i8*, !dbg !21110
+  call void @llvm.va_end(i8* %arraydecay4950), !dbg !21110
+  %38 = load i32, i32* %result, align 4, !dbg !21111
+  ret i32 %38, !dbg !21112
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define internal i32 @rpl_fcntl_DUPFD(i32 %fd, i32 %target) #4 !dbg !21108 {
+define internal i32 @rpl_fcntl_DUPFD(i32 %fd, i32 %target) #4 !dbg !21113 {
 entry:
   %fd.addr = alloca i32, align 4
   %target.addr = alloca i32, align 4
   %result = alloca i32, align 4, !ctir !5
   store i32 %fd, i32* %fd.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %fd.addr, metadata !21109, metadata !DIExpression()), !dbg !21110
+  call void @llvm.dbg.declare(metadata i32* %fd.addr, metadata !21114, metadata !DIExpression()), !dbg !21115
   store i32 %target, i32* %target.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %target.addr, metadata !21111, metadata !DIExpression()), !dbg !21112
-  call void @llvm.dbg.declare(metadata i32* %result, metadata !21113, metadata !DIExpression()), !dbg !21114
-  %0 = load i32, i32* %fd.addr, align 4, !dbg !21115
-  %1 = load i32, i32* %target.addr, align 4, !dbg !21116
-  %call = call i32 (i32, i32, ...) @fcntl(i32 %0, i32 0, i32 %1), !dbg !21117
-  store i32 %call, i32* %result, align 4, !dbg !21118
-  %2 = load i32, i32* %result, align 4, !dbg !21119
-  ret i32 %2, !dbg !21120
+  call void @llvm.dbg.declare(metadata i32* %target.addr, metadata !21116, metadata !DIExpression()), !dbg !21117
+  call void @llvm.dbg.declare(metadata i32* %result, metadata !21118, metadata !DIExpression()), !dbg !21119
+  %0 = load i32, i32* %fd.addr, align 4, !dbg !21120
+  %1 = load i32, i32* %target.addr, align 4, !dbg !21121
+  %call = call i32 (i32, i32, ...) @fcntl(i32 %0, i32 0, i32 %1), !dbg !21122
+  store i32 %call, i32* %result, align 4, !dbg !21123
+  %2 = load i32, i32* %result, align 4, !dbg !21124
+  ret i32 %2, !dbg !21125
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
@@ -34221,116 +34217,116 @@ entry:
   %flags = alloca i32, align 4, !ctir !5
   %saved_errno = alloca i32, align 4, !ctir !5
   store i32 %fd, i32* %fd.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %fd.addr, metadata !21121, metadata !DIExpression()), !dbg !21122
+  call void @llvm.dbg.declare(metadata i32* %fd.addr, metadata !21126, metadata !DIExpression()), !dbg !21127
   store i32 %target, i32* %target.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %target.addr, metadata !21123, metadata !DIExpression()), !dbg !21124
-  call void @llvm.dbg.declare(metadata i32* %result, metadata !21125, metadata !DIExpression()), !dbg !21126
-  %0 = load i32, i32* @rpl_fcntl_DUPFD_CLOEXEC.have_dupfd_cloexec, align 4, !dbg !21127
-  %cmp = icmp sle i32 0, %0, !dbg !21129
-  br i1 %cmp, label %if.then, label %if.else9, !dbg !21130
+  call void @llvm.dbg.declare(metadata i32* %target.addr, metadata !21128, metadata !DIExpression()), !dbg !21129
+  call void @llvm.dbg.declare(metadata i32* %result, metadata !21130, metadata !DIExpression()), !dbg !21131
+  %0 = load i32, i32* @rpl_fcntl_DUPFD_CLOEXEC.have_dupfd_cloexec, align 4, !dbg !21132
+  %cmp = icmp sle i32 0, %0, !dbg !21134
+  br i1 %cmp, label %if.then, label %if.else9, !dbg !21135
 
 if.then:                                          ; preds = %entry
-  %1 = load i32, i32* %fd.addr, align 4, !dbg !21131
-  %2 = load i32, i32* %target.addr, align 4, !dbg !21133
-  %call = call i32 (i32, i32, ...) @fcntl(i32 %1, i32 1030, i32 %2), !dbg !21134
-  store i32 %call, i32* %result, align 4, !dbg !21135
-  %3 = load i32, i32* %result, align 4, !dbg !21136
-  %cmp1 = icmp sle i32 0, %3, !dbg !21138
-  br i1 %cmp1, label %if.then4, label %lor.lhs.false, !dbg !21139
+  %1 = load i32, i32* %fd.addr, align 4, !dbg !21136
+  %2 = load i32, i32* %target.addr, align 4, !dbg !21138
+  %call = call i32 (i32, i32, ...) @fcntl(i32 %1, i32 1030, i32 %2), !dbg !21139
+  store i32 %call, i32* %result, align 4, !dbg !21140
+  %3 = load i32, i32* %result, align 4, !dbg !21141
+  %cmp1 = icmp sle i32 0, %3, !dbg !21143
+  br i1 %cmp1, label %if.then4, label %lor.lhs.false, !dbg !21144
 
 lor.lhs.false:                                    ; preds = %if.then
-  %call2 = call i32* @__errno_location() #16, !dbg !21140
-  %4 = load i32, i32* %call2, align 4, !dbg !21140, !ctir !5
-  %cmp3 = icmp ne i32 %4, 22, !dbg !21141
-  br i1 %cmp3, label %if.then4, label %if.else, !dbg !21142
+  %call2 = call i32* @__errno_location() #16, !dbg !21145
+  %4 = load i32, i32* %call2, align 4, !dbg !21145, !ctir !5
+  %cmp3 = icmp ne i32 %4, 22, !dbg !21146
+  br i1 %cmp3, label %if.then4, label %if.else, !dbg !21147
 
 if.then4:                                         ; preds = %lor.lhs.false, %if.then
-  store i32 1, i32* @rpl_fcntl_DUPFD_CLOEXEC.have_dupfd_cloexec, align 4, !dbg !21143
-  br label %if.end8, !dbg !21145
+  store i32 1, i32* @rpl_fcntl_DUPFD_CLOEXEC.have_dupfd_cloexec, align 4, !dbg !21148
+  br label %if.end8, !dbg !21150
 
 if.else:                                          ; preds = %lor.lhs.false
-  %5 = load i32, i32* %fd.addr, align 4, !dbg !21146
-  %6 = load i32, i32* %target.addr, align 4, !dbg !21148
-  %call5 = call i32 @rpl_fcntl_DUPFD(i32 %5, i32 %6), !dbg !21149
-  store i32 %call5, i32* %result, align 4, !dbg !21150
-  %7 = load i32, i32* %result, align 4, !dbg !21151
-  %cmp6 = icmp sge i32 %7, 0, !dbg !21153
-  br i1 %cmp6, label %if.then7, label %if.end, !dbg !21154
+  %5 = load i32, i32* %fd.addr, align 4, !dbg !21151
+  %6 = load i32, i32* %target.addr, align 4, !dbg !21153
+  %call5 = call i32 @rpl_fcntl_DUPFD(i32 %5, i32 %6), !dbg !21154
+  store i32 %call5, i32* %result, align 4, !dbg !21155
+  %7 = load i32, i32* %result, align 4, !dbg !21156
+  %cmp6 = icmp sge i32 %7, 0, !dbg !21158
+  br i1 %cmp6, label %if.then7, label %if.end, !dbg !21159
 
 if.then7:                                         ; preds = %if.else
-  store i32 -1, i32* @rpl_fcntl_DUPFD_CLOEXEC.have_dupfd_cloexec, align 4, !dbg !21155
-  br label %if.end, !dbg !21156
+  store i32 -1, i32* @rpl_fcntl_DUPFD_CLOEXEC.have_dupfd_cloexec, align 4, !dbg !21160
+  br label %if.end, !dbg !21161
 
 if.end:                                           ; preds = %if.then7, %if.else
   br label %if.end8
 
 if.end8:                                          ; preds = %if.end, %if.then4
-  br label %if.end11, !dbg !21157
+  br label %if.end11, !dbg !21162
 
 if.else9:                                         ; preds = %entry
-  %8 = load i32, i32* %fd.addr, align 4, !dbg !21158
-  %9 = load i32, i32* %target.addr, align 4, !dbg !21159
-  %call10 = call i32 @rpl_fcntl_DUPFD(i32 %8, i32 %9), !dbg !21160
-  store i32 %call10, i32* %result, align 4, !dbg !21161
+  %8 = load i32, i32* %fd.addr, align 4, !dbg !21163
+  %9 = load i32, i32* %target.addr, align 4, !dbg !21164
+  %call10 = call i32 @rpl_fcntl_DUPFD(i32 %8, i32 %9), !dbg !21165
+  store i32 %call10, i32* %result, align 4, !dbg !21166
   br label %if.end11
 
 if.end11:                                         ; preds = %if.else9, %if.end8
-  %10 = load i32, i32* %result, align 4, !dbg !21162
-  %cmp12 = icmp sle i32 0, %10, !dbg !21164
-  br i1 %cmp12, label %land.lhs.true, label %if.end25, !dbg !21165
+  %10 = load i32, i32* %result, align 4, !dbg !21167
+  %cmp12 = icmp sle i32 0, %10, !dbg !21169
+  br i1 %cmp12, label %land.lhs.true, label %if.end25, !dbg !21170
 
 land.lhs.true:                                    ; preds = %if.end11
-  %11 = load i32, i32* @rpl_fcntl_DUPFD_CLOEXEC.have_dupfd_cloexec, align 4, !dbg !21166
-  %cmp13 = icmp eq i32 %11, -1, !dbg !21167
-  br i1 %cmp13, label %if.then14, label %if.end25, !dbg !21168
+  %11 = load i32, i32* @rpl_fcntl_DUPFD_CLOEXEC.have_dupfd_cloexec, align 4, !dbg !21171
+  %cmp13 = icmp eq i32 %11, -1, !dbg !21172
+  br i1 %cmp13, label %if.then14, label %if.end25, !dbg !21173
 
 if.then14:                                        ; preds = %land.lhs.true
-  call void @llvm.dbg.declare(metadata i32* %flags, metadata !21169, metadata !DIExpression()), !dbg !21171
-  %12 = load i32, i32* %result, align 4, !dbg !21172
-  %call15 = call i32 (i32, i32, ...) @fcntl(i32 %12, i32 1), !dbg !21173
-  store i32 %call15, i32* %flags, align 4, !dbg !21171
-  %13 = load i32, i32* %flags, align 4, !dbg !21174
-  %cmp16 = icmp slt i32 %13, 0, !dbg !21176
-  br i1 %cmp16, label %if.then20, label %lor.lhs.false17, !dbg !21177
+  call void @llvm.dbg.declare(metadata i32* %flags, metadata !21174, metadata !DIExpression()), !dbg !21176
+  %12 = load i32, i32* %result, align 4, !dbg !21177
+  %call15 = call i32 (i32, i32, ...) @fcntl(i32 %12, i32 1), !dbg !21178
+  store i32 %call15, i32* %flags, align 4, !dbg !21176
+  %13 = load i32, i32* %flags, align 4, !dbg !21179
+  %cmp16 = icmp slt i32 %13, 0, !dbg !21181
+  br i1 %cmp16, label %if.then20, label %lor.lhs.false17, !dbg !21182
 
 lor.lhs.false17:                                  ; preds = %if.then14
-  %14 = load i32, i32* %result, align 4, !dbg !21178
-  %15 = load i32, i32* %flags, align 4, !dbg !21179
-  %or = or i32 %15, 1, !dbg !21180
-  %call18 = call i32 (i32, i32, ...) @fcntl(i32 %14, i32 2, i32 %or), !dbg !21181
-  %cmp19 = icmp eq i32 %call18, -1, !dbg !21182
-  br i1 %cmp19, label %if.then20, label %if.end24, !dbg !21183
+  %14 = load i32, i32* %result, align 4, !dbg !21183
+  %15 = load i32, i32* %flags, align 4, !dbg !21184
+  %or = or i32 %15, 1, !dbg !21185
+  %call18 = call i32 (i32, i32, ...) @fcntl(i32 %14, i32 2, i32 %or), !dbg !21186
+  %cmp19 = icmp eq i32 %call18, -1, !dbg !21187
+  br i1 %cmp19, label %if.then20, label %if.end24, !dbg !21188
 
 if.then20:                                        ; preds = %lor.lhs.false17, %if.then14
-  call void @llvm.dbg.declare(metadata i32* %saved_errno, metadata !21184, metadata !DIExpression()), !dbg !21186
-  %call21 = call i32* @__errno_location() #16, !dbg !21187
-  %16 = load i32, i32* %call21, align 4, !dbg !21187, !ctir !5
-  store i32 %16, i32* %saved_errno, align 4, !dbg !21186
-  %17 = load i32, i32* %result, align 4, !dbg !21188
-  %call22 = call i32 @close(i32 %17), !dbg !21189
-  %18 = load i32, i32* %saved_errno, align 4, !dbg !21190
-  %call23 = call i32* @__errno_location() #16, !dbg !21191
-  store i32 %18, i32* %call23, align 4, !dbg !21192, !ctir !5
-  store i32 -1, i32* %result, align 4, !dbg !21193
-  br label %if.end24, !dbg !21194
+  call void @llvm.dbg.declare(metadata i32* %saved_errno, metadata !21189, metadata !DIExpression()), !dbg !21191
+  %call21 = call i32* @__errno_location() #16, !dbg !21192
+  %16 = load i32, i32* %call21, align 4, !dbg !21192, !ctir !5
+  store i32 %16, i32* %saved_errno, align 4, !dbg !21191
+  %17 = load i32, i32* %result, align 4, !dbg !21193
+  %call22 = call i32 @close(i32 %17), !dbg !21194
+  %18 = load i32, i32* %saved_errno, align 4, !dbg !21195
+  %call23 = call i32* @__errno_location() #16, !dbg !21196
+  store i32 %18, i32* %call23, align 4, !dbg !21197, !ctir !5
+  store i32 -1, i32* %result, align 4, !dbg !21198
+  br label %if.end24, !dbg !21199
 
 if.end24:                                         ; preds = %if.then20, %lor.lhs.false17
-  br label %if.end25, !dbg !21195
+  br label %if.end25, !dbg !21200
 
 if.end25:                                         ; preds = %if.end24, %land.lhs.true, %if.end11
-  %19 = load i32, i32* %result, align 4, !dbg !21196
-  ret i32 %19, !dbg !21197
+  %19 = load i32, i32* %result, align 4, !dbg !21201
+  ret i32 %19, !dbg !21202
 }
 
 declare dso_local i32 @fcntl(i32, i32, ...) #3
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local i8* @rpl_nl_langinfo(i32 %item) #4 !dbg !21198 {
+define dso_local i8* @rpl_nl_langinfo(i32 %item) #4 !dbg !21203 {
 entry:
   %item.addr = alloca i32, align 4
   store i32 %item, i32* %item.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %item.addr, metadata !21204, metadata !DIExpression()), !dbg !21205
-  %0 = load i32, i32* %item.addr, align 4, !dbg !21206
+  call void @llvm.dbg.declare(metadata i32* %item.addr, metadata !21209, metadata !DIExpression()), !dbg !21210
+  %0 = load i32, i32* %item.addr, align 4, !dbg !21211
   switch i32 %0, label %sw.default [
     i32 10200, label %sw.bb
     i32 10201, label %sw.bb
@@ -34344,35 +34340,35 @@ entry:
     i32 10209, label %sw.bb
     i32 10210, label %sw.bb
     i32 10211, label %sw.bb
-  ], !dbg !21207
+  ], !dbg !21212
 
 sw.bb:                                            ; preds = %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry
-  %1 = load i32, i32* %item.addr, align 4, !dbg !21208
-  %sub = sub nsw i32 %1, 10200, !dbg !21210
-  %add = add nsw i32 %sub, 131098, !dbg !21211
-  store i32 %add, i32* %item.addr, align 4, !dbg !21212
-  br label %sw.epilog, !dbg !21213
+  %1 = load i32, i32* %item.addr, align 4, !dbg !21213
+  %sub = sub nsw i32 %1, 10200, !dbg !21215
+  %add = add nsw i32 %sub, 131098, !dbg !21216
+  store i32 %add, i32* %item.addr, align 4, !dbg !21217
+  br label %sw.epilog, !dbg !21218
 
 sw.default:                                       ; preds = %entry
-  br label %sw.epilog, !dbg !21214
+  br label %sw.epilog, !dbg !21219
 
 sw.epilog:                                        ; preds = %sw.default, %sw.bb
-  %2 = load i32, i32* %item.addr, align 4, !dbg !21215
-  %call = call i8* @nl_langinfo(i32 %2) #9, !dbg !21216
-  ret i8* %call, !dbg !21217
+  %2 = load i32, i32* %item.addr, align 4, !dbg !21220
+  %call = call i8* @nl_langinfo(i32 %2) #9, !dbg !21221
+  ret i8* %call, !dbg !21222
 }
 
 ; Function Attrs: nounwind
 declare dso_local i8* @nl_langinfo(i32) #2
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local zeroext i1 @c_isalnum(i32 %c) #4 !dbg !21218 {
+define dso_local zeroext i1 @c_isalnum(i32 %c) #4 !dbg !21223 {
 entry:
   %retval = alloca i1, align 1
   %c.addr = alloca i32, align 4
   store i32 %c, i32* %c.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21220, metadata !DIExpression()), !dbg !21221
-  %0 = load i32, i32* %c.addr, align 4, !dbg !21222
+  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21225, metadata !DIExpression()), !dbg !21226
+  %0 = load i32, i32* %c.addr, align 4, !dbg !21227
   switch i32 %0, label %sw.default [
     i32 48, label %sw.bb
     i32 49, label %sw.bb
@@ -34436,29 +34432,29 @@ entry:
     i32 88, label %sw.bb
     i32 89, label %sw.bb
     i32 90, label %sw.bb
-  ], !dbg !21223
+  ], !dbg !21228
 
 sw.bb:                                            ; preds = %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry
-  store i1 true, i1* %retval, align 1, !dbg !21224
-  br label %return, !dbg !21224
+  store i1 true, i1* %retval, align 1, !dbg !21229
+  br label %return, !dbg !21229
 
 sw.default:                                       ; preds = %entry
-  store i1 false, i1* %retval, align 1, !dbg !21226
-  br label %return, !dbg !21226
+  store i1 false, i1* %retval, align 1, !dbg !21231
+  br label %return, !dbg !21231
 
 return:                                           ; preds = %sw.default, %sw.bb
-  %1 = load i1, i1* %retval, align 1, !dbg !21227
-  ret i1 %1, !dbg !21227
+  %1 = load i1, i1* %retval, align 1, !dbg !21232
+  ret i1 %1, !dbg !21232
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local zeroext i1 @c_isalpha(i32 %c) #4 !dbg !21228 {
+define dso_local zeroext i1 @c_isalpha(i32 %c) #4 !dbg !21233 {
 entry:
   %retval = alloca i1, align 1
   %c.addr = alloca i32, align 4
   store i32 %c, i32* %c.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21229, metadata !DIExpression()), !dbg !21230
-  %0 = load i32, i32* %c.addr, align 4, !dbg !21231
+  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21234, metadata !DIExpression()), !dbg !21235
+  %0 = load i32, i32* %c.addr, align 4, !dbg !21236
   switch i32 %0, label %sw.default [
     i32 97, label %sw.bb
     i32 98, label %sw.bb
@@ -34512,29 +34508,29 @@ entry:
     i32 88, label %sw.bb
     i32 89, label %sw.bb
     i32 90, label %sw.bb
-  ], !dbg !21232
+  ], !dbg !21237
 
 sw.bb:                                            ; preds = %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry
-  store i1 true, i1* %retval, align 1, !dbg !21233
-  br label %return, !dbg !21233
+  store i1 true, i1* %retval, align 1, !dbg !21238
+  br label %return, !dbg !21238
 
 sw.default:                                       ; preds = %entry
-  store i1 false, i1* %retval, align 1, !dbg !21235
-  br label %return, !dbg !21235
+  store i1 false, i1* %retval, align 1, !dbg !21240
+  br label %return, !dbg !21240
 
 return:                                           ; preds = %sw.default, %sw.bb
-  %1 = load i1, i1* %retval, align 1, !dbg !21236
-  ret i1 %1, !dbg !21236
+  %1 = load i1, i1* %retval, align 1, !dbg !21241
+  ret i1 %1, !dbg !21241
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local zeroext i1 @c_isascii(i32 %c) #4 !dbg !21237 {
+define dso_local zeroext i1 @c_isascii(i32 %c) #4 !dbg !21242 {
 entry:
   %retval = alloca i1, align 1
   %c.addr = alloca i32, align 4
   store i32 %c, i32* %c.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21238, metadata !DIExpression()), !dbg !21239
-  %0 = load i32, i32* %c.addr, align 4, !dbg !21240
+  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21243, metadata !DIExpression()), !dbg !21244
+  %0 = load i32, i32* %c.addr, align 4, !dbg !21245
   switch i32 %0, label %sw.default [
     i32 32, label %sw.bb
     i32 7, label %sw.bb
@@ -34664,49 +34660,49 @@ entry:
     i32 88, label %sw.bb
     i32 89, label %sw.bb
     i32 90, label %sw.bb
-  ], !dbg !21241
+  ], !dbg !21246
 
 sw.bb:                                            ; preds = %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry
-  store i1 true, i1* %retval, align 1, !dbg !21242
-  br label %return, !dbg !21242
+  store i1 true, i1* %retval, align 1, !dbg !21247
+  br label %return, !dbg !21247
 
 sw.default:                                       ; preds = %entry
-  store i1 false, i1* %retval, align 1, !dbg !21244
-  br label %return, !dbg !21244
+  store i1 false, i1* %retval, align 1, !dbg !21249
+  br label %return, !dbg !21249
 
 return:                                           ; preds = %sw.default, %sw.bb
-  %1 = load i1, i1* %retval, align 1, !dbg !21245
-  ret i1 %1, !dbg !21245
+  %1 = load i1, i1* %retval, align 1, !dbg !21250
+  ret i1 %1, !dbg !21250
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local zeroext i1 @c_isblank(i32 %c) #4 !dbg !21246 {
+define dso_local zeroext i1 @c_isblank(i32 %c) #4 !dbg !21251 {
 entry:
   %c.addr = alloca i32, align 4
   store i32 %c, i32* %c.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21247, metadata !DIExpression()), !dbg !21248
-  %0 = load i32, i32* %c.addr, align 4, !dbg !21249
-  %cmp = icmp eq i32 %0, 32, !dbg !21250
-  br i1 %cmp, label %lor.end, label %lor.rhs, !dbg !21251
+  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21252, metadata !DIExpression()), !dbg !21253
+  %0 = load i32, i32* %c.addr, align 4, !dbg !21254
+  %cmp = icmp eq i32 %0, 32, !dbg !21255
+  br i1 %cmp, label %lor.end, label %lor.rhs, !dbg !21256
 
 lor.rhs:                                          ; preds = %entry
-  %1 = load i32, i32* %c.addr, align 4, !dbg !21252
-  %cmp1 = icmp eq i32 %1, 9, !dbg !21253
-  br label %lor.end, !dbg !21251
+  %1 = load i32, i32* %c.addr, align 4, !dbg !21257
+  %cmp1 = icmp eq i32 %1, 9, !dbg !21258
+  br label %lor.end, !dbg !21256
 
 lor.end:                                          ; preds = %lor.rhs, %entry
   %2 = phi i1 [ true, %entry ], [ %cmp1, %lor.rhs ]
-  ret i1 %2, !dbg !21254
+  ret i1 %2, !dbg !21259
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local zeroext i1 @c_iscntrl(i32 %c) #4 !dbg !21255 {
+define dso_local zeroext i1 @c_iscntrl(i32 %c) #4 !dbg !21260 {
 entry:
   %retval = alloca i1, align 1
   %c.addr = alloca i32, align 4
   store i32 %c, i32* %c.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21256, metadata !DIExpression()), !dbg !21257
-  %0 = load i32, i32* %c.addr, align 4, !dbg !21258
+  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21261, metadata !DIExpression()), !dbg !21262
+  %0 = load i32, i32* %c.addr, align 4, !dbg !21263
   switch i32 %0, label %sw.default [
     i32 7, label %sw.bb
     i32 8, label %sw.bb
@@ -34741,29 +34737,29 @@ entry:
     i32 30, label %sw.bb
     i32 31, label %sw.bb
     i32 127, label %sw.bb
-  ], !dbg !21259
+  ], !dbg !21264
 
 sw.bb:                                            ; preds = %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry
-  store i1 true, i1* %retval, align 1, !dbg !21260
-  br label %return, !dbg !21260
+  store i1 true, i1* %retval, align 1, !dbg !21265
+  br label %return, !dbg !21265
 
 sw.default:                                       ; preds = %entry
-  store i1 false, i1* %retval, align 1, !dbg !21262
-  br label %return, !dbg !21262
+  store i1 false, i1* %retval, align 1, !dbg !21267
+  br label %return, !dbg !21267
 
 return:                                           ; preds = %sw.default, %sw.bb
-  %1 = load i1, i1* %retval, align 1, !dbg !21263
-  ret i1 %1, !dbg !21263
+  %1 = load i1, i1* %retval, align 1, !dbg !21268
+  ret i1 %1, !dbg !21268
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local zeroext i1 @c_isdigit(i32 %c) #4 !dbg !21264 {
+define dso_local zeroext i1 @c_isdigit(i32 %c) #4 !dbg !21269 {
 entry:
   %retval = alloca i1, align 1
   %c.addr = alloca i32, align 4
   store i32 %c, i32* %c.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21265, metadata !DIExpression()), !dbg !21266
-  %0 = load i32, i32* %c.addr, align 4, !dbg !21267
+  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21270, metadata !DIExpression()), !dbg !21271
+  %0 = load i32, i32* %c.addr, align 4, !dbg !21272
   switch i32 %0, label %sw.default [
     i32 48, label %sw.bb
     i32 49, label %sw.bb
@@ -34775,29 +34771,29 @@ entry:
     i32 55, label %sw.bb
     i32 56, label %sw.bb
     i32 57, label %sw.bb
-  ], !dbg !21268
+  ], !dbg !21273
 
 sw.bb:                                            ; preds = %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry
-  store i1 true, i1* %retval, align 1, !dbg !21269
-  br label %return, !dbg !21269
+  store i1 true, i1* %retval, align 1, !dbg !21274
+  br label %return, !dbg !21274
 
 sw.default:                                       ; preds = %entry
-  store i1 false, i1* %retval, align 1, !dbg !21271
-  br label %return, !dbg !21271
+  store i1 false, i1* %retval, align 1, !dbg !21276
+  br label %return, !dbg !21276
 
 return:                                           ; preds = %sw.default, %sw.bb
-  %1 = load i1, i1* %retval, align 1, !dbg !21272
-  ret i1 %1, !dbg !21272
+  %1 = load i1, i1* %retval, align 1, !dbg !21277
+  ret i1 %1, !dbg !21277
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local zeroext i1 @c_isgraph(i32 %c) #4 !dbg !21273 {
+define dso_local zeroext i1 @c_isgraph(i32 %c) #4 !dbg !21278 {
 entry:
   %retval = alloca i1, align 1
   %c.addr = alloca i32, align 4
   store i32 %c, i32* %c.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21274, metadata !DIExpression()), !dbg !21275
-  %0 = load i32, i32* %c.addr, align 4, !dbg !21276
+  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21279, metadata !DIExpression()), !dbg !21280
+  %0 = load i32, i32* %c.addr, align 4, !dbg !21281
   switch i32 %0, label %sw.default [
     i32 48, label %sw.bb
     i32 49, label %sw.bb
@@ -34893,29 +34889,29 @@ entry:
     i32 88, label %sw.bb
     i32 89, label %sw.bb
     i32 90, label %sw.bb
-  ], !dbg !21277
+  ], !dbg !21282
 
 sw.bb:                                            ; preds = %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry
-  store i1 true, i1* %retval, align 1, !dbg !21278
-  br label %return, !dbg !21278
+  store i1 true, i1* %retval, align 1, !dbg !21283
+  br label %return, !dbg !21283
 
 sw.default:                                       ; preds = %entry
-  store i1 false, i1* %retval, align 1, !dbg !21280
-  br label %return, !dbg !21280
+  store i1 false, i1* %retval, align 1, !dbg !21285
+  br label %return, !dbg !21285
 
 return:                                           ; preds = %sw.default, %sw.bb
-  %1 = load i1, i1* %retval, align 1, !dbg !21281
-  ret i1 %1, !dbg !21281
+  %1 = load i1, i1* %retval, align 1, !dbg !21286
+  ret i1 %1, !dbg !21286
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local zeroext i1 @c_islower(i32 %c) #4 !dbg !21282 {
+define dso_local zeroext i1 @c_islower(i32 %c) #4 !dbg !21287 {
 entry:
   %retval = alloca i1, align 1
   %c.addr = alloca i32, align 4
   store i32 %c, i32* %c.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21283, metadata !DIExpression()), !dbg !21284
-  %0 = load i32, i32* %c.addr, align 4, !dbg !21285
+  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21288, metadata !DIExpression()), !dbg !21289
+  %0 = load i32, i32* %c.addr, align 4, !dbg !21290
   switch i32 %0, label %sw.default [
     i32 97, label %sw.bb
     i32 98, label %sw.bb
@@ -34943,29 +34939,29 @@ entry:
     i32 120, label %sw.bb
     i32 121, label %sw.bb
     i32 122, label %sw.bb
-  ], !dbg !21286
+  ], !dbg !21291
 
 sw.bb:                                            ; preds = %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry
-  store i1 true, i1* %retval, align 1, !dbg !21287
-  br label %return, !dbg !21287
+  store i1 true, i1* %retval, align 1, !dbg !21292
+  br label %return, !dbg !21292
 
 sw.default:                                       ; preds = %entry
-  store i1 false, i1* %retval, align 1, !dbg !21289
-  br label %return, !dbg !21289
+  store i1 false, i1* %retval, align 1, !dbg !21294
+  br label %return, !dbg !21294
 
 return:                                           ; preds = %sw.default, %sw.bb
-  %1 = load i1, i1* %retval, align 1, !dbg !21290
-  ret i1 %1, !dbg !21290
+  %1 = load i1, i1* %retval, align 1, !dbg !21295
+  ret i1 %1, !dbg !21295
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local zeroext i1 @c_isprint(i32 %c) #4 !dbg !21291 {
+define dso_local zeroext i1 @c_isprint(i32 %c) #4 !dbg !21296 {
 entry:
   %retval = alloca i1, align 1
   %c.addr = alloca i32, align 4
   store i32 %c, i32* %c.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21292, metadata !DIExpression()), !dbg !21293
-  %0 = load i32, i32* %c.addr, align 4, !dbg !21294
+  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21297, metadata !DIExpression()), !dbg !21298
+  %0 = load i32, i32* %c.addr, align 4, !dbg !21299
   switch i32 %0, label %sw.default [
     i32 32, label %sw.bb
     i32 48, label %sw.bb
@@ -35062,29 +35058,29 @@ entry:
     i32 88, label %sw.bb
     i32 89, label %sw.bb
     i32 90, label %sw.bb
-  ], !dbg !21295
+  ], !dbg !21300
 
 sw.bb:                                            ; preds = %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry
-  store i1 true, i1* %retval, align 1, !dbg !21296
-  br label %return, !dbg !21296
+  store i1 true, i1* %retval, align 1, !dbg !21301
+  br label %return, !dbg !21301
 
 sw.default:                                       ; preds = %entry
-  store i1 false, i1* %retval, align 1, !dbg !21298
-  br label %return, !dbg !21298
+  store i1 false, i1* %retval, align 1, !dbg !21303
+  br label %return, !dbg !21303
 
 return:                                           ; preds = %sw.default, %sw.bb
-  %1 = load i1, i1* %retval, align 1, !dbg !21299
-  ret i1 %1, !dbg !21299
+  %1 = load i1, i1* %retval, align 1, !dbg !21304
+  ret i1 %1, !dbg !21304
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local zeroext i1 @c_ispunct(i32 %c) #4 !dbg !21300 {
+define dso_local zeroext i1 @c_ispunct(i32 %c) #4 !dbg !21305 {
 entry:
   %retval = alloca i1, align 1
   %c.addr = alloca i32, align 4
   store i32 %c, i32* %c.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21301, metadata !DIExpression()), !dbg !21302
-  %0 = load i32, i32* %c.addr, align 4, !dbg !21303
+  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21306, metadata !DIExpression()), !dbg !21307
+  %0 = load i32, i32* %c.addr, align 4, !dbg !21308
   switch i32 %0, label %sw.default [
     i32 33, label %sw.bb
     i32 34, label %sw.bb
@@ -35118,29 +35114,29 @@ entry:
     i32 124, label %sw.bb
     i32 125, label %sw.bb
     i32 126, label %sw.bb
-  ], !dbg !21304
+  ], !dbg !21309
 
 sw.bb:                                            ; preds = %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry
-  store i1 true, i1* %retval, align 1, !dbg !21305
-  br label %return, !dbg !21305
+  store i1 true, i1* %retval, align 1, !dbg !21310
+  br label %return, !dbg !21310
 
 sw.default:                                       ; preds = %entry
-  store i1 false, i1* %retval, align 1, !dbg !21307
-  br label %return, !dbg !21307
+  store i1 false, i1* %retval, align 1, !dbg !21312
+  br label %return, !dbg !21312
 
 return:                                           ; preds = %sw.default, %sw.bb
-  %1 = load i1, i1* %retval, align 1, !dbg !21308
-  ret i1 %1, !dbg !21308
+  %1 = load i1, i1* %retval, align 1, !dbg !21313
+  ret i1 %1, !dbg !21313
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local zeroext i1 @c_isspace(i32 %c) #4 !dbg !21309 {
+define dso_local zeroext i1 @c_isspace(i32 %c) #4 !dbg !21314 {
 entry:
   %retval = alloca i1, align 1
   %c.addr = alloca i32, align 4
   store i32 %c, i32* %c.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21310, metadata !DIExpression()), !dbg !21311
-  %0 = load i32, i32* %c.addr, align 4, !dbg !21312
+  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21315, metadata !DIExpression()), !dbg !21316
+  %0 = load i32, i32* %c.addr, align 4, !dbg !21317
   switch i32 %0, label %sw.default [
     i32 32, label %sw.bb
     i32 9, label %sw.bb
@@ -35148,29 +35144,29 @@ entry:
     i32 11, label %sw.bb
     i32 12, label %sw.bb
     i32 13, label %sw.bb
-  ], !dbg !21313
+  ], !dbg !21318
 
 sw.bb:                                            ; preds = %entry, %entry, %entry, %entry, %entry, %entry
-  store i1 true, i1* %retval, align 1, !dbg !21314
-  br label %return, !dbg !21314
+  store i1 true, i1* %retval, align 1, !dbg !21319
+  br label %return, !dbg !21319
 
 sw.default:                                       ; preds = %entry
-  store i1 false, i1* %retval, align 1, !dbg !21316
-  br label %return, !dbg !21316
+  store i1 false, i1* %retval, align 1, !dbg !21321
+  br label %return, !dbg !21321
 
 return:                                           ; preds = %sw.default, %sw.bb
-  %1 = load i1, i1* %retval, align 1, !dbg !21317
-  ret i1 %1, !dbg !21317
+  %1 = load i1, i1* %retval, align 1, !dbg !21322
+  ret i1 %1, !dbg !21322
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local zeroext i1 @c_isupper(i32 %c) #4 !dbg !21318 {
+define dso_local zeroext i1 @c_isupper(i32 %c) #4 !dbg !21323 {
 entry:
   %retval = alloca i1, align 1
   %c.addr = alloca i32, align 4
   store i32 %c, i32* %c.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21319, metadata !DIExpression()), !dbg !21320
-  %0 = load i32, i32* %c.addr, align 4, !dbg !21321
+  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21324, metadata !DIExpression()), !dbg !21325
+  %0 = load i32, i32* %c.addr, align 4, !dbg !21326
   switch i32 %0, label %sw.default [
     i32 65, label %sw.bb
     i32 66, label %sw.bb
@@ -35198,29 +35194,29 @@ entry:
     i32 88, label %sw.bb
     i32 89, label %sw.bb
     i32 90, label %sw.bb
-  ], !dbg !21322
+  ], !dbg !21327
 
 sw.bb:                                            ; preds = %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry
-  store i1 true, i1* %retval, align 1, !dbg !21323
-  br label %return, !dbg !21323
+  store i1 true, i1* %retval, align 1, !dbg !21328
+  br label %return, !dbg !21328
 
 sw.default:                                       ; preds = %entry
-  store i1 false, i1* %retval, align 1, !dbg !21325
-  br label %return, !dbg !21325
+  store i1 false, i1* %retval, align 1, !dbg !21330
+  br label %return, !dbg !21330
 
 return:                                           ; preds = %sw.default, %sw.bb
-  %1 = load i1, i1* %retval, align 1, !dbg !21326
-  ret i1 %1, !dbg !21326
+  %1 = load i1, i1* %retval, align 1, !dbg !21331
+  ret i1 %1, !dbg !21331
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local zeroext i1 @c_isxdigit(i32 %c) #4 !dbg !21327 {
+define dso_local zeroext i1 @c_isxdigit(i32 %c) #4 !dbg !21332 {
 entry:
   %retval = alloca i1, align 1
   %c.addr = alloca i32, align 4
   store i32 %c, i32* %c.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21328, metadata !DIExpression()), !dbg !21329
-  %0 = load i32, i32* %c.addr, align 4, !dbg !21330
+  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21333, metadata !DIExpression()), !dbg !21334
+  %0 = load i32, i32* %c.addr, align 4, !dbg !21335
   switch i32 %0, label %sw.default [
     i32 48, label %sw.bb
     i32 49, label %sw.bb
@@ -35244,29 +35240,29 @@ entry:
     i32 68, label %sw.bb
     i32 69, label %sw.bb
     i32 70, label %sw.bb
-  ], !dbg !21331
+  ], !dbg !21336
 
 sw.bb:                                            ; preds = %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry
-  store i1 true, i1* %retval, align 1, !dbg !21332
-  br label %return, !dbg !21332
+  store i1 true, i1* %retval, align 1, !dbg !21337
+  br label %return, !dbg !21337
 
 sw.default:                                       ; preds = %entry
-  store i1 false, i1* %retval, align 1, !dbg !21334
-  br label %return, !dbg !21334
+  store i1 false, i1* %retval, align 1, !dbg !21339
+  br label %return, !dbg !21339
 
 return:                                           ; preds = %sw.default, %sw.bb
-  %1 = load i1, i1* %retval, align 1, !dbg !21335
-  ret i1 %1, !dbg !21335
+  %1 = load i1, i1* %retval, align 1, !dbg !21340
+  ret i1 %1, !dbg !21340
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local i32 @c_tolower(i32 %c) #4 !dbg !21336 {
+define dso_local i32 @c_tolower(i32 %c) #4 !dbg !21341 {
 entry:
   %retval = alloca i32, align 4
   %c.addr = alloca i32, align 4
   store i32 %c, i32* %c.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21337, metadata !DIExpression()), !dbg !21338
-  %0 = load i32, i32* %c.addr, align 4, !dbg !21339
+  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21342, metadata !DIExpression()), !dbg !21343
+  %0 = load i32, i32* %c.addr, align 4, !dbg !21344
   switch i32 %0, label %sw.default [
     i32 65, label %sw.bb
     i32 66, label %sw.bb
@@ -35294,33 +35290,33 @@ entry:
     i32 88, label %sw.bb
     i32 89, label %sw.bb
     i32 90, label %sw.bb
-  ], !dbg !21340
+  ], !dbg !21345
 
 sw.bb:                                            ; preds = %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry
-  %1 = load i32, i32* %c.addr, align 4, !dbg !21341
-  %sub = sub nsw i32 %1, 65, !dbg !21343
-  %add = add nsw i32 %sub, 97, !dbg !21344
-  store i32 %add, i32* %retval, align 4, !dbg !21345
-  br label %return, !dbg !21345
+  %1 = load i32, i32* %c.addr, align 4, !dbg !21346
+  %sub = sub nsw i32 %1, 65, !dbg !21348
+  %add = add nsw i32 %sub, 97, !dbg !21349
+  store i32 %add, i32* %retval, align 4, !dbg !21350
+  br label %return, !dbg !21350
 
 sw.default:                                       ; preds = %entry
-  %2 = load i32, i32* %c.addr, align 4, !dbg !21346
-  store i32 %2, i32* %retval, align 4, !dbg !21347
-  br label %return, !dbg !21347
+  %2 = load i32, i32* %c.addr, align 4, !dbg !21351
+  store i32 %2, i32* %retval, align 4, !dbg !21352
+  br label %return, !dbg !21352
 
 return:                                           ; preds = %sw.default, %sw.bb
-  %3 = load i32, i32* %retval, align 4, !dbg !21348
-  ret i32 %3, !dbg !21348
+  %3 = load i32, i32* %retval, align 4, !dbg !21353
+  ret i32 %3, !dbg !21353
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local i32 @c_toupper(i32 %c) #4 !dbg !21349 {
+define dso_local i32 @c_toupper(i32 %c) #4 !dbg !21354 {
 entry:
   %retval = alloca i32, align 4
   %c.addr = alloca i32, align 4
   store i32 %c, i32* %c.addr, align 4
-  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21350, metadata !DIExpression()), !dbg !21351
-  %0 = load i32, i32* %c.addr, align 4, !dbg !21352
+  call void @llvm.dbg.declare(metadata i32* %c.addr, metadata !21355, metadata !DIExpression()), !dbg !21356
+  %0 = load i32, i32* %c.addr, align 4, !dbg !21357
   switch i32 %0, label %sw.default [
     i32 97, label %sw.bb
     i32 98, label %sw.bb
@@ -35348,27 +35344,27 @@ entry:
     i32 120, label %sw.bb
     i32 121, label %sw.bb
     i32 122, label %sw.bb
-  ], !dbg !21353
+  ], !dbg !21358
 
 sw.bb:                                            ; preds = %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry, %entry
-  %1 = load i32, i32* %c.addr, align 4, !dbg !21354
-  %sub = sub nsw i32 %1, 97, !dbg !21356
-  %add = add nsw i32 %sub, 65, !dbg !21357
-  store i32 %add, i32* %retval, align 4, !dbg !21358
-  br label %return, !dbg !21358
+  %1 = load i32, i32* %c.addr, align 4, !dbg !21359
+  %sub = sub nsw i32 %1, 97, !dbg !21361
+  %add = add nsw i32 %sub, 65, !dbg !21362
+  store i32 %add, i32* %retval, align 4, !dbg !21363
+  br label %return, !dbg !21363
 
 sw.default:                                       ; preds = %entry
-  %2 = load i32, i32* %c.addr, align 4, !dbg !21359
-  store i32 %2, i32* %retval, align 4, !dbg !21360
-  br label %return, !dbg !21360
+  %2 = load i32, i32* %c.addr, align 4, !dbg !21364
+  store i32 %2, i32* %retval, align 4, !dbg !21365
+  br label %return, !dbg !21365
 
 return:                                           ; preds = %sw.default, %sw.bb
-  %3 = load i32, i32* %retval, align 4, !dbg !21361
-  ret i32 %3, !dbg !21361
+  %3 = load i32, i32* %retval, align 4, !dbg !21366
+  ret i32 %3, !dbg !21366
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local %struct._IO_FILE* @fopen_safer(i8* %file, i8* %mode) #4 !dbg !21362 {
+define dso_local %struct._IO_FILE* @fopen_safer(i8* %file, i8* %mode) #4 !dbg !21367 {
 entry:
   %retval = alloca %struct._IO_FILE*, align 8
   %file.addr = alloca i8*, align 8
@@ -35379,95 +35375,95 @@ entry:
   %e = alloca i32, align 4, !ctir !5
   %e15 = alloca i32, align 4, !ctir !5
   store i8* %file, i8** %file.addr, align 8
-  call void @llvm.dbg.declare(metadata i8** %file.addr, metadata !21366, metadata !DIExpression()), !dbg !21367
+  call void @llvm.dbg.declare(metadata i8** %file.addr, metadata !21371, metadata !DIExpression()), !dbg !21372
   store i8* %mode, i8** %mode.addr, align 8
-  call void @llvm.dbg.declare(metadata i8** %mode.addr, metadata !21368, metadata !DIExpression()), !dbg !21369
-  call void @llvm.dbg.declare(metadata %struct._IO_FILE** %fp, metadata !21370, metadata !DIExpression()), !dbg !21371
-  %0 = load i8*, i8** %file.addr, align 8, !dbg !21372
-  %1 = load i8*, i8** %mode.addr, align 8, !dbg !21373
-  %call = call %struct._IO_FILE* @fopen(i8* %0, i8* %1), !dbg !21374
-  store %struct._IO_FILE* %call, %struct._IO_FILE** %fp, align 8, !dbg !21371
-  %2 = load %struct._IO_FILE*, %struct._IO_FILE** %fp, align 8, !dbg !21375
-  %tobool = icmp ne %struct._IO_FILE* %2, null, !dbg !21375
-  br i1 %tobool, label %if.then, label %if.end21, !dbg !21377
+  call void @llvm.dbg.declare(metadata i8** %mode.addr, metadata !21373, metadata !DIExpression()), !dbg !21374
+  call void @llvm.dbg.declare(metadata %struct._IO_FILE** %fp, metadata !21375, metadata !DIExpression()), !dbg !21376
+  %0 = load i8*, i8** %file.addr, align 8, !dbg !21377
+  %1 = load i8*, i8** %mode.addr, align 8, !dbg !21378
+  %call = call %struct._IO_FILE* @fopen(i8* %0, i8* %1), !dbg !21379
+  store %struct._IO_FILE* %call, %struct._IO_FILE** %fp, align 8, !dbg !21376
+  %2 = load %struct._IO_FILE*, %struct._IO_FILE** %fp, align 8, !dbg !21380
+  %tobool = icmp ne %struct._IO_FILE* %2, null, !dbg !21380
+  br i1 %tobool, label %if.then, label %if.end21, !dbg !21382
 
 if.then:                                          ; preds = %entry
-  call void @llvm.dbg.declare(metadata i32* %fd, metadata !21378, metadata !DIExpression()), !dbg !21380
-  %3 = load %struct._IO_FILE*, %struct._IO_FILE** %fp, align 8, !dbg !21381
-  %call1 = call i32 @fileno(%struct._IO_FILE* %3) #9, !dbg !21382
-  store i32 %call1, i32* %fd, align 4, !dbg !21380
-  %4 = load i32, i32* %fd, align 4, !dbg !21383
-  %cmp = icmp sle i32 0, %4, !dbg !21385
-  br i1 %cmp, label %land.lhs.true, label %if.end20, !dbg !21386
+  call void @llvm.dbg.declare(metadata i32* %fd, metadata !21383, metadata !DIExpression()), !dbg !21385
+  %3 = load %struct._IO_FILE*, %struct._IO_FILE** %fp, align 8, !dbg !21386
+  %call1 = call i32 @fileno(%struct._IO_FILE* %3) #9, !dbg !21387
+  store i32 %call1, i32* %fd, align 4, !dbg !21385
+  %4 = load i32, i32* %fd, align 4, !dbg !21388
+  %cmp = icmp sle i32 0, %4, !dbg !21390
+  br i1 %cmp, label %land.lhs.true, label %if.end20, !dbg !21391
 
 land.lhs.true:                                    ; preds = %if.then
-  %5 = load i32, i32* %fd, align 4, !dbg !21387
-  %cmp2 = icmp sle i32 %5, 2, !dbg !21388
-  br i1 %cmp2, label %if.then3, label %if.end20, !dbg !21389
+  %5 = load i32, i32* %fd, align 4, !dbg !21392
+  %cmp2 = icmp sle i32 %5, 2, !dbg !21393
+  br i1 %cmp2, label %if.then3, label %if.end20, !dbg !21394
 
 if.then3:                                         ; preds = %land.lhs.true
-  call void @llvm.dbg.declare(metadata i32* %f, metadata !21390, metadata !DIExpression()), !dbg !21392
-  %6 = load i32, i32* %fd, align 4, !dbg !21393
-  %call4 = call i32 @dup_safer(i32 %6), !dbg !21394
-  store i32 %call4, i32* %f, align 4, !dbg !21392
-  %7 = load i32, i32* %f, align 4, !dbg !21395
-  %cmp5 = icmp slt i32 %7, 0, !dbg !21397
-  br i1 %cmp5, label %if.then6, label %if.end, !dbg !21398
+  call void @llvm.dbg.declare(metadata i32* %f, metadata !21395, metadata !DIExpression()), !dbg !21397
+  %6 = load i32, i32* %fd, align 4, !dbg !21398
+  %call4 = call i32 @dup_safer(i32 %6), !dbg !21399
+  store i32 %call4, i32* %f, align 4, !dbg !21397
+  %7 = load i32, i32* %f, align 4, !dbg !21400
+  %cmp5 = icmp slt i32 %7, 0, !dbg !21402
+  br i1 %cmp5, label %if.then6, label %if.end, !dbg !21403
 
 if.then6:                                         ; preds = %if.then3
-  call void @llvm.dbg.declare(metadata i32* %e, metadata !21399, metadata !DIExpression()), !dbg !21401
-  %call7 = call i32* @__errno_location() #16, !dbg !21402
-  %8 = load i32, i32* %call7, align 4, !dbg !21402, !ctir !5
-  store i32 %8, i32* %e, align 4, !dbg !21401
-  %9 = load %struct._IO_FILE*, %struct._IO_FILE** %fp, align 8, !dbg !21403
-  %call8 = call i32 @rpl_fclose(%struct._IO_FILE* %9), !dbg !21404
-  %10 = load i32, i32* %e, align 4, !dbg !21405
-  %call9 = call i32* @__errno_location() #16, !dbg !21406
-  store i32 %10, i32* %call9, align 4, !dbg !21407, !ctir !5
-  store %struct._IO_FILE* null, %struct._IO_FILE** %retval, align 8, !dbg !21408
-  br label %return, !dbg !21408
+  call void @llvm.dbg.declare(metadata i32* %e, metadata !21404, metadata !DIExpression()), !dbg !21406
+  %call7 = call i32* @__errno_location() #16, !dbg !21407
+  %8 = load i32, i32* %call7, align 4, !dbg !21407, !ctir !5
+  store i32 %8, i32* %e, align 4, !dbg !21406
+  %9 = load %struct._IO_FILE*, %struct._IO_FILE** %fp, align 8, !dbg !21408
+  %call8 = call i32 @rpl_fclose(%struct._IO_FILE* %9), !dbg !21409
+  %10 = load i32, i32* %e, align 4, !dbg !21410
+  %call9 = call i32* @__errno_location() #16, !dbg !21411
+  store i32 %10, i32* %call9, align 4, !dbg !21412, !ctir !5
+  store %struct._IO_FILE* null, %struct._IO_FILE** %retval, align 8, !dbg !21413
+  br label %return, !dbg !21413
 
 if.end:                                           ; preds = %if.then3
-  %11 = load %struct._IO_FILE*, %struct._IO_FILE** %fp, align 8, !dbg !21409
-  %call10 = call i32 @rpl_fclose(%struct._IO_FILE* %11), !dbg !21411
-  %cmp11 = icmp ne i32 %call10, 0, !dbg !21412
-  br i1 %cmp11, label %if.then14, label %lor.lhs.false, !dbg !21413
+  %11 = load %struct._IO_FILE*, %struct._IO_FILE** %fp, align 8, !dbg !21414
+  %call10 = call i32 @rpl_fclose(%struct._IO_FILE* %11), !dbg !21416
+  %cmp11 = icmp ne i32 %call10, 0, !dbg !21417
+  br i1 %cmp11, label %if.then14, label %lor.lhs.false, !dbg !21418
 
 lor.lhs.false:                                    ; preds = %if.end
-  %12 = load i32, i32* %f, align 4, !dbg !21414
-  %13 = load i8*, i8** %mode.addr, align 8, !dbg !21415
-  %call12 = call %struct._IO_FILE* @fdopen(i32 %12, i8* %13) #9, !dbg !21416
-  store %struct._IO_FILE* %call12, %struct._IO_FILE** %fp, align 8, !dbg !21417
-  %tobool13 = icmp ne %struct._IO_FILE* %call12, null, !dbg !21417
-  br i1 %tobool13, label %if.end19, label %if.then14, !dbg !21418
+  %12 = load i32, i32* %f, align 4, !dbg !21419
+  %13 = load i8*, i8** %mode.addr, align 8, !dbg !21420
+  %call12 = call %struct._IO_FILE* @fdopen(i32 %12, i8* %13) #9, !dbg !21421
+  store %struct._IO_FILE* %call12, %struct._IO_FILE** %fp, align 8, !dbg !21422
+  %tobool13 = icmp ne %struct._IO_FILE* %call12, null, !dbg !21422
+  br i1 %tobool13, label %if.end19, label %if.then14, !dbg !21423
 
 if.then14:                                        ; preds = %lor.lhs.false, %if.end
-  call void @llvm.dbg.declare(metadata i32* %e15, metadata !21419, metadata !DIExpression()), !dbg !21421
-  %call16 = call i32* @__errno_location() #16, !dbg !21422
-  %14 = load i32, i32* %call16, align 4, !dbg !21422, !ctir !5
-  store i32 %14, i32* %e15, align 4, !dbg !21421
-  %15 = load i32, i32* %f, align 4, !dbg !21423
-  %call17 = call i32 @close(i32 %15), !dbg !21424
-  %16 = load i32, i32* %e15, align 4, !dbg !21425
-  %call18 = call i32* @__errno_location() #16, !dbg !21426
-  store i32 %16, i32* %call18, align 4, !dbg !21427, !ctir !5
-  store %struct._IO_FILE* null, %struct._IO_FILE** %retval, align 8, !dbg !21428
-  br label %return, !dbg !21428
+  call void @llvm.dbg.declare(metadata i32* %e15, metadata !21424, metadata !DIExpression()), !dbg !21426
+  %call16 = call i32* @__errno_location() #16, !dbg !21427
+  %14 = load i32, i32* %call16, align 4, !dbg !21427, !ctir !5
+  store i32 %14, i32* %e15, align 4, !dbg !21426
+  %15 = load i32, i32* %f, align 4, !dbg !21428
+  %call17 = call i32 @close(i32 %15), !dbg !21429
+  %16 = load i32, i32* %e15, align 4, !dbg !21430
+  %call18 = call i32* @__errno_location() #16, !dbg !21431
+  store i32 %16, i32* %call18, align 4, !dbg !21432, !ctir !5
+  store %struct._IO_FILE* null, %struct._IO_FILE** %retval, align 8, !dbg !21433
+  br label %return, !dbg !21433
 
 if.end19:                                         ; preds = %lor.lhs.false
-  br label %if.end20, !dbg !21429
+  br label %if.end20, !dbg !21434
 
 if.end20:                                         ; preds = %if.end19, %land.lhs.true, %if.then
-  br label %if.end21, !dbg !21430
+  br label %if.end21, !dbg !21435
 
 if.end21:                                         ; preds = %if.end20, %entry
-  %17 = load %struct._IO_FILE*, %struct._IO_FILE** %fp, align 8, !dbg !21431
-  store %struct._IO_FILE* %17, %struct._IO_FILE** %retval, align 8, !dbg !21432
-  br label %return, !dbg !21432
+  %17 = load %struct._IO_FILE*, %struct._IO_FILE** %fp, align 8, !dbg !21436
+  store %struct._IO_FILE* %17, %struct._IO_FILE** %retval, align 8, !dbg !21437
+  br label %return, !dbg !21437
 
 return:                                           ; preds = %if.end21, %if.then14, %if.then6
-  %18 = load %struct._IO_FILE*, %struct._IO_FILE** %retval, align 8, !dbg !21433
-  ret %struct._IO_FILE* %18, !dbg !21433
+  %18 = load %struct._IO_FILE*, %struct._IO_FILE** %retval, align 8, !dbg !21438
+  ret %struct._IO_FILE* %18, !dbg !21438
 }
 
 declare dso_local %struct._IO_FILE* @fopen(i8*, i8*) #3
@@ -35559,7 +35555,7 @@ attributes #16 = { nounwind readnone }
 !59 = !DISubrange(count: 20)
 !60 = !DIGlobalVariableExpression(var: !61, expr: !DIExpression())
 !61 = distinct !DIGlobalVariable(name: "selinux_enabled", scope: !62, file: !63, line: 53, type: !5, isLocal: true, isDefinition: true)
-!62 = distinct !DICompileUnit(language: DW_LANG_C99, file: !63, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !64, retainedTypes: !118, globals: !394, nameTableKind: None)
+!62 = distinct !DICompileUnit(language: DW_LANG_C99, file: !63, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !64, retainedTypes: !118, globals: !394, nameTableKind: None)
 !63 = !DIFile(filename: "src/install.c", directory: "/home/mohamad/clone/coreutils")
 !64 = !{!65, !73, !80, !86, !92, !97}
 !65 = !DICompositeType(tag: DW_TAG_enumeration_type, name: "backup_type", file: !66, line: 30, baseType: !67, size: 32, elements: !68)
@@ -35930,7 +35926,7 @@ attributes #16 = { nounwind readnone }
 !430 = distinct !DISubprogram(name: "setdefaultfilecon", scope: !63, file: !63, line: 314, type: !293, scopeLine: 315, flags: DIFlagPrototyped, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !62, retainedNodes: !295)
 !431 = !DIGlobalVariableExpression(var: !432, expr: !DIExpression())
 !432 = distinct !DIGlobalVariable(name: "top_level_src_name", scope: !433, file: !434, line: 147, type: !180, isLocal: true, isDefinition: true)
-!433 = distinct !DICompileUnit(language: DW_LANG_C99, file: !434, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !435, retainedTypes: !436, globals: !586, nameTableKind: None)
+!433 = distinct !DICompileUnit(language: DW_LANG_C99, file: !434, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !435, retainedTypes: !436, globals: !586, nameTableKind: None)
 !434 = !DIFile(filename: "src/copy.c", directory: "/home/mohamad/clone/coreutils")
 !435 = !{!65, !73, !80, !86, !92}
 !436 = !{!136, !47, !67, !7, !54, !52, !437, !139, !5, !258, !439, !317, !442, !172, !210, !445, !448, !180, !451, !368, !228, !231, !350, !137, !305, !347, !454, !457, !460, !461, !462, !465, !264, !468, !252, !469, !197, !200, !388, !497, !213, !498, !203, !501, !506, !508, !314, !181, !387, !509, !381, !30, !249, !512, !125, !127, !515, !518, !57, !519, !341, !521, !524, !527, !565, !8, !237, !240, !568, !483, !485, !571, !578, !581, !583, !585, !584, !124, !126}
@@ -36102,7 +36098,7 @@ attributes #16 = { nounwind readnone }
 !602 = distinct !DIGlobalVariable(name: "fallback", scope: !596, file: !434, line: 395, type: !578, isLocal: true, isDefinition: true)
 !603 = !DIGlobalVariableExpression(var: !604, expr: !DIExpression())
 !604 = distinct !DIGlobalVariable(name: "src_to_dest", scope: !605, file: !606, line: 45, type: !172, isLocal: true, isDefinition: true)
-!605 = distinct !DICompileUnit(language: DW_LANG_C99, file: !606, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !607, globals: !618, nameTableKind: None)
+!605 = distinct !DICompileUnit(language: DW_LANG_C99, file: !606, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !607, globals: !618, nameTableKind: None)
 !606 = !DIFile(filename: "src/cp-hash.c", directory: "/home/mohamad/clone/coreutils")
 !607 = !{!47, !7, !608, !610, !506, !508, !172, !616}
 !608 = !DIDerivedType(tag: DW_TAG_typedef, name: "uintmax_t", file: !609, line: 135, baseType: !54)
@@ -36118,7 +36114,7 @@ attributes #16 = { nounwind readnone }
 !618 = !{!603}
 !619 = !DIGlobalVariableExpression(var: !620, expr: !DIExpression())
 !620 = distinct !DIGlobalVariable(name: "simple_pattern", scope: !621, file: !622, line: 38, type: !628, isLocal: true, isDefinition: true)
-!621 = distinct !DICompileUnit(language: DW_LANG_C99, file: !622, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !623, globals: !641, nameTableKind: None)
+!621 = distinct !DICompileUnit(language: DW_LANG_C99, file: !622, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !623, globals: !641, nameTableKind: None)
 !622 = !DIFile(filename: "src/force-link.c", directory: "/home/mohamad/clone/coreutils")
 !623 = !{!5, !624, !7, !627, !52, !628, !629, !180, !636}
 !624 = !DICompositeType(tag: DW_TAG_array_type, baseType: !8, size: 2048, elements: !625)
@@ -36141,13 +36137,13 @@ attributes #16 = { nounwind readnone }
 !641 = !{!619}
 !642 = !DIGlobalVariableExpression(var: !643, expr: !DIExpression())
 !643 = distinct !DIGlobalVariable(name: "Version", scope: !644, file: !645, line: 2, type: !180, isLocal: false, isDefinition: true)
-!644 = distinct !DICompileUnit(language: DW_LANG_C99, file: !645, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !646, globals: !647, nameTableKind: None)
+!644 = distinct !DICompileUnit(language: DW_LANG_C99, file: !645, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !646, globals: !647, nameTableKind: None)
 !645 = !DIFile(filename: "src/version.c", directory: "/home/mohamad/clone/coreutils")
 !646 = !{!180}
 !647 = !{!642}
 !648 = !DIGlobalVariableExpression(var: !649, expr: !DIExpression())
 !649 = distinct !DIGlobalVariable(name: "simple_backup_suffix", scope: !650, file: !654, line: 82, type: !180, isLocal: false, isDefinition: true)
-!650 = distinct !DICompileUnit(language: DW_LANG_C99, file: !651, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !652, retainedTypes: !660, globals: !678, nameTableKind: None)
+!650 = distinct !DICompileUnit(language: DW_LANG_C99, file: !651, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !652, retainedTypes: !660, globals: !678, nameTableKind: None)
 !651 = !DIFile(filename: "./lib/backupfile.c", directory: "/home/mohamad/clone/coreutils")
 !652 = !{!65, !653}
 !653 = !DICompositeType(tag: DW_TAG_enumeration_type, name: "numbered_backup_result", file: !654, line: 172, baseType: !67, size: 32, elements: !655)
@@ -36178,7 +36174,7 @@ attributes #16 = { nounwind readnone }
 !678 = !{!648}
 !679 = !DIGlobalVariableExpression(var: !680, expr: !DIExpression())
 !680 = distinct !DIGlobalVariable(name: "backup_args", scope: !681, file: !699, line: 42, type: !689, isLocal: true, isDefinition: true)
-!681 = distinct !DICompileUnit(language: DW_LANG_C99, file: !682, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !683, retainedTypes: !684, globals: !696, nameTableKind: None)
+!681 = distinct !DICompileUnit(language: DW_LANG_C99, file: !682, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !683, retainedTypes: !684, globals: !696, nameTableKind: None)
 !682 = !DIFile(filename: "./lib/backup-find.c", directory: "/home/mohamad/clone/coreutils")
 !683 = !{!65}
 !684 = !{!685, !7, !181, !687, !689, !691, !264, !240}
@@ -36199,7 +36195,7 @@ attributes #16 = { nounwind readnone }
 !699 = !DIFile(filename: "lib/backup-find.c", directory: "/home/mohamad/clone/coreutils")
 !700 = !DIGlobalVariableExpression(var: !701, expr: !DIExpression())
 !701 = distinct !DIGlobalVariable(name: "file_name", scope: !702, file: !747, line: 37, type: !180, isLocal: true, isDefinition: true)
-!702 = distinct !DICompileUnit(language: DW_LANG_C99, file: !703, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !704, globals: !746, nameTableKind: None)
+!702 = distinct !DICompileUnit(language: DW_LANG_C99, file: !703, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !704, globals: !746, nameTableKind: None)
 !703 = !DIFile(filename: "./lib/closein.c", directory: "/home/mohamad/clone/coreutils")
 !704 = !{!180, !139, !705, !565, !5, !743, !744, !745}
 !705 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !706, size: 64)
@@ -36247,7 +36243,7 @@ attributes #16 = { nounwind readnone }
 !747 = !DIFile(filename: "lib/closein.c", directory: "/home/mohamad/clone/coreutils")
 !748 = !DIGlobalVariableExpression(var: !749, expr: !DIExpression())
 !749 = distinct !DIGlobalVariable(name: "file_name", scope: !750, file: !794, line: 46, type: !180, isLocal: true, isDefinition: true)
-!750 = distinct !DICompileUnit(language: DW_LANG_C99, file: !751, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !752, globals: !791, nameTableKind: None)
+!750 = distinct !DICompileUnit(language: DW_LANG_C99, file: !751, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !752, globals: !791, nameTableKind: None)
 !751 = !DIFile(filename: "./lib/closeout.c", directory: "/home/mohamad/clone/coreutils")
 !752 = !{!180, !139, !753, !5, !252, !743, !744, !745}
 !753 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !754, size: 64)
@@ -36294,14 +36290,14 @@ attributes #16 = { nounwind readnone }
 !794 = !DIFile(filename: "lib/closeout.c", directory: "/home/mohamad/clone/coreutils")
 !795 = !DIGlobalVariableExpression(var: !796, expr: !DIExpression())
 !796 = distinct !DIGlobalVariable(name: "exit_failure", scope: !797, file: !801, line: 24, type: !745, isLocal: false, isDefinition: true)
-!797 = distinct !DICompileUnit(language: DW_LANG_C99, file: !798, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !799, globals: !800, nameTableKind: None)
+!797 = distinct !DICompileUnit(language: DW_LANG_C99, file: !798, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !799, globals: !800, nameTableKind: None)
 !798 = !DIFile(filename: "./lib/exitfail.c", directory: "/home/mohamad/clone/coreutils")
 !799 = !{!745}
 !800 = !{!795}
 !801 = !DIFile(filename: "lib/exitfail.c", directory: "/home/mohamad/clone/coreutils")
 !802 = !DIGlobalVariableExpression(var: !803, expr: !DIExpression())
 !803 = distinct !DIGlobalVariable(name: "default_tuning", scope: !804, file: !810, line: 130, type: !826, isLocal: true, isDefinition: true)
-!804 = distinct !DICompileUnit(language: DW_LANG_C99, file: !805, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !806, globals: !854, nameTableKind: None)
+!804 = distinct !DICompileUnit(language: DW_LANG_C99, file: !805, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !806, globals: !854, nameTableKind: None)
 !805 = !DIFile(filename: "./lib/hash.c", directory: "/home/mohamad/clone/coreutils")
 !806 = !{!54, !47, !52, !807, !819, !813, !210, !341, !842, !852, !585, !181, !826, !853, !808, !825, !837, !847, !685, !831, !139, !5}
 !807 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !808)
@@ -36354,7 +36350,7 @@ attributes #16 = { nounwind readnone }
 !854 = !{!802}
 !855 = !DIGlobalVariableExpression(var: !856, expr: !DIExpression())
 !856 = distinct !DIGlobalVariable(name: "program_name", scope: !857, file: !899, line: 33, type: !180, isLocal: false, isDefinition: true)
-!857 = distinct !DICompileUnit(language: DW_LANG_C99, file: !858, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !859, globals: !898, nameTableKind: None)
+!857 = distinct !DICompileUnit(language: DW_LANG_C99, file: !858, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !859, globals: !898, nameTableKind: None)
 !858 = !DIFile(filename: "./lib/progname.c", directory: "/home/mohamad/clone/coreutils")
 !859 = !{!47, !7, !180, !568, !860, !181, !203, !308}
 !860 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !861, size: 64)
@@ -36399,7 +36395,7 @@ attributes #16 = { nounwind readnone }
 !899 = !DIFile(filename: "lib/progname.c", directory: "/home/mohamad/clone/coreutils")
 !900 = !DIGlobalVariableExpression(var: !901, expr: !DIExpression())
 !901 = distinct !DIGlobalVariable(name: "quoting_style_args", scope: !902, file: !925, line: 85, type: !920, isLocal: false, isDefinition: true)
-!902 = distinct !DICompileUnit(language: DW_LANG_C99, file: !903, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !904, retainedTypes: !919, globals: !961, nameTableKind: None)
+!902 = distinct !DICompileUnit(language: DW_LANG_C99, file: !903, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !904, retainedTypes: !919, globals: !961, nameTableKind: None)
 !903 = !DIFile(filename: "./lib/quotearg.c", directory: "/home/mohamad/clone/coreutils")
 !904 = !{!905}
 !905 = !DICompositeType(tag: DW_TAG_enumeration_type, name: "quoting_style", file: !906, line: 32, baseType: !67, size: 32, elements: !907)
@@ -36475,7 +36471,7 @@ attributes #16 = { nounwind readnone }
 !975 = distinct !DIGlobalVariable(name: "slotvec0", scope: !902, file: !925, line: 844, type: !938, isLocal: true, isDefinition: true)
 !976 = !DIGlobalVariableExpression(var: !977, expr: !DIExpression())
 !977 = distinct !DIGlobalVariable(name: "comparison_function_table", scope: !978, file: !991, line: 74, type: !1001, isLocal: true, isDefinition: true)
-!978 = distinct !DICompileUnit(language: DW_LANG_C99, file: !979, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !980, retainedTypes: !988, globals: !1015, nameTableKind: None)
+!978 = distinct !DICompileUnit(language: DW_LANG_C99, file: !979, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !980, retainedTypes: !988, globals: !1015, nameTableKind: None)
 !979 = !DIFile(filename: "./lib/savedir.c", directory: "/home/mohamad/clone/coreutils")
 !980 = !{!981}
 !981 = !DICompositeType(tag: DW_TAG_enumeration_type, name: "savedir_option", file: !982, line: 26, baseType: !67, size: 32, elements: !983)
@@ -36515,7 +36511,7 @@ attributes #16 = { nounwind readnone }
 !1015 = !{!976}
 !1016 = !DIGlobalVariableExpression(var: !1017, expr: !DIExpression())
 !1017 = distinct !DIGlobalVariable(name: "letters", scope: !1018, file: !1033, line: 184, type: !1024, isLocal: true, isDefinition: true)
-!1018 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1019, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1020, globals: !1032, nameTableKind: None)
+!1018 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1019, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1020, globals: !1032, nameTableKind: None)
 !1019 = !DIFile(filename: "./lib/tempname.c", directory: "/home/mohamad/clone/coreutils")
 !1020 = !{!52, !7, !67, !5, !1021, !1024, !1025, !1028, !350, !1031, !387, !224}
 !1021 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !1022, size: 64)
@@ -36560,7 +36556,7 @@ attributes #16 = { nounwind readnone }
 !1060 = !DIDerivedType(tag: DW_TAG_member, name: "st_mtim", scope: !1042, file: !471, line: 92, baseType: !1056, size: 128, offset: 704)
 !1061 = !DIDerivedType(tag: DW_TAG_member, name: "st_ctim", scope: !1042, file: !471, line: 93, baseType: !1056, size: 128, offset: 832)
 !1062 = !DIDerivedType(tag: DW_TAG_member, name: "__glibc_reserved", scope: !1042, file: !471, line: 106, baseType: !494, size: 192, offset: 960)
-!1063 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1064, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1065, globals: !1076, nameTableKind: None)
+!1063 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1064, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1065, globals: !1076, nameTableKind: None)
 !1064 = !DIFile(filename: "./lib/utimecmp.c", directory: "/home/mohamad/clone/coreutils")
 !1065 = !{!1066, !376, !5, !1067, !139, !460, !508, !1073, !378, !1074}
 !1066 = !DIDerivedType(tag: DW_TAG_typedef, name: "time_t", file: !373, line: 75, baseType: !376)
@@ -36578,7 +36574,7 @@ attributes #16 = { nounwind readnone }
 !1078 = distinct !DIGlobalVariable(name: "new_dst_res", scope: !1036, file: !1037, line: 166, type: !1067, isLocal: true, isDefinition: true)
 !1079 = !DIGlobalVariableExpression(var: !1080, expr: !DIExpression())
 !1080 = distinct !DIGlobalVariable(name: "utimensat_works_really", scope: !1081, file: !1101, line: 75, type: !5, isLocal: true, isDefinition: true)
-!1081 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1082, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1083, globals: !1098, nameTableKind: None)
+!1081 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1082, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1083, globals: !1098, nameTableKind: None)
 !1082 = !DIFile(filename: "./lib/utimens.c", directory: "/home/mohamad/clone/coreutils")
 !1083 = !{!1084, !1089, !5, !378, !1090, !1097, !376, !1096, !139, !1066, !137}
 !1084 = !DICompositeType(tag: DW_TAG_array_type, baseType: !1085, size: 256, elements: !379)
@@ -36601,7 +36597,7 @@ attributes #16 = { nounwind readnone }
 !1101 = !DIFile(filename: "lib/utimens.c", directory: "/home/mohamad/clone/coreutils")
 !1102 = !DIGlobalVariableExpression(var: !1103, expr: !DIExpression())
 !1103 = distinct !DIGlobalVariable(name: "version_etc_copyright", scope: !1104, file: !1108, line: 26, type: !451, isLocal: false, isDefinition: true)
-!1104 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1105, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1106, globals: !1107, nameTableKind: None)
+!1104 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1105, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1106, globals: !1107, nameTableKind: None)
 !1105 = !DIFile(filename: "./lib/version-etc-fsf.c", directory: "/home/mohamad/clone/coreutils")
 !1106 = !{!451}
 !1107 = !{!1102}
@@ -36612,14 +36608,14 @@ attributes #16 = { nounwind readnone }
 !1112 = !DIFile(filename: "lib/write-any-file.c", directory: "/home/mohamad/clone/coreutils")
 !1113 = !DISubroutineType(types: !1114)
 !1114 = !{!139}
-!1115 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1116, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1114, globals: !1117, nameTableKind: None)
+!1115 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1116, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1114, globals: !1117, nameTableKind: None)
 !1116 = !DIFile(filename: "./lib/write-any-file.c", directory: "/home/mohamad/clone/coreutils")
 !1117 = !{!1109, !1118}
 !1118 = !DIGlobalVariableExpression(var: !1119, expr: !DIExpression())
 !1119 = distinct !DIGlobalVariable(name: "can_write", scope: !1111, file: !1112, line: 35, type: !139, isLocal: true, isDefinition: true)
 !1120 = !DIGlobalVariableExpression(var: !1121, expr: !DIExpression())
 !1121 = distinct !DIGlobalVariable(name: "argmatch_die", scope: !1122, file: !1165, line: 67, type: !691, isLocal: false, isDefinition: true)
-!1122 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1123, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1124, globals: !1164, nameTableKind: None)
+!1122 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1123, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1124, globals: !1164, nameTableKind: None)
 !1123 = !DIFile(filename: "./lib/argmatch.c", directory: "/home/mohamad/clone/coreutils")
 !1124 = !{!47, !180, !691, !52, !627, !139, !1125, !181, !314, !249, !213, !1126, !203, !675}
 !1125 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !690, size: 64)
@@ -36669,7 +36665,7 @@ attributes #16 = { nounwind readnone }
 !1169 = !DIFile(filename: "lib/fcntl.c", directory: "/home/mohamad/clone/coreutils")
 !1170 = !DISubroutineType(types: !1171)
 !1171 = !{!5, !5, !5}
-!1172 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1173, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1174, globals: !1185, nameTableKind: None)
+!1172 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1173, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1174, globals: !1185, nameTableKind: None)
 !1173 = !DIFile(filename: "./lib/fcntl.c", directory: "/home/mohamad/clone/coreutils")
 !1174 = !{!1175, !5, !47}
 !1175 = !DIDerivedType(tag: DW_TAG_typedef, name: "va_list", file: !1176, line: 14, baseType: !1177)
@@ -36683,7 +36679,7 @@ attributes #16 = { nounwind readnone }
 !1183 = !DIDerivedType(tag: DW_TAG_member, name: "overflow_arg_area", scope: !1179, file: !1173, line: 208, baseType: !47, size: 64, offset: 64)
 !1184 = !DIDerivedType(tag: DW_TAG_member, name: "reg_save_area", scope: !1179, file: !1173, line: 208, baseType: !47, size: 64, offset: 128)
 !1185 = !{!1166}
-!1186 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1187, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1188, nameTableKind: None)
+!1186 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1187, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1188, nameTableKind: None)
 !1187 = !DIFile(filename: "src/prog-fprintf.c", directory: "/home/mohamad/clone/coreutils")
 !1188 = !{!1189, !180, !744}
 !1189 = !DIDerivedType(tag: DW_TAG_typedef, name: "va_list", file: !438, line: 79, baseType: !1190)
@@ -36696,7 +36692,7 @@ attributes #16 = { nounwind readnone }
 !1196 = !DIDerivedType(tag: DW_TAG_member, name: "fp_offset", scope: !1193, file: !1187, line: 30, baseType: !67, size: 32, offset: 32)
 !1197 = !DIDerivedType(tag: DW_TAG_member, name: "overflow_arg_area", scope: !1193, file: !1187, line: 30, baseType: !47, size: 64, offset: 64)
 !1198 = !DIDerivedType(tag: DW_TAG_member, name: "reg_save_area", scope: !1193, file: !1187, line: 30, baseType: !47, size: 64, offset: 128)
-!1199 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1200, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1201, nameTableKind: None)
+!1199 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1200, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1201, nameTableKind: None)
 !1200 = !DIFile(filename: "src/extent-scan.c", directory: "/home/mohamad/clone/coreutils")
 !1201 = !{!1202, !5, !52, !1203, !139, !67, !1209, !1235, !1222, !1214, !1217, !1236, !356, !1239, !1240}
 !1202 = !DIDerivedType(tag: DW_TAG_typedef, name: "off_t", file: !109, line: 86, baseType: !30)
@@ -36740,35 +36736,35 @@ attributes #16 = { nounwind readnone }
 !1240 = !DICompositeType(tag: DW_TAG_array_type, baseType: !8, size: 512, elements: !1241)
 !1241 = !{!1242}
 !1242 = !DISubrange(count: 64)
-!1243 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1244, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, nameTableKind: None)
+!1243 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1244, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, nameTableKind: None)
 !1244 = !DIFile(filename: "src/selinux.c", directory: "/home/mohamad/clone/coreutils")
-!1245 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1246, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1247, nameTableKind: None)
+!1245 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1246, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1247, nameTableKind: None)
 !1246 = !DIFile(filename: "./lib/copy-acl.c", directory: "/home/mohamad/clone/coreutils")
 !1247 = !{!5, !744, !381}
-!1248 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1249, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1250, nameTableKind: None)
+!1248 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1249, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1250, nameTableKind: None)
 !1249 = !DIFile(filename: "./lib/set-acl.c", directory: "/home/mohamad/clone/coreutils")
 !1250 = !{!5, !314}
-!1251 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1252, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1253, nameTableKind: None)
+!1251 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1252, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1253, nameTableKind: None)
 !1252 = !DIFile(filename: "./lib/areadlink-with-size.c", directory: "/home/mohamad/clone/coreutils")
 !1253 = !{!47, !52, !661, !1254, !7, !5}
 !1254 = !DICompositeType(tag: DW_TAG_array_type, baseType: !8, size: 1024, elements: !1255)
 !1255 = !{!1256}
 !1256 = !DISubrange(count: 128)
-!1257 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1258, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !683, nameTableKind: None)
+!1257 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1258, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !683, nameTableKind: None)
 !1258 = !DIFile(filename: "./lib/backup-rename.c", directory: "/home/mohamad/clone/coreutils")
-!1259 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1260, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1261, nameTableKind: None)
+!1259 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1260, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1261, nameTableKind: None)
 !1260 = !DIFile(filename: "./lib/buffer-lcm.c", directory: "/home/mohamad/clone/coreutils")
 !1261 = !{!52}
-!1262 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1263, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1264, nameTableKind: None)
+!1262 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1263, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1264, nameTableKind: None)
 !1263 = !DIFile(filename: "./lib/dirname.c", directory: "/home/mohamad/clone/coreutils")
 !1264 = !{!7}
-!1265 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1266, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1267, nameTableKind: None)
+!1265 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1266, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1267, nameTableKind: None)
 !1266 = !DIFile(filename: "./lib/dirname-lgpl.c", directory: "/home/mohamad/clone/coreutils")
 !1267 = !{!52, !180, !139, !7}
-!1268 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1269, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1270, nameTableKind: None)
+!1268 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1269, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1270, nameTableKind: None)
 !1269 = !DIFile(filename: "./lib/basename-lgpl.c", directory: "/home/mohamad/clone/coreutils")
 !1270 = !{!7, !180, !181, !139, !52}
-!1271 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1272, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !1273, nameTableKind: None)
+!1271 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1272, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !1273, nameTableKind: None)
 !1272 = !DIFile(filename: "./lib/fadvise.c", directory: "/home/mohamad/clone/coreutils")
 !1273 = !{!1274}
 !1274 = !DICompositeType(tag: DW_TAG_enumeration_type, file: !1275, line: 45, baseType: !67, size: 32, elements: !1276)
@@ -36780,7 +36776,7 @@ attributes #16 = { nounwind readnone }
 !1280 = !DIEnumerator(name: "FADVISE_DONTNEED", value: 4, isUnsigned: true)
 !1281 = !DIEnumerator(name: "FADVISE_WILLNEED", value: 3, isUnsigned: true)
 !1282 = !DIEnumerator(name: "FADVISE_RANDOM", value: 1, isUnsigned: true)
-!1283 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1284, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1285, nameTableKind: None)
+!1283 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1284, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1285, nameTableKind: None)
 !1284 = !DIFile(filename: "./lib/open-safer.c", directory: "/home/mohamad/clone/coreutils")
 !1285 = !{!136, !1286}
 !1286 = !DIDerivedType(tag: DW_TAG_typedef, name: "va_list", file: !1176, line: 14, baseType: !1287)
@@ -36792,7 +36788,7 @@ attributes #16 = { nounwind readnone }
 !1292 = !DIDerivedType(tag: DW_TAG_member, name: "fp_offset", scope: !1289, file: !1284, line: 35, baseType: !67, size: 32, offset: 32)
 !1293 = !DIDerivedType(tag: DW_TAG_member, name: "overflow_arg_area", scope: !1289, file: !1284, line: 35, baseType: !47, size: 64, offset: 64)
 !1294 = !DIDerivedType(tag: DW_TAG_member, name: "reg_save_area", scope: !1289, file: !1284, line: 35, baseType: !47, size: 64, offset: 128)
-!1295 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1296, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1297, nameTableKind: None)
+!1295 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1296, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1297, nameTableKind: None)
 !1296 = !DIFile(filename: "./lib/file-set.c", directory: "/home/mohamad/clone/coreutils")
 !1297 = !{!47, !7, !1298, !461, !506, !460, !508}
 !1298 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !1299, size: 64)
@@ -36802,22 +36798,22 @@ attributes #16 = { nounwind readnone }
 !1302 = !DIDerivedType(tag: DW_TAG_member, name: "name", scope: !1299, file: !1300, line: 11, baseType: !7, size: 64)
 !1303 = !DIDerivedType(tag: DW_TAG_member, name: "st_ino", scope: !1299, file: !1300, line: 12, baseType: !506, size: 64, offset: 64)
 !1304 = !DIDerivedType(tag: DW_TAG_member, name: "st_dev", scope: !1299, file: !1300, line: 13, baseType: !508, size: 64, offset: 128)
-!1305 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1306, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1307, nameTableKind: None)
+!1305 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1306, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1307, nameTableKind: None)
 !1306 = !DIFile(filename: "./lib/filemode.c", directory: "/home/mohamad/clone/coreutils")
 !1307 = !{!7, !137}
-!1308 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1309, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1310, nameTableKind: None)
+!1308 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1309, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1310, nameTableKind: None)
 !1309 = !DIFile(filename: "./lib/filenamecat.c", directory: "/home/mohamad/clone/coreutils")
 !1310 = !{!47, !7}
-!1311 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1312, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1313, nameTableKind: None)
+!1311 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1312, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1313, nameTableKind: None)
 !1312 = !DIFile(filename: "./lib/filenamecat-lgpl.c", directory: "/home/mohamad/clone/coreutils")
 !1313 = !{!47, !180, !52, !8, !181, !7}
-!1314 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1315, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1316, nameTableKind: None)
+!1314 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1315, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1316, nameTableKind: None)
 !1315 = !DIFile(filename: "./lib/full-read.c", directory: "/home/mohamad/clone/coreutils")
 !1316 = !{!7, !52, !5, !8}
-!1317 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1318, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1319, nameTableKind: None)
+!1317 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1318, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1319, nameTableKind: None)
 !1318 = !DIFile(filename: "./lib/full-write.c", directory: "/home/mohamad/clone/coreutils")
 !1319 = !{!180, !52, !5, !181}
-!1320 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1321, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1322, nameTableKind: None)
+!1320 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1321, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1322, nameTableKind: None)
 !1321 = !DIFile(filename: "./lib/hash-triple.c", directory: "/home/mohamad/clone/coreutils")
 !1322 = !{!1323, !52, !7, !506, !508, !1330}
 !1323 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !1324, size: 64)
@@ -36828,7 +36824,7 @@ attributes #16 = { nounwind readnone }
 !1328 = !DIDerivedType(tag: DW_TAG_member, name: "st_ino", scope: !1325, file: !1300, line: 12, baseType: !506, size: 64, offset: 64)
 !1329 = !DIDerivedType(tag: DW_TAG_member, name: "st_dev", scope: !1325, file: !1300, line: 13, baseType: !508, size: 64, offset: 128)
 !1330 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !1325, size: 64)
-!1331 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1332, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !1333, retainedTypes: !1344, nameTableKind: None)
+!1331 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1332, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !1333, retainedTypes: !1344, nameTableKind: None)
 !1332 = !DIFile(filename: "./lib/mkancesdirs.c", directory: "/home/mohamad/clone/coreutils")
 !1333 = !{!1334}
 !1334 = !DICompositeType(tag: DW_TAG_enumeration_type, scope: !1335, file: !98, line: 39, baseType: !67, size: 32, elements: !111)
@@ -36842,7 +36838,7 @@ attributes #16 = { nounwind readnone }
 !1342 = !DIDerivedType(tag: DW_TAG_member, name: "errnum", scope: !1339, file: !98, line: 72, baseType: !5, size: 32)
 !1343 = !DIDerivedType(tag: DW_TAG_member, name: "child", scope: !1339, file: !98, line: 73, baseType: !108, size: 32)
 !1344 = !{!7, !8, !139, !5}
-!1345 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1346, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !1347, retainedTypes: !1358, nameTableKind: None)
+!1345 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1346, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !1347, retainedTypes: !1358, nameTableKind: None)
 !1346 = !DIFile(filename: "./lib/mkdir-p.c", directory: "/home/mohamad/clone/coreutils")
 !1347 = !{!1348}
 !1348 = !DICompositeType(tag: DW_TAG_enumeration_type, scope: !1349, file: !98, line: 39, baseType: !67, size: 32, elements: !111)
@@ -36857,7 +36853,7 @@ attributes #16 = { nounwind readnone }
 !1357 = !DIDerivedType(tag: DW_TAG_member, name: "child", scope: !1353, file: !98, line: 73, baseType: !108, size: 32)
 !1358 = !{!124, !126, !5, !7, !627, !139, !136, !8, !137, !350, !1359, !180, !387, !384, !255, !314}
 !1359 = !DICompositeType(tag: DW_TAG_array_type, baseType: !5, size: 64, elements: !379)
-!1360 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1361, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1362, nameTableKind: None)
+!1360 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1361, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1362, nameTableKind: None)
 !1361 = !DIFile(filename: "./lib/modechange.c", directory: "/home/mohamad/clone/coreutils")
 !1362 = !{!1363, !52, !180, !181, !67, !136, !8, !137}
 !1363 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !1364, size: 64)
@@ -36869,27 +36865,27 @@ attributes #16 = { nounwind readnone }
 !1369 = !DIDerivedType(tag: DW_TAG_member, name: "affected", scope: !1364, file: !1365, line: 102, baseType: !136, size: 32, offset: 32)
 !1370 = !DIDerivedType(tag: DW_TAG_member, name: "value", scope: !1364, file: !1365, line: 103, baseType: !136, size: 32, offset: 64)
 !1371 = !DIDerivedType(tag: DW_TAG_member, name: "mentioned", scope: !1364, file: !1365, line: 104, baseType: !136, size: 32, offset: 96)
-!1372 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1373, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1374, nameTableKind: None)
+!1372 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1373, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1374, nameTableKind: None)
 !1373 = !DIFile(filename: "./lib/opendirat.c", directory: "/home/mohamad/clone/coreutils")
 !1374 = !{!5, !662}
-!1375 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1376, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1377, nameTableKind: None)
+!1375 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1376, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1377, nameTableKind: None)
 !1376 = !DIFile(filename: "./lib/qcopy-acl.c", directory: "/home/mohamad/clone/coreutils")
 !1377 = !{!5}
-!1378 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1379, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1380, nameTableKind: None)
+!1378 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1379, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1380, nameTableKind: None)
 !1379 = !DIFile(filename: "./lib/qset-acl.c", directory: "/home/mohamad/clone/coreutils")
 !1380 = !{!5, !136}
-!1381 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1382, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1383, nameTableKind: None)
+!1381 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1382, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1383, nameTableKind: None)
 !1382 = !DIFile(filename: "./lib/renameatu.c", directory: "/home/mohamad/clone/coreutils")
 !1383 = !{!7, !5, !52, !139, !180, !137}
-!1384 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1385, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1386, nameTableKind: None)
+!1384 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1385, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1386, nameTableKind: None)
 !1385 = !DIFile(filename: "./lib/safe-read.c", directory: "/home/mohamad/clone/coreutils")
 !1386 = !{!661, !5}
-!1387 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1388, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1386, nameTableKind: None)
+!1387 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1388, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1386, nameTableKind: None)
 !1388 = !DIFile(filename: "./lib/safe-write.c", directory: "/home/mohamad/clone/coreutils")
-!1389 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1390, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1391, nameTableKind: None)
+!1389 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1390, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1391, nameTableKind: None)
 !1390 = !DIFile(filename: "./lib/same.c", directory: "/home/mohamad/clone/coreutils")
 !1391 = !{!180, !52, !139, !7, !5, !744, !461, !460}
-!1392 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1393, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !1394, retainedTypes: !1405, nameTableKind: None)
+!1392 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1393, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !1394, retainedTypes: !1405, nameTableKind: None)
 !1393 = !DIFile(filename: "./lib/savewd.c", directory: "/home/mohamad/clone/coreutils")
 !1394 = !{!1395}
 !1395 = !DICompositeType(tag: DW_TAG_enumeration_type, scope: !1396, file: !98, line: 39, baseType: !67, size: 32, elements: !111)
@@ -36924,16 +36920,16 @@ attributes #16 = { nounwind readnone }
 !1424 = !DIDerivedType(tag: DW_TAG_member, name: "__i", scope: !1421, file: !1409, line: 220, baseType: !5, size: 32)
 !1425 = !DICompositeType(tag: DW_TAG_array_type, baseType: !181, size: 288, elements: !369)
 !1426 = !DICompositeType(tag: DW_TAG_array_type, baseType: !181, size: 280, elements: !1029)
-!1427 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1428, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1377, nameTableKind: None)
+!1427 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1428, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1377, nameTableKind: None)
 !1428 = !DIFile(filename: "./lib/se-selinux.c", directory: "/home/mohamad/clone/coreutils")
-!1429 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1430, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1431, nameTableKind: None)
+!1429 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1430, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1431, nameTableKind: None)
 !1430 = !DIFile(filename: "./lib/stat-time.c", directory: "/home/mohamad/clone/coreutils")
 !1431 = !{!378, !376}
-!1432 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1433, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, nameTableKind: None)
+!1432 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1433, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, nameTableKind: None)
 !1433 = !DIFile(filename: "./lib/statat.c", directory: "/home/mohamad/clone/coreutils")
-!1434 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1435, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1377, nameTableKind: None)
+!1434 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1435, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1377, nameTableKind: None)
 !1435 = !DIFile(filename: "./lib/fd-safer.c", directory: "/home/mohamad/clone/coreutils")
-!1436 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1437, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1438, nameTableKind: None)
+!1436 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1437, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1438, nameTableKind: None)
 !1437 = !DIFile(filename: "./lib/version-etc.c", directory: "/home/mohamad/clone/coreutils")
 !1438 = !{!47, !252, !743, !1439, !308, !387, !1440, !1443, !240, !1125, !302, !457, !384, !368, !305, !391, !1446, !462, !498, !52, !1449, !1450, !1460, !57, !347, !237, !177, !249}
 !1439 = !DICompositeType(tag: DW_TAG_array_type, baseType: !181, elements: !1233)
@@ -36995,13 +36991,13 @@ attributes #16 = { nounwind readnone }
 !1495 = !DIDerivedType(tag: DW_TAG_member, name: "__pad5", scope: !1461, file: !2, line: 302, baseType: !52, size: 64, offset: 1472)
 !1496 = !DIDerivedType(tag: DW_TAG_member, name: "_mode", scope: !1461, file: !2, line: 303, baseType: !5, size: 32, offset: 1536)
 !1497 = !DIDerivedType(tag: DW_TAG_member, name: "_unused2", scope: !1461, file: !2, line: 305, baseType: !57, size: 160, offset: 1568)
-!1498 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1499, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1500, nameTableKind: None)
+!1498 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1499, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1500, nameTableKind: None)
 !1499 = !DIFile(filename: "./lib/xmalloc.c", directory: "/home/mohamad/clone/coreutils")
 !1500 = !{!52, !7, !47}
-!1501 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1502, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1503, nameTableKind: None)
+!1501 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1502, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1503, nameTableKind: None)
 !1502 = !DIFile(filename: "./lib/xalloc-die.c", directory: "/home/mohamad/clone/coreutils")
 !1503 = !{!745, !744, !264}
-!1504 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1505, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !1506, retainedTypes: !1515, nameTableKind: None)
+!1504 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1505, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !1506, retainedTypes: !1515, nameTableKind: None)
 !1505 = !DIFile(filename: "./lib/xstrtoul.c", directory: "/home/mohamad/clone/coreutils")
 !1506 = !{!1507}
 !1507 = !DICompositeType(tag: DW_TAG_enumeration_type, name: "strtol_error", file: !1508, line: 26, baseType: !67, size: 32, elements: !1509)
@@ -37014,7 +37010,7 @@ attributes #16 = { nounwind readnone }
 !1514 = !DIEnumerator(name: "LONGINT_INVALID", value: 4, isUnsigned: true)
 !1515 = !{!5, !34, !7, !206, !54, !1516, !228, !240, !524, !180, !585, !181, !942, !8}
 !1516 = !DIDerivedType(tag: DW_TAG_typedef, name: "strtol_error", file: !1508, line: 39, baseType: !1507)
-!1517 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1518, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1519, nameTableKind: None)
+!1517 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1518, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1519, nameTableKind: None)
 !1518 = !DIFile(filename: "./lib/yesno.c", directory: "/home/mohamad/clone/coreutils")
 !1519 = !{!139, !7, !52, !661, !1520}
 !1520 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !1521, size: 64)
@@ -37055,7 +37051,7 @@ attributes #16 = { nounwind readnone }
 !1555 = !DIDerivedType(tag: DW_TAG_member, name: "__pad5", scope: !1521, file: !2, line: 302, baseType: !52, size: 64, offset: 1472)
 !1556 = !DIDerivedType(tag: DW_TAG_member, name: "_mode", scope: !1521, file: !2, line: 303, baseType: !5, size: 32, offset: 1536)
 !1557 = !DIDerivedType(tag: DW_TAG_member, name: "_unused2", scope: !1521, file: !2, line: 305, baseType: !57, size: 160, offset: 1568)
-!1558 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1559, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1560, nameTableKind: None)
+!1558 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1559, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1560, nameTableKind: None)
 !1559 = !DIFile(filename: "./lib/fflush.c", directory: "/home/mohamad/clone/coreutils")
 !1560 = !{!47, !1561, !5}
 !1561 = !DIDerivedType(tag: DW_TAG_typedef, name: "FILE", file: !438, line: 48, baseType: !1562)
@@ -37097,7 +37093,7 @@ attributes #16 = { nounwind readnone }
 !1597 = !DIDerivedType(tag: DW_TAG_member, name: "__pad5", scope: !1562, file: !2, line: 302, baseType: !52, size: 64, offset: 1472)
 !1598 = !DIDerivedType(tag: DW_TAG_member, name: "_mode", scope: !1562, file: !2, line: 303, baseType: !5, size: 32, offset: 1536)
 !1599 = !DIDerivedType(tag: DW_TAG_member, name: "_unused2", scope: !1562, file: !2, line: 305, baseType: !57, size: 160, offset: 1568)
-!1600 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1601, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1602, nameTableKind: None)
+!1600 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1601, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1602, nameTableKind: None)
 !1601 = !DIFile(filename: "./lib/freadahead.c", directory: "/home/mohamad/clone/coreutils")
 !1602 = !{!1603, !7, !5}
 !1603 = !DIDerivedType(tag: DW_TAG_typedef, name: "FILE", file: !438, line: 48, baseType: !1604)
@@ -37139,7 +37135,7 @@ attributes #16 = { nounwind readnone }
 !1639 = !DIDerivedType(tag: DW_TAG_member, name: "__pad5", scope: !1604, file: !2, line: 302, baseType: !52, size: 64, offset: 1472)
 !1640 = !DIDerivedType(tag: DW_TAG_member, name: "_mode", scope: !1604, file: !2, line: 303, baseType: !5, size: 32, offset: 1536)
 !1641 = !DIDerivedType(tag: DW_TAG_member, name: "_unused2", scope: !1604, file: !2, line: 305, baseType: !57, size: 160, offset: 1568)
-!1642 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1643, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1644, nameTableKind: None)
+!1642 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1643, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1644, nameTableKind: None)
 !1643 = !DIFile(filename: "./lib/fseeko.c", directory: "/home/mohamad/clone/coreutils")
 !1644 = !{!47, !1645, !7, !437, !5, !45}
 !1645 = !DIDerivedType(tag: DW_TAG_typedef, name: "FILE", file: !438, line: 48, baseType: !1646)
@@ -37181,44 +37177,44 @@ attributes #16 = { nounwind readnone }
 !1681 = !DIDerivedType(tag: DW_TAG_member, name: "__pad5", scope: !1646, file: !2, line: 302, baseType: !52, size: 64, offset: 1472)
 !1682 = !DIDerivedType(tag: DW_TAG_member, name: "_mode", scope: !1646, file: !2, line: 303, baseType: !5, size: 32, offset: 1536)
 !1683 = !DIDerivedType(tag: DW_TAG_member, name: "_unused2", scope: !1646, file: !2, line: 305, baseType: !57, size: 160, offset: 1568)
-!1684 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1685, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1686, nameTableKind: None)
+!1684 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1685, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1686, nameTableKind: None)
 !1685 = !DIFile(filename: "./lib/mbrtowc.c", directory: "/home/mohamad/clone/coreutils")
 !1686 = !{!52, !955, !585, !181}
-!1687 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1688, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, nameTableKind: None)
+!1687 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1688, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, nameTableKind: None)
 !1688 = !DIFile(filename: "./lib/acl-internal.c", directory: "/home/mohamad/clone/coreutils")
-!1689 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1690, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !591, nameTableKind: None)
+!1689 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1690, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !591, nameTableKind: None)
 !1690 = !DIFile(filename: "./lib/get-permissions.c", directory: "/home/mohamad/clone/coreutils")
-!1691 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1692, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1693, nameTableKind: None)
+!1691 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1692, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1693, nameTableKind: None)
 !1692 = !DIFile(filename: "./lib/set-permissions.c", directory: "/home/mohamad/clone/coreutils")
 !1693 = !{!139, !5, !136}
-!1694 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1695, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1696, nameTableKind: None)
+!1694 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1695, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1696, nameTableKind: None)
 !1695 = !DIFile(filename: "./lib/bitrotate.c", directory: "/home/mohamad/clone/coreutils")
 !1696 = !{!67}
-!1697 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1698, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1699, nameTableKind: None)
+!1697 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1698, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1699, nameTableKind: None)
 !1698 = !DIFile(filename: "./lib/c-strcasecmp.c", directory: "/home/mohamad/clone/coreutils")
 !1699 = !{!583, !585, !584}
-!1700 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1701, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1702, nameTableKind: None)
+!1700 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1701, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1702, nameTableKind: None)
 !1701 = !DIFile(filename: "./lib/close-stream.c", directory: "/home/mohamad/clone/coreutils")
 !1702 = !{!1703, !5}
 !1703 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !139)
-!1704 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1705, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1706, nameTableKind: None)
+!1704 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1705, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1706, nameTableKind: None)
 !1705 = !DIFile(filename: "./lib/opendir-safer.c", directory: "/home/mohamad/clone/coreutils")
 !1706 = !{!662, !5}
-!1707 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1708, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, nameTableKind: None)
+!1707 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1708, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, nameTableKind: None)
 !1708 = !DIFile(filename: "./lib/gettime.c", directory: "/home/mohamad/clone/coreutils")
-!1709 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1710, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1711, nameTableKind: None)
+!1709 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1710, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1711, nameTableKind: None)
 !1710 = !DIFile(filename: "./lib/hard-locale.c", directory: "/home/mohamad/clone/coreutils")
 !1711 = !{!139, !180, !387, !958}
-!1712 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1713, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1714, nameTableKind: None)
+!1712 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1713, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1714, nameTableKind: None)
 !1713 = !DIFile(filename: "./lib/hash-pjw.c", directory: "/home/mohamad/clone/coreutils")
 !1714 = !{!180, !52, !181}
-!1715 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1716, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1717, nameTableKind: None)
+!1715 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1716, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1717, nameTableKind: None)
 !1716 = !DIFile(filename: "./lib/localcharset.c", directory: "/home/mohamad/clone/coreutils")
 !1717 = !{!47, !180, !38, !958}
-!1718 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1719, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1720, nameTableKind: None)
+!1718 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1719, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1720, nameTableKind: None)
 !1719 = !DIFile(filename: "./lib/dirchownmod.c", directory: "/home/mohamad/clone/coreutils")
 !1720 = !{!124, !126, !136, !5, !137, !125, !127}
-!1721 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1722, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1723, nameTableKind: None)
+!1721 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1722, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1723, nameTableKind: None)
 !1722 = !DIFile(filename: "./lib/openat-safer.c", directory: "/home/mohamad/clone/coreutils")
 !1723 = !{!136, !1724}
 !1724 = !DIDerivedType(tag: DW_TAG_typedef, name: "va_list", file: !1176, line: 14, baseType: !1725)
@@ -37230,9 +37226,9 @@ attributes #16 = { nounwind readnone }
 !1730 = !DIDerivedType(tag: DW_TAG_member, name: "fp_offset", scope: !1727, file: !1722, line: 35, baseType: !67, size: 32, offset: 32)
 !1731 = !DIDerivedType(tag: DW_TAG_member, name: "overflow_arg_area", scope: !1727, file: !1722, line: 35, baseType: !47, size: 64, offset: 64)
 !1732 = !DIDerivedType(tag: DW_TAG_member, name: "reg_save_area", scope: !1727, file: !1722, line: 35, baseType: !47, size: 64, offset: 128)
-!1733 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1734, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1735, nameTableKind: None)
+!1733 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1734, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1735, nameTableKind: None)
 !1734 = !DIFile(filename: "./lib/randint.c", directory: "/home/mohamad/clone/coreutils")
-!1735 = !{!1736, !1741, !1745, !52, !1747, !5}
+!1735 = !{!47, !1736, !1741, !1745, !52, !1747, !5}
 !1736 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !1737, size: 64)
 !1737 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "randint_source", file: !1738, line: 54, size: 192, elements: !1739)
 !1738 = !DIFile(filename: "lib/randint.c", directory: "/home/mohamad/clone/coreutils")
@@ -37245,7 +37241,7 @@ attributes #16 = { nounwind readnone }
 !1745 = !DIDerivedType(tag: DW_TAG_typedef, name: "randint", file: !1023, line: 30, baseType: !608)
 !1746 = !DIDerivedType(tag: DW_TAG_member, name: "randmax", scope: !1737, file: !1738, line: 65, baseType: !1745, size: 64, offset: 128)
 !1747 = !DICompositeType(tag: DW_TAG_array_type, baseType: !585, size: 64, elements: !204)
-!1748 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1749, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1750, nameTableKind: None)
+!1748 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1749, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1750, nameTableKind: None)
 !1749 = !DIFile(filename: "./lib/randread.c", directory: "/home/mohamad/clone/coreutils")
 !1750 = !{!52, !1751, !1791, !744, !353, !1814, !1797, !685, !745, !5, !240, !350, !7, !661, !521, !8, !108, !124, !585, !1825, !1828, !1815}
 !1751 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !1752, size: 64)
@@ -37326,22 +37322,22 @@ attributes #16 = { nounwind readnone }
 !1826 = !{!1827}
 !1827 = !DISubrange(count: 2048)
 !1828 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !1815, size: 64)
-!1829 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1830, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1831, nameTableKind: None)
+!1829 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1830, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1831, nameTableKind: None)
 !1830 = !DIFile(filename: "./lib/rand-isaac.c", directory: "/home/mohamad/clone/coreutils")
 !1831 = !{!1815, !1828, !1814, !5, !685, !180, !181, !1832, !1833}
 !1832 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !1833, size: 64)
 !1833 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !1815)
-!1834 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1835, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, nameTableKind: None)
+!1834 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1835, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, nameTableKind: None)
 !1835 = !DIFile(filename: "./lib/dup-safer.c", directory: "/home/mohamad/clone/coreutils")
-!1836 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1837, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, nameTableKind: None)
+!1836 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1837, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, nameTableKind: None)
 !1837 = !DIFile(filename: "./lib/explicit_bzero.c", directory: "/home/mohamad/clone/coreutils")
-!1838 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1839, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1377, nameTableKind: None)
+!1838 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1839, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1377, nameTableKind: None)
 !1839 = !DIFile(filename: "./lib/fclose.c", directory: "/home/mohamad/clone/coreutils")
-!1840 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1841, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, nameTableKind: None)
+!1840 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1841, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, nameTableKind: None)
 !1841 = !DIFile(filename: "./lib/nl_langinfo.c", directory: "/home/mohamad/clone/coreutils")
-!1842 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1843, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, nameTableKind: None)
+!1842 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1843, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, nameTableKind: None)
 !1843 = !DIFile(filename: "./lib/c-ctype.c", directory: "/home/mohamad/clone/coreutils")
-!1844 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1845, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1846, nameTableKind: None)
+!1844 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1845, producer: "clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !295, retainedTypes: !1846, nameTableKind: None)
 !1845 = !DIFile(filename: "./lib/fopen-safer.c", directory: "/home/mohamad/clone/coreutils")
 !1846 = !{!1847, !5}
 !1847 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !1848, size: 64)
@@ -37384,7 +37380,7 @@ attributes #16 = { nounwind readnone }
 !1884 = !DIDerivedType(tag: DW_TAG_member, name: "__pad5", scope: !1849, file: !2, line: 302, baseType: !52, size: 64, offset: 1472)
 !1885 = !DIDerivedType(tag: DW_TAG_member, name: "_mode", scope: !1849, file: !2, line: 303, baseType: !5, size: 32, offset: 1536)
 !1886 = !DIDerivedType(tag: DW_TAG_member, name: "_unused2", scope: !1849, file: !2, line: 305, baseType: !57, size: 160, offset: 1568)
-!1887 = !{!"clang version 9.0.0 (https://github.com/mbarbar/tir-clang 705b46f1517a61e41433abeac21f36fdcdd90bc1) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)"}
+!1887 = !{!"clang version 9.0.0 (https://github.com/mbarbar/tir-clang 098fdcdeef42cde3f762b81318f3acc730a55c87) (llvm/llvm-project 0399d5a9682b3cef71c653373e38890c63c4c365)"}
 !1888 = !{i32 2, !"ctir", i32 1}
 !1889 = !{i32 2, !"Dwarf Version", i32 4}
 !1890 = !{i32 2, !"Debug Info Version", i32 3}
@@ -55670,1264 +55666,1269 @@ attributes #16 = { nounwind readnone }
 !20170 = !DILocation(line: 86, column: 50, scope: !20161)
 !20171 = !DILocation(line: 86, column: 56, scope: !20161)
 !20172 = !DILocation(line: 86, column: 36, scope: !20161)
-!20173 = !DILocation(line: 87, column: 11, scope: !20161)
-!20174 = !DILocation(line: 87, column: 33, scope: !20161)
-!20175 = !DILocation(line: 87, column: 20, scope: !20161)
-!20176 = !DILocation(line: 87, column: 3, scope: !20161)
-!20177 = distinct !DISubprogram(name: "randint_get_source", scope: !1738, file: !1738, line: 93, type: !20178, scopeLine: 94, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1733, retainedNodes: !295)
-!20178 = !DISubroutineType(types: !20179)
-!20179 = !{!1741, !20180}
-!20180 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !20181, size: 64)
-!20181 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !1737)
-!20182 = !DILocalVariable(name: "s", arg: 1, scope: !20177, file: !1738, line: 93, type: !20180)
-!20183 = !DILocation(line: 93, column: 50, scope: !20177)
-!20184 = !DILocation(line: 95, column: 10, scope: !20177)
-!20185 = !DILocation(line: 95, column: 13, scope: !20177)
-!20186 = !DILocation(line: 95, column: 3, scope: !20177)
-!20187 = distinct !DISubprogram(name: "randint_genmax", scope: !1738, file: !1738, line: 114, type: !20188, scopeLine: 115, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1733, retainedNodes: !295)
-!20188 = !DISubroutineType(types: !20189)
-!20189 = !{!1745, !1736, !1745}
-!20190 = !DILocalVariable(name: "s", arg: 1, scope: !20187, file: !1738, line: 114, type: !1736)
-!20191 = !DILocation(line: 114, column: 40, scope: !20187)
-!20192 = !DILocalVariable(name: "genmax", arg: 2, scope: !20187, file: !1738, line: 114, type: !1745)
-!20193 = !DILocation(line: 114, column: 51, scope: !20187)
-!20194 = !DILocalVariable(name: "source", scope: !20187, file: !1738, line: 116, type: !1741)
-!20195 = !DILocation(line: 116, column: 27, scope: !20187)
-!20196 = !DILocation(line: 116, column: 36, scope: !20187)
-!20197 = !DILocation(line: 116, column: 39, scope: !20187)
-!20198 = !DILocalVariable(name: "randnum", scope: !20187, file: !1738, line: 117, type: !1745)
-!20199 = !DILocation(line: 117, column: 11, scope: !20187)
-!20200 = !DILocation(line: 117, column: 21, scope: !20187)
-!20201 = !DILocation(line: 117, column: 24, scope: !20187)
-!20202 = !DILocalVariable(name: "randmax", scope: !20187, file: !1738, line: 118, type: !1745)
-!20203 = !DILocation(line: 118, column: 11, scope: !20187)
-!20204 = !DILocation(line: 118, column: 21, scope: !20187)
-!20205 = !DILocation(line: 118, column: 24, scope: !20187)
-!20206 = !DILocalVariable(name: "choices", scope: !20187, file: !1738, line: 119, type: !1745)
-!20207 = !DILocation(line: 119, column: 11, scope: !20187)
-!20208 = !DILocation(line: 119, column: 21, scope: !20187)
-!20209 = !DILocation(line: 119, column: 28, scope: !20187)
-!20210 = !DILocation(line: 121, column: 3, scope: !20187)
-!20211 = !DILocation(line: 123, column: 11, scope: !20212)
-!20212 = distinct !DILexicalBlock(scope: !20213, file: !1738, line: 123, column: 11)
-!20213 = distinct !DILexicalBlock(scope: !20187, file: !1738, line: 122, column: 5)
-!20214 = !DILocation(line: 123, column: 21, scope: !20212)
-!20215 = !DILocation(line: 123, column: 19, scope: !20212)
-!20216 = !DILocation(line: 123, column: 11, scope: !20213)
-!20217 = !DILocalVariable(name: "i", scope: !20218, file: !1738, line: 128, type: !52)
-!20218 = distinct !DILexicalBlock(scope: !20212, file: !1738, line: 124, column: 9)
-!20219 = !DILocation(line: 128, column: 18, scope: !20218)
-!20220 = !DILocalVariable(name: "rmax", scope: !20218, file: !1738, line: 129, type: !1745)
-!20221 = !DILocation(line: 129, column: 19, scope: !20218)
-!20222 = !DILocation(line: 129, column: 26, scope: !20218)
-!20223 = !DILocalVariable(name: "buf", scope: !20218, file: !1738, line: 130, type: !1747)
-!20224 = !DILocation(line: 130, column: 25, scope: !20218)
-!20225 = !DILocation(line: 132, column: 11, scope: !20218)
-!20226 = !DILocation(line: 134, column: 34, scope: !20227)
-!20227 = distinct !DILexicalBlock(scope: !20218, file: !1738, line: 133, column: 13)
-!20228 = !DILocation(line: 134, column: 22, scope: !20227)
-!20229 = !DILocation(line: 134, column: 40, scope: !20227)
-!20230 = !DILocation(line: 134, column: 20, scope: !20227)
-!20231 = !DILocation(line: 135, column: 16, scope: !20227)
-!20232 = !DILocation(line: 136, column: 13, scope: !20227)
-!20233 = !DILocation(line: 137, column: 18, scope: !20218)
-!20234 = !DILocation(line: 137, column: 25, scope: !20218)
-!20235 = !DILocation(line: 137, column: 23, scope: !20218)
-!20236 = distinct !{!20236, !20225, !20237}
-!20237 = !DILocation(line: 137, column: 31, scope: !20218)
-!20238 = !DILocation(line: 139, column: 21, scope: !20218)
-!20239 = !DILocation(line: 139, column: 29, scope: !20218)
-!20240 = !DILocation(line: 139, column: 34, scope: !20218)
-!20241 = !DILocation(line: 139, column: 11, scope: !20218)
-!20242 = !DILocation(line: 148, column: 13, scope: !20218)
-!20243 = !DILocation(line: 150, column: 11, scope: !20218)
-!20244 = !DILocation(line: 152, column: 37, scope: !20245)
-!20245 = distinct !DILexicalBlock(scope: !20218, file: !1738, line: 151, column: 13)
-!20246 = !DILocation(line: 152, column: 25, scope: !20245)
-!20247 = !DILocation(line: 152, column: 52, scope: !20245)
-!20248 = !DILocation(line: 152, column: 48, scope: !20245)
-!20249 = !DILocation(line: 152, column: 46, scope: !20245)
-!20250 = !DILocation(line: 152, column: 23, scope: !20245)
-!20251 = !DILocation(line: 153, column: 37, scope: !20245)
-!20252 = !DILocation(line: 153, column: 25, scope: !20245)
-!20253 = !DILocation(line: 153, column: 46, scope: !20245)
-!20254 = !DILocation(line: 153, column: 23, scope: !20245)
-!20255 = !DILocation(line: 154, column: 16, scope: !20245)
-!20256 = !DILocation(line: 155, column: 13, scope: !20245)
-!20257 = !DILocation(line: 156, column: 18, scope: !20218)
-!20258 = !DILocation(line: 156, column: 28, scope: !20218)
-!20259 = !DILocation(line: 156, column: 26, scope: !20218)
-!20260 = distinct !{!20260, !20243, !20261}
-!20261 = !DILocation(line: 156, column: 34, scope: !20218)
-!20262 = !DILocation(line: 157, column: 9, scope: !20218)
-!20263 = !DILocation(line: 159, column: 11, scope: !20264)
-!20264 = distinct !DILexicalBlock(scope: !20213, file: !1738, line: 159, column: 11)
-!20265 = !DILocation(line: 159, column: 22, scope: !20264)
-!20266 = !DILocation(line: 159, column: 19, scope: !20264)
-!20267 = !DILocation(line: 159, column: 11, scope: !20213)
-!20268 = !DILocation(line: 161, column: 24, scope: !20269)
-!20269 = distinct !DILexicalBlock(scope: !20264, file: !1738, line: 160, column: 9)
-!20270 = !DILocation(line: 161, column: 27, scope: !20269)
-!20271 = !DILocation(line: 161, column: 35, scope: !20269)
-!20272 = !DILocation(line: 161, column: 11, scope: !20269)
-!20273 = !DILocation(line: 161, column: 14, scope: !20269)
-!20274 = !DILocation(line: 161, column: 22, scope: !20269)
-!20275 = !DILocation(line: 162, column: 18, scope: !20269)
-!20276 = !DILocation(line: 162, column: 11, scope: !20269)
-!20277 = !DILocalVariable(name: "excess_choices", scope: !20278, file: !1738, line: 176, type: !1745)
-!20278 = distinct !DILexicalBlock(scope: !20264, file: !1738, line: 165, column: 9)
-!20279 = !DILocation(line: 176, column: 19, scope: !20278)
-!20280 = !DILocation(line: 176, column: 36, scope: !20278)
-!20281 = !DILocation(line: 176, column: 46, scope: !20278)
-!20282 = !DILocation(line: 176, column: 44, scope: !20278)
-!20283 = !DILocalVariable(name: "unusable_choices", scope: !20278, file: !1738, line: 177, type: !1745)
-!20284 = !DILocation(line: 177, column: 19, scope: !20278)
-!20285 = !DILocation(line: 177, column: 38, scope: !20278)
-!20286 = !DILocation(line: 177, column: 55, scope: !20278)
-!20287 = !DILocation(line: 177, column: 53, scope: !20278)
-!20288 = !DILocalVariable(name: "last_usable_choice", scope: !20278, file: !1738, line: 178, type: !1745)
-!20289 = !DILocation(line: 178, column: 19, scope: !20278)
-!20290 = !DILocation(line: 178, column: 40, scope: !20278)
-!20291 = !DILocation(line: 178, column: 50, scope: !20278)
-!20292 = !DILocation(line: 178, column: 48, scope: !20278)
-!20293 = !DILocalVariable(name: "reduced_randnum", scope: !20278, file: !1738, line: 179, type: !1745)
-!20294 = !DILocation(line: 179, column: 19, scope: !20278)
-!20295 = !DILocation(line: 179, column: 37, scope: !20278)
-!20296 = !DILocation(line: 179, column: 47, scope: !20278)
-!20297 = !DILocation(line: 179, column: 45, scope: !20278)
-!20298 = !DILocation(line: 181, column: 15, scope: !20299)
-!20299 = distinct !DILexicalBlock(scope: !20278, file: !1738, line: 181, column: 15)
-!20300 = !DILocation(line: 181, column: 26, scope: !20299)
-!20301 = !DILocation(line: 181, column: 23, scope: !20299)
-!20302 = !DILocation(line: 181, column: 15, scope: !20278)
-!20303 = !DILocation(line: 183, column: 28, scope: !20304)
-!20304 = distinct !DILexicalBlock(scope: !20299, file: !1738, line: 182, column: 13)
-!20305 = !DILocation(line: 183, column: 38, scope: !20304)
-!20306 = !DILocation(line: 183, column: 36, scope: !20304)
-!20307 = !DILocation(line: 183, column: 15, scope: !20304)
-!20308 = !DILocation(line: 183, column: 18, scope: !20304)
-!20309 = !DILocation(line: 183, column: 26, scope: !20304)
-!20310 = !DILocation(line: 184, column: 28, scope: !20304)
-!20311 = !DILocation(line: 184, column: 45, scope: !20304)
-!20312 = !DILocation(line: 184, column: 43, scope: !20304)
-!20313 = !DILocation(line: 184, column: 15, scope: !20304)
-!20314 = !DILocation(line: 184, column: 18, scope: !20304)
-!20315 = !DILocation(line: 184, column: 26, scope: !20304)
-!20316 = !DILocation(line: 185, column: 22, scope: !20304)
-!20317 = !DILocation(line: 185, column: 15, scope: !20304)
-!20318 = !DILocation(line: 190, column: 21, scope: !20278)
-!20319 = !DILocation(line: 190, column: 19, scope: !20278)
-!20320 = !DILocation(line: 191, column: 21, scope: !20278)
-!20321 = !DILocation(line: 191, column: 38, scope: !20278)
-!20322 = !DILocation(line: 191, column: 19, scope: !20278)
-!20323 = distinct !{!20323, !20210, !20324}
-!20324 = !DILocation(line: 193, column: 5, scope: !20187)
-!20325 = !DILocation(line: 194, column: 1, scope: !20187)
-!20326 = distinct !DISubprogram(name: "shift_left", scope: !1738, file: !1738, line: 104, type: !20327, scopeLine: 105, flags: DIFlagPrototyped, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1733, retainedNodes: !295)
-!20327 = !DISubroutineType(types: !20328)
-!20328 = !{!1745, !1745}
-!20329 = !DILocalVariable(name: "x", arg: 1, scope: !20326, file: !1738, line: 104, type: !1745)
-!20330 = !DILocation(line: 104, column: 43, scope: !20326)
-!20331 = !DILocation(line: 106, column: 27, scope: !20326)
-!20332 = !DILocation(line: 106, column: 29, scope: !20326)
-!20333 = !DILocation(line: 106, column: 3, scope: !20326)
-!20334 = distinct !DISubprogram(name: "randint_free", scope: !1738, file: !1738, line: 199, type: !20335, scopeLine: 200, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1733, retainedNodes: !295)
-!20335 = !DISubroutineType(types: !20336)
-!20336 = !{null, !1736}
-!20337 = !DILocalVariable(name: "s", arg: 1, scope: !20334, file: !1738, line: 199, type: !1736)
-!20338 = !DILocation(line: 199, column: 38, scope: !20334)
-!20339 = !DILocation(line: 201, column: 19, scope: !20334)
-!20340 = !DILocation(line: 201, column: 3, scope: !20334)
-!20341 = !DILocation(line: 202, column: 9, scope: !20334)
-!20342 = !DILocation(line: 202, column: 3, scope: !20334)
-!20343 = !DILocation(line: 203, column: 1, scope: !20334)
-!20344 = distinct !DISubprogram(name: "randint_all_free", scope: !1738, file: !1738, line: 209, type: !20345, scopeLine: 210, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1733, retainedNodes: !295)
-!20345 = !DISubroutineType(types: !20346)
-!20346 = !{!5, !1736}
-!20347 = !DILocalVariable(name: "s", arg: 1, scope: !20344, file: !1738, line: 209, type: !1736)
-!20348 = !DILocation(line: 209, column: 42, scope: !20344)
-!20349 = !DILocalVariable(name: "r", scope: !20344, file: !1738, line: 211, type: !5)
-!20350 = !DILocation(line: 211, column: 7, scope: !20344)
-!20351 = !DILocation(line: 211, column: 26, scope: !20344)
-!20352 = !DILocation(line: 211, column: 29, scope: !20344)
-!20353 = !DILocation(line: 211, column: 11, scope: !20344)
-!20354 = !DILocalVariable(name: "e", scope: !20344, file: !1738, line: 212, type: !5)
-!20355 = !DILocation(line: 212, column: 7, scope: !20344)
-!20356 = !DILocation(line: 212, column: 11, scope: !20344)
-!20357 = !DILocation(line: 213, column: 17, scope: !20344)
-!20358 = !DILocation(line: 213, column: 3, scope: !20344)
-!20359 = !DILocation(line: 214, column: 11, scope: !20344)
-!20360 = !DILocation(line: 214, column: 3, scope: !20344)
-!20361 = !DILocation(line: 214, column: 9, scope: !20344)
-!20362 = !DILocation(line: 215, column: 10, scope: !20344)
-!20363 = !DILocation(line: 215, column: 3, scope: !20344)
-!20364 = distinct !DISubprogram(name: "randread_new", scope: !1793, file: !1793, line: 204, type: !20365, scopeLine: 205, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1748, retainedNodes: !295)
-!20365 = !DISubroutineType(types: !20366)
-!20366 = !{!1791, !180, !52}
-!20367 = !DILocalVariable(name: "name", arg: 1, scope: !20364, file: !1793, line: 204, type: !180)
-!20368 = !DILocation(line: 204, column: 27, scope: !20364)
-!20369 = !DILocalVariable(name: "bytes_bound", arg: 2, scope: !20364, file: !1793, line: 204, type: !52)
-!20370 = !DILocation(line: 204, column: 40, scope: !20364)
-!20371 = !DILocation(line: 206, column: 7, scope: !20372)
-!20372 = distinct !DILexicalBlock(scope: !20364, file: !1793, line: 206, column: 7)
-!20373 = !DILocation(line: 206, column: 19, scope: !20372)
-!20374 = !DILocation(line: 206, column: 7, scope: !20364)
-!20375 = !DILocation(line: 207, column: 12, scope: !20372)
-!20376 = !DILocation(line: 207, column: 5, scope: !20372)
-!20377 = !DILocalVariable(name: "source", scope: !20378, file: !1793, line: 210, type: !1751)
-!20378 = distinct !DILexicalBlock(scope: !20372, file: !1793, line: 209, column: 5)
-!20379 = !DILocation(line: 210, column: 13, scope: !20378)
-!20380 = !DILocalVariable(name: "s", scope: !20378, file: !1793, line: 211, type: !1791)
-!20381 = !DILocation(line: 211, column: 31, scope: !20378)
-!20382 = !DILocation(line: 213, column: 11, scope: !20383)
-!20383 = distinct !DILexicalBlock(scope: !20378, file: !1793, line: 213, column: 11)
-!20384 = !DILocation(line: 213, column: 11, scope: !20378)
-!20385 = !DILocation(line: 214, column: 38, scope: !20386)
-!20386 = distinct !DILexicalBlock(scope: !20383, file: !1793, line: 214, column: 13)
-!20387 = !DILocation(line: 214, column: 25, scope: !20386)
-!20388 = !DILocation(line: 214, column: 23, scope: !20386)
-!20389 = !DILocation(line: 214, column: 13, scope: !20383)
-!20390 = !DILocation(line: 215, column: 11, scope: !20386)
-!20391 = !DILocation(line: 214, column: 49, scope: !20386)
-!20392 = !DILocation(line: 217, column: 23, scope: !20378)
-!20393 = !DILocation(line: 217, column: 31, scope: !20378)
-!20394 = !DILocation(line: 217, column: 11, scope: !20378)
-!20395 = !DILocation(line: 217, column: 9, scope: !20378)
-!20396 = !DILocation(line: 219, column: 11, scope: !20397)
-!20397 = distinct !DILexicalBlock(scope: !20378, file: !1793, line: 219, column: 11)
-!20398 = !DILocation(line: 219, column: 11, scope: !20378)
-!20399 = !DILocation(line: 220, column: 18, scope: !20397)
-!20400 = !DILocation(line: 220, column: 26, scope: !20397)
-!20401 = !DILocation(line: 220, column: 29, scope: !20397)
-!20402 = !DILocation(line: 220, column: 33, scope: !20397)
-!20403 = !DILocation(line: 220, column: 44, scope: !20397)
-!20404 = !DILocation(line: 220, column: 9, scope: !20397)
-!20405 = !DILocation(line: 223, column: 11, scope: !20406)
-!20406 = distinct !DILexicalBlock(scope: !20397, file: !1793, line: 222, column: 9)
-!20407 = !DILocation(line: 223, column: 14, scope: !20406)
-!20408 = !DILocation(line: 223, column: 18, scope: !20406)
-!20409 = !DILocation(line: 223, column: 24, scope: !20406)
-!20410 = !DILocation(line: 223, column: 33, scope: !20406)
-!20411 = !DILocation(line: 224, column: 22, scope: !20406)
-!20412 = !DILocation(line: 224, column: 25, scope: !20406)
-!20413 = !DILocation(line: 224, column: 29, scope: !20406)
-!20414 = !DILocation(line: 224, column: 35, scope: !20406)
-!20415 = !DILocation(line: 224, column: 41, scope: !20406)
-!20416 = !DILocation(line: 225, column: 22, scope: !20406)
-!20417 = !DILocation(line: 224, column: 11, scope: !20406)
-!20418 = !DILocation(line: 226, column: 24, scope: !20406)
-!20419 = !DILocation(line: 226, column: 27, scope: !20406)
-!20420 = !DILocation(line: 226, column: 31, scope: !20406)
-!20421 = !DILocation(line: 226, column: 37, scope: !20406)
-!20422 = !DILocation(line: 226, column: 11, scope: !20406)
-!20423 = !DILocation(line: 229, column: 14, scope: !20378)
-!20424 = !DILocation(line: 229, column: 7, scope: !20378)
-!20425 = !DILocation(line: 231, column: 1, scope: !20364)
-!20426 = distinct !DISubprogram(name: "simple_new", scope: !1793, file: !1793, line: 137, type: !20427, scopeLine: 138, flags: DIFlagPrototyped, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1748, retainedNodes: !295)
-!20427 = !DISubroutineType(types: !20428)
-!20428 = !{!1791, !1751, !685}
-!20429 = !DILocalVariable(name: "source", arg: 1, scope: !20426, file: !1793, line: 137, type: !1751)
-!20430 = !DILocation(line: 137, column: 19, scope: !20426)
-!20431 = !DILocalVariable(name: "handler_arg", arg: 2, scope: !20426, file: !1793, line: 137, type: !685)
-!20432 = !DILocation(line: 137, column: 39, scope: !20426)
-!20433 = !DILocalVariable(name: "s", scope: !20426, file: !1793, line: 139, type: !1791)
-!20434 = !DILocation(line: 139, column: 27, scope: !20426)
-!20435 = !DILocation(line: 139, column: 31, scope: !20426)
-!20436 = !DILocation(line: 140, column: 15, scope: !20426)
-!20437 = !DILocation(line: 140, column: 3, scope: !20426)
-!20438 = !DILocation(line: 140, column: 6, scope: !20426)
-!20439 = !DILocation(line: 140, column: 13, scope: !20426)
-!20440 = !DILocation(line: 141, column: 3, scope: !20426)
-!20441 = !DILocation(line: 141, column: 6, scope: !20426)
-!20442 = !DILocation(line: 141, column: 14, scope: !20426)
-!20443 = !DILocation(line: 142, column: 20, scope: !20426)
-!20444 = !DILocation(line: 142, column: 3, scope: !20426)
-!20445 = !DILocation(line: 142, column: 6, scope: !20426)
-!20446 = !DILocation(line: 142, column: 18, scope: !20426)
-!20447 = !DILocation(line: 143, column: 10, scope: !20426)
-!20448 = !DILocation(line: 143, column: 3, scope: !20426)
-!20449 = distinct !DISubprogram(name: "get_nonce", scope: !1793, file: !1793, line: 151, type: !20450, scopeLine: 152, flags: DIFlagPrototyped, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1748, retainedNodes: !295)
-!20450 = !DISubroutineType(types: !20451)
-!20451 = !{null, !47, !52, !52}
-!20452 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "timeval", file: !1092, line: 30, size: 128, elements: !20453)
-!20453 = !{!20454, !20455}
-!20454 = !DIDerivedType(tag: DW_TAG_member, name: "tv_sec", scope: !20452, file: !1092, line: 32, baseType: !376, size: 64)
-!20455 = !DIDerivedType(tag: DW_TAG_member, name: "tv_usec", scope: !20452, file: !1092, line: 33, baseType: !1096, size: 64, offset: 64)
-!20456 = !DILocalVariable(name: "buffer", arg: 1, scope: !20449, file: !1793, line: 151, type: !47)
-!20457 = !DILocation(line: 151, column: 18, scope: !20449)
-!20458 = !DILocalVariable(name: "bufsize", arg: 2, scope: !20449, file: !1793, line: 151, type: !52)
-!20459 = !DILocation(line: 151, column: 33, scope: !20449)
-!20460 = !DILocalVariable(name: "bytes_bound", arg: 3, scope: !20449, file: !1793, line: 151, type: !52)
-!20461 = !DILocation(line: 151, column: 49, scope: !20449)
-!20462 = !DILocalVariable(name: "buf", scope: !20449, file: !1793, line: 153, type: !7)
-!20463 = !DILocation(line: 153, column: 9, scope: !20449)
-!20464 = !DILocation(line: 153, column: 15, scope: !20449)
-!20465 = !DILocalVariable(name: "seeded", scope: !20449, file: !1793, line: 154, type: !661)
-!20466 = !DILocation(line: 154, column: 11, scope: !20449)
-!20467 = !DILocalVariable(name: "fd", scope: !20449, file: !1793, line: 157, type: !5)
-!20468 = !DILocation(line: 157, column: 7, scope: !20449)
-!20469 = !DILocation(line: 157, column: 12, scope: !20449)
-!20470 = !DILocation(line: 158, column: 12, scope: !20471)
-!20471 = distinct !DILexicalBlock(scope: !20449, file: !1793, line: 158, column: 7)
-!20472 = !DILocation(line: 158, column: 9, scope: !20471)
-!20473 = !DILocation(line: 158, column: 7, scope: !20449)
-!20474 = !DILocation(line: 160, column: 22, scope: !20475)
-!20475 = distinct !DILexicalBlock(scope: !20471, file: !1793, line: 159, column: 5)
-!20476 = !DILocation(line: 160, column: 26, scope: !20475)
-!20477 = !DILocation(line: 160, column: 31, scope: !20475)
-!20478 = !DILocation(line: 160, column: 16, scope: !20475)
-!20479 = !DILocation(line: 160, column: 14, scope: !20475)
-!20480 = !DILocation(line: 161, column: 11, scope: !20481)
-!20481 = distinct !DILexicalBlock(scope: !20475, file: !1793, line: 161, column: 11)
-!20482 = !DILocation(line: 161, column: 18, scope: !20481)
-!20483 = !DILocation(line: 161, column: 11, scope: !20475)
-!20484 = !DILocation(line: 162, column: 16, scope: !20481)
-!20485 = !DILocation(line: 162, column: 9, scope: !20481)
-!20486 = !DILocation(line: 163, column: 14, scope: !20475)
-!20487 = !DILocation(line: 163, column: 7, scope: !20475)
-!20488 = !DILocation(line: 164, column: 5, scope: !20475)
-!20489 = !DILocation(line: 177, column: 3, scope: !20490)
-!20490 = distinct !DILexicalBlock(scope: !20449, file: !1793, line: 177, column: 3)
-!20491 = !DILocation(line: 177, column: 3, scope: !20449)
-!20492 = !DILocalVariable(name: "v", scope: !20493, file: !1793, line: 177, type: !20452)
-!20493 = distinct !DILexicalBlock(scope: !20490, file: !1793, line: 177, column: 3)
-!20494 = !DILocation(line: 177, column: 3, scope: !20493)
-!20495 = !DILocalVariable(name: "nbytes", scope: !20493, file: !1793, line: 177, type: !52)
-!20496 = !DILocation(line: 178, column: 3, scope: !20497)
-!20497 = distinct !DILexicalBlock(scope: !20449, file: !1793, line: 178, column: 3)
-!20498 = !DILocation(line: 178, column: 3, scope: !20449)
-!20499 = !DILocalVariable(name: "v", scope: !20500, file: !1793, line: 178, type: !108)
-!20500 = distinct !DILexicalBlock(scope: !20497, file: !1793, line: 178, column: 3)
-!20501 = !DILocation(line: 178, column: 3, scope: !20500)
-!20502 = !DILocalVariable(name: "nbytes", scope: !20500, file: !1793, line: 178, type: !52)
-!20503 = !DILocation(line: 179, column: 3, scope: !20504)
-!20504 = distinct !DILexicalBlock(scope: !20449, file: !1793, line: 179, column: 3)
-!20505 = !DILocation(line: 179, column: 3, scope: !20449)
-!20506 = !DILocalVariable(name: "v", scope: !20507, file: !1793, line: 179, type: !108)
-!20507 = distinct !DILexicalBlock(scope: !20504, file: !1793, line: 179, column: 3)
-!20508 = !DILocation(line: 179, column: 3, scope: !20507)
-!20509 = !DILocalVariable(name: "nbytes", scope: !20507, file: !1793, line: 179, type: !52)
-!20510 = !DILocation(line: 180, column: 3, scope: !20511)
-!20511 = distinct !DILexicalBlock(scope: !20449, file: !1793, line: 180, column: 3)
-!20512 = !DILocation(line: 180, column: 3, scope: !20449)
-!20513 = !DILocalVariable(name: "v", scope: !20514, file: !1793, line: 180, type: !124)
-!20514 = distinct !DILexicalBlock(scope: !20511, file: !1793, line: 180, column: 3)
-!20515 = !DILocation(line: 180, column: 3, scope: !20514)
-!20516 = !DILocalVariable(name: "nbytes", scope: !20514, file: !1793, line: 180, type: !52)
-!20517 = !DILocation(line: 181, column: 3, scope: !20518)
-!20518 = distinct !DILexicalBlock(scope: !20449, file: !1793, line: 181, column: 3)
-!20519 = !DILocation(line: 181, column: 3, scope: !20449)
-!20520 = !DILocalVariable(name: "v", scope: !20521, file: !1793, line: 181, type: !124)
-!20521 = distinct !DILexicalBlock(scope: !20518, file: !1793, line: 181, column: 3)
-!20522 = !DILocation(line: 181, column: 3, scope: !20521)
-!20523 = !DILocalVariable(name: "nbytes", scope: !20521, file: !1793, line: 181, type: !52)
-!20524 = !DILocation(line: 189, column: 1, scope: !20449)
-!20525 = distinct !DISubprogram(name: "randread_error", scope: !1793, file: !1793, line: 124, type: !1798, scopeLine: 125, flags: DIFlagPrototyped | DIFlagNoReturn, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1748, retainedNodes: !295)
-!20526 = !DILocalVariable(name: "file_name", arg: 1, scope: !20525, file: !1793, line: 124, type: !685)
-!20527 = !DILocation(line: 124, column: 29, scope: !20525)
-!20528 = !DILocation(line: 126, column: 7, scope: !20529)
-!20529 = distinct !DILexicalBlock(scope: !20525, file: !1793, line: 126, column: 7)
-!20530 = !DILocation(line: 126, column: 7, scope: !20525)
-!20531 = !DILocation(line: 127, column: 12, scope: !20529)
-!20532 = !DILocation(line: 127, column: 26, scope: !20529)
-!20533 = !DILocation(line: 128, column: 12, scope: !20529)
-!20534 = !DILocation(line: 128, column: 18, scope: !20529)
-!20535 = !DILocation(line: 128, column: 25, scope: !20529)
-!20536 = !DILocation(line: 128, column: 48, scope: !20529)
-!20537 = !DILocation(line: 129, column: 19, scope: !20529)
-!20538 = !DILocation(line: 129, column: 12, scope: !20529)
-!20539 = !DILocation(line: 127, column: 5, scope: !20529)
-!20540 = !DILocation(line: 130, column: 3, scope: !20525)
-!20541 = distinct !DISubprogram(name: "randread_set_handler", scope: !1793, file: !1793, line: 242, type: !20542, scopeLine: 243, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1748, retainedNodes: !295)
-!20542 = !DISubroutineType(types: !20543)
-!20543 = !{null, !1791, !1797}
-!20544 = !DILocalVariable(name: "s", arg: 1, scope: !20541, file: !1793, line: 242, type: !1791)
-!20545 = !DILocation(line: 242, column: 47, scope: !20541)
-!20546 = !DILocalVariable(name: "handler", arg: 2, scope: !20541, file: !1793, line: 242, type: !1797)
-!20547 = !DILocation(line: 242, column: 57, scope: !20541)
-!20548 = !DILocation(line: 244, column: 16, scope: !20541)
-!20549 = !DILocation(line: 244, column: 3, scope: !20541)
-!20550 = !DILocation(line: 244, column: 6, scope: !20541)
-!20551 = !DILocation(line: 244, column: 14, scope: !20541)
-!20552 = !DILocation(line: 245, column: 1, scope: !20541)
-!20553 = distinct !DISubprogram(name: "randread_set_handler_arg", scope: !1793, file: !1793, line: 248, type: !20554, scopeLine: 249, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1748, retainedNodes: !295)
-!20554 = !DISubroutineType(types: !20555)
-!20555 = !{null, !1791, !685}
-!20556 = !DILocalVariable(name: "s", arg: 1, scope: !20553, file: !1793, line: 248, type: !1791)
-!20557 = !DILocation(line: 248, column: 51, scope: !20553)
-!20558 = !DILocalVariable(name: "handler_arg", arg: 2, scope: !20553, file: !1793, line: 248, type: !685)
-!20559 = !DILocation(line: 248, column: 66, scope: !20553)
-!20560 = !DILocation(line: 250, column: 20, scope: !20553)
-!20561 = !DILocation(line: 250, column: 3, scope: !20553)
-!20562 = !DILocation(line: 250, column: 6, scope: !20553)
-!20563 = !DILocation(line: 250, column: 18, scope: !20553)
-!20564 = !DILocation(line: 251, column: 1, scope: !20553)
-!20565 = distinct !DISubprogram(name: "randread", scope: !1793, file: !1793, line: 326, type: !20566, scopeLine: 327, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1748, retainedNodes: !295)
-!20566 = !DISubroutineType(types: !20567)
-!20567 = !{null, !1791, !47, !52}
-!20568 = !DILocalVariable(name: "s", arg: 1, scope: !20565, file: !1793, line: 326, type: !1791)
-!20569 = !DILocation(line: 326, column: 35, scope: !20565)
-!20570 = !DILocalVariable(name: "buf", arg: 2, scope: !20565, file: !1793, line: 326, type: !47)
-!20571 = !DILocation(line: 326, column: 44, scope: !20565)
-!20572 = !DILocalVariable(name: "size", arg: 3, scope: !20565, file: !1793, line: 326, type: !52)
-!20573 = !DILocation(line: 326, column: 56, scope: !20565)
-!20574 = !DILocation(line: 328, column: 7, scope: !20575)
-!20575 = distinct !DILexicalBlock(scope: !20565, file: !1793, line: 328, column: 7)
-!20576 = !DILocation(line: 328, column: 10, scope: !20575)
-!20577 = !DILocation(line: 328, column: 7, scope: !20565)
-!20578 = !DILocation(line: 329, column: 17, scope: !20575)
-!20579 = !DILocation(line: 329, column: 20, scope: !20575)
-!20580 = !DILocation(line: 329, column: 25, scope: !20575)
-!20581 = !DILocation(line: 329, column: 5, scope: !20575)
-!20582 = !DILocation(line: 331, column: 17, scope: !20575)
-!20583 = !DILocation(line: 331, column: 20, scope: !20575)
-!20584 = !DILocation(line: 331, column: 24, scope: !20575)
-!20585 = !DILocation(line: 331, column: 31, scope: !20575)
-!20586 = !DILocation(line: 331, column: 36, scope: !20575)
-!20587 = !DILocation(line: 331, column: 5, scope: !20575)
-!20588 = !DILocation(line: 332, column: 1, scope: !20565)
-!20589 = distinct !DISubprogram(name: "readsource", scope: !1793, file: !1793, line: 258, type: !20590, scopeLine: 259, flags: DIFlagPrototyped, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1748, retainedNodes: !295)
-!20590 = !DISubroutineType(types: !20591)
-!20591 = !{null, !1791, !20592, !52}
-!20592 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !585, size: 64)
-!20593 = !DILocalVariable(name: "s", arg: 1, scope: !20589, file: !1793, line: 258, type: !1791)
-!20594 = !DILocation(line: 258, column: 37, scope: !20589)
-!20595 = !DILocalVariable(name: "p", arg: 2, scope: !20589, file: !1793, line: 258, type: !20592)
-!20596 = !DILocation(line: 258, column: 55, scope: !20589)
-!20597 = !DILocalVariable(name: "size", arg: 3, scope: !20589, file: !1793, line: 258, type: !52)
-!20598 = !DILocation(line: 258, column: 65, scope: !20589)
-!20599 = !DILocation(line: 260, column: 3, scope: !20589)
-!20600 = !DILocalVariable(name: "inbytes", scope: !20601, file: !1793, line: 262, type: !52)
-!20601 = distinct !DILexicalBlock(scope: !20589, file: !1793, line: 261, column: 5)
-!20602 = !DILocation(line: 262, column: 14, scope: !20601)
-!20603 = !DILocation(line: 262, column: 24, scope: !20601)
-!20604 = !DILocalVariable(name: "fread_errno", scope: !20601, file: !1793, line: 263, type: !5)
-!20605 = !DILocation(line: 263, column: 11, scope: !20601)
-!20606 = !DILocation(line: 263, column: 25, scope: !20601)
-!20607 = !DILocation(line: 264, column: 12, scope: !20601)
-!20608 = !DILocation(line: 264, column: 9, scope: !20601)
-!20609 = !DILocation(line: 265, column: 15, scope: !20601)
-!20610 = !DILocation(line: 265, column: 12, scope: !20601)
-!20611 = !DILocation(line: 266, column: 11, scope: !20612)
-!20612 = distinct !DILexicalBlock(scope: !20601, file: !1793, line: 266, column: 11)
-!20613 = !DILocation(line: 266, column: 16, scope: !20612)
-!20614 = !DILocation(line: 266, column: 11, scope: !20601)
-!20615 = !DILocation(line: 267, column: 9, scope: !20612)
-!20616 = !DILocation(line: 268, column: 16, scope: !20601)
-!20617 = !DILocation(line: 268, column: 37, scope: !20601)
-!20618 = !DILocation(line: 268, column: 7, scope: !20601)
-!20619 = !DILocation(line: 268, column: 13, scope: !20601)
-!20620 = !DILocation(line: 269, column: 7, scope: !20601)
-!20621 = !DILocation(line: 269, column: 10, scope: !20601)
-!20622 = !DILocation(line: 269, column: 19, scope: !20601)
-!20623 = !DILocation(line: 269, column: 22, scope: !20601)
-!20624 = distinct !{!20624, !20599, !20625}
-!20625 = !DILocation(line: 270, column: 5, scope: !20589)
-!20626 = !DILocation(line: 271, column: 1, scope: !20589)
-!20627 = distinct !DISubprogram(name: "readisaac", scope: !1793, file: !1793, line: 278, type: !20628, scopeLine: 279, flags: DIFlagPrototyped, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1748, retainedNodes: !295)
-!20628 = !DISubroutineType(types: !20629)
-!20629 = !{null, !20630, !47, !52}
-!20630 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !1806, size: 64)
-!20631 = !DILocalVariable(name: "isaac", arg: 1, scope: !20627, file: !1793, line: 278, type: !20630)
-!20632 = !DILocation(line: 278, column: 26, scope: !20627)
-!20633 = !DILocalVariable(name: "p", arg: 2, scope: !20627, file: !1793, line: 278, type: !47)
-!20634 = !DILocation(line: 278, column: 39, scope: !20627)
-!20635 = !DILocalVariable(name: "size", arg: 3, scope: !20627, file: !1793, line: 278, type: !52)
-!20636 = !DILocation(line: 278, column: 49, scope: !20627)
-!20637 = !DILocalVariable(name: "inbytes", scope: !20627, file: !1793, line: 280, type: !52)
-!20638 = !DILocation(line: 280, column: 10, scope: !20627)
-!20639 = !DILocation(line: 280, column: 20, scope: !20627)
-!20640 = !DILocation(line: 280, column: 27, scope: !20627)
-!20641 = !DILocation(line: 282, column: 3, scope: !20627)
-!20642 = !DILocalVariable(name: "char_p", scope: !20643, file: !1793, line: 284, type: !7)
-!20643 = distinct !DILexicalBlock(scope: !20627, file: !1793, line: 283, column: 5)
-!20644 = !DILocation(line: 284, column: 13, scope: !20643)
-!20645 = !DILocation(line: 284, column: 22, scope: !20643)
-!20646 = !DILocation(line: 286, column: 11, scope: !20647)
-!20647 = distinct !DILexicalBlock(scope: !20643, file: !1793, line: 286, column: 11)
-!20648 = !DILocation(line: 286, column: 19, scope: !20647)
-!20649 = !DILocation(line: 286, column: 16, scope: !20647)
-!20650 = !DILocation(line: 286, column: 11, scope: !20643)
-!20651 = !DILocation(line: 288, column: 19, scope: !20652)
-!20652 = distinct !DILexicalBlock(scope: !20647, file: !1793, line: 287, column: 9)
-!20653 = !DILocation(line: 288, column: 22, scope: !20652)
-!20654 = !DILocation(line: 288, column: 29, scope: !20652)
-!20655 = !DILocation(line: 288, column: 34, scope: !20652)
-!20656 = !DILocation(line: 288, column: 36, scope: !20652)
-!20657 = !DILocation(line: 288, column: 52, scope: !20652)
-!20658 = !DILocation(line: 288, column: 50, scope: !20652)
-!20659 = !DILocation(line: 288, column: 61, scope: !20652)
-!20660 = !DILocation(line: 288, column: 11, scope: !20652)
-!20661 = !DILocation(line: 289, column: 29, scope: !20652)
-!20662 = !DILocation(line: 289, column: 39, scope: !20652)
-!20663 = !DILocation(line: 289, column: 37, scope: !20652)
-!20664 = !DILocation(line: 289, column: 11, scope: !20652)
-!20665 = !DILocation(line: 289, column: 18, scope: !20652)
-!20666 = !DILocation(line: 289, column: 27, scope: !20652)
-!20667 = !DILocation(line: 290, column: 11, scope: !20652)
-!20668 = !DILocation(line: 293, column: 15, scope: !20643)
-!20669 = !DILocation(line: 293, column: 18, scope: !20643)
-!20670 = !DILocation(line: 293, column: 25, scope: !20643)
-!20671 = !DILocation(line: 293, column: 30, scope: !20643)
-!20672 = !DILocation(line: 293, column: 32, scope: !20643)
-!20673 = !DILocation(line: 293, column: 48, scope: !20643)
-!20674 = !DILocation(line: 293, column: 46, scope: !20643)
-!20675 = !DILocation(line: 293, column: 57, scope: !20643)
-!20676 = !DILocation(line: 293, column: 7, scope: !20643)
-!20677 = !DILocation(line: 294, column: 11, scope: !20643)
-!20678 = !DILocation(line: 294, column: 20, scope: !20643)
-!20679 = !DILocation(line: 294, column: 18, scope: !20643)
-!20680 = !DILocation(line: 294, column: 9, scope: !20643)
-!20681 = !DILocation(line: 295, column: 15, scope: !20643)
-!20682 = !DILocation(line: 295, column: 12, scope: !20643)
-!20683 = !DILocation(line: 299, column: 11, scope: !20684)
-!20684 = distinct !DILexicalBlock(scope: !20643, file: !1793, line: 299, column: 11)
-!20685 = !DILocation(line: 299, column: 11, scope: !20643)
-!20686 = !DILocalVariable(name: "wp", scope: !20687, file: !1793, line: 301, type: !1828)
-!20687 = distinct !DILexicalBlock(scope: !20684, file: !1793, line: 300, column: 9)
-!20688 = !DILocation(line: 301, column: 23, scope: !20687)
-!20689 = !DILocation(line: 301, column: 28, scope: !20687)
-!20690 = !DILocation(line: 302, column: 11, scope: !20687)
-!20691 = !DILocation(line: 302, column: 33, scope: !20687)
-!20692 = !DILocation(line: 302, column: 30, scope: !20687)
-!20693 = !DILocation(line: 304, column: 30, scope: !20694)
-!20694 = distinct !DILexicalBlock(scope: !20687, file: !1793, line: 303, column: 13)
-!20695 = !DILocation(line: 304, column: 37, scope: !20694)
-!20696 = !DILocation(line: 304, column: 44, scope: !20694)
-!20697 = !DILocation(line: 304, column: 15, scope: !20694)
-!20698 = !DILocation(line: 305, column: 18, scope: !20694)
-!20699 = !DILocation(line: 306, column: 20, scope: !20694)
-!20700 = !DILocation(line: 307, column: 19, scope: !20701)
-!20701 = distinct !DILexicalBlock(scope: !20694, file: !1793, line: 307, column: 19)
-!20702 = !DILocation(line: 307, column: 24, scope: !20701)
-!20703 = !DILocation(line: 307, column: 19, scope: !20694)
-!20704 = !DILocation(line: 309, column: 19, scope: !20705)
-!20705 = distinct !DILexicalBlock(scope: !20701, file: !1793, line: 308, column: 17)
-!20706 = !DILocation(line: 309, column: 26, scope: !20705)
-!20707 = !DILocation(line: 309, column: 35, scope: !20705)
-!20708 = !DILocation(line: 310, column: 19, scope: !20705)
-!20709 = distinct !{!20709, !20690, !20710}
-!20710 = !DILocation(line: 312, column: 13, scope: !20687)
-!20711 = !DILocation(line: 313, column: 15, scope: !20687)
-!20712 = !DILocation(line: 313, column: 13, scope: !20687)
-!20713 = !DILocation(line: 314, column: 9, scope: !20687)
-!20714 = !DILocation(line: 316, column: 22, scope: !20643)
-!20715 = !DILocation(line: 316, column: 29, scope: !20643)
-!20716 = !DILocation(line: 316, column: 36, scope: !20643)
-!20717 = !DILocation(line: 316, column: 43, scope: !20643)
-!20718 = !DILocation(line: 316, column: 48, scope: !20643)
-!20719 = !DILocation(line: 316, column: 7, scope: !20643)
-!20720 = !DILocation(line: 317, column: 15, scope: !20643)
-!20721 = distinct !{!20721, !20641, !20722}
-!20722 = !DILocation(line: 318, column: 5, scope: !20627)
-!20723 = !DILocation(line: 319, column: 1, scope: !20627)
-!20724 = distinct !DISubprogram(name: "randread_free", scope: !1793, file: !1793, line: 341, type: !20725, scopeLine: 342, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1748, retainedNodes: !295)
-!20725 = !DISubroutineType(types: !20726)
-!20726 = !{!5, !1791}
-!20727 = !DILocalVariable(name: "s", arg: 1, scope: !20724, file: !1793, line: 341, type: !1791)
-!20728 = !DILocation(line: 341, column: 40, scope: !20724)
-!20729 = !DILocalVariable(name: "source", scope: !20724, file: !1793, line: 343, type: !1751)
-!20730 = !DILocation(line: 343, column: 9, scope: !20724)
-!20731 = !DILocation(line: 343, column: 18, scope: !20724)
-!20732 = !DILocation(line: 343, column: 21, scope: !20724)
-!20733 = !DILocation(line: 344, column: 19, scope: !20724)
-!20734 = !DILocation(line: 344, column: 3, scope: !20724)
-!20735 = !DILocation(line: 345, column: 9, scope: !20724)
-!20736 = !DILocation(line: 345, column: 3, scope: !20724)
-!20737 = !DILocation(line: 346, column: 11, scope: !20724)
-!20738 = !DILocation(line: 346, column: 28, scope: !20724)
-!20739 = !DILocation(line: 346, column: 20, scope: !20724)
-!20740 = !DILocation(line: 346, column: 3, scope: !20724)
-!20741 = distinct !DISubprogram(name: "isaac_refill", scope: !20742, file: !20742, line: 90, type: !20743, scopeLine: 91, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1829, retainedNodes: !295)
-!20742 = !DIFile(filename: "lib/rand-isaac.c", directory: "/home/mohamad/clone/coreutils")
-!20743 = !DISubroutineType(types: !20744)
-!20744 = !{null, !20745, !1828}
-!20745 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !20746, size: 64)
-!20746 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "isaac_state", file: !1811, line: 56, size: 16576, elements: !20747)
-!20747 = !{!20748, !20749, !20750, !20751}
-!20748 = !DIDerivedType(tag: DW_TAG_member, name: "m", scope: !20746, file: !1811, line: 58, baseType: !1814, size: 16384)
-!20749 = !DIDerivedType(tag: DW_TAG_member, name: "a", scope: !20746, file: !1811, line: 59, baseType: !1815, size: 64, offset: 16384)
-!20750 = !DIDerivedType(tag: DW_TAG_member, name: "b", scope: !20746, file: !1811, line: 59, baseType: !1815, size: 64, offset: 16448)
-!20751 = !DIDerivedType(tag: DW_TAG_member, name: "c", scope: !20746, file: !1811, line: 59, baseType: !1815, size: 64, offset: 16512)
-!20752 = !DILocalVariable(name: "s", arg: 1, scope: !20741, file: !20742, line: 90, type: !20745)
-!20753 = !DILocation(line: 90, column: 35, scope: !20741)
-!20754 = !DILocalVariable(name: "result", arg: 2, scope: !20741, file: !20742, line: 90, type: !1828)
-!20755 = !DILocation(line: 90, column: 49, scope: !20741)
-!20756 = !DILocalVariable(name: "a", scope: !20741, file: !20742, line: 93, type: !1815)
-!20757 = !DILocation(line: 93, column: 14, scope: !20741)
-!20758 = !DILocation(line: 93, column: 18, scope: !20741)
-!20759 = !DILocation(line: 93, column: 21, scope: !20741)
-!20760 = !DILocalVariable(name: "b", scope: !20741, file: !20742, line: 94, type: !1815)
-!20761 = !DILocation(line: 94, column: 14, scope: !20741)
-!20762 = !DILocation(line: 94, column: 18, scope: !20741)
-!20763 = !DILocation(line: 94, column: 21, scope: !20741)
-!20764 = !DILocation(line: 94, column: 28, scope: !20741)
-!20765 = !DILocation(line: 94, column: 31, scope: !20741)
-!20766 = !DILocation(line: 94, column: 26, scope: !20741)
-!20767 = !DILocation(line: 94, column: 23, scope: !20741)
-!20768 = !DILocalVariable(name: "m", scope: !20741, file: !20742, line: 97, type: !1828)
-!20769 = !DILocation(line: 97, column: 15, scope: !20741)
-!20770 = !DILocation(line: 97, column: 19, scope: !20741)
-!20771 = !DILocation(line: 97, column: 22, scope: !20741)
-!20772 = !DILocalVariable(name: "r", scope: !20741, file: !20742, line: 98, type: !1828)
-!20773 = !DILocation(line: 98, column: 15, scope: !20741)
-!20774 = !DILocation(line: 98, column: 19, scope: !20741)
-!20775 = !DILocation(line: 116, column: 3, scope: !20741)
-!20776 = !DILocalVariable(name: "x", scope: !20777, file: !20742, line: 118, type: !1815)
-!20777 = distinct !DILexicalBlock(scope: !20778, file: !20742, line: 118, column: 7)
-!20778 = distinct !DILexicalBlock(scope: !20741, file: !20742, line: 117, column: 5)
-!20779 = !DILocation(line: 118, column: 7, scope: !20777)
-!20780 = !DILocalVariable(name: "y", scope: !20777, file: !20742, line: 118, type: !1815)
-!20781 = !DILocalVariable(name: "x", scope: !20782, file: !20742, line: 119, type: !1815)
-!20782 = distinct !DILexicalBlock(scope: !20778, file: !20742, line: 119, column: 7)
-!20783 = !DILocation(line: 119, column: 7, scope: !20782)
-!20784 = !DILocalVariable(name: "y", scope: !20782, file: !20742, line: 119, type: !1815)
-!20785 = !DILocalVariable(name: "x", scope: !20786, file: !20742, line: 120, type: !1815)
-!20786 = distinct !DILexicalBlock(scope: !20778, file: !20742, line: 120, column: 7)
-!20787 = !DILocation(line: 120, column: 7, scope: !20786)
-!20788 = !DILocalVariable(name: "y", scope: !20786, file: !20742, line: 120, type: !1815)
-!20789 = !DILocalVariable(name: "x", scope: !20790, file: !20742, line: 121, type: !1815)
-!20790 = distinct !DILexicalBlock(scope: !20778, file: !20742, line: 121, column: 7)
-!20791 = !DILocation(line: 121, column: 7, scope: !20790)
-!20792 = !DILocalVariable(name: "y", scope: !20790, file: !20742, line: 121, type: !1815)
-!20793 = !DILocation(line: 122, column: 9, scope: !20778)
-!20794 = !DILocation(line: 123, column: 5, scope: !20778)
-!20795 = !DILocation(line: 124, column: 13, scope: !20741)
-!20796 = !DILocation(line: 124, column: 21, scope: !20741)
-!20797 = !DILocation(line: 124, column: 24, scope: !20741)
-!20798 = !DILocation(line: 124, column: 26, scope: !20741)
-!20799 = !DILocation(line: 124, column: 19, scope: !20741)
-!20800 = distinct !{!20800, !20775, !20801}
-!20801 = !DILocation(line: 124, column: 32, scope: !20741)
-!20802 = !DILocation(line: 126, column: 3, scope: !20741)
-!20803 = !DILocalVariable(name: "x", scope: !20804, file: !20742, line: 128, type: !1815)
-!20804 = distinct !DILexicalBlock(scope: !20805, file: !20742, line: 128, column: 7)
-!20805 = distinct !DILexicalBlock(scope: !20741, file: !20742, line: 127, column: 5)
-!20806 = !DILocation(line: 128, column: 7, scope: !20804)
-!20807 = !DILocalVariable(name: "y", scope: !20804, file: !20742, line: 128, type: !1815)
-!20808 = !DILocalVariable(name: "x", scope: !20809, file: !20742, line: 129, type: !1815)
-!20809 = distinct !DILexicalBlock(scope: !20805, file: !20742, line: 129, column: 7)
-!20810 = !DILocation(line: 129, column: 7, scope: !20809)
-!20811 = !DILocalVariable(name: "y", scope: !20809, file: !20742, line: 129, type: !1815)
-!20812 = !DILocalVariable(name: "x", scope: !20813, file: !20742, line: 130, type: !1815)
-!20813 = distinct !DILexicalBlock(scope: !20805, file: !20742, line: 130, column: 7)
-!20814 = !DILocation(line: 130, column: 7, scope: !20813)
-!20815 = !DILocalVariable(name: "y", scope: !20813, file: !20742, line: 130, type: !1815)
-!20816 = !DILocalVariable(name: "x", scope: !20817, file: !20742, line: 131, type: !1815)
-!20817 = distinct !DILexicalBlock(scope: !20805, file: !20742, line: 131, column: 7)
-!20818 = !DILocation(line: 131, column: 7, scope: !20817)
-!20819 = !DILocalVariable(name: "y", scope: !20817, file: !20742, line: 131, type: !1815)
-!20820 = !DILocation(line: 132, column: 9, scope: !20805)
-!20821 = !DILocation(line: 133, column: 5, scope: !20805)
-!20822 = !DILocation(line: 134, column: 13, scope: !20741)
-!20823 = !DILocation(line: 134, column: 21, scope: !20741)
-!20824 = !DILocation(line: 134, column: 24, scope: !20741)
-!20825 = !DILocation(line: 134, column: 26, scope: !20741)
-!20826 = !DILocation(line: 134, column: 19, scope: !20741)
-!20827 = distinct !{!20827, !20802, !20828}
-!20828 = !DILocation(line: 134, column: 39, scope: !20741)
-!20829 = !DILocation(line: 136, column: 10, scope: !20741)
-!20830 = !DILocation(line: 136, column: 3, scope: !20741)
-!20831 = !DILocation(line: 136, column: 6, scope: !20741)
-!20832 = !DILocation(line: 136, column: 8, scope: !20741)
-!20833 = !DILocation(line: 137, column: 10, scope: !20741)
-!20834 = !DILocation(line: 137, column: 3, scope: !20741)
-!20835 = !DILocation(line: 137, column: 6, scope: !20741)
-!20836 = !DILocation(line: 137, column: 8, scope: !20741)
-!20837 = !DILocation(line: 138, column: 1, scope: !20741)
-!20838 = distinct !DISubprogram(name: "ind", scope: !20742, file: !20742, line: 68, type: !20839, scopeLine: 69, flags: DIFlagPrototyped, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1829, retainedNodes: !295)
-!20839 = !DISubroutineType(types: !20840)
-!20840 = !{!1815, !1832, !1815}
-!20841 = !DILocalVariable(name: "m", arg: 1, scope: !20838, file: !20742, line: 68, type: !1832)
-!20842 = !DILocation(line: 68, column: 24, scope: !20838)
-!20843 = !DILocalVariable(name: "x", arg: 2, scope: !20838, file: !20742, line: 68, type: !1815)
-!20844 = !DILocation(line: 68, column: 38, scope: !20838)
-!20845 = !DILocalVariable(name: "void_m", scope: !20846, file: !20742, line: 75, type: !685)
-!20846 = distinct !DILexicalBlock(scope: !20847, file: !20742, line: 71, column: 5)
-!20847 = distinct !DILexicalBlock(scope: !20838, file: !20742, line: 70, column: 7)
-!20848 = !DILocation(line: 75, column: 19, scope: !20846)
-!20849 = !DILocation(line: 75, column: 28, scope: !20846)
-!20850 = !DILocalVariable(name: "base_p", scope: !20846, file: !20742, line: 76, type: !180)
-!20851 = !DILocation(line: 76, column: 19, scope: !20846)
-!20852 = !DILocation(line: 76, column: 28, scope: !20846)
-!20853 = !DILocalVariable(name: "word_p", scope: !20846, file: !20742, line: 77, type: !685)
-!20854 = !DILocation(line: 77, column: 19, scope: !20846)
-!20855 = !DILocation(line: 77, column: 28, scope: !20846)
-!20856 = !DILocation(line: 77, column: 38, scope: !20846)
-!20857 = !DILocation(line: 77, column: 40, scope: !20846)
-!20858 = !DILocation(line: 77, column: 35, scope: !20846)
-!20859 = !DILocalVariable(name: "p", scope: !20846, file: !20742, line: 78, type: !1832)
-!20860 = !DILocation(line: 78, column: 25, scope: !20846)
-!20861 = !DILocation(line: 78, column: 29, scope: !20846)
-!20862 = !DILocation(line: 79, column: 15, scope: !20846)
-!20863 = !DILocation(line: 79, column: 14, scope: !20846)
-!20864 = !DILocation(line: 79, column: 7, scope: !20846)
-!20865 = distinct !DISubprogram(name: "just", scope: !20742, file: !20742, line: 60, type: !20866, scopeLine: 61, flags: DIFlagPrototyped, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1829, retainedNodes: !295)
-!20866 = !DISubroutineType(types: !20867)
-!20867 = !{!1815, !1815}
-!20868 = !DILocalVariable(name: "a", arg: 1, scope: !20865, file: !20742, line: 60, type: !1815)
-!20869 = !DILocation(line: 60, column: 18, scope: !20865)
-!20870 = !DILocalVariable(name: "desired_bits", scope: !20865, file: !20742, line: 62, type: !1815)
-!20871 = !DILocation(line: 62, column: 14, scope: !20865)
-!20872 = !DILocation(line: 63, column: 10, scope: !20865)
-!20873 = !DILocation(line: 63, column: 14, scope: !20865)
-!20874 = !DILocation(line: 63, column: 12, scope: !20865)
-!20875 = !DILocation(line: 63, column: 3, scope: !20865)
-!20876 = distinct !DISubprogram(name: "isaac_seed", scope: !20742, file: !20742, line: 248, type: !20877, scopeLine: 249, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1829, retainedNodes: !295)
-!20877 = !DISubroutineType(types: !20878)
-!20878 = !{null, !20745}
-!20879 = !DILocalVariable(name: "s", arg: 1, scope: !20876, file: !20742, line: 248, type: !20745)
-!20880 = !DILocation(line: 248, column: 33, scope: !20876)
-!20881 = !DILocalVariable(name: "a", scope: !20876, file: !20742, line: 250, type: !1815)
-!20882 = !DILocation(line: 250, column: 14, scope: !20876)
-!20883 = !DILocalVariable(name: "b", scope: !20876, file: !20742, line: 251, type: !1815)
-!20884 = !DILocation(line: 251, column: 14, scope: !20876)
-!20885 = !DILocalVariable(name: "c", scope: !20876, file: !20742, line: 252, type: !1815)
-!20886 = !DILocation(line: 252, column: 14, scope: !20876)
-!20887 = !DILocalVariable(name: "d", scope: !20876, file: !20742, line: 253, type: !1815)
-!20888 = !DILocation(line: 253, column: 14, scope: !20876)
-!20889 = !DILocalVariable(name: "e", scope: !20876, file: !20742, line: 254, type: !1815)
-!20890 = !DILocation(line: 254, column: 14, scope: !20876)
-!20891 = !DILocalVariable(name: "f", scope: !20876, file: !20742, line: 255, type: !1815)
-!20892 = !DILocation(line: 255, column: 14, scope: !20876)
-!20893 = !DILocalVariable(name: "g", scope: !20876, file: !20742, line: 256, type: !1815)
-!20894 = !DILocation(line: 256, column: 14, scope: !20876)
-!20895 = !DILocalVariable(name: "h", scope: !20876, file: !20742, line: 257, type: !1815)
-!20896 = !DILocation(line: 257, column: 14, scope: !20876)
-!20897 = !DILocalVariable(name: "i", scope: !20898, file: !20742, line: 269, type: !5)
-!20898 = distinct !DILexicalBlock(scope: !20876, file: !20742, line: 269, column: 3)
-!20899 = !DILocation(line: 269, column: 3, scope: !20898)
-!20900 = !DILocation(line: 269, column: 3, scope: !20901)
-!20901 = distinct !DILexicalBlock(scope: !20898, file: !20742, line: 269, column: 3)
-!20902 = !DILocation(line: 269, column: 3, scope: !20903)
-!20903 = distinct !DILexicalBlock(scope: !20901, file: !20742, line: 269, column: 3)
-!20904 = !DILocation(line: 269, column: 3, scope: !20905)
-!20905 = distinct !DILexicalBlock(scope: !20903, file: !20742, line: 269, column: 3)
-!20906 = !DILocation(line: 269, column: 3, scope: !20907)
-!20907 = distinct !DILexicalBlock(scope: !20905, file: !20742, line: 269, column: 3)
-!20908 = distinct !{!20908, !20900, !20900}
-!20909 = !DILocalVariable(name: "i", scope: !20910, file: !20742, line: 270, type: !5)
-!20910 = distinct !DILexicalBlock(scope: !20876, file: !20742, line: 270, column: 3)
-!20911 = !DILocation(line: 270, column: 3, scope: !20910)
-!20912 = !DILocation(line: 270, column: 3, scope: !20913)
-!20913 = distinct !DILexicalBlock(scope: !20910, file: !20742, line: 270, column: 3)
-!20914 = !DILocation(line: 270, column: 3, scope: !20915)
-!20915 = distinct !DILexicalBlock(scope: !20913, file: !20742, line: 270, column: 3)
-!20916 = !DILocation(line: 270, column: 3, scope: !20917)
-!20917 = distinct !DILexicalBlock(scope: !20915, file: !20742, line: 270, column: 3)
-!20918 = !DILocation(line: 270, column: 3, scope: !20919)
-!20919 = distinct !DILexicalBlock(scope: !20917, file: !20742, line: 270, column: 3)
-!20920 = distinct !{!20920, !20912, !20912}
-!20921 = !DILocation(line: 272, column: 17, scope: !20876)
-!20922 = !DILocation(line: 272, column: 20, scope: !20876)
-!20923 = !DILocation(line: 272, column: 22, scope: !20876)
-!20924 = !DILocation(line: 272, column: 10, scope: !20876)
-!20925 = !DILocation(line: 272, column: 13, scope: !20876)
-!20926 = !DILocation(line: 272, column: 15, scope: !20876)
-!20927 = !DILocation(line: 272, column: 3, scope: !20876)
-!20928 = !DILocation(line: 272, column: 6, scope: !20876)
-!20929 = !DILocation(line: 272, column: 8, scope: !20876)
-!20930 = !DILocation(line: 273, column: 1, scope: !20876)
-!20931 = distinct !DISubprogram(name: "dup_safer", scope: !20932, file: !20932, line: 31, type: !15414, scopeLine: 32, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1834, retainedNodes: !295)
-!20932 = !DIFile(filename: "lib/dup-safer.c", directory: "/home/mohamad/clone/coreutils")
-!20933 = !DILocalVariable(name: "fd", arg: 1, scope: !20931, file: !20932, line: 31, type: !5)
-!20934 = !DILocation(line: 31, column: 16, scope: !20931)
-!20935 = !DILocation(line: 33, column: 17, scope: !20931)
-!20936 = !DILocation(line: 33, column: 10, scope: !20931)
-!20937 = !DILocation(line: 33, column: 3, scope: !20931)
-!20938 = distinct !DISubprogram(name: "explicit_bzero", scope: !20939, file: !20939, line: 39, type: !20940, scopeLine: 40, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1836, retainedNodes: !295)
-!20939 = !DIFile(filename: "lib/explicit_bzero.c", directory: "/home/mohamad/clone/coreutils")
-!20940 = !DISubroutineType(types: !20941)
-!20941 = !{null, !47, !52}
-!20942 = !DILocalVariable(name: "s", arg: 1, scope: !20938, file: !20939, line: 39, type: !47)
-!20943 = !DILocation(line: 39, column: 23, scope: !20938)
-!20944 = !DILocalVariable(name: "len", arg: 2, scope: !20938, file: !20939, line: 39, type: !52)
-!20945 = !DILocation(line: 39, column: 33, scope: !20938)
-!20946 = !DILocation(line: 44, column: 11, scope: !20938)
-!20947 = !DILocation(line: 44, column: 20, scope: !20938)
-!20948 = !DILocation(line: 44, column: 3, scope: !20938)
-!20949 = !DILocation(line: 50, column: 1, scope: !20938)
-!20950 = distinct !DISubprogram(name: "rpl_fclose", scope: !20951, file: !20951, line: 58, type: !20952, scopeLine: 59, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1838, retainedNodes: !295)
-!20951 = !DIFile(filename: "lib/fclose.c", directory: "/home/mohamad/clone/coreutils")
-!20952 = !DISubroutineType(types: !20953)
-!20953 = !{!5, !20954}
-!20954 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !20955, size: 64)
-!20955 = !DIDerivedType(tag: DW_TAG_typedef, name: "FILE", file: !438, line: 48, baseType: !20956)
-!20956 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "_IO_FILE", file: !2, line: 241, size: 1728, elements: !20957)
-!20957 = !{!20958, !20959, !20960, !20961, !20962, !20963, !20964, !20965, !20966, !20967, !20968, !20969, !20970, !20978, !20979, !20980, !20981, !20982, !20983, !20984, !20985, !20986, !20987, !20988, !20989, !20990, !20991, !20992, !20993}
-!20958 = !DIDerivedType(tag: DW_TAG_member, name: "_flags", scope: !20956, file: !2, line: 242, baseType: !5, size: 32)
-!20959 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_read_ptr", scope: !20956, file: !2, line: 247, baseType: !7, size: 64, offset: 64)
-!20960 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_read_end", scope: !20956, file: !2, line: 248, baseType: !7, size: 64, offset: 128)
-!20961 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_read_base", scope: !20956, file: !2, line: 249, baseType: !7, size: 64, offset: 192)
-!20962 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_write_base", scope: !20956, file: !2, line: 250, baseType: !7, size: 64, offset: 256)
-!20963 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_write_ptr", scope: !20956, file: !2, line: 251, baseType: !7, size: 64, offset: 320)
-!20964 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_write_end", scope: !20956, file: !2, line: 252, baseType: !7, size: 64, offset: 384)
-!20965 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_buf_base", scope: !20956, file: !2, line: 253, baseType: !7, size: 64, offset: 448)
-!20966 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_buf_end", scope: !20956, file: !2, line: 254, baseType: !7, size: 64, offset: 512)
-!20967 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_save_base", scope: !20956, file: !2, line: 256, baseType: !7, size: 64, offset: 576)
-!20968 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_backup_base", scope: !20956, file: !2, line: 257, baseType: !7, size: 64, offset: 640)
-!20969 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_save_end", scope: !20956, file: !2, line: 258, baseType: !7, size: 64, offset: 704)
-!20970 = !DIDerivedType(tag: DW_TAG_member, name: "_markers", scope: !20956, file: !2, line: 260, baseType: !20971, size: 64, offset: 768)
-!20971 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !20972, size: 64)
-!20972 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "_IO_marker", file: !2, line: 156, size: 192, elements: !20973)
-!20973 = !{!20974, !20975, !20977}
-!20974 = !DIDerivedType(tag: DW_TAG_member, name: "_next", scope: !20972, file: !2, line: 157, baseType: !20971, size: 64)
-!20975 = !DIDerivedType(tag: DW_TAG_member, name: "_sbuf", scope: !20972, file: !2, line: 158, baseType: !20976, size: 64, offset: 64)
-!20976 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !20956, size: 64)
-!20977 = !DIDerivedType(tag: DW_TAG_member, name: "_pos", scope: !20972, file: !2, line: 162, baseType: !5, size: 32, offset: 128)
-!20978 = !DIDerivedType(tag: DW_TAG_member, name: "_chain", scope: !20956, file: !2, line: 262, baseType: !20976, size: 64, offset: 832)
-!20979 = !DIDerivedType(tag: DW_TAG_member, name: "_fileno", scope: !20956, file: !2, line: 264, baseType: !5, size: 32, offset: 896)
-!20980 = !DIDerivedType(tag: DW_TAG_member, name: "_flags2", scope: !20956, file: !2, line: 268, baseType: !5, size: 32, offset: 928)
-!20981 = !DIDerivedType(tag: DW_TAG_member, name: "_old_offset", scope: !20956, file: !2, line: 270, baseType: !30, size: 64, offset: 960)
-!20982 = !DIDerivedType(tag: DW_TAG_member, name: "_cur_column", scope: !20956, file: !2, line: 274, baseType: !34, size: 16, offset: 1024)
-!20983 = !DIDerivedType(tag: DW_TAG_member, name: "_vtable_offset", scope: !20956, file: !2, line: 275, baseType: !36, size: 8, offset: 1040)
-!20984 = !DIDerivedType(tag: DW_TAG_member, name: "_shortbuf", scope: !20956, file: !2, line: 276, baseType: !38, size: 8, offset: 1048)
-!20985 = !DIDerivedType(tag: DW_TAG_member, name: "_lock", scope: !20956, file: !2, line: 280, baseType: !42, size: 64, offset: 1088)
-!20986 = !DIDerivedType(tag: DW_TAG_member, name: "_offset", scope: !20956, file: !2, line: 289, baseType: !45, size: 64, offset: 1152)
-!20987 = !DIDerivedType(tag: DW_TAG_member, name: "__pad1", scope: !20956, file: !2, line: 297, baseType: !47, size: 64, offset: 1216)
-!20988 = !DIDerivedType(tag: DW_TAG_member, name: "__pad2", scope: !20956, file: !2, line: 298, baseType: !47, size: 64, offset: 1280)
-!20989 = !DIDerivedType(tag: DW_TAG_member, name: "__pad3", scope: !20956, file: !2, line: 299, baseType: !47, size: 64, offset: 1344)
-!20990 = !DIDerivedType(tag: DW_TAG_member, name: "__pad4", scope: !20956, file: !2, line: 300, baseType: !47, size: 64, offset: 1408)
-!20991 = !DIDerivedType(tag: DW_TAG_member, name: "__pad5", scope: !20956, file: !2, line: 302, baseType: !52, size: 64, offset: 1472)
-!20992 = !DIDerivedType(tag: DW_TAG_member, name: "_mode", scope: !20956, file: !2, line: 303, baseType: !5, size: 32, offset: 1536)
-!20993 = !DIDerivedType(tag: DW_TAG_member, name: "_unused2", scope: !20956, file: !2, line: 305, baseType: !57, size: 160, offset: 1568)
-!20994 = !DILocalVariable(name: "fp", arg: 1, scope: !20950, file: !20951, line: 58, type: !20954)
-!20995 = !DILocation(line: 58, column: 19, scope: !20950)
-!20996 = !DILocalVariable(name: "saved_errno", scope: !20950, file: !20951, line: 60, type: !5)
-!20997 = !DILocation(line: 60, column: 7, scope: !20950)
-!20998 = !DILocalVariable(name: "fd", scope: !20950, file: !20951, line: 61, type: !5)
-!20999 = !DILocation(line: 61, column: 7, scope: !20950)
-!21000 = !DILocalVariable(name: "result", scope: !20950, file: !20951, line: 62, type: !5)
-!21001 = !DILocation(line: 62, column: 7, scope: !20950)
-!21002 = !DILocation(line: 65, column: 16, scope: !20950)
-!21003 = !DILocation(line: 65, column: 8, scope: !20950)
-!21004 = !DILocation(line: 65, column: 6, scope: !20950)
-!21005 = !DILocation(line: 66, column: 7, scope: !21006)
-!21006 = distinct !DILexicalBlock(scope: !20950, file: !20951, line: 66, column: 7)
-!21007 = !DILocation(line: 66, column: 10, scope: !21006)
-!21008 = !DILocation(line: 66, column: 7, scope: !20950)
-!21009 = !DILocation(line: 67, column: 28, scope: !21006)
-!21010 = !DILocation(line: 67, column: 12, scope: !21006)
-!21011 = !DILocation(line: 67, column: 5, scope: !21006)
-!21012 = !DILocation(line: 72, column: 9, scope: !21013)
-!21013 = distinct !DILexicalBlock(scope: !20950, file: !20951, line: 72, column: 7)
-!21014 = !DILocation(line: 72, column: 23, scope: !21013)
-!21015 = !DILocation(line: 72, column: 41, scope: !21013)
-!21016 = !DILocation(line: 72, column: 33, scope: !21013)
-!21017 = !DILocation(line: 72, column: 26, scope: !21013)
-!21018 = !DILocation(line: 72, column: 59, scope: !21013)
-!21019 = !DILocation(line: 73, column: 7, scope: !21013)
-!21020 = !DILocation(line: 73, column: 18, scope: !21013)
-!21021 = !DILocation(line: 73, column: 10, scope: !21013)
-!21022 = !DILocation(line: 72, column: 7, scope: !20950)
-!21023 = !DILocation(line: 74, column: 19, scope: !21013)
-!21024 = !DILocation(line: 74, column: 17, scope: !21013)
-!21025 = !DILocation(line: 74, column: 5, scope: !21013)
-!21026 = !DILocation(line: 100, column: 28, scope: !20950)
-!21027 = !DILocation(line: 100, column: 12, scope: !20950)
-!21028 = !DILocation(line: 100, column: 10, scope: !20950)
-!21029 = !DILocation(line: 105, column: 7, scope: !21030)
-!21030 = distinct !DILexicalBlock(scope: !20950, file: !20951, line: 105, column: 7)
-!21031 = !DILocation(line: 105, column: 19, scope: !21030)
-!21032 = !DILocation(line: 105, column: 7, scope: !20950)
-!21033 = !DILocation(line: 107, column: 15, scope: !21034)
-!21034 = distinct !DILexicalBlock(scope: !21030, file: !20951, line: 106, column: 5)
-!21035 = !DILocation(line: 107, column: 7, scope: !21034)
-!21036 = !DILocation(line: 107, column: 13, scope: !21034)
-!21037 = !DILocation(line: 108, column: 14, scope: !21034)
-!21038 = !DILocation(line: 109, column: 5, scope: !21034)
-!21039 = !DILocation(line: 111, column: 10, scope: !20950)
-!21040 = !DILocation(line: 111, column: 3, scope: !20950)
-!21041 = !DILocation(line: 112, column: 1, scope: !20950)
-!21042 = distinct !DISubprogram(name: "rpl_fcntl", scope: !1169, file: !1169, line: 202, type: !21043, scopeLine: 207, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1172, retainedNodes: !295)
-!21043 = !DISubroutineType(types: !21044)
-!21044 = !{!5, !5, !5, null}
-!21045 = !DILocalVariable(name: "fd", arg: 1, scope: !21042, file: !1169, line: 202, type: !5)
-!21046 = !DILocation(line: 202, column: 12, scope: !21042)
-!21047 = !DILocalVariable(name: "action", arg: 2, scope: !21042, file: !1169, line: 202, type: !5)
-!21048 = !DILocation(line: 202, column: 20, scope: !21042)
-!21049 = !DILocalVariable(name: "arg", scope: !21042, file: !1169, line: 208, type: !1175)
-!21050 = !DILocation(line: 208, column: 11, scope: !21042)
-!21051 = !DILocalVariable(name: "result", scope: !21042, file: !1169, line: 209, type: !5)
-!21052 = !DILocation(line: 209, column: 7, scope: !21042)
-!21053 = !DILocation(line: 210, column: 3, scope: !21042)
-!21054 = !DILocation(line: 211, column: 11, scope: !21042)
-!21055 = !DILocation(line: 211, column: 3, scope: !21042)
-!21056 = !DILocalVariable(name: "target", scope: !21057, file: !1169, line: 215, type: !5)
-!21057 = distinct !DILexicalBlock(scope: !21058, file: !1169, line: 214, column: 7)
-!21058 = distinct !DILexicalBlock(scope: !21042, file: !1169, line: 212, column: 5)
-!21059 = !DILocation(line: 215, column: 13, scope: !21057)
-!21060 = !DILocation(line: 215, column: 22, scope: !21057)
-!21061 = !DILocation(line: 216, column: 35, scope: !21057)
-!21062 = !DILocation(line: 216, column: 39, scope: !21057)
-!21063 = !DILocation(line: 216, column: 18, scope: !21057)
-!21064 = !DILocation(line: 216, column: 16, scope: !21057)
-!21065 = !DILocation(line: 217, column: 9, scope: !21057)
-!21066 = !DILocalVariable(name: "target", scope: !21067, file: !1169, line: 222, type: !5)
-!21067 = distinct !DILexicalBlock(scope: !21058, file: !1169, line: 221, column: 7)
-!21068 = !DILocation(line: 222, column: 13, scope: !21067)
-!21069 = !DILocation(line: 222, column: 22, scope: !21067)
-!21070 = !DILocation(line: 223, column: 43, scope: !21067)
-!21071 = !DILocation(line: 223, column: 47, scope: !21067)
-!21072 = !DILocation(line: 223, column: 18, scope: !21067)
-!21073 = !DILocation(line: 223, column: 16, scope: !21067)
-!21074 = !DILocation(line: 224, column: 9, scope: !21067)
-!21075 = !DILocation(line: 259, column: 17, scope: !21076)
-!21076 = distinct !DILexicalBlock(scope: !21058, file: !1169, line: 257, column: 7)
-!21077 = !DILocation(line: 259, column: 9, scope: !21076)
-!21078 = !DILocation(line: 328, column: 29, scope: !21079)
-!21079 = distinct !DILexicalBlock(scope: !21076, file: !1169, line: 260, column: 11)
-!21080 = !DILocation(line: 328, column: 33, scope: !21079)
-!21081 = !DILocation(line: 328, column: 22, scope: !21079)
-!21082 = !DILocation(line: 328, column: 20, scope: !21079)
-!21083 = !DILocation(line: 329, column: 13, scope: !21079)
-!21084 = !DILocalVariable(name: "x", scope: !21085, file: !1169, line: 423, type: !5)
-!21085 = distinct !DILexicalBlock(scope: !21079, file: !1169, line: 422, column: 13)
-!21086 = !DILocation(line: 423, column: 19, scope: !21085)
-!21087 = !DILocation(line: 423, column: 23, scope: !21085)
-!21088 = !DILocation(line: 424, column: 31, scope: !21085)
-!21089 = !DILocation(line: 424, column: 35, scope: !21085)
-!21090 = !DILocation(line: 424, column: 43, scope: !21085)
-!21091 = !DILocation(line: 424, column: 24, scope: !21085)
-!21092 = !DILocation(line: 424, column: 22, scope: !21085)
-!21093 = !DILocation(line: 426, column: 13, scope: !21079)
-!21094 = !DILocalVariable(name: "p", scope: !21095, file: !1169, line: 431, type: !47)
-!21095 = distinct !DILexicalBlock(scope: !21079, file: !1169, line: 430, column: 13)
-!21096 = !DILocation(line: 431, column: 21, scope: !21095)
-!21097 = !DILocation(line: 431, column: 25, scope: !21095)
-!21098 = !DILocation(line: 432, column: 31, scope: !21095)
-!21099 = !DILocation(line: 432, column: 35, scope: !21095)
-!21100 = !DILocation(line: 432, column: 43, scope: !21095)
-!21101 = !DILocation(line: 432, column: 24, scope: !21095)
-!21102 = !DILocation(line: 432, column: 22, scope: !21095)
-!21103 = !DILocation(line: 434, column: 13, scope: !21079)
-!21104 = !DILocation(line: 439, column: 9, scope: !21076)
-!21105 = !DILocation(line: 442, column: 3, scope: !21042)
-!21106 = !DILocation(line: 443, column: 10, scope: !21042)
-!21107 = !DILocation(line: 443, column: 3, scope: !21042)
-!21108 = distinct !DISubprogram(name: "rpl_fcntl_DUPFD", scope: !1169, file: !1169, line: 447, type: !1170, scopeLine: 448, flags: DIFlagPrototyped, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1172, retainedNodes: !295)
-!21109 = !DILocalVariable(name: "fd", arg: 1, scope: !21108, file: !1169, line: 447, type: !5)
-!21110 = !DILocation(line: 447, column: 22, scope: !21108)
-!21111 = !DILocalVariable(name: "target", arg: 2, scope: !21108, file: !1169, line: 447, type: !5)
-!21112 = !DILocation(line: 447, column: 30, scope: !21108)
-!21113 = !DILocalVariable(name: "result", scope: !21108, file: !1169, line: 449, type: !5)
-!21114 = !DILocation(line: 449, column: 7, scope: !21108)
-!21115 = !DILocation(line: 482, column: 19, scope: !21108)
-!21116 = !DILocation(line: 482, column: 32, scope: !21108)
-!21117 = !DILocation(line: 482, column: 12, scope: !21108)
-!21118 = !DILocation(line: 482, column: 10, scope: !21108)
-!21119 = !DILocation(line: 484, column: 10, scope: !21108)
-!21120 = !DILocation(line: 484, column: 3, scope: !21108)
-!21121 = !DILocalVariable(name: "fd", arg: 1, scope: !1168, file: !1169, line: 488, type: !5)
-!21122 = !DILocation(line: 488, column: 30, scope: !1168)
-!21123 = !DILocalVariable(name: "target", arg: 2, scope: !1168, file: !1169, line: 488, type: !5)
-!21124 = !DILocation(line: 488, column: 38, scope: !1168)
-!21125 = !DILocalVariable(name: "result", scope: !1168, file: !1169, line: 490, type: !5)
-!21126 = !DILocation(line: 490, column: 7, scope: !1168)
-!21127 = !DILocation(line: 508, column: 12, scope: !21128)
-!21128 = distinct !DILexicalBlock(scope: !1168, file: !1169, line: 508, column: 7)
-!21129 = !DILocation(line: 508, column: 9, scope: !21128)
-!21130 = !DILocation(line: 508, column: 7, scope: !1168)
-!21131 = !DILocation(line: 510, column: 23, scope: !21132)
-!21132 = distinct !DILexicalBlock(scope: !21128, file: !1169, line: 509, column: 5)
-!21133 = !DILocation(line: 510, column: 44, scope: !21132)
-!21134 = !DILocation(line: 510, column: 16, scope: !21132)
-!21135 = !DILocation(line: 510, column: 14, scope: !21132)
-!21136 = !DILocation(line: 511, column: 16, scope: !21137)
-!21137 = distinct !DILexicalBlock(scope: !21132, file: !1169, line: 511, column: 11)
-!21138 = !DILocation(line: 511, column: 13, scope: !21137)
-!21139 = !DILocation(line: 511, column: 23, scope: !21137)
-!21140 = !DILocation(line: 511, column: 26, scope: !21137)
-!21141 = !DILocation(line: 511, column: 32, scope: !21137)
-!21142 = !DILocation(line: 511, column: 11, scope: !21132)
-!21143 = !DILocation(line: 513, column: 30, scope: !21144)
-!21144 = distinct !DILexicalBlock(scope: !21137, file: !1169, line: 512, column: 9)
-!21145 = !DILocation(line: 518, column: 9, scope: !21144)
-!21146 = !DILocation(line: 521, column: 37, scope: !21147)
-!21147 = distinct !DILexicalBlock(scope: !21137, file: !1169, line: 520, column: 9)
-!21148 = !DILocation(line: 521, column: 41, scope: !21147)
-!21149 = !DILocation(line: 521, column: 20, scope: !21147)
-!21150 = !DILocation(line: 521, column: 18, scope: !21147)
-!21151 = !DILocation(line: 522, column: 15, scope: !21152)
-!21152 = distinct !DILexicalBlock(scope: !21147, file: !1169, line: 522, column: 15)
-!21153 = !DILocation(line: 522, column: 22, scope: !21152)
-!21154 = !DILocation(line: 522, column: 15, scope: !21147)
-!21155 = !DILocation(line: 523, column: 32, scope: !21152)
-!21156 = !DILocation(line: 523, column: 13, scope: !21152)
-!21157 = !DILocation(line: 525, column: 5, scope: !21132)
-!21158 = !DILocation(line: 528, column: 31, scope: !21128)
-!21159 = !DILocation(line: 528, column: 35, scope: !21128)
-!21160 = !DILocation(line: 528, column: 14, scope: !21128)
-!21161 = !DILocation(line: 528, column: 12, scope: !21128)
-!21162 = !DILocation(line: 529, column: 12, scope: !21163)
-!21163 = distinct !DILexicalBlock(scope: !1168, file: !1169, line: 529, column: 7)
-!21164 = !DILocation(line: 529, column: 9, scope: !21163)
-!21165 = !DILocation(line: 529, column: 19, scope: !21163)
-!21166 = !DILocation(line: 529, column: 22, scope: !21163)
-!21167 = !DILocation(line: 529, column: 41, scope: !21163)
-!21168 = !DILocation(line: 529, column: 7, scope: !1168)
-!21169 = !DILocalVariable(name: "flags", scope: !21170, file: !1169, line: 531, type: !5)
-!21170 = distinct !DILexicalBlock(scope: !21163, file: !1169, line: 530, column: 5)
-!21171 = !DILocation(line: 531, column: 11, scope: !21170)
-!21172 = !DILocation(line: 531, column: 26, scope: !21170)
-!21173 = !DILocation(line: 531, column: 19, scope: !21170)
-!21174 = !DILocation(line: 532, column: 11, scope: !21175)
-!21175 = distinct !DILexicalBlock(scope: !21170, file: !1169, line: 532, column: 11)
-!21176 = !DILocation(line: 532, column: 17, scope: !21175)
-!21177 = !DILocation(line: 532, column: 21, scope: !21175)
-!21178 = !DILocation(line: 532, column: 31, scope: !21175)
-!21179 = !DILocation(line: 532, column: 48, scope: !21175)
-!21180 = !DILocation(line: 532, column: 54, scope: !21175)
-!21181 = !DILocation(line: 532, column: 24, scope: !21175)
-!21182 = !DILocation(line: 532, column: 68, scope: !21175)
-!21183 = !DILocation(line: 532, column: 11, scope: !21170)
-!21184 = !DILocalVariable(name: "saved_errno", scope: !21185, file: !1169, line: 534, type: !5)
-!21185 = distinct !DILexicalBlock(scope: !21175, file: !1169, line: 533, column: 9)
-!21186 = !DILocation(line: 534, column: 15, scope: !21185)
-!21187 = !DILocation(line: 534, column: 29, scope: !21185)
-!21188 = !DILocation(line: 535, column: 18, scope: !21185)
-!21189 = !DILocation(line: 535, column: 11, scope: !21185)
-!21190 = !DILocation(line: 536, column: 19, scope: !21185)
-!21191 = !DILocation(line: 536, column: 11, scope: !21185)
-!21192 = !DILocation(line: 536, column: 17, scope: !21185)
-!21193 = !DILocation(line: 537, column: 18, scope: !21185)
-!21194 = !DILocation(line: 538, column: 9, scope: !21185)
-!21195 = !DILocation(line: 539, column: 5, scope: !21170)
-!21196 = !DILocation(line: 541, column: 10, scope: !1168)
-!21197 = !DILocation(line: 541, column: 3, scope: !1168)
-!21198 = distinct !DISubprogram(name: "rpl_nl_langinfo", scope: !21199, file: !21199, line: 99, type: !21200, scopeLine: 100, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1840, retainedNodes: !295)
-!21199 = !DIFile(filename: "lib/nl_langinfo.c", directory: "/home/mohamad/clone/coreutils")
-!21200 = !DISubroutineType(types: !21201)
-!21201 = !{!7, !21202}
-!21202 = !DIDerivedType(tag: DW_TAG_typedef, name: "nl_item", file: !21203, line: 36, baseType: !5)
-!21203 = !DIFile(filename: "/usr/include/nl_types.h", directory: "")
-!21204 = !DILocalVariable(name: "item", arg: 1, scope: !21198, file: !21199, line: 99, type: !21202)
-!21205 = !DILocation(line: 99, column: 26, scope: !21198)
-!21206 = !DILocation(line: 101, column: 11, scope: !21198)
-!21207 = !DILocation(line: 101, column: 3, scope: !21198)
-!21208 = !DILocation(line: 126, column: 14, scope: !21209)
-!21209 = distinct !DILexicalBlock(scope: !21198, file: !21199, line: 102, column: 5)
-!21210 = !DILocation(line: 126, column: 19, scope: !21209)
-!21211 = !DILocation(line: 126, column: 30, scope: !21209)
-!21212 = !DILocation(line: 126, column: 12, scope: !21209)
-!21213 = !DILocation(line: 127, column: 7, scope: !21209)
-!21214 = !DILocation(line: 162, column: 7, scope: !21209)
-!21215 = !DILocation(line: 164, column: 23, scope: !21198)
-!21216 = !DILocation(line: 164, column: 10, scope: !21198)
-!21217 = !DILocation(line: 164, column: 3, scope: !21198)
-!21218 = distinct !DISubprogram(name: "c_isalnum", scope: !21219, file: !21219, line: 169, type: !2939, scopeLine: 170, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
-!21219 = !DIFile(filename: "./lib/c-ctype.h", directory: "/home/mohamad/clone/coreutils")
-!21220 = !DILocalVariable(name: "c", arg: 1, scope: !21218, file: !21219, line: 169, type: !5)
-!21221 = !DILocation(line: 169, column: 16, scope: !21218)
-!21222 = !DILocation(line: 171, column: 11, scope: !21218)
-!21223 = !DILocation(line: 171, column: 3, scope: !21218)
-!21224 = !DILocation(line: 176, column: 7, scope: !21225)
-!21225 = distinct !DILexicalBlock(scope: !21218, file: !21219, line: 172, column: 5)
-!21226 = !DILocation(line: 178, column: 7, scope: !21225)
-!21227 = !DILocation(line: 180, column: 1, scope: !21218)
-!21228 = distinct !DISubprogram(name: "c_isalpha", scope: !21219, file: !21219, line: 183, type: !2939, scopeLine: 184, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
-!21229 = !DILocalVariable(name: "c", arg: 1, scope: !21228, file: !21219, line: 183, type: !5)
-!21230 = !DILocation(line: 183, column: 16, scope: !21228)
-!21231 = !DILocation(line: 185, column: 11, scope: !21228)
-!21232 = !DILocation(line: 185, column: 3, scope: !21228)
-!21233 = !DILocation(line: 189, column: 7, scope: !21234)
-!21234 = distinct !DILexicalBlock(scope: !21228, file: !21219, line: 186, column: 5)
-!21235 = !DILocation(line: 191, column: 7, scope: !21234)
-!21236 = !DILocation(line: 193, column: 1, scope: !21228)
-!21237 = distinct !DISubprogram(name: "c_isascii", scope: !21219, file: !21219, line: 198, type: !2939, scopeLine: 199, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
-!21238 = !DILocalVariable(name: "c", arg: 1, scope: !21237, file: !21219, line: 198, type: !5)
-!21239 = !DILocation(line: 198, column: 16, scope: !21237)
-!21240 = !DILocation(line: 200, column: 11, scope: !21237)
-!21241 = !DILocation(line: 200, column: 3, scope: !21237)
-!21242 = !DILocation(line: 208, column: 7, scope: !21243)
-!21243 = distinct !DILexicalBlock(scope: !21237, file: !21219, line: 201, column: 5)
-!21244 = !DILocation(line: 210, column: 7, scope: !21243)
-!21245 = !DILocation(line: 212, column: 1, scope: !21237)
-!21246 = distinct !DISubprogram(name: "c_isblank", scope: !21219, file: !21219, line: 215, type: !2939, scopeLine: 216, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
-!21247 = !DILocalVariable(name: "c", arg: 1, scope: !21246, file: !21219, line: 215, type: !5)
-!21248 = !DILocation(line: 215, column: 16, scope: !21246)
-!21249 = !DILocation(line: 217, column: 10, scope: !21246)
-!21250 = !DILocation(line: 217, column: 12, scope: !21246)
-!21251 = !DILocation(line: 217, column: 19, scope: !21246)
-!21252 = !DILocation(line: 217, column: 22, scope: !21246)
-!21253 = !DILocation(line: 217, column: 24, scope: !21246)
-!21254 = !DILocation(line: 217, column: 3, scope: !21246)
-!21255 = distinct !DISubprogram(name: "c_iscntrl", scope: !21219, file: !21219, line: 221, type: !2939, scopeLine: 222, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
-!21256 = !DILocalVariable(name: "c", arg: 1, scope: !21255, file: !21219, line: 221, type: !5)
-!21257 = !DILocation(line: 221, column: 16, scope: !21255)
-!21258 = !DILocation(line: 223, column: 11, scope: !21255)
-!21259 = !DILocation(line: 223, column: 3, scope: !21255)
-!21260 = !DILocation(line: 226, column: 7, scope: !21261)
-!21261 = distinct !DILexicalBlock(scope: !21255, file: !21219, line: 224, column: 5)
-!21262 = !DILocation(line: 228, column: 7, scope: !21261)
-!21263 = !DILocation(line: 230, column: 1, scope: !21255)
-!21264 = distinct !DISubprogram(name: "c_isdigit", scope: !21219, file: !21219, line: 233, type: !2939, scopeLine: 234, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
-!21265 = !DILocalVariable(name: "c", arg: 1, scope: !21264, file: !21219, line: 233, type: !5)
-!21266 = !DILocation(line: 233, column: 16, scope: !21264)
-!21267 = !DILocation(line: 235, column: 11, scope: !21264)
-!21268 = !DILocation(line: 235, column: 3, scope: !21264)
-!21269 = !DILocation(line: 238, column: 7, scope: !21270)
-!21270 = distinct !DILexicalBlock(scope: !21264, file: !21219, line: 236, column: 5)
-!21271 = !DILocation(line: 240, column: 7, scope: !21270)
-!21272 = !DILocation(line: 242, column: 1, scope: !21264)
-!21273 = distinct !DISubprogram(name: "c_isgraph", scope: !21219, file: !21219, line: 245, type: !2939, scopeLine: 246, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
-!21274 = !DILocalVariable(name: "c", arg: 1, scope: !21273, file: !21219, line: 245, type: !5)
-!21275 = !DILocation(line: 245, column: 16, scope: !21273)
-!21276 = !DILocation(line: 247, column: 11, scope: !21273)
-!21277 = !DILocation(line: 247, column: 3, scope: !21273)
-!21278 = !DILocation(line: 253, column: 7, scope: !21279)
-!21279 = distinct !DILexicalBlock(scope: !21273, file: !21219, line: 248, column: 5)
-!21280 = !DILocation(line: 255, column: 7, scope: !21279)
-!21281 = !DILocation(line: 257, column: 1, scope: !21273)
-!21282 = distinct !DISubprogram(name: "c_islower", scope: !21219, file: !21219, line: 260, type: !2939, scopeLine: 261, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
-!21283 = !DILocalVariable(name: "c", arg: 1, scope: !21282, file: !21219, line: 260, type: !5)
-!21284 = !DILocation(line: 260, column: 16, scope: !21282)
-!21285 = !DILocation(line: 262, column: 11, scope: !21282)
-!21286 = !DILocation(line: 262, column: 3, scope: !21282)
-!21287 = !DILocation(line: 265, column: 7, scope: !21288)
-!21288 = distinct !DILexicalBlock(scope: !21282, file: !21219, line: 263, column: 5)
-!21289 = !DILocation(line: 267, column: 7, scope: !21288)
-!21290 = !DILocation(line: 269, column: 1, scope: !21282)
-!21291 = distinct !DISubprogram(name: "c_isprint", scope: !21219, file: !21219, line: 272, type: !2939, scopeLine: 273, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
-!21292 = !DILocalVariable(name: "c", arg: 1, scope: !21291, file: !21219, line: 272, type: !5)
-!21293 = !DILocation(line: 272, column: 16, scope: !21291)
-!21294 = !DILocation(line: 274, column: 11, scope: !21291)
-!21295 = !DILocation(line: 274, column: 3, scope: !21291)
-!21296 = !DILocation(line: 281, column: 7, scope: !21297)
-!21297 = distinct !DILexicalBlock(scope: !21291, file: !21219, line: 275, column: 5)
-!21298 = !DILocation(line: 283, column: 7, scope: !21297)
-!21299 = !DILocation(line: 285, column: 1, scope: !21291)
-!21300 = distinct !DISubprogram(name: "c_ispunct", scope: !21219, file: !21219, line: 288, type: !2939, scopeLine: 289, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
-!21301 = !DILocalVariable(name: "c", arg: 1, scope: !21300, file: !21219, line: 288, type: !5)
-!21302 = !DILocation(line: 288, column: 16, scope: !21300)
-!21303 = !DILocation(line: 290, column: 11, scope: !21300)
-!21304 = !DILocation(line: 290, column: 3, scope: !21300)
-!21305 = !DILocation(line: 293, column: 7, scope: !21306)
-!21306 = distinct !DILexicalBlock(scope: !21300, file: !21219, line: 291, column: 5)
-!21307 = !DILocation(line: 295, column: 7, scope: !21306)
-!21308 = !DILocation(line: 297, column: 1, scope: !21300)
-!21309 = distinct !DISubprogram(name: "c_isspace", scope: !21219, file: !21219, line: 300, type: !2939, scopeLine: 301, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
-!21310 = !DILocalVariable(name: "c", arg: 1, scope: !21309, file: !21219, line: 300, type: !5)
-!21311 = !DILocation(line: 300, column: 16, scope: !21309)
-!21312 = !DILocation(line: 302, column: 11, scope: !21309)
-!21313 = !DILocation(line: 302, column: 3, scope: !21309)
-!21314 = !DILocation(line: 305, column: 7, scope: !21315)
-!21315 = distinct !DILexicalBlock(scope: !21309, file: !21219, line: 303, column: 5)
-!21316 = !DILocation(line: 307, column: 7, scope: !21315)
-!21317 = !DILocation(line: 309, column: 1, scope: !21309)
-!21318 = distinct !DISubprogram(name: "c_isupper", scope: !21219, file: !21219, line: 312, type: !2939, scopeLine: 313, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
-!21319 = !DILocalVariable(name: "c", arg: 1, scope: !21318, file: !21219, line: 312, type: !5)
-!21320 = !DILocation(line: 312, column: 16, scope: !21318)
-!21321 = !DILocation(line: 314, column: 11, scope: !21318)
-!21322 = !DILocation(line: 314, column: 3, scope: !21318)
-!21323 = !DILocation(line: 317, column: 7, scope: !21324)
-!21324 = distinct !DILexicalBlock(scope: !21318, file: !21219, line: 315, column: 5)
-!21325 = !DILocation(line: 319, column: 7, scope: !21324)
-!21326 = !DILocation(line: 321, column: 1, scope: !21318)
-!21327 = distinct !DISubprogram(name: "c_isxdigit", scope: !21219, file: !21219, line: 324, type: !2939, scopeLine: 325, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
-!21328 = !DILocalVariable(name: "c", arg: 1, scope: !21327, file: !21219, line: 324, type: !5)
-!21329 = !DILocation(line: 324, column: 17, scope: !21327)
-!21330 = !DILocation(line: 326, column: 11, scope: !21327)
-!21331 = !DILocation(line: 326, column: 3, scope: !21327)
-!21332 = !DILocation(line: 330, column: 7, scope: !21333)
-!21333 = distinct !DILexicalBlock(scope: !21327, file: !21219, line: 327, column: 5)
-!21334 = !DILocation(line: 332, column: 7, scope: !21333)
-!21335 = !DILocation(line: 334, column: 1, scope: !21327)
-!21336 = distinct !DISubprogram(name: "c_tolower", scope: !21219, file: !21219, line: 337, type: !15414, scopeLine: 338, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
-!21337 = !DILocalVariable(name: "c", arg: 1, scope: !21336, file: !21219, line: 337, type: !5)
-!21338 = !DILocation(line: 337, column: 16, scope: !21336)
-!21339 = !DILocation(line: 339, column: 11, scope: !21336)
-!21340 = !DILocation(line: 339, column: 3, scope: !21336)
-!21341 = !DILocation(line: 342, column: 14, scope: !21342)
-!21342 = distinct !DILexicalBlock(scope: !21336, file: !21219, line: 340, column: 5)
-!21343 = !DILocation(line: 342, column: 16, scope: !21342)
-!21344 = !DILocation(line: 342, column: 22, scope: !21342)
-!21345 = !DILocation(line: 342, column: 7, scope: !21342)
-!21346 = !DILocation(line: 344, column: 14, scope: !21342)
-!21347 = !DILocation(line: 344, column: 7, scope: !21342)
-!21348 = !DILocation(line: 346, column: 1, scope: !21336)
-!21349 = distinct !DISubprogram(name: "c_toupper", scope: !21219, file: !21219, line: 349, type: !15414, scopeLine: 350, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
-!21350 = !DILocalVariable(name: "c", arg: 1, scope: !21349, file: !21219, line: 349, type: !5)
-!21351 = !DILocation(line: 349, column: 16, scope: !21349)
-!21352 = !DILocation(line: 351, column: 11, scope: !21349)
-!21353 = !DILocation(line: 351, column: 3, scope: !21349)
-!21354 = !DILocation(line: 354, column: 14, scope: !21355)
-!21355 = distinct !DILexicalBlock(scope: !21349, file: !21219, line: 352, column: 5)
-!21356 = !DILocation(line: 354, column: 16, scope: !21355)
-!21357 = !DILocation(line: 354, column: 22, scope: !21355)
-!21358 = !DILocation(line: 354, column: 7, scope: !21355)
-!21359 = !DILocation(line: 356, column: 14, scope: !21355)
-!21360 = !DILocation(line: 356, column: 7, scope: !21355)
-!21361 = !DILocation(line: 358, column: 1, scope: !21349)
-!21362 = distinct !DISubprogram(name: "fopen_safer", scope: !21363, file: !21363, line: 31, type: !21364, scopeLine: 32, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1844, retainedNodes: !295)
-!21363 = !DIFile(filename: "lib/fopen-safer.c", directory: "/home/mohamad/clone/coreutils")
-!21364 = !DISubroutineType(types: !21365)
-!21365 = !{!1847, !180, !180}
-!21366 = !DILocalVariable(name: "file", arg: 1, scope: !21362, file: !21363, line: 31, type: !180)
-!21367 = !DILocation(line: 31, column: 26, scope: !21362)
-!21368 = !DILocalVariable(name: "mode", arg: 2, scope: !21362, file: !21363, line: 31, type: !180)
-!21369 = !DILocation(line: 31, column: 44, scope: !21362)
-!21370 = !DILocalVariable(name: "fp", scope: !21362, file: !21363, line: 33, type: !1847)
-!21371 = !DILocation(line: 33, column: 9, scope: !21362)
-!21372 = !DILocation(line: 33, column: 21, scope: !21362)
-!21373 = !DILocation(line: 33, column: 27, scope: !21362)
-!21374 = !DILocation(line: 33, column: 14, scope: !21362)
-!21375 = !DILocation(line: 35, column: 7, scope: !21376)
-!21376 = distinct !DILexicalBlock(scope: !21362, file: !21363, line: 35, column: 7)
-!21377 = !DILocation(line: 35, column: 7, scope: !21362)
-!21378 = !DILocalVariable(name: "fd", scope: !21379, file: !21363, line: 37, type: !5)
-!21379 = distinct !DILexicalBlock(scope: !21376, file: !21363, line: 36, column: 5)
-!21380 = !DILocation(line: 37, column: 11, scope: !21379)
-!21381 = !DILocation(line: 37, column: 24, scope: !21379)
-!21382 = !DILocation(line: 37, column: 16, scope: !21379)
-!21383 = !DILocation(line: 39, column: 16, scope: !21384)
-!21384 = distinct !DILexicalBlock(scope: !21379, file: !21363, line: 39, column: 11)
-!21385 = !DILocation(line: 39, column: 13, scope: !21384)
-!21386 = !DILocation(line: 39, column: 19, scope: !21384)
-!21387 = !DILocation(line: 39, column: 22, scope: !21384)
-!21388 = !DILocation(line: 39, column: 25, scope: !21384)
-!21389 = !DILocation(line: 39, column: 11, scope: !21379)
-!21390 = !DILocalVariable(name: "f", scope: !21391, file: !21363, line: 41, type: !5)
-!21391 = distinct !DILexicalBlock(scope: !21384, file: !21363, line: 40, column: 9)
-!21392 = !DILocation(line: 41, column: 15, scope: !21391)
-!21393 = !DILocation(line: 41, column: 30, scope: !21391)
-!21394 = !DILocation(line: 41, column: 19, scope: !21391)
-!21395 = !DILocation(line: 43, column: 15, scope: !21396)
-!21396 = distinct !DILexicalBlock(scope: !21391, file: !21363, line: 43, column: 15)
-!21397 = !DILocation(line: 43, column: 17, scope: !21396)
-!21398 = !DILocation(line: 43, column: 15, scope: !21391)
-!21399 = !DILocalVariable(name: "e", scope: !21400, file: !21363, line: 45, type: !5)
-!21400 = distinct !DILexicalBlock(scope: !21396, file: !21363, line: 44, column: 13)
-!21401 = !DILocation(line: 45, column: 19, scope: !21400)
-!21402 = !DILocation(line: 45, column: 23, scope: !21400)
-!21403 = !DILocation(line: 46, column: 23, scope: !21400)
-!21404 = !DILocation(line: 46, column: 15, scope: !21400)
-!21405 = !DILocation(line: 47, column: 23, scope: !21400)
-!21406 = !DILocation(line: 47, column: 15, scope: !21400)
-!21407 = !DILocation(line: 47, column: 21, scope: !21400)
-!21408 = !DILocation(line: 48, column: 15, scope: !21400)
-!21409 = !DILocation(line: 51, column: 23, scope: !21410)
-!21410 = distinct !DILexicalBlock(scope: !21391, file: !21363, line: 51, column: 15)
-!21411 = !DILocation(line: 51, column: 15, scope: !21410)
-!21412 = !DILocation(line: 51, column: 27, scope: !21410)
-!21413 = !DILocation(line: 52, column: 15, scope: !21410)
-!21414 = !DILocation(line: 52, column: 34, scope: !21410)
-!21415 = !DILocation(line: 52, column: 37, scope: !21410)
-!21416 = !DILocation(line: 52, column: 26, scope: !21410)
-!21417 = !DILocation(line: 52, column: 24, scope: !21410)
-!21418 = !DILocation(line: 51, column: 15, scope: !21391)
-!21419 = !DILocalVariable(name: "e", scope: !21420, file: !21363, line: 54, type: !5)
-!21420 = distinct !DILexicalBlock(scope: !21410, file: !21363, line: 53, column: 13)
-!21421 = !DILocation(line: 54, column: 19, scope: !21420)
-!21422 = !DILocation(line: 54, column: 23, scope: !21420)
-!21423 = !DILocation(line: 55, column: 22, scope: !21420)
-!21424 = !DILocation(line: 55, column: 15, scope: !21420)
-!21425 = !DILocation(line: 56, column: 23, scope: !21420)
-!21426 = !DILocation(line: 56, column: 15, scope: !21420)
-!21427 = !DILocation(line: 56, column: 21, scope: !21420)
-!21428 = !DILocation(line: 57, column: 15, scope: !21420)
-!21429 = !DILocation(line: 59, column: 9, scope: !21391)
-!21430 = !DILocation(line: 60, column: 5, scope: !21379)
-!21431 = !DILocation(line: 62, column: 10, scope: !21362)
-!21432 = !DILocation(line: 62, column: 3, scope: !21362)
-!21433 = !DILocation(line: 63, column: 1, scope: !21362)
+!20173 = !DILocalVariable(name: "s", scope: !20161, file: !1738, line: 87, type: !1736)
+!20174 = !DILocation(line: 87, column: 26, scope: !20161)
+!20175 = !DILocation(line: 87, column: 43, scope: !20161)
+!20176 = !DILocation(line: 87, column: 30, scope: !20161)
+!20177 = !DILocation(line: 88, column: 12, scope: !20161)
+!20178 = !DILocation(line: 88, column: 15, scope: !20161)
+!20179 = !DILocation(line: 88, column: 3, scope: !20161)
+!20180 = !DILocation(line: 89, column: 10, scope: !20161)
+!20181 = !DILocation(line: 89, column: 3, scope: !20161)
+!20182 = distinct !DISubprogram(name: "randint_get_source", scope: !1738, file: !1738, line: 95, type: !20183, scopeLine: 96, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1733, retainedNodes: !295)
+!20183 = !DISubroutineType(types: !20184)
+!20184 = !{!1741, !20185}
+!20185 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !20186, size: 64)
+!20186 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !1737)
+!20187 = !DILocalVariable(name: "s", arg: 1, scope: !20182, file: !1738, line: 95, type: !20185)
+!20188 = !DILocation(line: 95, column: 50, scope: !20182)
+!20189 = !DILocation(line: 97, column: 10, scope: !20182)
+!20190 = !DILocation(line: 97, column: 13, scope: !20182)
+!20191 = !DILocation(line: 97, column: 3, scope: !20182)
+!20192 = distinct !DISubprogram(name: "randint_genmax", scope: !1738, file: !1738, line: 116, type: !20193, scopeLine: 117, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1733, retainedNodes: !295)
+!20193 = !DISubroutineType(types: !20194)
+!20194 = !{!1745, !1736, !1745}
+!20195 = !DILocalVariable(name: "s", arg: 1, scope: !20192, file: !1738, line: 116, type: !1736)
+!20196 = !DILocation(line: 116, column: 40, scope: !20192)
+!20197 = !DILocalVariable(name: "genmax", arg: 2, scope: !20192, file: !1738, line: 116, type: !1745)
+!20198 = !DILocation(line: 116, column: 51, scope: !20192)
+!20199 = !DILocalVariable(name: "source", scope: !20192, file: !1738, line: 118, type: !1741)
+!20200 = !DILocation(line: 118, column: 27, scope: !20192)
+!20201 = !DILocation(line: 118, column: 36, scope: !20192)
+!20202 = !DILocation(line: 118, column: 39, scope: !20192)
+!20203 = !DILocalVariable(name: "randnum", scope: !20192, file: !1738, line: 119, type: !1745)
+!20204 = !DILocation(line: 119, column: 11, scope: !20192)
+!20205 = !DILocation(line: 119, column: 21, scope: !20192)
+!20206 = !DILocation(line: 119, column: 24, scope: !20192)
+!20207 = !DILocalVariable(name: "randmax", scope: !20192, file: !1738, line: 120, type: !1745)
+!20208 = !DILocation(line: 120, column: 11, scope: !20192)
+!20209 = !DILocation(line: 120, column: 21, scope: !20192)
+!20210 = !DILocation(line: 120, column: 24, scope: !20192)
+!20211 = !DILocalVariable(name: "choices", scope: !20192, file: !1738, line: 121, type: !1745)
+!20212 = !DILocation(line: 121, column: 11, scope: !20192)
+!20213 = !DILocation(line: 121, column: 21, scope: !20192)
+!20214 = !DILocation(line: 121, column: 28, scope: !20192)
+!20215 = !DILocation(line: 123, column: 3, scope: !20192)
+!20216 = !DILocation(line: 125, column: 11, scope: !20217)
+!20217 = distinct !DILexicalBlock(scope: !20218, file: !1738, line: 125, column: 11)
+!20218 = distinct !DILexicalBlock(scope: !20192, file: !1738, line: 124, column: 5)
+!20219 = !DILocation(line: 125, column: 21, scope: !20217)
+!20220 = !DILocation(line: 125, column: 19, scope: !20217)
+!20221 = !DILocation(line: 125, column: 11, scope: !20218)
+!20222 = !DILocalVariable(name: "i", scope: !20223, file: !1738, line: 130, type: !52)
+!20223 = distinct !DILexicalBlock(scope: !20217, file: !1738, line: 126, column: 9)
+!20224 = !DILocation(line: 130, column: 18, scope: !20223)
+!20225 = !DILocalVariable(name: "rmax", scope: !20223, file: !1738, line: 131, type: !1745)
+!20226 = !DILocation(line: 131, column: 19, scope: !20223)
+!20227 = !DILocation(line: 131, column: 26, scope: !20223)
+!20228 = !DILocalVariable(name: "buf", scope: !20223, file: !1738, line: 132, type: !1747)
+!20229 = !DILocation(line: 132, column: 25, scope: !20223)
+!20230 = !DILocation(line: 134, column: 11, scope: !20223)
+!20231 = !DILocation(line: 136, column: 34, scope: !20232)
+!20232 = distinct !DILexicalBlock(scope: !20223, file: !1738, line: 135, column: 13)
+!20233 = !DILocation(line: 136, column: 22, scope: !20232)
+!20234 = !DILocation(line: 136, column: 40, scope: !20232)
+!20235 = !DILocation(line: 136, column: 20, scope: !20232)
+!20236 = !DILocation(line: 137, column: 16, scope: !20232)
+!20237 = !DILocation(line: 138, column: 13, scope: !20232)
+!20238 = !DILocation(line: 139, column: 18, scope: !20223)
+!20239 = !DILocation(line: 139, column: 25, scope: !20223)
+!20240 = !DILocation(line: 139, column: 23, scope: !20223)
+!20241 = distinct !{!20241, !20230, !20242}
+!20242 = !DILocation(line: 139, column: 31, scope: !20223)
+!20243 = !DILocation(line: 141, column: 21, scope: !20223)
+!20244 = !DILocation(line: 141, column: 29, scope: !20223)
+!20245 = !DILocation(line: 141, column: 34, scope: !20223)
+!20246 = !DILocation(line: 141, column: 11, scope: !20223)
+!20247 = !DILocation(line: 150, column: 13, scope: !20223)
+!20248 = !DILocation(line: 152, column: 11, scope: !20223)
+!20249 = !DILocation(line: 154, column: 37, scope: !20250)
+!20250 = distinct !DILexicalBlock(scope: !20223, file: !1738, line: 153, column: 13)
+!20251 = !DILocation(line: 154, column: 25, scope: !20250)
+!20252 = !DILocation(line: 154, column: 52, scope: !20250)
+!20253 = !DILocation(line: 154, column: 48, scope: !20250)
+!20254 = !DILocation(line: 154, column: 46, scope: !20250)
+!20255 = !DILocation(line: 154, column: 23, scope: !20250)
+!20256 = !DILocation(line: 155, column: 37, scope: !20250)
+!20257 = !DILocation(line: 155, column: 25, scope: !20250)
+!20258 = !DILocation(line: 155, column: 46, scope: !20250)
+!20259 = !DILocation(line: 155, column: 23, scope: !20250)
+!20260 = !DILocation(line: 156, column: 16, scope: !20250)
+!20261 = !DILocation(line: 157, column: 13, scope: !20250)
+!20262 = !DILocation(line: 158, column: 18, scope: !20223)
+!20263 = !DILocation(line: 158, column: 28, scope: !20223)
+!20264 = !DILocation(line: 158, column: 26, scope: !20223)
+!20265 = distinct !{!20265, !20248, !20266}
+!20266 = !DILocation(line: 158, column: 34, scope: !20223)
+!20267 = !DILocation(line: 159, column: 9, scope: !20223)
+!20268 = !DILocation(line: 161, column: 11, scope: !20269)
+!20269 = distinct !DILexicalBlock(scope: !20218, file: !1738, line: 161, column: 11)
+!20270 = !DILocation(line: 161, column: 22, scope: !20269)
+!20271 = !DILocation(line: 161, column: 19, scope: !20269)
+!20272 = !DILocation(line: 161, column: 11, scope: !20218)
+!20273 = !DILocation(line: 163, column: 24, scope: !20274)
+!20274 = distinct !DILexicalBlock(scope: !20269, file: !1738, line: 162, column: 9)
+!20275 = !DILocation(line: 163, column: 27, scope: !20274)
+!20276 = !DILocation(line: 163, column: 35, scope: !20274)
+!20277 = !DILocation(line: 163, column: 11, scope: !20274)
+!20278 = !DILocation(line: 163, column: 14, scope: !20274)
+!20279 = !DILocation(line: 163, column: 22, scope: !20274)
+!20280 = !DILocation(line: 164, column: 18, scope: !20274)
+!20281 = !DILocation(line: 164, column: 11, scope: !20274)
+!20282 = !DILocalVariable(name: "excess_choices", scope: !20283, file: !1738, line: 178, type: !1745)
+!20283 = distinct !DILexicalBlock(scope: !20269, file: !1738, line: 167, column: 9)
+!20284 = !DILocation(line: 178, column: 19, scope: !20283)
+!20285 = !DILocation(line: 178, column: 36, scope: !20283)
+!20286 = !DILocation(line: 178, column: 46, scope: !20283)
+!20287 = !DILocation(line: 178, column: 44, scope: !20283)
+!20288 = !DILocalVariable(name: "unusable_choices", scope: !20283, file: !1738, line: 179, type: !1745)
+!20289 = !DILocation(line: 179, column: 19, scope: !20283)
+!20290 = !DILocation(line: 179, column: 38, scope: !20283)
+!20291 = !DILocation(line: 179, column: 55, scope: !20283)
+!20292 = !DILocation(line: 179, column: 53, scope: !20283)
+!20293 = !DILocalVariable(name: "last_usable_choice", scope: !20283, file: !1738, line: 180, type: !1745)
+!20294 = !DILocation(line: 180, column: 19, scope: !20283)
+!20295 = !DILocation(line: 180, column: 40, scope: !20283)
+!20296 = !DILocation(line: 180, column: 50, scope: !20283)
+!20297 = !DILocation(line: 180, column: 48, scope: !20283)
+!20298 = !DILocalVariable(name: "reduced_randnum", scope: !20283, file: !1738, line: 181, type: !1745)
+!20299 = !DILocation(line: 181, column: 19, scope: !20283)
+!20300 = !DILocation(line: 181, column: 37, scope: !20283)
+!20301 = !DILocation(line: 181, column: 47, scope: !20283)
+!20302 = !DILocation(line: 181, column: 45, scope: !20283)
+!20303 = !DILocation(line: 183, column: 15, scope: !20304)
+!20304 = distinct !DILexicalBlock(scope: !20283, file: !1738, line: 183, column: 15)
+!20305 = !DILocation(line: 183, column: 26, scope: !20304)
+!20306 = !DILocation(line: 183, column: 23, scope: !20304)
+!20307 = !DILocation(line: 183, column: 15, scope: !20283)
+!20308 = !DILocation(line: 185, column: 28, scope: !20309)
+!20309 = distinct !DILexicalBlock(scope: !20304, file: !1738, line: 184, column: 13)
+!20310 = !DILocation(line: 185, column: 38, scope: !20309)
+!20311 = !DILocation(line: 185, column: 36, scope: !20309)
+!20312 = !DILocation(line: 185, column: 15, scope: !20309)
+!20313 = !DILocation(line: 185, column: 18, scope: !20309)
+!20314 = !DILocation(line: 185, column: 26, scope: !20309)
+!20315 = !DILocation(line: 186, column: 28, scope: !20309)
+!20316 = !DILocation(line: 186, column: 45, scope: !20309)
+!20317 = !DILocation(line: 186, column: 43, scope: !20309)
+!20318 = !DILocation(line: 186, column: 15, scope: !20309)
+!20319 = !DILocation(line: 186, column: 18, scope: !20309)
+!20320 = !DILocation(line: 186, column: 26, scope: !20309)
+!20321 = !DILocation(line: 187, column: 22, scope: !20309)
+!20322 = !DILocation(line: 187, column: 15, scope: !20309)
+!20323 = !DILocation(line: 192, column: 21, scope: !20283)
+!20324 = !DILocation(line: 192, column: 19, scope: !20283)
+!20325 = !DILocation(line: 193, column: 21, scope: !20283)
+!20326 = !DILocation(line: 193, column: 38, scope: !20283)
+!20327 = !DILocation(line: 193, column: 19, scope: !20283)
+!20328 = distinct !{!20328, !20215, !20329}
+!20329 = !DILocation(line: 195, column: 5, scope: !20192)
+!20330 = !DILocation(line: 196, column: 1, scope: !20192)
+!20331 = distinct !DISubprogram(name: "shift_left", scope: !1738, file: !1738, line: 106, type: !20332, scopeLine: 107, flags: DIFlagPrototyped, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1733, retainedNodes: !295)
+!20332 = !DISubroutineType(types: !20333)
+!20333 = !{!1745, !1745}
+!20334 = !DILocalVariable(name: "x", arg: 1, scope: !20331, file: !1738, line: 106, type: !1745)
+!20335 = !DILocation(line: 106, column: 43, scope: !20331)
+!20336 = !DILocation(line: 108, column: 27, scope: !20331)
+!20337 = !DILocation(line: 108, column: 29, scope: !20331)
+!20338 = !DILocation(line: 108, column: 3, scope: !20331)
+!20339 = distinct !DISubprogram(name: "randint_free", scope: !1738, file: !1738, line: 201, type: !20340, scopeLine: 202, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1733, retainedNodes: !295)
+!20340 = !DISubroutineType(types: !20341)
+!20341 = !{null, !1736}
+!20342 = !DILocalVariable(name: "s", arg: 1, scope: !20339, file: !1738, line: 201, type: !1736)
+!20343 = !DILocation(line: 201, column: 38, scope: !20339)
+!20344 = !DILocation(line: 203, column: 19, scope: !20339)
+!20345 = !DILocation(line: 203, column: 3, scope: !20339)
+!20346 = !DILocation(line: 204, column: 9, scope: !20339)
+!20347 = !DILocation(line: 204, column: 3, scope: !20339)
+!20348 = !DILocation(line: 205, column: 1, scope: !20339)
+!20349 = distinct !DISubprogram(name: "randint_all_free", scope: !1738, file: !1738, line: 211, type: !20350, scopeLine: 212, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1733, retainedNodes: !295)
+!20350 = !DISubroutineType(types: !20351)
+!20351 = !{!5, !1736}
+!20352 = !DILocalVariable(name: "s", arg: 1, scope: !20349, file: !1738, line: 211, type: !1736)
+!20353 = !DILocation(line: 211, column: 42, scope: !20349)
+!20354 = !DILocalVariable(name: "r", scope: !20349, file: !1738, line: 213, type: !5)
+!20355 = !DILocation(line: 213, column: 7, scope: !20349)
+!20356 = !DILocation(line: 213, column: 26, scope: !20349)
+!20357 = !DILocation(line: 213, column: 29, scope: !20349)
+!20358 = !DILocation(line: 213, column: 11, scope: !20349)
+!20359 = !DILocalVariable(name: "e", scope: !20349, file: !1738, line: 214, type: !5)
+!20360 = !DILocation(line: 214, column: 7, scope: !20349)
+!20361 = !DILocation(line: 214, column: 11, scope: !20349)
+!20362 = !DILocation(line: 215, column: 17, scope: !20349)
+!20363 = !DILocation(line: 215, column: 3, scope: !20349)
+!20364 = !DILocation(line: 216, column: 11, scope: !20349)
+!20365 = !DILocation(line: 216, column: 3, scope: !20349)
+!20366 = !DILocation(line: 216, column: 9, scope: !20349)
+!20367 = !DILocation(line: 217, column: 10, scope: !20349)
+!20368 = !DILocation(line: 217, column: 3, scope: !20349)
+!20369 = distinct !DISubprogram(name: "randread_new", scope: !1793, file: !1793, line: 204, type: !20370, scopeLine: 205, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1748, retainedNodes: !295)
+!20370 = !DISubroutineType(types: !20371)
+!20371 = !{!1791, !180, !52}
+!20372 = !DILocalVariable(name: "name", arg: 1, scope: !20369, file: !1793, line: 204, type: !180)
+!20373 = !DILocation(line: 204, column: 27, scope: !20369)
+!20374 = !DILocalVariable(name: "bytes_bound", arg: 2, scope: !20369, file: !1793, line: 204, type: !52)
+!20375 = !DILocation(line: 204, column: 40, scope: !20369)
+!20376 = !DILocation(line: 206, column: 7, scope: !20377)
+!20377 = distinct !DILexicalBlock(scope: !20369, file: !1793, line: 206, column: 7)
+!20378 = !DILocation(line: 206, column: 19, scope: !20377)
+!20379 = !DILocation(line: 206, column: 7, scope: !20369)
+!20380 = !DILocation(line: 207, column: 12, scope: !20377)
+!20381 = !DILocation(line: 207, column: 5, scope: !20377)
+!20382 = !DILocalVariable(name: "source", scope: !20383, file: !1793, line: 210, type: !1751)
+!20383 = distinct !DILexicalBlock(scope: !20377, file: !1793, line: 209, column: 5)
+!20384 = !DILocation(line: 210, column: 13, scope: !20383)
+!20385 = !DILocalVariable(name: "s", scope: !20383, file: !1793, line: 211, type: !1791)
+!20386 = !DILocation(line: 211, column: 31, scope: !20383)
+!20387 = !DILocation(line: 213, column: 11, scope: !20388)
+!20388 = distinct !DILexicalBlock(scope: !20383, file: !1793, line: 213, column: 11)
+!20389 = !DILocation(line: 213, column: 11, scope: !20383)
+!20390 = !DILocation(line: 214, column: 38, scope: !20391)
+!20391 = distinct !DILexicalBlock(scope: !20388, file: !1793, line: 214, column: 13)
+!20392 = !DILocation(line: 214, column: 25, scope: !20391)
+!20393 = !DILocation(line: 214, column: 23, scope: !20391)
+!20394 = !DILocation(line: 214, column: 13, scope: !20388)
+!20395 = !DILocation(line: 215, column: 11, scope: !20391)
+!20396 = !DILocation(line: 214, column: 49, scope: !20391)
+!20397 = !DILocation(line: 217, column: 23, scope: !20383)
+!20398 = !DILocation(line: 217, column: 31, scope: !20383)
+!20399 = !DILocation(line: 217, column: 11, scope: !20383)
+!20400 = !DILocation(line: 217, column: 9, scope: !20383)
+!20401 = !DILocation(line: 219, column: 11, scope: !20402)
+!20402 = distinct !DILexicalBlock(scope: !20383, file: !1793, line: 219, column: 11)
+!20403 = !DILocation(line: 219, column: 11, scope: !20383)
+!20404 = !DILocation(line: 220, column: 18, scope: !20402)
+!20405 = !DILocation(line: 220, column: 26, scope: !20402)
+!20406 = !DILocation(line: 220, column: 29, scope: !20402)
+!20407 = !DILocation(line: 220, column: 33, scope: !20402)
+!20408 = !DILocation(line: 220, column: 44, scope: !20402)
+!20409 = !DILocation(line: 220, column: 9, scope: !20402)
+!20410 = !DILocation(line: 223, column: 11, scope: !20411)
+!20411 = distinct !DILexicalBlock(scope: !20402, file: !1793, line: 222, column: 9)
+!20412 = !DILocation(line: 223, column: 14, scope: !20411)
+!20413 = !DILocation(line: 223, column: 18, scope: !20411)
+!20414 = !DILocation(line: 223, column: 24, scope: !20411)
+!20415 = !DILocation(line: 223, column: 33, scope: !20411)
+!20416 = !DILocation(line: 224, column: 22, scope: !20411)
+!20417 = !DILocation(line: 224, column: 25, scope: !20411)
+!20418 = !DILocation(line: 224, column: 29, scope: !20411)
+!20419 = !DILocation(line: 224, column: 35, scope: !20411)
+!20420 = !DILocation(line: 224, column: 41, scope: !20411)
+!20421 = !DILocation(line: 225, column: 22, scope: !20411)
+!20422 = !DILocation(line: 224, column: 11, scope: !20411)
+!20423 = !DILocation(line: 226, column: 24, scope: !20411)
+!20424 = !DILocation(line: 226, column: 27, scope: !20411)
+!20425 = !DILocation(line: 226, column: 31, scope: !20411)
+!20426 = !DILocation(line: 226, column: 37, scope: !20411)
+!20427 = !DILocation(line: 226, column: 11, scope: !20411)
+!20428 = !DILocation(line: 229, column: 14, scope: !20383)
+!20429 = !DILocation(line: 229, column: 7, scope: !20383)
+!20430 = !DILocation(line: 231, column: 1, scope: !20369)
+!20431 = distinct !DISubprogram(name: "simple_new", scope: !1793, file: !1793, line: 137, type: !20432, scopeLine: 138, flags: DIFlagPrototyped, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1748, retainedNodes: !295)
+!20432 = !DISubroutineType(types: !20433)
+!20433 = !{!1791, !1751, !685}
+!20434 = !DILocalVariable(name: "source", arg: 1, scope: !20431, file: !1793, line: 137, type: !1751)
+!20435 = !DILocation(line: 137, column: 19, scope: !20431)
+!20436 = !DILocalVariable(name: "handler_arg", arg: 2, scope: !20431, file: !1793, line: 137, type: !685)
+!20437 = !DILocation(line: 137, column: 39, scope: !20431)
+!20438 = !DILocalVariable(name: "s", scope: !20431, file: !1793, line: 139, type: !1791)
+!20439 = !DILocation(line: 139, column: 27, scope: !20431)
+!20440 = !DILocation(line: 139, column: 31, scope: !20431)
+!20441 = !DILocation(line: 140, column: 15, scope: !20431)
+!20442 = !DILocation(line: 140, column: 3, scope: !20431)
+!20443 = !DILocation(line: 140, column: 6, scope: !20431)
+!20444 = !DILocation(line: 140, column: 13, scope: !20431)
+!20445 = !DILocation(line: 141, column: 3, scope: !20431)
+!20446 = !DILocation(line: 141, column: 6, scope: !20431)
+!20447 = !DILocation(line: 141, column: 14, scope: !20431)
+!20448 = !DILocation(line: 142, column: 20, scope: !20431)
+!20449 = !DILocation(line: 142, column: 3, scope: !20431)
+!20450 = !DILocation(line: 142, column: 6, scope: !20431)
+!20451 = !DILocation(line: 142, column: 18, scope: !20431)
+!20452 = !DILocation(line: 143, column: 10, scope: !20431)
+!20453 = !DILocation(line: 143, column: 3, scope: !20431)
+!20454 = distinct !DISubprogram(name: "get_nonce", scope: !1793, file: !1793, line: 151, type: !20455, scopeLine: 152, flags: DIFlagPrototyped, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1748, retainedNodes: !295)
+!20455 = !DISubroutineType(types: !20456)
+!20456 = !{null, !47, !52, !52}
+!20457 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "timeval", file: !1092, line: 30, size: 128, elements: !20458)
+!20458 = !{!20459, !20460}
+!20459 = !DIDerivedType(tag: DW_TAG_member, name: "tv_sec", scope: !20457, file: !1092, line: 32, baseType: !376, size: 64)
+!20460 = !DIDerivedType(tag: DW_TAG_member, name: "tv_usec", scope: !20457, file: !1092, line: 33, baseType: !1096, size: 64, offset: 64)
+!20461 = !DILocalVariable(name: "buffer", arg: 1, scope: !20454, file: !1793, line: 151, type: !47)
+!20462 = !DILocation(line: 151, column: 18, scope: !20454)
+!20463 = !DILocalVariable(name: "bufsize", arg: 2, scope: !20454, file: !1793, line: 151, type: !52)
+!20464 = !DILocation(line: 151, column: 33, scope: !20454)
+!20465 = !DILocalVariable(name: "bytes_bound", arg: 3, scope: !20454, file: !1793, line: 151, type: !52)
+!20466 = !DILocation(line: 151, column: 49, scope: !20454)
+!20467 = !DILocalVariable(name: "buf", scope: !20454, file: !1793, line: 153, type: !7)
+!20468 = !DILocation(line: 153, column: 9, scope: !20454)
+!20469 = !DILocation(line: 153, column: 15, scope: !20454)
+!20470 = !DILocalVariable(name: "seeded", scope: !20454, file: !1793, line: 154, type: !661)
+!20471 = !DILocation(line: 154, column: 11, scope: !20454)
+!20472 = !DILocalVariable(name: "fd", scope: !20454, file: !1793, line: 157, type: !5)
+!20473 = !DILocation(line: 157, column: 7, scope: !20454)
+!20474 = !DILocation(line: 157, column: 12, scope: !20454)
+!20475 = !DILocation(line: 158, column: 12, scope: !20476)
+!20476 = distinct !DILexicalBlock(scope: !20454, file: !1793, line: 158, column: 7)
+!20477 = !DILocation(line: 158, column: 9, scope: !20476)
+!20478 = !DILocation(line: 158, column: 7, scope: !20454)
+!20479 = !DILocation(line: 160, column: 22, scope: !20480)
+!20480 = distinct !DILexicalBlock(scope: !20476, file: !1793, line: 159, column: 5)
+!20481 = !DILocation(line: 160, column: 26, scope: !20480)
+!20482 = !DILocation(line: 160, column: 31, scope: !20480)
+!20483 = !DILocation(line: 160, column: 16, scope: !20480)
+!20484 = !DILocation(line: 160, column: 14, scope: !20480)
+!20485 = !DILocation(line: 161, column: 11, scope: !20486)
+!20486 = distinct !DILexicalBlock(scope: !20480, file: !1793, line: 161, column: 11)
+!20487 = !DILocation(line: 161, column: 18, scope: !20486)
+!20488 = !DILocation(line: 161, column: 11, scope: !20480)
+!20489 = !DILocation(line: 162, column: 16, scope: !20486)
+!20490 = !DILocation(line: 162, column: 9, scope: !20486)
+!20491 = !DILocation(line: 163, column: 14, scope: !20480)
+!20492 = !DILocation(line: 163, column: 7, scope: !20480)
+!20493 = !DILocation(line: 164, column: 5, scope: !20480)
+!20494 = !DILocation(line: 177, column: 3, scope: !20495)
+!20495 = distinct !DILexicalBlock(scope: !20454, file: !1793, line: 177, column: 3)
+!20496 = !DILocation(line: 177, column: 3, scope: !20454)
+!20497 = !DILocalVariable(name: "v", scope: !20498, file: !1793, line: 177, type: !20457)
+!20498 = distinct !DILexicalBlock(scope: !20495, file: !1793, line: 177, column: 3)
+!20499 = !DILocation(line: 177, column: 3, scope: !20498)
+!20500 = !DILocalVariable(name: "nbytes", scope: !20498, file: !1793, line: 177, type: !52)
+!20501 = !DILocation(line: 178, column: 3, scope: !20502)
+!20502 = distinct !DILexicalBlock(scope: !20454, file: !1793, line: 178, column: 3)
+!20503 = !DILocation(line: 178, column: 3, scope: !20454)
+!20504 = !DILocalVariable(name: "v", scope: !20505, file: !1793, line: 178, type: !108)
+!20505 = distinct !DILexicalBlock(scope: !20502, file: !1793, line: 178, column: 3)
+!20506 = !DILocation(line: 178, column: 3, scope: !20505)
+!20507 = !DILocalVariable(name: "nbytes", scope: !20505, file: !1793, line: 178, type: !52)
+!20508 = !DILocation(line: 179, column: 3, scope: !20509)
+!20509 = distinct !DILexicalBlock(scope: !20454, file: !1793, line: 179, column: 3)
+!20510 = !DILocation(line: 179, column: 3, scope: !20454)
+!20511 = !DILocalVariable(name: "v", scope: !20512, file: !1793, line: 179, type: !108)
+!20512 = distinct !DILexicalBlock(scope: !20509, file: !1793, line: 179, column: 3)
+!20513 = !DILocation(line: 179, column: 3, scope: !20512)
+!20514 = !DILocalVariable(name: "nbytes", scope: !20512, file: !1793, line: 179, type: !52)
+!20515 = !DILocation(line: 180, column: 3, scope: !20516)
+!20516 = distinct !DILexicalBlock(scope: !20454, file: !1793, line: 180, column: 3)
+!20517 = !DILocation(line: 180, column: 3, scope: !20454)
+!20518 = !DILocalVariable(name: "v", scope: !20519, file: !1793, line: 180, type: !124)
+!20519 = distinct !DILexicalBlock(scope: !20516, file: !1793, line: 180, column: 3)
+!20520 = !DILocation(line: 180, column: 3, scope: !20519)
+!20521 = !DILocalVariable(name: "nbytes", scope: !20519, file: !1793, line: 180, type: !52)
+!20522 = !DILocation(line: 181, column: 3, scope: !20523)
+!20523 = distinct !DILexicalBlock(scope: !20454, file: !1793, line: 181, column: 3)
+!20524 = !DILocation(line: 181, column: 3, scope: !20454)
+!20525 = !DILocalVariable(name: "v", scope: !20526, file: !1793, line: 181, type: !124)
+!20526 = distinct !DILexicalBlock(scope: !20523, file: !1793, line: 181, column: 3)
+!20527 = !DILocation(line: 181, column: 3, scope: !20526)
+!20528 = !DILocalVariable(name: "nbytes", scope: !20526, file: !1793, line: 181, type: !52)
+!20529 = !DILocation(line: 189, column: 1, scope: !20454)
+!20530 = distinct !DISubprogram(name: "randread_error", scope: !1793, file: !1793, line: 124, type: !1798, scopeLine: 125, flags: DIFlagPrototyped | DIFlagNoReturn, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1748, retainedNodes: !295)
+!20531 = !DILocalVariable(name: "file_name", arg: 1, scope: !20530, file: !1793, line: 124, type: !685)
+!20532 = !DILocation(line: 124, column: 29, scope: !20530)
+!20533 = !DILocation(line: 126, column: 7, scope: !20534)
+!20534 = distinct !DILexicalBlock(scope: !20530, file: !1793, line: 126, column: 7)
+!20535 = !DILocation(line: 126, column: 7, scope: !20530)
+!20536 = !DILocation(line: 127, column: 12, scope: !20534)
+!20537 = !DILocation(line: 127, column: 26, scope: !20534)
+!20538 = !DILocation(line: 128, column: 12, scope: !20534)
+!20539 = !DILocation(line: 128, column: 18, scope: !20534)
+!20540 = !DILocation(line: 128, column: 25, scope: !20534)
+!20541 = !DILocation(line: 128, column: 48, scope: !20534)
+!20542 = !DILocation(line: 129, column: 19, scope: !20534)
+!20543 = !DILocation(line: 129, column: 12, scope: !20534)
+!20544 = !DILocation(line: 127, column: 5, scope: !20534)
+!20545 = !DILocation(line: 130, column: 3, scope: !20530)
+!20546 = distinct !DISubprogram(name: "randread_set_handler", scope: !1793, file: !1793, line: 242, type: !20547, scopeLine: 243, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1748, retainedNodes: !295)
+!20547 = !DISubroutineType(types: !20548)
+!20548 = !{null, !1791, !1797}
+!20549 = !DILocalVariable(name: "s", arg: 1, scope: !20546, file: !1793, line: 242, type: !1791)
+!20550 = !DILocation(line: 242, column: 47, scope: !20546)
+!20551 = !DILocalVariable(name: "handler", arg: 2, scope: !20546, file: !1793, line: 242, type: !1797)
+!20552 = !DILocation(line: 242, column: 57, scope: !20546)
+!20553 = !DILocation(line: 244, column: 16, scope: !20546)
+!20554 = !DILocation(line: 244, column: 3, scope: !20546)
+!20555 = !DILocation(line: 244, column: 6, scope: !20546)
+!20556 = !DILocation(line: 244, column: 14, scope: !20546)
+!20557 = !DILocation(line: 245, column: 1, scope: !20546)
+!20558 = distinct !DISubprogram(name: "randread_set_handler_arg", scope: !1793, file: !1793, line: 248, type: !20559, scopeLine: 249, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1748, retainedNodes: !295)
+!20559 = !DISubroutineType(types: !20560)
+!20560 = !{null, !1791, !685}
+!20561 = !DILocalVariable(name: "s", arg: 1, scope: !20558, file: !1793, line: 248, type: !1791)
+!20562 = !DILocation(line: 248, column: 51, scope: !20558)
+!20563 = !DILocalVariable(name: "handler_arg", arg: 2, scope: !20558, file: !1793, line: 248, type: !685)
+!20564 = !DILocation(line: 248, column: 66, scope: !20558)
+!20565 = !DILocation(line: 250, column: 20, scope: !20558)
+!20566 = !DILocation(line: 250, column: 3, scope: !20558)
+!20567 = !DILocation(line: 250, column: 6, scope: !20558)
+!20568 = !DILocation(line: 250, column: 18, scope: !20558)
+!20569 = !DILocation(line: 251, column: 1, scope: !20558)
+!20570 = distinct !DISubprogram(name: "randread", scope: !1793, file: !1793, line: 326, type: !20571, scopeLine: 327, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1748, retainedNodes: !295)
+!20571 = !DISubroutineType(types: !20572)
+!20572 = !{null, !1791, !47, !52}
+!20573 = !DILocalVariable(name: "s", arg: 1, scope: !20570, file: !1793, line: 326, type: !1791)
+!20574 = !DILocation(line: 326, column: 35, scope: !20570)
+!20575 = !DILocalVariable(name: "buf", arg: 2, scope: !20570, file: !1793, line: 326, type: !47)
+!20576 = !DILocation(line: 326, column: 44, scope: !20570)
+!20577 = !DILocalVariable(name: "size", arg: 3, scope: !20570, file: !1793, line: 326, type: !52)
+!20578 = !DILocation(line: 326, column: 56, scope: !20570)
+!20579 = !DILocation(line: 328, column: 7, scope: !20580)
+!20580 = distinct !DILexicalBlock(scope: !20570, file: !1793, line: 328, column: 7)
+!20581 = !DILocation(line: 328, column: 10, scope: !20580)
+!20582 = !DILocation(line: 328, column: 7, scope: !20570)
+!20583 = !DILocation(line: 329, column: 17, scope: !20580)
+!20584 = !DILocation(line: 329, column: 20, scope: !20580)
+!20585 = !DILocation(line: 329, column: 25, scope: !20580)
+!20586 = !DILocation(line: 329, column: 5, scope: !20580)
+!20587 = !DILocation(line: 331, column: 17, scope: !20580)
+!20588 = !DILocation(line: 331, column: 20, scope: !20580)
+!20589 = !DILocation(line: 331, column: 24, scope: !20580)
+!20590 = !DILocation(line: 331, column: 31, scope: !20580)
+!20591 = !DILocation(line: 331, column: 36, scope: !20580)
+!20592 = !DILocation(line: 331, column: 5, scope: !20580)
+!20593 = !DILocation(line: 332, column: 1, scope: !20570)
+!20594 = distinct !DISubprogram(name: "readsource", scope: !1793, file: !1793, line: 258, type: !20595, scopeLine: 259, flags: DIFlagPrototyped, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1748, retainedNodes: !295)
+!20595 = !DISubroutineType(types: !20596)
+!20596 = !{null, !1791, !20597, !52}
+!20597 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !585, size: 64)
+!20598 = !DILocalVariable(name: "s", arg: 1, scope: !20594, file: !1793, line: 258, type: !1791)
+!20599 = !DILocation(line: 258, column: 37, scope: !20594)
+!20600 = !DILocalVariable(name: "p", arg: 2, scope: !20594, file: !1793, line: 258, type: !20597)
+!20601 = !DILocation(line: 258, column: 55, scope: !20594)
+!20602 = !DILocalVariable(name: "size", arg: 3, scope: !20594, file: !1793, line: 258, type: !52)
+!20603 = !DILocation(line: 258, column: 65, scope: !20594)
+!20604 = !DILocation(line: 260, column: 3, scope: !20594)
+!20605 = !DILocalVariable(name: "inbytes", scope: !20606, file: !1793, line: 262, type: !52)
+!20606 = distinct !DILexicalBlock(scope: !20594, file: !1793, line: 261, column: 5)
+!20607 = !DILocation(line: 262, column: 14, scope: !20606)
+!20608 = !DILocation(line: 262, column: 24, scope: !20606)
+!20609 = !DILocalVariable(name: "fread_errno", scope: !20606, file: !1793, line: 263, type: !5)
+!20610 = !DILocation(line: 263, column: 11, scope: !20606)
+!20611 = !DILocation(line: 263, column: 25, scope: !20606)
+!20612 = !DILocation(line: 264, column: 12, scope: !20606)
+!20613 = !DILocation(line: 264, column: 9, scope: !20606)
+!20614 = !DILocation(line: 265, column: 15, scope: !20606)
+!20615 = !DILocation(line: 265, column: 12, scope: !20606)
+!20616 = !DILocation(line: 266, column: 11, scope: !20617)
+!20617 = distinct !DILexicalBlock(scope: !20606, file: !1793, line: 266, column: 11)
+!20618 = !DILocation(line: 266, column: 16, scope: !20617)
+!20619 = !DILocation(line: 266, column: 11, scope: !20606)
+!20620 = !DILocation(line: 267, column: 9, scope: !20617)
+!20621 = !DILocation(line: 268, column: 16, scope: !20606)
+!20622 = !DILocation(line: 268, column: 37, scope: !20606)
+!20623 = !DILocation(line: 268, column: 7, scope: !20606)
+!20624 = !DILocation(line: 268, column: 13, scope: !20606)
+!20625 = !DILocation(line: 269, column: 7, scope: !20606)
+!20626 = !DILocation(line: 269, column: 10, scope: !20606)
+!20627 = !DILocation(line: 269, column: 19, scope: !20606)
+!20628 = !DILocation(line: 269, column: 22, scope: !20606)
+!20629 = distinct !{!20629, !20604, !20630}
+!20630 = !DILocation(line: 270, column: 5, scope: !20594)
+!20631 = !DILocation(line: 271, column: 1, scope: !20594)
+!20632 = distinct !DISubprogram(name: "readisaac", scope: !1793, file: !1793, line: 278, type: !20633, scopeLine: 279, flags: DIFlagPrototyped, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1748, retainedNodes: !295)
+!20633 = !DISubroutineType(types: !20634)
+!20634 = !{null, !20635, !47, !52}
+!20635 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !1806, size: 64)
+!20636 = !DILocalVariable(name: "isaac", arg: 1, scope: !20632, file: !1793, line: 278, type: !20635)
+!20637 = !DILocation(line: 278, column: 26, scope: !20632)
+!20638 = !DILocalVariable(name: "p", arg: 2, scope: !20632, file: !1793, line: 278, type: !47)
+!20639 = !DILocation(line: 278, column: 39, scope: !20632)
+!20640 = !DILocalVariable(name: "size", arg: 3, scope: !20632, file: !1793, line: 278, type: !52)
+!20641 = !DILocation(line: 278, column: 49, scope: !20632)
+!20642 = !DILocalVariable(name: "inbytes", scope: !20632, file: !1793, line: 280, type: !52)
+!20643 = !DILocation(line: 280, column: 10, scope: !20632)
+!20644 = !DILocation(line: 280, column: 20, scope: !20632)
+!20645 = !DILocation(line: 280, column: 27, scope: !20632)
+!20646 = !DILocation(line: 282, column: 3, scope: !20632)
+!20647 = !DILocalVariable(name: "char_p", scope: !20648, file: !1793, line: 284, type: !7)
+!20648 = distinct !DILexicalBlock(scope: !20632, file: !1793, line: 283, column: 5)
+!20649 = !DILocation(line: 284, column: 13, scope: !20648)
+!20650 = !DILocation(line: 284, column: 22, scope: !20648)
+!20651 = !DILocation(line: 286, column: 11, scope: !20652)
+!20652 = distinct !DILexicalBlock(scope: !20648, file: !1793, line: 286, column: 11)
+!20653 = !DILocation(line: 286, column: 19, scope: !20652)
+!20654 = !DILocation(line: 286, column: 16, scope: !20652)
+!20655 = !DILocation(line: 286, column: 11, scope: !20648)
+!20656 = !DILocation(line: 288, column: 19, scope: !20657)
+!20657 = distinct !DILexicalBlock(scope: !20652, file: !1793, line: 287, column: 9)
+!20658 = !DILocation(line: 288, column: 22, scope: !20657)
+!20659 = !DILocation(line: 288, column: 29, scope: !20657)
+!20660 = !DILocation(line: 288, column: 34, scope: !20657)
+!20661 = !DILocation(line: 288, column: 36, scope: !20657)
+!20662 = !DILocation(line: 288, column: 52, scope: !20657)
+!20663 = !DILocation(line: 288, column: 50, scope: !20657)
+!20664 = !DILocation(line: 288, column: 61, scope: !20657)
+!20665 = !DILocation(line: 288, column: 11, scope: !20657)
+!20666 = !DILocation(line: 289, column: 29, scope: !20657)
+!20667 = !DILocation(line: 289, column: 39, scope: !20657)
+!20668 = !DILocation(line: 289, column: 37, scope: !20657)
+!20669 = !DILocation(line: 289, column: 11, scope: !20657)
+!20670 = !DILocation(line: 289, column: 18, scope: !20657)
+!20671 = !DILocation(line: 289, column: 27, scope: !20657)
+!20672 = !DILocation(line: 290, column: 11, scope: !20657)
+!20673 = !DILocation(line: 293, column: 15, scope: !20648)
+!20674 = !DILocation(line: 293, column: 18, scope: !20648)
+!20675 = !DILocation(line: 293, column: 25, scope: !20648)
+!20676 = !DILocation(line: 293, column: 30, scope: !20648)
+!20677 = !DILocation(line: 293, column: 32, scope: !20648)
+!20678 = !DILocation(line: 293, column: 48, scope: !20648)
+!20679 = !DILocation(line: 293, column: 46, scope: !20648)
+!20680 = !DILocation(line: 293, column: 57, scope: !20648)
+!20681 = !DILocation(line: 293, column: 7, scope: !20648)
+!20682 = !DILocation(line: 294, column: 11, scope: !20648)
+!20683 = !DILocation(line: 294, column: 20, scope: !20648)
+!20684 = !DILocation(line: 294, column: 18, scope: !20648)
+!20685 = !DILocation(line: 294, column: 9, scope: !20648)
+!20686 = !DILocation(line: 295, column: 15, scope: !20648)
+!20687 = !DILocation(line: 295, column: 12, scope: !20648)
+!20688 = !DILocation(line: 299, column: 11, scope: !20689)
+!20689 = distinct !DILexicalBlock(scope: !20648, file: !1793, line: 299, column: 11)
+!20690 = !DILocation(line: 299, column: 11, scope: !20648)
+!20691 = !DILocalVariable(name: "wp", scope: !20692, file: !1793, line: 301, type: !1828)
+!20692 = distinct !DILexicalBlock(scope: !20689, file: !1793, line: 300, column: 9)
+!20693 = !DILocation(line: 301, column: 23, scope: !20692)
+!20694 = !DILocation(line: 301, column: 28, scope: !20692)
+!20695 = !DILocation(line: 302, column: 11, scope: !20692)
+!20696 = !DILocation(line: 302, column: 33, scope: !20692)
+!20697 = !DILocation(line: 302, column: 30, scope: !20692)
+!20698 = !DILocation(line: 304, column: 30, scope: !20699)
+!20699 = distinct !DILexicalBlock(scope: !20692, file: !1793, line: 303, column: 13)
+!20700 = !DILocation(line: 304, column: 37, scope: !20699)
+!20701 = !DILocation(line: 304, column: 44, scope: !20699)
+!20702 = !DILocation(line: 304, column: 15, scope: !20699)
+!20703 = !DILocation(line: 305, column: 18, scope: !20699)
+!20704 = !DILocation(line: 306, column: 20, scope: !20699)
+!20705 = !DILocation(line: 307, column: 19, scope: !20706)
+!20706 = distinct !DILexicalBlock(scope: !20699, file: !1793, line: 307, column: 19)
+!20707 = !DILocation(line: 307, column: 24, scope: !20706)
+!20708 = !DILocation(line: 307, column: 19, scope: !20699)
+!20709 = !DILocation(line: 309, column: 19, scope: !20710)
+!20710 = distinct !DILexicalBlock(scope: !20706, file: !1793, line: 308, column: 17)
+!20711 = !DILocation(line: 309, column: 26, scope: !20710)
+!20712 = !DILocation(line: 309, column: 35, scope: !20710)
+!20713 = !DILocation(line: 310, column: 19, scope: !20710)
+!20714 = distinct !{!20714, !20695, !20715}
+!20715 = !DILocation(line: 312, column: 13, scope: !20692)
+!20716 = !DILocation(line: 313, column: 15, scope: !20692)
+!20717 = !DILocation(line: 313, column: 13, scope: !20692)
+!20718 = !DILocation(line: 314, column: 9, scope: !20692)
+!20719 = !DILocation(line: 316, column: 22, scope: !20648)
+!20720 = !DILocation(line: 316, column: 29, scope: !20648)
+!20721 = !DILocation(line: 316, column: 36, scope: !20648)
+!20722 = !DILocation(line: 316, column: 43, scope: !20648)
+!20723 = !DILocation(line: 316, column: 48, scope: !20648)
+!20724 = !DILocation(line: 316, column: 7, scope: !20648)
+!20725 = !DILocation(line: 317, column: 15, scope: !20648)
+!20726 = distinct !{!20726, !20646, !20727}
+!20727 = !DILocation(line: 318, column: 5, scope: !20632)
+!20728 = !DILocation(line: 319, column: 1, scope: !20632)
+!20729 = distinct !DISubprogram(name: "randread_free", scope: !1793, file: !1793, line: 341, type: !20730, scopeLine: 342, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1748, retainedNodes: !295)
+!20730 = !DISubroutineType(types: !20731)
+!20731 = !{!5, !1791}
+!20732 = !DILocalVariable(name: "s", arg: 1, scope: !20729, file: !1793, line: 341, type: !1791)
+!20733 = !DILocation(line: 341, column: 40, scope: !20729)
+!20734 = !DILocalVariable(name: "source", scope: !20729, file: !1793, line: 343, type: !1751)
+!20735 = !DILocation(line: 343, column: 9, scope: !20729)
+!20736 = !DILocation(line: 343, column: 18, scope: !20729)
+!20737 = !DILocation(line: 343, column: 21, scope: !20729)
+!20738 = !DILocation(line: 344, column: 19, scope: !20729)
+!20739 = !DILocation(line: 344, column: 3, scope: !20729)
+!20740 = !DILocation(line: 345, column: 9, scope: !20729)
+!20741 = !DILocation(line: 345, column: 3, scope: !20729)
+!20742 = !DILocation(line: 346, column: 11, scope: !20729)
+!20743 = !DILocation(line: 346, column: 28, scope: !20729)
+!20744 = !DILocation(line: 346, column: 20, scope: !20729)
+!20745 = !DILocation(line: 346, column: 3, scope: !20729)
+!20746 = distinct !DISubprogram(name: "isaac_refill", scope: !20747, file: !20747, line: 90, type: !20748, scopeLine: 91, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1829, retainedNodes: !295)
+!20747 = !DIFile(filename: "lib/rand-isaac.c", directory: "/home/mohamad/clone/coreutils")
+!20748 = !DISubroutineType(types: !20749)
+!20749 = !{null, !20750, !1828}
+!20750 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !20751, size: 64)
+!20751 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "isaac_state", file: !1811, line: 56, size: 16576, elements: !20752)
+!20752 = !{!20753, !20754, !20755, !20756}
+!20753 = !DIDerivedType(tag: DW_TAG_member, name: "m", scope: !20751, file: !1811, line: 58, baseType: !1814, size: 16384)
+!20754 = !DIDerivedType(tag: DW_TAG_member, name: "a", scope: !20751, file: !1811, line: 59, baseType: !1815, size: 64, offset: 16384)
+!20755 = !DIDerivedType(tag: DW_TAG_member, name: "b", scope: !20751, file: !1811, line: 59, baseType: !1815, size: 64, offset: 16448)
+!20756 = !DIDerivedType(tag: DW_TAG_member, name: "c", scope: !20751, file: !1811, line: 59, baseType: !1815, size: 64, offset: 16512)
+!20757 = !DILocalVariable(name: "s", arg: 1, scope: !20746, file: !20747, line: 90, type: !20750)
+!20758 = !DILocation(line: 90, column: 35, scope: !20746)
+!20759 = !DILocalVariable(name: "result", arg: 2, scope: !20746, file: !20747, line: 90, type: !1828)
+!20760 = !DILocation(line: 90, column: 49, scope: !20746)
+!20761 = !DILocalVariable(name: "a", scope: !20746, file: !20747, line: 93, type: !1815)
+!20762 = !DILocation(line: 93, column: 14, scope: !20746)
+!20763 = !DILocation(line: 93, column: 18, scope: !20746)
+!20764 = !DILocation(line: 93, column: 21, scope: !20746)
+!20765 = !DILocalVariable(name: "b", scope: !20746, file: !20747, line: 94, type: !1815)
+!20766 = !DILocation(line: 94, column: 14, scope: !20746)
+!20767 = !DILocation(line: 94, column: 18, scope: !20746)
+!20768 = !DILocation(line: 94, column: 21, scope: !20746)
+!20769 = !DILocation(line: 94, column: 28, scope: !20746)
+!20770 = !DILocation(line: 94, column: 31, scope: !20746)
+!20771 = !DILocation(line: 94, column: 26, scope: !20746)
+!20772 = !DILocation(line: 94, column: 23, scope: !20746)
+!20773 = !DILocalVariable(name: "m", scope: !20746, file: !20747, line: 97, type: !1828)
+!20774 = !DILocation(line: 97, column: 15, scope: !20746)
+!20775 = !DILocation(line: 97, column: 19, scope: !20746)
+!20776 = !DILocation(line: 97, column: 22, scope: !20746)
+!20777 = !DILocalVariable(name: "r", scope: !20746, file: !20747, line: 98, type: !1828)
+!20778 = !DILocation(line: 98, column: 15, scope: !20746)
+!20779 = !DILocation(line: 98, column: 19, scope: !20746)
+!20780 = !DILocation(line: 116, column: 3, scope: !20746)
+!20781 = !DILocalVariable(name: "x", scope: !20782, file: !20747, line: 118, type: !1815)
+!20782 = distinct !DILexicalBlock(scope: !20783, file: !20747, line: 118, column: 7)
+!20783 = distinct !DILexicalBlock(scope: !20746, file: !20747, line: 117, column: 5)
+!20784 = !DILocation(line: 118, column: 7, scope: !20782)
+!20785 = !DILocalVariable(name: "y", scope: !20782, file: !20747, line: 118, type: !1815)
+!20786 = !DILocalVariable(name: "x", scope: !20787, file: !20747, line: 119, type: !1815)
+!20787 = distinct !DILexicalBlock(scope: !20783, file: !20747, line: 119, column: 7)
+!20788 = !DILocation(line: 119, column: 7, scope: !20787)
+!20789 = !DILocalVariable(name: "y", scope: !20787, file: !20747, line: 119, type: !1815)
+!20790 = !DILocalVariable(name: "x", scope: !20791, file: !20747, line: 120, type: !1815)
+!20791 = distinct !DILexicalBlock(scope: !20783, file: !20747, line: 120, column: 7)
+!20792 = !DILocation(line: 120, column: 7, scope: !20791)
+!20793 = !DILocalVariable(name: "y", scope: !20791, file: !20747, line: 120, type: !1815)
+!20794 = !DILocalVariable(name: "x", scope: !20795, file: !20747, line: 121, type: !1815)
+!20795 = distinct !DILexicalBlock(scope: !20783, file: !20747, line: 121, column: 7)
+!20796 = !DILocation(line: 121, column: 7, scope: !20795)
+!20797 = !DILocalVariable(name: "y", scope: !20795, file: !20747, line: 121, type: !1815)
+!20798 = !DILocation(line: 122, column: 9, scope: !20783)
+!20799 = !DILocation(line: 123, column: 5, scope: !20783)
+!20800 = !DILocation(line: 124, column: 13, scope: !20746)
+!20801 = !DILocation(line: 124, column: 21, scope: !20746)
+!20802 = !DILocation(line: 124, column: 24, scope: !20746)
+!20803 = !DILocation(line: 124, column: 26, scope: !20746)
+!20804 = !DILocation(line: 124, column: 19, scope: !20746)
+!20805 = distinct !{!20805, !20780, !20806}
+!20806 = !DILocation(line: 124, column: 32, scope: !20746)
+!20807 = !DILocation(line: 126, column: 3, scope: !20746)
+!20808 = !DILocalVariable(name: "x", scope: !20809, file: !20747, line: 128, type: !1815)
+!20809 = distinct !DILexicalBlock(scope: !20810, file: !20747, line: 128, column: 7)
+!20810 = distinct !DILexicalBlock(scope: !20746, file: !20747, line: 127, column: 5)
+!20811 = !DILocation(line: 128, column: 7, scope: !20809)
+!20812 = !DILocalVariable(name: "y", scope: !20809, file: !20747, line: 128, type: !1815)
+!20813 = !DILocalVariable(name: "x", scope: !20814, file: !20747, line: 129, type: !1815)
+!20814 = distinct !DILexicalBlock(scope: !20810, file: !20747, line: 129, column: 7)
+!20815 = !DILocation(line: 129, column: 7, scope: !20814)
+!20816 = !DILocalVariable(name: "y", scope: !20814, file: !20747, line: 129, type: !1815)
+!20817 = !DILocalVariable(name: "x", scope: !20818, file: !20747, line: 130, type: !1815)
+!20818 = distinct !DILexicalBlock(scope: !20810, file: !20747, line: 130, column: 7)
+!20819 = !DILocation(line: 130, column: 7, scope: !20818)
+!20820 = !DILocalVariable(name: "y", scope: !20818, file: !20747, line: 130, type: !1815)
+!20821 = !DILocalVariable(name: "x", scope: !20822, file: !20747, line: 131, type: !1815)
+!20822 = distinct !DILexicalBlock(scope: !20810, file: !20747, line: 131, column: 7)
+!20823 = !DILocation(line: 131, column: 7, scope: !20822)
+!20824 = !DILocalVariable(name: "y", scope: !20822, file: !20747, line: 131, type: !1815)
+!20825 = !DILocation(line: 132, column: 9, scope: !20810)
+!20826 = !DILocation(line: 133, column: 5, scope: !20810)
+!20827 = !DILocation(line: 134, column: 13, scope: !20746)
+!20828 = !DILocation(line: 134, column: 21, scope: !20746)
+!20829 = !DILocation(line: 134, column: 24, scope: !20746)
+!20830 = !DILocation(line: 134, column: 26, scope: !20746)
+!20831 = !DILocation(line: 134, column: 19, scope: !20746)
+!20832 = distinct !{!20832, !20807, !20833}
+!20833 = !DILocation(line: 134, column: 39, scope: !20746)
+!20834 = !DILocation(line: 136, column: 10, scope: !20746)
+!20835 = !DILocation(line: 136, column: 3, scope: !20746)
+!20836 = !DILocation(line: 136, column: 6, scope: !20746)
+!20837 = !DILocation(line: 136, column: 8, scope: !20746)
+!20838 = !DILocation(line: 137, column: 10, scope: !20746)
+!20839 = !DILocation(line: 137, column: 3, scope: !20746)
+!20840 = !DILocation(line: 137, column: 6, scope: !20746)
+!20841 = !DILocation(line: 137, column: 8, scope: !20746)
+!20842 = !DILocation(line: 138, column: 1, scope: !20746)
+!20843 = distinct !DISubprogram(name: "ind", scope: !20747, file: !20747, line: 68, type: !20844, scopeLine: 69, flags: DIFlagPrototyped, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1829, retainedNodes: !295)
+!20844 = !DISubroutineType(types: !20845)
+!20845 = !{!1815, !1832, !1815}
+!20846 = !DILocalVariable(name: "m", arg: 1, scope: !20843, file: !20747, line: 68, type: !1832)
+!20847 = !DILocation(line: 68, column: 24, scope: !20843)
+!20848 = !DILocalVariable(name: "x", arg: 2, scope: !20843, file: !20747, line: 68, type: !1815)
+!20849 = !DILocation(line: 68, column: 38, scope: !20843)
+!20850 = !DILocalVariable(name: "void_m", scope: !20851, file: !20747, line: 75, type: !685)
+!20851 = distinct !DILexicalBlock(scope: !20852, file: !20747, line: 71, column: 5)
+!20852 = distinct !DILexicalBlock(scope: !20843, file: !20747, line: 70, column: 7)
+!20853 = !DILocation(line: 75, column: 19, scope: !20851)
+!20854 = !DILocation(line: 75, column: 28, scope: !20851)
+!20855 = !DILocalVariable(name: "base_p", scope: !20851, file: !20747, line: 76, type: !180)
+!20856 = !DILocation(line: 76, column: 19, scope: !20851)
+!20857 = !DILocation(line: 76, column: 28, scope: !20851)
+!20858 = !DILocalVariable(name: "word_p", scope: !20851, file: !20747, line: 77, type: !685)
+!20859 = !DILocation(line: 77, column: 19, scope: !20851)
+!20860 = !DILocation(line: 77, column: 28, scope: !20851)
+!20861 = !DILocation(line: 77, column: 38, scope: !20851)
+!20862 = !DILocation(line: 77, column: 40, scope: !20851)
+!20863 = !DILocation(line: 77, column: 35, scope: !20851)
+!20864 = !DILocalVariable(name: "p", scope: !20851, file: !20747, line: 78, type: !1832)
+!20865 = !DILocation(line: 78, column: 25, scope: !20851)
+!20866 = !DILocation(line: 78, column: 29, scope: !20851)
+!20867 = !DILocation(line: 79, column: 15, scope: !20851)
+!20868 = !DILocation(line: 79, column: 14, scope: !20851)
+!20869 = !DILocation(line: 79, column: 7, scope: !20851)
+!20870 = distinct !DISubprogram(name: "just", scope: !20747, file: !20747, line: 60, type: !20871, scopeLine: 61, flags: DIFlagPrototyped, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1829, retainedNodes: !295)
+!20871 = !DISubroutineType(types: !20872)
+!20872 = !{!1815, !1815}
+!20873 = !DILocalVariable(name: "a", arg: 1, scope: !20870, file: !20747, line: 60, type: !1815)
+!20874 = !DILocation(line: 60, column: 18, scope: !20870)
+!20875 = !DILocalVariable(name: "desired_bits", scope: !20870, file: !20747, line: 62, type: !1815)
+!20876 = !DILocation(line: 62, column: 14, scope: !20870)
+!20877 = !DILocation(line: 63, column: 10, scope: !20870)
+!20878 = !DILocation(line: 63, column: 14, scope: !20870)
+!20879 = !DILocation(line: 63, column: 12, scope: !20870)
+!20880 = !DILocation(line: 63, column: 3, scope: !20870)
+!20881 = distinct !DISubprogram(name: "isaac_seed", scope: !20747, file: !20747, line: 248, type: !20882, scopeLine: 249, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1829, retainedNodes: !295)
+!20882 = !DISubroutineType(types: !20883)
+!20883 = !{null, !20750}
+!20884 = !DILocalVariable(name: "s", arg: 1, scope: !20881, file: !20747, line: 248, type: !20750)
+!20885 = !DILocation(line: 248, column: 33, scope: !20881)
+!20886 = !DILocalVariable(name: "a", scope: !20881, file: !20747, line: 250, type: !1815)
+!20887 = !DILocation(line: 250, column: 14, scope: !20881)
+!20888 = !DILocalVariable(name: "b", scope: !20881, file: !20747, line: 251, type: !1815)
+!20889 = !DILocation(line: 251, column: 14, scope: !20881)
+!20890 = !DILocalVariable(name: "c", scope: !20881, file: !20747, line: 252, type: !1815)
+!20891 = !DILocation(line: 252, column: 14, scope: !20881)
+!20892 = !DILocalVariable(name: "d", scope: !20881, file: !20747, line: 253, type: !1815)
+!20893 = !DILocation(line: 253, column: 14, scope: !20881)
+!20894 = !DILocalVariable(name: "e", scope: !20881, file: !20747, line: 254, type: !1815)
+!20895 = !DILocation(line: 254, column: 14, scope: !20881)
+!20896 = !DILocalVariable(name: "f", scope: !20881, file: !20747, line: 255, type: !1815)
+!20897 = !DILocation(line: 255, column: 14, scope: !20881)
+!20898 = !DILocalVariable(name: "g", scope: !20881, file: !20747, line: 256, type: !1815)
+!20899 = !DILocation(line: 256, column: 14, scope: !20881)
+!20900 = !DILocalVariable(name: "h", scope: !20881, file: !20747, line: 257, type: !1815)
+!20901 = !DILocation(line: 257, column: 14, scope: !20881)
+!20902 = !DILocalVariable(name: "i", scope: !20903, file: !20747, line: 269, type: !5)
+!20903 = distinct !DILexicalBlock(scope: !20881, file: !20747, line: 269, column: 3)
+!20904 = !DILocation(line: 269, column: 3, scope: !20903)
+!20905 = !DILocation(line: 269, column: 3, scope: !20906)
+!20906 = distinct !DILexicalBlock(scope: !20903, file: !20747, line: 269, column: 3)
+!20907 = !DILocation(line: 269, column: 3, scope: !20908)
+!20908 = distinct !DILexicalBlock(scope: !20906, file: !20747, line: 269, column: 3)
+!20909 = !DILocation(line: 269, column: 3, scope: !20910)
+!20910 = distinct !DILexicalBlock(scope: !20908, file: !20747, line: 269, column: 3)
+!20911 = !DILocation(line: 269, column: 3, scope: !20912)
+!20912 = distinct !DILexicalBlock(scope: !20910, file: !20747, line: 269, column: 3)
+!20913 = distinct !{!20913, !20905, !20905}
+!20914 = !DILocalVariable(name: "i", scope: !20915, file: !20747, line: 270, type: !5)
+!20915 = distinct !DILexicalBlock(scope: !20881, file: !20747, line: 270, column: 3)
+!20916 = !DILocation(line: 270, column: 3, scope: !20915)
+!20917 = !DILocation(line: 270, column: 3, scope: !20918)
+!20918 = distinct !DILexicalBlock(scope: !20915, file: !20747, line: 270, column: 3)
+!20919 = !DILocation(line: 270, column: 3, scope: !20920)
+!20920 = distinct !DILexicalBlock(scope: !20918, file: !20747, line: 270, column: 3)
+!20921 = !DILocation(line: 270, column: 3, scope: !20922)
+!20922 = distinct !DILexicalBlock(scope: !20920, file: !20747, line: 270, column: 3)
+!20923 = !DILocation(line: 270, column: 3, scope: !20924)
+!20924 = distinct !DILexicalBlock(scope: !20922, file: !20747, line: 270, column: 3)
+!20925 = distinct !{!20925, !20917, !20917}
+!20926 = !DILocation(line: 272, column: 17, scope: !20881)
+!20927 = !DILocation(line: 272, column: 20, scope: !20881)
+!20928 = !DILocation(line: 272, column: 22, scope: !20881)
+!20929 = !DILocation(line: 272, column: 10, scope: !20881)
+!20930 = !DILocation(line: 272, column: 13, scope: !20881)
+!20931 = !DILocation(line: 272, column: 15, scope: !20881)
+!20932 = !DILocation(line: 272, column: 3, scope: !20881)
+!20933 = !DILocation(line: 272, column: 6, scope: !20881)
+!20934 = !DILocation(line: 272, column: 8, scope: !20881)
+!20935 = !DILocation(line: 273, column: 1, scope: !20881)
+!20936 = distinct !DISubprogram(name: "dup_safer", scope: !20937, file: !20937, line: 31, type: !15414, scopeLine: 32, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1834, retainedNodes: !295)
+!20937 = !DIFile(filename: "lib/dup-safer.c", directory: "/home/mohamad/clone/coreutils")
+!20938 = !DILocalVariable(name: "fd", arg: 1, scope: !20936, file: !20937, line: 31, type: !5)
+!20939 = !DILocation(line: 31, column: 16, scope: !20936)
+!20940 = !DILocation(line: 33, column: 17, scope: !20936)
+!20941 = !DILocation(line: 33, column: 10, scope: !20936)
+!20942 = !DILocation(line: 33, column: 3, scope: !20936)
+!20943 = distinct !DISubprogram(name: "explicit_bzero", scope: !20944, file: !20944, line: 39, type: !20945, scopeLine: 40, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1836, retainedNodes: !295)
+!20944 = !DIFile(filename: "lib/explicit_bzero.c", directory: "/home/mohamad/clone/coreutils")
+!20945 = !DISubroutineType(types: !20946)
+!20946 = !{null, !47, !52}
+!20947 = !DILocalVariable(name: "s", arg: 1, scope: !20943, file: !20944, line: 39, type: !47)
+!20948 = !DILocation(line: 39, column: 23, scope: !20943)
+!20949 = !DILocalVariable(name: "len", arg: 2, scope: !20943, file: !20944, line: 39, type: !52)
+!20950 = !DILocation(line: 39, column: 33, scope: !20943)
+!20951 = !DILocation(line: 44, column: 11, scope: !20943)
+!20952 = !DILocation(line: 44, column: 20, scope: !20943)
+!20953 = !DILocation(line: 44, column: 3, scope: !20943)
+!20954 = !DILocation(line: 50, column: 1, scope: !20943)
+!20955 = distinct !DISubprogram(name: "rpl_fclose", scope: !20956, file: !20956, line: 58, type: !20957, scopeLine: 59, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1838, retainedNodes: !295)
+!20956 = !DIFile(filename: "lib/fclose.c", directory: "/home/mohamad/clone/coreutils")
+!20957 = !DISubroutineType(types: !20958)
+!20958 = !{!5, !20959}
+!20959 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !20960, size: 64)
+!20960 = !DIDerivedType(tag: DW_TAG_typedef, name: "FILE", file: !438, line: 48, baseType: !20961)
+!20961 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "_IO_FILE", file: !2, line: 241, size: 1728, elements: !20962)
+!20962 = !{!20963, !20964, !20965, !20966, !20967, !20968, !20969, !20970, !20971, !20972, !20973, !20974, !20975, !20983, !20984, !20985, !20986, !20987, !20988, !20989, !20990, !20991, !20992, !20993, !20994, !20995, !20996, !20997, !20998}
+!20963 = !DIDerivedType(tag: DW_TAG_member, name: "_flags", scope: !20961, file: !2, line: 242, baseType: !5, size: 32)
+!20964 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_read_ptr", scope: !20961, file: !2, line: 247, baseType: !7, size: 64, offset: 64)
+!20965 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_read_end", scope: !20961, file: !2, line: 248, baseType: !7, size: 64, offset: 128)
+!20966 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_read_base", scope: !20961, file: !2, line: 249, baseType: !7, size: 64, offset: 192)
+!20967 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_write_base", scope: !20961, file: !2, line: 250, baseType: !7, size: 64, offset: 256)
+!20968 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_write_ptr", scope: !20961, file: !2, line: 251, baseType: !7, size: 64, offset: 320)
+!20969 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_write_end", scope: !20961, file: !2, line: 252, baseType: !7, size: 64, offset: 384)
+!20970 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_buf_base", scope: !20961, file: !2, line: 253, baseType: !7, size: 64, offset: 448)
+!20971 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_buf_end", scope: !20961, file: !2, line: 254, baseType: !7, size: 64, offset: 512)
+!20972 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_save_base", scope: !20961, file: !2, line: 256, baseType: !7, size: 64, offset: 576)
+!20973 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_backup_base", scope: !20961, file: !2, line: 257, baseType: !7, size: 64, offset: 640)
+!20974 = !DIDerivedType(tag: DW_TAG_member, name: "_IO_save_end", scope: !20961, file: !2, line: 258, baseType: !7, size: 64, offset: 704)
+!20975 = !DIDerivedType(tag: DW_TAG_member, name: "_markers", scope: !20961, file: !2, line: 260, baseType: !20976, size: 64, offset: 768)
+!20976 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !20977, size: 64)
+!20977 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "_IO_marker", file: !2, line: 156, size: 192, elements: !20978)
+!20978 = !{!20979, !20980, !20982}
+!20979 = !DIDerivedType(tag: DW_TAG_member, name: "_next", scope: !20977, file: !2, line: 157, baseType: !20976, size: 64)
+!20980 = !DIDerivedType(tag: DW_TAG_member, name: "_sbuf", scope: !20977, file: !2, line: 158, baseType: !20981, size: 64, offset: 64)
+!20981 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !20961, size: 64)
+!20982 = !DIDerivedType(tag: DW_TAG_member, name: "_pos", scope: !20977, file: !2, line: 162, baseType: !5, size: 32, offset: 128)
+!20983 = !DIDerivedType(tag: DW_TAG_member, name: "_chain", scope: !20961, file: !2, line: 262, baseType: !20981, size: 64, offset: 832)
+!20984 = !DIDerivedType(tag: DW_TAG_member, name: "_fileno", scope: !20961, file: !2, line: 264, baseType: !5, size: 32, offset: 896)
+!20985 = !DIDerivedType(tag: DW_TAG_member, name: "_flags2", scope: !20961, file: !2, line: 268, baseType: !5, size: 32, offset: 928)
+!20986 = !DIDerivedType(tag: DW_TAG_member, name: "_old_offset", scope: !20961, file: !2, line: 270, baseType: !30, size: 64, offset: 960)
+!20987 = !DIDerivedType(tag: DW_TAG_member, name: "_cur_column", scope: !20961, file: !2, line: 274, baseType: !34, size: 16, offset: 1024)
+!20988 = !DIDerivedType(tag: DW_TAG_member, name: "_vtable_offset", scope: !20961, file: !2, line: 275, baseType: !36, size: 8, offset: 1040)
+!20989 = !DIDerivedType(tag: DW_TAG_member, name: "_shortbuf", scope: !20961, file: !2, line: 276, baseType: !38, size: 8, offset: 1048)
+!20990 = !DIDerivedType(tag: DW_TAG_member, name: "_lock", scope: !20961, file: !2, line: 280, baseType: !42, size: 64, offset: 1088)
+!20991 = !DIDerivedType(tag: DW_TAG_member, name: "_offset", scope: !20961, file: !2, line: 289, baseType: !45, size: 64, offset: 1152)
+!20992 = !DIDerivedType(tag: DW_TAG_member, name: "__pad1", scope: !20961, file: !2, line: 297, baseType: !47, size: 64, offset: 1216)
+!20993 = !DIDerivedType(tag: DW_TAG_member, name: "__pad2", scope: !20961, file: !2, line: 298, baseType: !47, size: 64, offset: 1280)
+!20994 = !DIDerivedType(tag: DW_TAG_member, name: "__pad3", scope: !20961, file: !2, line: 299, baseType: !47, size: 64, offset: 1344)
+!20995 = !DIDerivedType(tag: DW_TAG_member, name: "__pad4", scope: !20961, file: !2, line: 300, baseType: !47, size: 64, offset: 1408)
+!20996 = !DIDerivedType(tag: DW_TAG_member, name: "__pad5", scope: !20961, file: !2, line: 302, baseType: !52, size: 64, offset: 1472)
+!20997 = !DIDerivedType(tag: DW_TAG_member, name: "_mode", scope: !20961, file: !2, line: 303, baseType: !5, size: 32, offset: 1536)
+!20998 = !DIDerivedType(tag: DW_TAG_member, name: "_unused2", scope: !20961, file: !2, line: 305, baseType: !57, size: 160, offset: 1568)
+!20999 = !DILocalVariable(name: "fp", arg: 1, scope: !20955, file: !20956, line: 58, type: !20959)
+!21000 = !DILocation(line: 58, column: 19, scope: !20955)
+!21001 = !DILocalVariable(name: "saved_errno", scope: !20955, file: !20956, line: 60, type: !5)
+!21002 = !DILocation(line: 60, column: 7, scope: !20955)
+!21003 = !DILocalVariable(name: "fd", scope: !20955, file: !20956, line: 61, type: !5)
+!21004 = !DILocation(line: 61, column: 7, scope: !20955)
+!21005 = !DILocalVariable(name: "result", scope: !20955, file: !20956, line: 62, type: !5)
+!21006 = !DILocation(line: 62, column: 7, scope: !20955)
+!21007 = !DILocation(line: 65, column: 16, scope: !20955)
+!21008 = !DILocation(line: 65, column: 8, scope: !20955)
+!21009 = !DILocation(line: 65, column: 6, scope: !20955)
+!21010 = !DILocation(line: 66, column: 7, scope: !21011)
+!21011 = distinct !DILexicalBlock(scope: !20955, file: !20956, line: 66, column: 7)
+!21012 = !DILocation(line: 66, column: 10, scope: !21011)
+!21013 = !DILocation(line: 66, column: 7, scope: !20955)
+!21014 = !DILocation(line: 67, column: 28, scope: !21011)
+!21015 = !DILocation(line: 67, column: 12, scope: !21011)
+!21016 = !DILocation(line: 67, column: 5, scope: !21011)
+!21017 = !DILocation(line: 72, column: 9, scope: !21018)
+!21018 = distinct !DILexicalBlock(scope: !20955, file: !20956, line: 72, column: 7)
+!21019 = !DILocation(line: 72, column: 23, scope: !21018)
+!21020 = !DILocation(line: 72, column: 41, scope: !21018)
+!21021 = !DILocation(line: 72, column: 33, scope: !21018)
+!21022 = !DILocation(line: 72, column: 26, scope: !21018)
+!21023 = !DILocation(line: 72, column: 59, scope: !21018)
+!21024 = !DILocation(line: 73, column: 7, scope: !21018)
+!21025 = !DILocation(line: 73, column: 18, scope: !21018)
+!21026 = !DILocation(line: 73, column: 10, scope: !21018)
+!21027 = !DILocation(line: 72, column: 7, scope: !20955)
+!21028 = !DILocation(line: 74, column: 19, scope: !21018)
+!21029 = !DILocation(line: 74, column: 17, scope: !21018)
+!21030 = !DILocation(line: 74, column: 5, scope: !21018)
+!21031 = !DILocation(line: 100, column: 28, scope: !20955)
+!21032 = !DILocation(line: 100, column: 12, scope: !20955)
+!21033 = !DILocation(line: 100, column: 10, scope: !20955)
+!21034 = !DILocation(line: 105, column: 7, scope: !21035)
+!21035 = distinct !DILexicalBlock(scope: !20955, file: !20956, line: 105, column: 7)
+!21036 = !DILocation(line: 105, column: 19, scope: !21035)
+!21037 = !DILocation(line: 105, column: 7, scope: !20955)
+!21038 = !DILocation(line: 107, column: 15, scope: !21039)
+!21039 = distinct !DILexicalBlock(scope: !21035, file: !20956, line: 106, column: 5)
+!21040 = !DILocation(line: 107, column: 7, scope: !21039)
+!21041 = !DILocation(line: 107, column: 13, scope: !21039)
+!21042 = !DILocation(line: 108, column: 14, scope: !21039)
+!21043 = !DILocation(line: 109, column: 5, scope: !21039)
+!21044 = !DILocation(line: 111, column: 10, scope: !20955)
+!21045 = !DILocation(line: 111, column: 3, scope: !20955)
+!21046 = !DILocation(line: 112, column: 1, scope: !20955)
+!21047 = distinct !DISubprogram(name: "rpl_fcntl", scope: !1169, file: !1169, line: 202, type: !21048, scopeLine: 207, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1172, retainedNodes: !295)
+!21048 = !DISubroutineType(types: !21049)
+!21049 = !{!5, !5, !5, null}
+!21050 = !DILocalVariable(name: "fd", arg: 1, scope: !21047, file: !1169, line: 202, type: !5)
+!21051 = !DILocation(line: 202, column: 12, scope: !21047)
+!21052 = !DILocalVariable(name: "action", arg: 2, scope: !21047, file: !1169, line: 202, type: !5)
+!21053 = !DILocation(line: 202, column: 20, scope: !21047)
+!21054 = !DILocalVariable(name: "arg", scope: !21047, file: !1169, line: 208, type: !1175)
+!21055 = !DILocation(line: 208, column: 11, scope: !21047)
+!21056 = !DILocalVariable(name: "result", scope: !21047, file: !1169, line: 209, type: !5)
+!21057 = !DILocation(line: 209, column: 7, scope: !21047)
+!21058 = !DILocation(line: 210, column: 3, scope: !21047)
+!21059 = !DILocation(line: 211, column: 11, scope: !21047)
+!21060 = !DILocation(line: 211, column: 3, scope: !21047)
+!21061 = !DILocalVariable(name: "target", scope: !21062, file: !1169, line: 215, type: !5)
+!21062 = distinct !DILexicalBlock(scope: !21063, file: !1169, line: 214, column: 7)
+!21063 = distinct !DILexicalBlock(scope: !21047, file: !1169, line: 212, column: 5)
+!21064 = !DILocation(line: 215, column: 13, scope: !21062)
+!21065 = !DILocation(line: 215, column: 22, scope: !21062)
+!21066 = !DILocation(line: 216, column: 35, scope: !21062)
+!21067 = !DILocation(line: 216, column: 39, scope: !21062)
+!21068 = !DILocation(line: 216, column: 18, scope: !21062)
+!21069 = !DILocation(line: 216, column: 16, scope: !21062)
+!21070 = !DILocation(line: 217, column: 9, scope: !21062)
+!21071 = !DILocalVariable(name: "target", scope: !21072, file: !1169, line: 222, type: !5)
+!21072 = distinct !DILexicalBlock(scope: !21063, file: !1169, line: 221, column: 7)
+!21073 = !DILocation(line: 222, column: 13, scope: !21072)
+!21074 = !DILocation(line: 222, column: 22, scope: !21072)
+!21075 = !DILocation(line: 223, column: 43, scope: !21072)
+!21076 = !DILocation(line: 223, column: 47, scope: !21072)
+!21077 = !DILocation(line: 223, column: 18, scope: !21072)
+!21078 = !DILocation(line: 223, column: 16, scope: !21072)
+!21079 = !DILocation(line: 224, column: 9, scope: !21072)
+!21080 = !DILocation(line: 259, column: 17, scope: !21081)
+!21081 = distinct !DILexicalBlock(scope: !21063, file: !1169, line: 257, column: 7)
+!21082 = !DILocation(line: 259, column: 9, scope: !21081)
+!21083 = !DILocation(line: 328, column: 29, scope: !21084)
+!21084 = distinct !DILexicalBlock(scope: !21081, file: !1169, line: 260, column: 11)
+!21085 = !DILocation(line: 328, column: 33, scope: !21084)
+!21086 = !DILocation(line: 328, column: 22, scope: !21084)
+!21087 = !DILocation(line: 328, column: 20, scope: !21084)
+!21088 = !DILocation(line: 329, column: 13, scope: !21084)
+!21089 = !DILocalVariable(name: "x", scope: !21090, file: !1169, line: 423, type: !5)
+!21090 = distinct !DILexicalBlock(scope: !21084, file: !1169, line: 422, column: 13)
+!21091 = !DILocation(line: 423, column: 19, scope: !21090)
+!21092 = !DILocation(line: 423, column: 23, scope: !21090)
+!21093 = !DILocation(line: 424, column: 31, scope: !21090)
+!21094 = !DILocation(line: 424, column: 35, scope: !21090)
+!21095 = !DILocation(line: 424, column: 43, scope: !21090)
+!21096 = !DILocation(line: 424, column: 24, scope: !21090)
+!21097 = !DILocation(line: 424, column: 22, scope: !21090)
+!21098 = !DILocation(line: 426, column: 13, scope: !21084)
+!21099 = !DILocalVariable(name: "p", scope: !21100, file: !1169, line: 431, type: !47)
+!21100 = distinct !DILexicalBlock(scope: !21084, file: !1169, line: 430, column: 13)
+!21101 = !DILocation(line: 431, column: 21, scope: !21100)
+!21102 = !DILocation(line: 431, column: 25, scope: !21100)
+!21103 = !DILocation(line: 432, column: 31, scope: !21100)
+!21104 = !DILocation(line: 432, column: 35, scope: !21100)
+!21105 = !DILocation(line: 432, column: 43, scope: !21100)
+!21106 = !DILocation(line: 432, column: 24, scope: !21100)
+!21107 = !DILocation(line: 432, column: 22, scope: !21100)
+!21108 = !DILocation(line: 434, column: 13, scope: !21084)
+!21109 = !DILocation(line: 439, column: 9, scope: !21081)
+!21110 = !DILocation(line: 442, column: 3, scope: !21047)
+!21111 = !DILocation(line: 443, column: 10, scope: !21047)
+!21112 = !DILocation(line: 443, column: 3, scope: !21047)
+!21113 = distinct !DISubprogram(name: "rpl_fcntl_DUPFD", scope: !1169, file: !1169, line: 447, type: !1170, scopeLine: 448, flags: DIFlagPrototyped, spFlags: DISPFlagLocalToUnit | DISPFlagDefinition, unit: !1172, retainedNodes: !295)
+!21114 = !DILocalVariable(name: "fd", arg: 1, scope: !21113, file: !1169, line: 447, type: !5)
+!21115 = !DILocation(line: 447, column: 22, scope: !21113)
+!21116 = !DILocalVariable(name: "target", arg: 2, scope: !21113, file: !1169, line: 447, type: !5)
+!21117 = !DILocation(line: 447, column: 30, scope: !21113)
+!21118 = !DILocalVariable(name: "result", scope: !21113, file: !1169, line: 449, type: !5)
+!21119 = !DILocation(line: 449, column: 7, scope: !21113)
+!21120 = !DILocation(line: 482, column: 19, scope: !21113)
+!21121 = !DILocation(line: 482, column: 32, scope: !21113)
+!21122 = !DILocation(line: 482, column: 12, scope: !21113)
+!21123 = !DILocation(line: 482, column: 10, scope: !21113)
+!21124 = !DILocation(line: 484, column: 10, scope: !21113)
+!21125 = !DILocation(line: 484, column: 3, scope: !21113)
+!21126 = !DILocalVariable(name: "fd", arg: 1, scope: !1168, file: !1169, line: 488, type: !5)
+!21127 = !DILocation(line: 488, column: 30, scope: !1168)
+!21128 = !DILocalVariable(name: "target", arg: 2, scope: !1168, file: !1169, line: 488, type: !5)
+!21129 = !DILocation(line: 488, column: 38, scope: !1168)
+!21130 = !DILocalVariable(name: "result", scope: !1168, file: !1169, line: 490, type: !5)
+!21131 = !DILocation(line: 490, column: 7, scope: !1168)
+!21132 = !DILocation(line: 508, column: 12, scope: !21133)
+!21133 = distinct !DILexicalBlock(scope: !1168, file: !1169, line: 508, column: 7)
+!21134 = !DILocation(line: 508, column: 9, scope: !21133)
+!21135 = !DILocation(line: 508, column: 7, scope: !1168)
+!21136 = !DILocation(line: 510, column: 23, scope: !21137)
+!21137 = distinct !DILexicalBlock(scope: !21133, file: !1169, line: 509, column: 5)
+!21138 = !DILocation(line: 510, column: 44, scope: !21137)
+!21139 = !DILocation(line: 510, column: 16, scope: !21137)
+!21140 = !DILocation(line: 510, column: 14, scope: !21137)
+!21141 = !DILocation(line: 511, column: 16, scope: !21142)
+!21142 = distinct !DILexicalBlock(scope: !21137, file: !1169, line: 511, column: 11)
+!21143 = !DILocation(line: 511, column: 13, scope: !21142)
+!21144 = !DILocation(line: 511, column: 23, scope: !21142)
+!21145 = !DILocation(line: 511, column: 26, scope: !21142)
+!21146 = !DILocation(line: 511, column: 32, scope: !21142)
+!21147 = !DILocation(line: 511, column: 11, scope: !21137)
+!21148 = !DILocation(line: 513, column: 30, scope: !21149)
+!21149 = distinct !DILexicalBlock(scope: !21142, file: !1169, line: 512, column: 9)
+!21150 = !DILocation(line: 518, column: 9, scope: !21149)
+!21151 = !DILocation(line: 521, column: 37, scope: !21152)
+!21152 = distinct !DILexicalBlock(scope: !21142, file: !1169, line: 520, column: 9)
+!21153 = !DILocation(line: 521, column: 41, scope: !21152)
+!21154 = !DILocation(line: 521, column: 20, scope: !21152)
+!21155 = !DILocation(line: 521, column: 18, scope: !21152)
+!21156 = !DILocation(line: 522, column: 15, scope: !21157)
+!21157 = distinct !DILexicalBlock(scope: !21152, file: !1169, line: 522, column: 15)
+!21158 = !DILocation(line: 522, column: 22, scope: !21157)
+!21159 = !DILocation(line: 522, column: 15, scope: !21152)
+!21160 = !DILocation(line: 523, column: 32, scope: !21157)
+!21161 = !DILocation(line: 523, column: 13, scope: !21157)
+!21162 = !DILocation(line: 525, column: 5, scope: !21137)
+!21163 = !DILocation(line: 528, column: 31, scope: !21133)
+!21164 = !DILocation(line: 528, column: 35, scope: !21133)
+!21165 = !DILocation(line: 528, column: 14, scope: !21133)
+!21166 = !DILocation(line: 528, column: 12, scope: !21133)
+!21167 = !DILocation(line: 529, column: 12, scope: !21168)
+!21168 = distinct !DILexicalBlock(scope: !1168, file: !1169, line: 529, column: 7)
+!21169 = !DILocation(line: 529, column: 9, scope: !21168)
+!21170 = !DILocation(line: 529, column: 19, scope: !21168)
+!21171 = !DILocation(line: 529, column: 22, scope: !21168)
+!21172 = !DILocation(line: 529, column: 41, scope: !21168)
+!21173 = !DILocation(line: 529, column: 7, scope: !1168)
+!21174 = !DILocalVariable(name: "flags", scope: !21175, file: !1169, line: 531, type: !5)
+!21175 = distinct !DILexicalBlock(scope: !21168, file: !1169, line: 530, column: 5)
+!21176 = !DILocation(line: 531, column: 11, scope: !21175)
+!21177 = !DILocation(line: 531, column: 26, scope: !21175)
+!21178 = !DILocation(line: 531, column: 19, scope: !21175)
+!21179 = !DILocation(line: 532, column: 11, scope: !21180)
+!21180 = distinct !DILexicalBlock(scope: !21175, file: !1169, line: 532, column: 11)
+!21181 = !DILocation(line: 532, column: 17, scope: !21180)
+!21182 = !DILocation(line: 532, column: 21, scope: !21180)
+!21183 = !DILocation(line: 532, column: 31, scope: !21180)
+!21184 = !DILocation(line: 532, column: 48, scope: !21180)
+!21185 = !DILocation(line: 532, column: 54, scope: !21180)
+!21186 = !DILocation(line: 532, column: 24, scope: !21180)
+!21187 = !DILocation(line: 532, column: 68, scope: !21180)
+!21188 = !DILocation(line: 532, column: 11, scope: !21175)
+!21189 = !DILocalVariable(name: "saved_errno", scope: !21190, file: !1169, line: 534, type: !5)
+!21190 = distinct !DILexicalBlock(scope: !21180, file: !1169, line: 533, column: 9)
+!21191 = !DILocation(line: 534, column: 15, scope: !21190)
+!21192 = !DILocation(line: 534, column: 29, scope: !21190)
+!21193 = !DILocation(line: 535, column: 18, scope: !21190)
+!21194 = !DILocation(line: 535, column: 11, scope: !21190)
+!21195 = !DILocation(line: 536, column: 19, scope: !21190)
+!21196 = !DILocation(line: 536, column: 11, scope: !21190)
+!21197 = !DILocation(line: 536, column: 17, scope: !21190)
+!21198 = !DILocation(line: 537, column: 18, scope: !21190)
+!21199 = !DILocation(line: 538, column: 9, scope: !21190)
+!21200 = !DILocation(line: 539, column: 5, scope: !21175)
+!21201 = !DILocation(line: 541, column: 10, scope: !1168)
+!21202 = !DILocation(line: 541, column: 3, scope: !1168)
+!21203 = distinct !DISubprogram(name: "rpl_nl_langinfo", scope: !21204, file: !21204, line: 99, type: !21205, scopeLine: 100, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1840, retainedNodes: !295)
+!21204 = !DIFile(filename: "lib/nl_langinfo.c", directory: "/home/mohamad/clone/coreutils")
+!21205 = !DISubroutineType(types: !21206)
+!21206 = !{!7, !21207}
+!21207 = !DIDerivedType(tag: DW_TAG_typedef, name: "nl_item", file: !21208, line: 36, baseType: !5)
+!21208 = !DIFile(filename: "/usr/include/nl_types.h", directory: "")
+!21209 = !DILocalVariable(name: "item", arg: 1, scope: !21203, file: !21204, line: 99, type: !21207)
+!21210 = !DILocation(line: 99, column: 26, scope: !21203)
+!21211 = !DILocation(line: 101, column: 11, scope: !21203)
+!21212 = !DILocation(line: 101, column: 3, scope: !21203)
+!21213 = !DILocation(line: 126, column: 14, scope: !21214)
+!21214 = distinct !DILexicalBlock(scope: !21203, file: !21204, line: 102, column: 5)
+!21215 = !DILocation(line: 126, column: 19, scope: !21214)
+!21216 = !DILocation(line: 126, column: 30, scope: !21214)
+!21217 = !DILocation(line: 126, column: 12, scope: !21214)
+!21218 = !DILocation(line: 127, column: 7, scope: !21214)
+!21219 = !DILocation(line: 162, column: 7, scope: !21214)
+!21220 = !DILocation(line: 164, column: 23, scope: !21203)
+!21221 = !DILocation(line: 164, column: 10, scope: !21203)
+!21222 = !DILocation(line: 164, column: 3, scope: !21203)
+!21223 = distinct !DISubprogram(name: "c_isalnum", scope: !21224, file: !21224, line: 169, type: !2939, scopeLine: 170, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
+!21224 = !DIFile(filename: "./lib/c-ctype.h", directory: "/home/mohamad/clone/coreutils")
+!21225 = !DILocalVariable(name: "c", arg: 1, scope: !21223, file: !21224, line: 169, type: !5)
+!21226 = !DILocation(line: 169, column: 16, scope: !21223)
+!21227 = !DILocation(line: 171, column: 11, scope: !21223)
+!21228 = !DILocation(line: 171, column: 3, scope: !21223)
+!21229 = !DILocation(line: 176, column: 7, scope: !21230)
+!21230 = distinct !DILexicalBlock(scope: !21223, file: !21224, line: 172, column: 5)
+!21231 = !DILocation(line: 178, column: 7, scope: !21230)
+!21232 = !DILocation(line: 180, column: 1, scope: !21223)
+!21233 = distinct !DISubprogram(name: "c_isalpha", scope: !21224, file: !21224, line: 183, type: !2939, scopeLine: 184, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
+!21234 = !DILocalVariable(name: "c", arg: 1, scope: !21233, file: !21224, line: 183, type: !5)
+!21235 = !DILocation(line: 183, column: 16, scope: !21233)
+!21236 = !DILocation(line: 185, column: 11, scope: !21233)
+!21237 = !DILocation(line: 185, column: 3, scope: !21233)
+!21238 = !DILocation(line: 189, column: 7, scope: !21239)
+!21239 = distinct !DILexicalBlock(scope: !21233, file: !21224, line: 186, column: 5)
+!21240 = !DILocation(line: 191, column: 7, scope: !21239)
+!21241 = !DILocation(line: 193, column: 1, scope: !21233)
+!21242 = distinct !DISubprogram(name: "c_isascii", scope: !21224, file: !21224, line: 198, type: !2939, scopeLine: 199, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
+!21243 = !DILocalVariable(name: "c", arg: 1, scope: !21242, file: !21224, line: 198, type: !5)
+!21244 = !DILocation(line: 198, column: 16, scope: !21242)
+!21245 = !DILocation(line: 200, column: 11, scope: !21242)
+!21246 = !DILocation(line: 200, column: 3, scope: !21242)
+!21247 = !DILocation(line: 208, column: 7, scope: !21248)
+!21248 = distinct !DILexicalBlock(scope: !21242, file: !21224, line: 201, column: 5)
+!21249 = !DILocation(line: 210, column: 7, scope: !21248)
+!21250 = !DILocation(line: 212, column: 1, scope: !21242)
+!21251 = distinct !DISubprogram(name: "c_isblank", scope: !21224, file: !21224, line: 215, type: !2939, scopeLine: 216, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
+!21252 = !DILocalVariable(name: "c", arg: 1, scope: !21251, file: !21224, line: 215, type: !5)
+!21253 = !DILocation(line: 215, column: 16, scope: !21251)
+!21254 = !DILocation(line: 217, column: 10, scope: !21251)
+!21255 = !DILocation(line: 217, column: 12, scope: !21251)
+!21256 = !DILocation(line: 217, column: 19, scope: !21251)
+!21257 = !DILocation(line: 217, column: 22, scope: !21251)
+!21258 = !DILocation(line: 217, column: 24, scope: !21251)
+!21259 = !DILocation(line: 217, column: 3, scope: !21251)
+!21260 = distinct !DISubprogram(name: "c_iscntrl", scope: !21224, file: !21224, line: 221, type: !2939, scopeLine: 222, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
+!21261 = !DILocalVariable(name: "c", arg: 1, scope: !21260, file: !21224, line: 221, type: !5)
+!21262 = !DILocation(line: 221, column: 16, scope: !21260)
+!21263 = !DILocation(line: 223, column: 11, scope: !21260)
+!21264 = !DILocation(line: 223, column: 3, scope: !21260)
+!21265 = !DILocation(line: 226, column: 7, scope: !21266)
+!21266 = distinct !DILexicalBlock(scope: !21260, file: !21224, line: 224, column: 5)
+!21267 = !DILocation(line: 228, column: 7, scope: !21266)
+!21268 = !DILocation(line: 230, column: 1, scope: !21260)
+!21269 = distinct !DISubprogram(name: "c_isdigit", scope: !21224, file: !21224, line: 233, type: !2939, scopeLine: 234, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
+!21270 = !DILocalVariable(name: "c", arg: 1, scope: !21269, file: !21224, line: 233, type: !5)
+!21271 = !DILocation(line: 233, column: 16, scope: !21269)
+!21272 = !DILocation(line: 235, column: 11, scope: !21269)
+!21273 = !DILocation(line: 235, column: 3, scope: !21269)
+!21274 = !DILocation(line: 238, column: 7, scope: !21275)
+!21275 = distinct !DILexicalBlock(scope: !21269, file: !21224, line: 236, column: 5)
+!21276 = !DILocation(line: 240, column: 7, scope: !21275)
+!21277 = !DILocation(line: 242, column: 1, scope: !21269)
+!21278 = distinct !DISubprogram(name: "c_isgraph", scope: !21224, file: !21224, line: 245, type: !2939, scopeLine: 246, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
+!21279 = !DILocalVariable(name: "c", arg: 1, scope: !21278, file: !21224, line: 245, type: !5)
+!21280 = !DILocation(line: 245, column: 16, scope: !21278)
+!21281 = !DILocation(line: 247, column: 11, scope: !21278)
+!21282 = !DILocation(line: 247, column: 3, scope: !21278)
+!21283 = !DILocation(line: 253, column: 7, scope: !21284)
+!21284 = distinct !DILexicalBlock(scope: !21278, file: !21224, line: 248, column: 5)
+!21285 = !DILocation(line: 255, column: 7, scope: !21284)
+!21286 = !DILocation(line: 257, column: 1, scope: !21278)
+!21287 = distinct !DISubprogram(name: "c_islower", scope: !21224, file: !21224, line: 260, type: !2939, scopeLine: 261, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
+!21288 = !DILocalVariable(name: "c", arg: 1, scope: !21287, file: !21224, line: 260, type: !5)
+!21289 = !DILocation(line: 260, column: 16, scope: !21287)
+!21290 = !DILocation(line: 262, column: 11, scope: !21287)
+!21291 = !DILocation(line: 262, column: 3, scope: !21287)
+!21292 = !DILocation(line: 265, column: 7, scope: !21293)
+!21293 = distinct !DILexicalBlock(scope: !21287, file: !21224, line: 263, column: 5)
+!21294 = !DILocation(line: 267, column: 7, scope: !21293)
+!21295 = !DILocation(line: 269, column: 1, scope: !21287)
+!21296 = distinct !DISubprogram(name: "c_isprint", scope: !21224, file: !21224, line: 272, type: !2939, scopeLine: 273, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
+!21297 = !DILocalVariable(name: "c", arg: 1, scope: !21296, file: !21224, line: 272, type: !5)
+!21298 = !DILocation(line: 272, column: 16, scope: !21296)
+!21299 = !DILocation(line: 274, column: 11, scope: !21296)
+!21300 = !DILocation(line: 274, column: 3, scope: !21296)
+!21301 = !DILocation(line: 281, column: 7, scope: !21302)
+!21302 = distinct !DILexicalBlock(scope: !21296, file: !21224, line: 275, column: 5)
+!21303 = !DILocation(line: 283, column: 7, scope: !21302)
+!21304 = !DILocation(line: 285, column: 1, scope: !21296)
+!21305 = distinct !DISubprogram(name: "c_ispunct", scope: !21224, file: !21224, line: 288, type: !2939, scopeLine: 289, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
+!21306 = !DILocalVariable(name: "c", arg: 1, scope: !21305, file: !21224, line: 288, type: !5)
+!21307 = !DILocation(line: 288, column: 16, scope: !21305)
+!21308 = !DILocation(line: 290, column: 11, scope: !21305)
+!21309 = !DILocation(line: 290, column: 3, scope: !21305)
+!21310 = !DILocation(line: 293, column: 7, scope: !21311)
+!21311 = distinct !DILexicalBlock(scope: !21305, file: !21224, line: 291, column: 5)
+!21312 = !DILocation(line: 295, column: 7, scope: !21311)
+!21313 = !DILocation(line: 297, column: 1, scope: !21305)
+!21314 = distinct !DISubprogram(name: "c_isspace", scope: !21224, file: !21224, line: 300, type: !2939, scopeLine: 301, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
+!21315 = !DILocalVariable(name: "c", arg: 1, scope: !21314, file: !21224, line: 300, type: !5)
+!21316 = !DILocation(line: 300, column: 16, scope: !21314)
+!21317 = !DILocation(line: 302, column: 11, scope: !21314)
+!21318 = !DILocation(line: 302, column: 3, scope: !21314)
+!21319 = !DILocation(line: 305, column: 7, scope: !21320)
+!21320 = distinct !DILexicalBlock(scope: !21314, file: !21224, line: 303, column: 5)
+!21321 = !DILocation(line: 307, column: 7, scope: !21320)
+!21322 = !DILocation(line: 309, column: 1, scope: !21314)
+!21323 = distinct !DISubprogram(name: "c_isupper", scope: !21224, file: !21224, line: 312, type: !2939, scopeLine: 313, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
+!21324 = !DILocalVariable(name: "c", arg: 1, scope: !21323, file: !21224, line: 312, type: !5)
+!21325 = !DILocation(line: 312, column: 16, scope: !21323)
+!21326 = !DILocation(line: 314, column: 11, scope: !21323)
+!21327 = !DILocation(line: 314, column: 3, scope: !21323)
+!21328 = !DILocation(line: 317, column: 7, scope: !21329)
+!21329 = distinct !DILexicalBlock(scope: !21323, file: !21224, line: 315, column: 5)
+!21330 = !DILocation(line: 319, column: 7, scope: !21329)
+!21331 = !DILocation(line: 321, column: 1, scope: !21323)
+!21332 = distinct !DISubprogram(name: "c_isxdigit", scope: !21224, file: !21224, line: 324, type: !2939, scopeLine: 325, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
+!21333 = !DILocalVariable(name: "c", arg: 1, scope: !21332, file: !21224, line: 324, type: !5)
+!21334 = !DILocation(line: 324, column: 17, scope: !21332)
+!21335 = !DILocation(line: 326, column: 11, scope: !21332)
+!21336 = !DILocation(line: 326, column: 3, scope: !21332)
+!21337 = !DILocation(line: 330, column: 7, scope: !21338)
+!21338 = distinct !DILexicalBlock(scope: !21332, file: !21224, line: 327, column: 5)
+!21339 = !DILocation(line: 332, column: 7, scope: !21338)
+!21340 = !DILocation(line: 334, column: 1, scope: !21332)
+!21341 = distinct !DISubprogram(name: "c_tolower", scope: !21224, file: !21224, line: 337, type: !15414, scopeLine: 338, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
+!21342 = !DILocalVariable(name: "c", arg: 1, scope: !21341, file: !21224, line: 337, type: !5)
+!21343 = !DILocation(line: 337, column: 16, scope: !21341)
+!21344 = !DILocation(line: 339, column: 11, scope: !21341)
+!21345 = !DILocation(line: 339, column: 3, scope: !21341)
+!21346 = !DILocation(line: 342, column: 14, scope: !21347)
+!21347 = distinct !DILexicalBlock(scope: !21341, file: !21224, line: 340, column: 5)
+!21348 = !DILocation(line: 342, column: 16, scope: !21347)
+!21349 = !DILocation(line: 342, column: 22, scope: !21347)
+!21350 = !DILocation(line: 342, column: 7, scope: !21347)
+!21351 = !DILocation(line: 344, column: 14, scope: !21347)
+!21352 = !DILocation(line: 344, column: 7, scope: !21347)
+!21353 = !DILocation(line: 346, column: 1, scope: !21341)
+!21354 = distinct !DISubprogram(name: "c_toupper", scope: !21224, file: !21224, line: 349, type: !15414, scopeLine: 350, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1842, retainedNodes: !295)
+!21355 = !DILocalVariable(name: "c", arg: 1, scope: !21354, file: !21224, line: 349, type: !5)
+!21356 = !DILocation(line: 349, column: 16, scope: !21354)
+!21357 = !DILocation(line: 351, column: 11, scope: !21354)
+!21358 = !DILocation(line: 351, column: 3, scope: !21354)
+!21359 = !DILocation(line: 354, column: 14, scope: !21360)
+!21360 = distinct !DILexicalBlock(scope: !21354, file: !21224, line: 352, column: 5)
+!21361 = !DILocation(line: 354, column: 16, scope: !21360)
+!21362 = !DILocation(line: 354, column: 22, scope: !21360)
+!21363 = !DILocation(line: 354, column: 7, scope: !21360)
+!21364 = !DILocation(line: 356, column: 14, scope: !21360)
+!21365 = !DILocation(line: 356, column: 7, scope: !21360)
+!21366 = !DILocation(line: 358, column: 1, scope: !21354)
+!21367 = distinct !DISubprogram(name: "fopen_safer", scope: !21368, file: !21368, line: 31, type: !21369, scopeLine: 32, flags: DIFlagPrototyped, spFlags: DISPFlagDefinition, unit: !1844, retainedNodes: !295)
+!21368 = !DIFile(filename: "lib/fopen-safer.c", directory: "/home/mohamad/clone/coreutils")
+!21369 = !DISubroutineType(types: !21370)
+!21370 = !{!1847, !180, !180}
+!21371 = !DILocalVariable(name: "file", arg: 1, scope: !21367, file: !21368, line: 31, type: !180)
+!21372 = !DILocation(line: 31, column: 26, scope: !21367)
+!21373 = !DILocalVariable(name: "mode", arg: 2, scope: !21367, file: !21368, line: 31, type: !180)
+!21374 = !DILocation(line: 31, column: 44, scope: !21367)
+!21375 = !DILocalVariable(name: "fp", scope: !21367, file: !21368, line: 33, type: !1847)
+!21376 = !DILocation(line: 33, column: 9, scope: !21367)
+!21377 = !DILocation(line: 33, column: 21, scope: !21367)
+!21378 = !DILocation(line: 33, column: 27, scope: !21367)
+!21379 = !DILocation(line: 33, column: 14, scope: !21367)
+!21380 = !DILocation(line: 35, column: 7, scope: !21381)
+!21381 = distinct !DILexicalBlock(scope: !21367, file: !21368, line: 35, column: 7)
+!21382 = !DILocation(line: 35, column: 7, scope: !21367)
+!21383 = !DILocalVariable(name: "fd", scope: !21384, file: !21368, line: 37, type: !5)
+!21384 = distinct !DILexicalBlock(scope: !21381, file: !21368, line: 36, column: 5)
+!21385 = !DILocation(line: 37, column: 11, scope: !21384)
+!21386 = !DILocation(line: 37, column: 24, scope: !21384)
+!21387 = !DILocation(line: 37, column: 16, scope: !21384)
+!21388 = !DILocation(line: 39, column: 16, scope: !21389)
+!21389 = distinct !DILexicalBlock(scope: !21384, file: !21368, line: 39, column: 11)
+!21390 = !DILocation(line: 39, column: 13, scope: !21389)
+!21391 = !DILocation(line: 39, column: 19, scope: !21389)
+!21392 = !DILocation(line: 39, column: 22, scope: !21389)
+!21393 = !DILocation(line: 39, column: 25, scope: !21389)
+!21394 = !DILocation(line: 39, column: 11, scope: !21384)
+!21395 = !DILocalVariable(name: "f", scope: !21396, file: !21368, line: 41, type: !5)
+!21396 = distinct !DILexicalBlock(scope: !21389, file: !21368, line: 40, column: 9)
+!21397 = !DILocation(line: 41, column: 15, scope: !21396)
+!21398 = !DILocation(line: 41, column: 30, scope: !21396)
+!21399 = !DILocation(line: 41, column: 19, scope: !21396)
+!21400 = !DILocation(line: 43, column: 15, scope: !21401)
+!21401 = distinct !DILexicalBlock(scope: !21396, file: !21368, line: 43, column: 15)
+!21402 = !DILocation(line: 43, column: 17, scope: !21401)
+!21403 = !DILocation(line: 43, column: 15, scope: !21396)
+!21404 = !DILocalVariable(name: "e", scope: !21405, file: !21368, line: 45, type: !5)
+!21405 = distinct !DILexicalBlock(scope: !21401, file: !21368, line: 44, column: 13)
+!21406 = !DILocation(line: 45, column: 19, scope: !21405)
+!21407 = !DILocation(line: 45, column: 23, scope: !21405)
+!21408 = !DILocation(line: 46, column: 23, scope: !21405)
+!21409 = !DILocation(line: 46, column: 15, scope: !21405)
+!21410 = !DILocation(line: 47, column: 23, scope: !21405)
+!21411 = !DILocation(line: 47, column: 15, scope: !21405)
+!21412 = !DILocation(line: 47, column: 21, scope: !21405)
+!21413 = !DILocation(line: 48, column: 15, scope: !21405)
+!21414 = !DILocation(line: 51, column: 23, scope: !21415)
+!21415 = distinct !DILexicalBlock(scope: !21396, file: !21368, line: 51, column: 15)
+!21416 = !DILocation(line: 51, column: 15, scope: !21415)
+!21417 = !DILocation(line: 51, column: 27, scope: !21415)
+!21418 = !DILocation(line: 52, column: 15, scope: !21415)
+!21419 = !DILocation(line: 52, column: 34, scope: !21415)
+!21420 = !DILocation(line: 52, column: 37, scope: !21415)
+!21421 = !DILocation(line: 52, column: 26, scope: !21415)
+!21422 = !DILocation(line: 52, column: 24, scope: !21415)
+!21423 = !DILocation(line: 51, column: 15, scope: !21396)
+!21424 = !DILocalVariable(name: "e", scope: !21425, file: !21368, line: 54, type: !5)
+!21425 = distinct !DILexicalBlock(scope: !21415, file: !21368, line: 53, column: 13)
+!21426 = !DILocation(line: 54, column: 19, scope: !21425)
+!21427 = !DILocation(line: 54, column: 23, scope: !21425)
+!21428 = !DILocation(line: 55, column: 22, scope: !21425)
+!21429 = !DILocation(line: 55, column: 15, scope: !21425)
+!21430 = !DILocation(line: 56, column: 23, scope: !21425)
+!21431 = !DILocation(line: 56, column: 15, scope: !21425)
+!21432 = !DILocation(line: 56, column: 21, scope: !21425)
+!21433 = !DILocation(line: 57, column: 15, scope: !21425)
+!21434 = !DILocation(line: 59, column: 9, scope: !21396)
+!21435 = !DILocation(line: 60, column: 5, scope: !21384)
+!21436 = !DILocation(line: 62, column: 10, scope: !21367)
+!21437 = !DILocation(line: 62, column: 3, scope: !21367)
+!21438 = !DILocation(line: 63, column: 1, scope: !21367)
