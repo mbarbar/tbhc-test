@@ -3,6 +3,8 @@
 import sys
 import statistics as stats
 
+# for f in *.bc; do echo "======== $f =========="; ag eval-ctir | sort | column | ag $f | ag -o 'eval.*$' | xargs -d'\n' ./aliases.py; done
+
 def process_aliases(aliases_argv, name):
     aliases_d = { }
 
