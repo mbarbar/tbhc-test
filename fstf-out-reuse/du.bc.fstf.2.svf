@@ -1,0 +1,611 @@
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           572
+TotalCycle          11
+MaxNodeInCycle      4
+NodeInCycle         17
+TotalEdge           2085
+CalRetPairInCycle   23
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+TotalPointers       53923
+TotalObjects        3687
+TotalFieldObjects   604
+MaxStructSize       39
+TotalPAGEdges       100514
+FunctionObjs        572
+GlobalObjs          46
+HeapObjs            106
+StackObjs           2766
+FIObjNum            125
+FSObjNum            3561
+VarStructObj        83
+VarArrayObj         27
+ConstStructObj      3
+ConstArrayObj       6
+NonPtrObj           2090
+AddrsNum            4316
+LoadsNum            14909
+StoresNum           6132
+CopysNum            4111
+GepsNum             6110
+CallsNum            2443
+ReturnsNum          707
+IndCallSites        16
+TotalPTAPAGEdges    23215
+TotalCallSite       2020
+LocalVarInRecur     323
+BitCastNumber       872
+BBWith2Succ         3117
+BBWith3Succ         62
+-------------------------------------------------------
+#######################################################
+
+*********Constraint Graph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+AvgIn/OutCopyEdge   0.788668
+AvgIn/OutLoadEdge   0.339468
+AvgIn/OutAddrEdge   0.165297
+AvgIn/OutEdge       1.38402
+NumOfCGNode         57818
+TotalValidNode      22874
+TotalValidObjNode   3597
+NumOfCGEdge         27877
+NumOfAddrs          3781
+NumOfCopys          12034
+NumOfGeps           6006
+NumOfLoads          7765
+NumOfStores         2072
+MaxInCopyEdge       104
+MaxOutCopyEdge      1211
+MaxInLoadEdge       204
+MaxOutLoadEdge      128
+MaxInStoreEdge      25
+MaxOutStoreEdge     213
+AvgIn/OutStoreEdge  0
+MaxInAddrEdge       1
+MaxOutAddrEdge      300
+#######################################################
+
+*********Andersen Pointer Analysis Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           2.59
+SCCDetectTime       0.869
+SCCMergeTime        0.159
+LoadStoreTime       0.275
+CopyGepTime         0.915
+UpdateCGTime        0.003
+AvgPtsSetSize       10.0946
+AvgTopLvlPtsSize    26.8628
+CollapseTime        0.016
+TotalPointers       53923
+Pointers            53573
+TotalObjects        4291
+AddrProcessed       3985
+LoadProcessed       116629
+StoreProcessed      25129
+CopyProcessed       29273
+GepProcessed        12846
+NumOfSFRs           0
+NumOfFieldExpand    0
+DYFieldPtrs         350
+MemObjects          3687
+DYFieldObjs         604
+MaxPtsSetSize       91
+Iterations          9
+IndCallSites        16
+IndEdgeSolved       81
+NumOfSCCDetect      9
+TotalCycleNum       96
+TotalPWCCycleNum    14
+NodesInCycles       1015
+MaxNodesInSCC       548
+NullPointer         173
+PointsToConstPtr    2078
+PointsToBlkPtr      0
+#######################################################
+
+****Memory SSA Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalMSSATime       0.465
+GenRegionTime       0.307
+GenMUCHITime        0.075
+InsertPHITime       0.008
+SSARenameTime       0.022
+AverageRegSize      2.65872
+MaxRegSize          102
+MemRegions          3651
+FunEntryChi         4858
+FunRetMu            4846
+CSChiNode           2009
+CSMuNode            3530
+LoadMuNode          17392
+StoreChiNode        6892
+FunHasEntryChi      463
+FunHasRetMu         460
+CSHasChi            799
+CSHasMu             890
+LoadHasMu           14909
+StoreHasChi         5949
+BBHasMSSAPhi        1656
+MSSAPhi             8852
+#######################################################
+
+****SVFG Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           0.244
+ConnDirEdgeTime     0
+ConnIndEdgeTime     0.097
+TLNodeTime          0
+ATNodeTime          0.026
+OptTime             0.121
+AvgWeight           8.92747
+TotalNode           48950
+TotalEdge           91077
+MSSAPhi             3687
+FormalIn            1525
+FormalOut           191
+FormalParam         0
+FormalRet           0
+ActualIn            25
+ActualOut           534
+ActualParam         0
+ActualRet           0
+DirectEdge          45714
+IndirectEdge        45363
+IndCallEdge         7735
+IndRetEdge          3983
+DirectCallEdge      2443
+DirectRetEdge       707
+AvgInDegree         1
+AvgOutDegree        1
+MaxInDegree         100
+MaxOutDegree        975
+AvgIndInDeg         1
+AvgIndOutDeg        4
+MaxIndInDeg         100
+MaxIndOutDeg        132
+PHI                 2519
+Addr                4316
+Copy                3344
+Gep                 6110
+Load                14909
+Store               6132
+#######################################################
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           572
+TotalCycle          11
+MaxNodeInCycle      4
+NodeInCycle         17
+TotalEdge           2085
+CalRetPairInCycle   23
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+TotalPointers       53923
+TotalObjects        3728
+TotalFieldObjects   604
+MaxStructSize       39
+TotalPAGEdges       100514
+FunctionObjs        572
+GlobalObjs          46
+HeapObjs            147
+StackObjs           2766
+FIObjNum            143
+FSObjNum            3584
+VarStructObj        83
+VarArrayObj         27
+ConstStructObj      3
+ConstArrayObj       6
+NonPtrObj           2090
+AddrsNum            4316
+LoadsNum            14909
+StoresNum           6132
+CopysNum            4111
+GepsNum             6110
+CallsNum            2443
+ReturnsNum          707
+IndCallSites        16
+TotalPTAPAGEdges    23215
+TotalCallSite       2020
+LocalVarInRecur     329
+BitCastNumber       872
+BBWith2Succ         3117
+BBWith3Succ         62
+-------------------------------------------------------
+#######################################################
+
+****Flow-Sensitive Pointer Analysis Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           3541.31
+StoreTime           10.252
+CopyGepTime         284.465
+UpdateCGTime        0.018
+AvgTopLvlPtsSize    162.886
+SolveTime           3541.1
+SCCTime             0.548
+ProcessTime         1368.52
+PropagationTime     2163.91
+DirectPropaTime     0.12
+IndirectPropaTime   0
+Strong/WeakUpdTime  29.05
+AddrTime            0.162
+LoadTime            639.871
+AvgPtsSize          1639.9
+AvgAddrTakenVarPts  941.165
+AvgINPtsSize        1651.21
+AvgOUTPtsSize       1650.98
+AverageSCCSize      20.3428
+TotalPointers       53923
+Pointers            53573
+TotalObjects        4332
+StoresNum           6132
+CopysNum            3344
+DYFieldPtrs         350
+MemObjects          3728
+DYFieldObjs         604
+Iterations          6
+IndEdgeSolved       81
+NullPointer         1121
+PointsToConstPtr    0
+PointsToBlkPtr      85
+StrongUpdates       1572
+FI_SNodesHaveIN     496
+FI_SNodesHaveOUT    0
+FO_SNodesHaveIN     0
+FO_SNodesHaveOUT    0
+AI_SNodesHaveIN     0
+AI_SNodesHaveOUT    0
+AO_SNodesHaveIN     311
+AO_SNodesHaveOUT    0
+LD_SNodesHaveIN     14909
+SNodesHaveIN        17955
+LD_SNodesHaveOUT    0
+SNodesHaveOUT       1708
+ST_SNodesHaveIN     863
+ST_SNodesHaveOUT    1708
+PHI_SNodesHaveIN    1376
+PHI_SNodesHaveOUT   0
+VarHaveIN           2251759
+VarHaveOUT          332685
+VarHaveIN_FI        139526
+VarHaveOUT_FI       0
+VarHaveIN_FO        0
+VarHaveOUT_FO       0
+VarHaveIN_AI        0
+VarHaveOUT_AI       0
+VarHaveIN_AO        115590
+VarHaveOUT_AO       0
+VarHaveIN_LD        1382278
+VarHaveOUT_LD       0
+VarHaveIN_ST        348966
+VarHaveOUT_ST       332685
+VarHaveIN_PHI       265399
+VarHaveOUT_PHI      0
+MaxPtsSize          1802
+MaxTopLvlPtsSize    1802
+MaxINPtsSize        1802
+MaxOUTPtsSize       1802
+NumOfAddrTakenVar   61349
+MaxAddrTakenVarPts  1802
+ProcessedAddr       14184
+ProcessedCopy       26548
+ProcessedGep        127537
+ProcessedLoad       501025
+ProcessedStore      153551
+ProcessedPhi        29619
+ProcessedAParam     0
+ProcessedFRet       0
+ProcessedMSSANode   227701
+NumOfNodesInSCC     12938
+MaxSCCSize          9924
+NumOfSCC            636
+#######################################################
+eval-indirect-calls 31 1 2 2 1 1 16 16 0 0 0 3 16 16 0 3 4 
+eval-ctir-aliases 83201762 3425418 79776344 
+=== Original objects to clones ===
+  1 : (41)[ 59289{struct.hash_tuning}, 59300{struct.hash_entry}, 59433{struct.hash_entry *}, 59541{struct._ftsent}, 59563{char *}, 59588{long unsigned int}, 59589{struct.{ , , , , , , , , , , , , ,  }}, 59611{struct.hash_table *}, 59622{int}, 59623{unsigned short}, 59627{struct.stat[123]}, 59649{struct.stat}, 59671{struct._ftsent *}, 59696{struct.dev_type}, 59717{char}, 59758{struct._ftsent * *}, 59813{DIR->struct.__dirstream *}, 59835{struct.hash_table}, 59879{struct.exclude_segment}, 59909{struct.patopts}, 59955{struct.di_ent}, 59975{struct.ino_map_ent}, 59995{struct.Active_dir}, 60038{const Hash_tuning->struct.hash_tuning *}, 60047{struct.patopts *}, 60142{struct.mount_entry}, 60192{union.{ ,  }}, 60327{re_dfa_t->struct.re_dfa_t *}, 60470{struct.re_state_table_entry}, 60507{struct.re_dfastate_t}, 60544{re_token_t->struct.{ , , , , , , ,  } *}, 60581{struct.{ , , , , , , ,  }}, 60618{re_node_set->struct.{ , ,  } *}, 60655{struct.{ , ,  }}, 60692{__syscall_slong_t->long int[123]}, 60729{re_dfastate_t->struct.re_dfastate_t * *}, 60868{struct.bin_tree_t}, 60906{struct.{ , , , , , , , , ,  }}, 60946{int *}, 60947{const enum unsigned int[123]}, 60953{struct.re_dfa_t} ]
+  316 : (1)[ 59234{char *} ]
+  513 : (1)[ 59121{struct.slotvec} ]
+  901 : (2)[ 59267{struct.infomap}, 59290{const struct.infomap[123]} ]
+  1133 : (1)[ 59122{char} ]
+  1295 : (1)[ 59079{int} ]
+  1441 : (2)[ 59218{char}, 59360{char *} ]
+  1556 : (1)[ 59078{int} ]
+  1654 : (1)[ 59077{int} ]
+  1883 : (1)[ 59154{int} ]
+  1888 : (1)[ 59153{int} ]
+  1923 : (1)[ 59152{int} ]
+  2035 : (1)[ 59075{struct.timespec} ]
+  3328 : (1)[ 59182{struct.argv_iterator} ]
+  3369 : (1)[ 59176{struct.argv_iterator} ]
+  3532 : (33)[ 59327{struct.hash_tuning}, 59363{struct.hash_entry}, 59542{struct._ftsent}, 59564{char *}, 59590{struct.{ , , , , , , , , , , , , ,  }}, 59628{struct.stat[123]}, 59650{struct.stat}, 59672{struct._ftsent *}, 59697{struct.dev_type}, 59718{char}, 59759{struct._ftsent * *}, 59836{struct.hash_table}, 59880{struct.exclude_segment}, 59910{struct.patopts}, 59956{struct.di_ent}, 59976{struct.ino_map_ent}, 59996{struct.Active_dir}, 60048{struct.patopts *}, 60143{struct.mount_entry}, 60193{union.{ ,  }}, 60328{re_dfa_t->struct.re_dfa_t *}, 60471{struct.re_state_table_entry}, 60508{struct.re_dfastate_t}, 60545{re_token_t->struct.{ , , , , , , ,  } *}, 60582{struct.{ , , , , , , ,  }}, 60619{re_node_set->struct.{ , ,  } *}, 60656{struct.{ , ,  }}, 60693{__syscall_slong_t->long int[123]}, 60730{re_dfastate_t->struct.re_dfastate_t * *}, 60778{long unsigned int}, 60869{struct.bin_tree_t}, 60907{struct.{ , , , , , , , , ,  }}, 60954{struct.re_dfa_t} ]
+  3578 : (1)[ 59168{int} ]
+  3592 : (1)[ 59167{int} ]
+  3603 : (1)[ 59166{int} ]
+  3632 : (1)[ 59163{struct.di_set} ]
+  3642 : (33)[ 59328{struct.hash_tuning}, 59364{struct.hash_entry}, 59543{struct._ftsent}, 59565{char *}, 59591{struct.{ , , , , , , , , , , , , ,  }}, 59629{struct.stat[123]}, 59651{struct.stat}, 59673{struct._ftsent *}, 59698{struct.dev_type}, 59719{char}, 59760{struct._ftsent * *}, 59837{struct.hash_table}, 59881{struct.exclude_segment}, 59911{struct.patopts}, 59957{struct.di_ent}, 59977{struct.ino_map_ent}, 59997{struct.Active_dir}, 60049{struct.patopts *}, 60144{struct.mount_entry}, 60194{union.{ ,  }}, 60329{re_dfa_t->struct.re_dfa_t *}, 60472{struct.re_state_table_entry}, 60509{struct.re_dfastate_t}, 60546{re_token_t->struct.{ , , , , , , ,  } *}, 60583{struct.{ , , , , , , ,  }}, 60620{re_node_set->struct.{ , ,  } *}, 60657{struct.{ , ,  }}, 60694{__syscall_slong_t->long int[123]}, 60731{re_dfastate_t->struct.re_dfastate_t * *}, 60779{long unsigned int}, 60870{struct.bin_tree_t}, 60908{struct.{ , , , , , , , , ,  }}, 60955{struct.re_dfa_t} ]
+  3644 : (33)[ 59329{struct.hash_tuning}, 59365{struct.hash_entry}, 59544{struct._ftsent}, 59566{char *}, 59592{struct.{ , , , , , , , , , , , , ,  }}, 59630{struct.stat[123]}, 59652{struct.stat}, 59674{struct._ftsent *}, 59699{struct.dev_type}, 59720{char}, 59761{struct._ftsent * *}, 59838{struct.hash_table}, 59882{struct.exclude_segment}, 59912{struct.patopts}, 59958{struct.di_ent}, 59978{struct.ino_map_ent}, 59998{struct.Active_dir}, 60050{struct.patopts *}, 60145{struct.mount_entry}, 60195{union.{ ,  }}, 60330{re_dfa_t->struct.re_dfa_t *}, 60473{struct.re_state_table_entry}, 60510{struct.re_dfastate_t}, 60547{re_token_t->struct.{ , , , , , , ,  } *}, 60584{struct.{ , , , , , , ,  }}, 60621{re_node_set->struct.{ , ,  } *}, 60658{struct.{ , ,  }}, 60695{__syscall_slong_t->long int[123]}, 60732{re_dfastate_t->struct.re_dfastate_t * *}, 60780{long unsigned int}, 60871{struct.bin_tree_t}, 60909{struct.{ , , , , , , , , ,  }}, 60956{struct.re_dfa_t} ]
+  3646 : (33)[ 59330{struct.hash_tuning}, 59366{struct.hash_entry}, 59545{struct._ftsent}, 59567{char *}, 59593{struct.{ , , , , , , , , , , , , ,  }}, 59631{struct.stat[123]}, 59653{struct.stat}, 59675{struct._ftsent *}, 59700{struct.dev_type}, 59721{char}, 59762{struct._ftsent * *}, 59839{struct.hash_table}, 59883{struct.exclude_segment}, 59913{struct.patopts}, 59959{struct.di_ent}, 59979{struct.ino_map_ent}, 59999{struct.Active_dir}, 60051{struct.patopts *}, 60146{struct.mount_entry}, 60196{union.{ ,  }}, 60331{re_dfa_t->struct.re_dfa_t *}, 60474{struct.re_state_table_entry}, 60511{struct.re_dfastate_t}, 60548{re_token_t->struct.{ , , , , , , ,  } *}, 60585{struct.{ , , , , , , ,  }}, 60622{re_node_set->struct.{ , ,  } *}, 60659{struct.{ , ,  }}, 60696{__syscall_slong_t->long int[123]}, 60733{re_dfastate_t->struct.re_dfastate_t * *}, 60781{long unsigned int}, 60872{struct.bin_tree_t}, 60910{struct.{ , , , , , , , , ,  }}, 60957{struct.re_dfa_t} ]
+  3905 : (33)[ 59270{struct.di_ent}, 59420{struct.ino_map_ent}, 59421{struct.Active_dir}, 59492{struct.hash_entry}, 59612{struct.hash_tuning}, 59618{struct.dev_type}, 59739{struct._ftsent *}, 59750{struct._ftsent}, 59754{char *}, 59785{struct.{ , , , , , , , , , , , , ,  }}, 59800{struct.stat[123]}, 59804{struct.stat}, 59808{char}, 59816{struct._ftsent * *}, 59840{struct.hash_table}, 60024{struct.exclude_segment}, 60039{struct.patopts}, 60170{struct.patopts *}, 60275{struct.mount_entry}, 60304{union.{ ,  }}, 60408{re_dfa_t->struct.re_dfa_t *}, 60475{struct.re_state_table_entry}, 60512{struct.re_dfastate_t}, 60549{re_token_t->struct.{ , , , , , , ,  } *}, 60586{struct.{ , , , , , , ,  }}, 60623{re_node_set->struct.{ , ,  } *}, 60660{struct.{ , ,  }}, 60697{__syscall_slong_t->long int[123]}, 60734{re_dfastate_t->struct.re_dfastate_t * *}, 60782{long unsigned int}, 60873{struct.bin_tree_t}, 60911{struct.{ , , , , , , , , ,  }}, 60981{struct.re_dfa_t} ]
+  3953 : (33)[ 59331{struct.hash_tuning}, 59367{struct.hash_entry}, 59546{struct._ftsent}, 59568{char *}, 59594{struct.{ , , , , , , , , , , , , ,  }}, 59632{struct.stat[123]}, 59654{struct.stat}, 59676{struct._ftsent *}, 59701{struct.dev_type}, 59722{char}, 59763{struct._ftsent * *}, 59841{struct.hash_table}, 59884{struct.exclude_segment}, 59914{struct.patopts}, 59960{struct.di_ent}, 59980{struct.ino_map_ent}, 60000{struct.Active_dir}, 60052{struct.patopts *}, 60147{struct.mount_entry}, 60197{union.{ ,  }}, 60332{re_dfa_t->struct.re_dfa_t *}, 60476{struct.re_state_table_entry}, 60513{struct.re_dfastate_t}, 60550{re_token_t->struct.{ , , , , , , ,  } *}, 60587{struct.{ , , , , , , ,  }}, 60624{re_node_set->struct.{ , ,  } *}, 60661{struct.{ , ,  }}, 60698{__syscall_slong_t->long int[123]}, 60735{re_dfastate_t->struct.re_dfastate_t * *}, 60783{long unsigned int}, 60874{struct.bin_tree_t}, 60912{struct.{ , , , , , , , , ,  }}, 60958{struct.re_dfa_t} ]
+  5200 : (33)[ 59332{struct.hash_tuning}, 59368{struct.hash_entry}, 59547{struct._ftsent}, 59569{char *}, 59595{struct.{ , , , , , , , , , , , , ,  }}, 59633{struct.stat[123]}, 59655{struct.stat}, 59677{struct._ftsent *}, 59702{struct.dev_type}, 59723{char}, 59764{struct._ftsent * *}, 59842{struct.hash_table}, 59885{struct.exclude_segment}, 59915{struct.patopts}, 59961{struct.di_ent}, 59981{struct.ino_map_ent}, 60001{struct.Active_dir}, 60053{struct.patopts *}, 60148{struct.mount_entry}, 60198{union.{ ,  }}, 60333{re_dfa_t->struct.re_dfa_t *}, 60477{struct.re_state_table_entry}, 60514{struct.re_dfastate_t}, 60551{re_token_t->struct.{ , , , , , , ,  } *}, 60588{struct.{ , , , , , , ,  }}, 60625{re_node_set->struct.{ , ,  } *}, 60662{struct.{ , ,  }}, 60699{__syscall_slong_t->long int[123]}, 60736{re_dfastate_t->struct.re_dfastate_t * *}, 60784{long unsigned int}, 60875{struct.bin_tree_t}, 60913{struct.{ , , , , , , , , ,  }}, 60959{struct.re_dfa_t} ]
+  5202 : (33)[ 59333{struct.hash_tuning}, 59369{struct.hash_entry}, 59548{struct._ftsent}, 59570{char *}, 59596{struct.{ , , , , , , , , , , , , ,  }}, 59634{struct.stat[123]}, 59656{struct.stat}, 59678{struct._ftsent *}, 59703{struct.dev_type}, 59724{char}, 59765{struct._ftsent * *}, 59843{struct.hash_table}, 59886{struct.exclude_segment}, 59916{struct.patopts}, 59962{struct.di_ent}, 59982{struct.ino_map_ent}, 60002{struct.Active_dir}, 60054{struct.patopts *}, 60149{struct.mount_entry}, 60199{union.{ ,  }}, 60334{re_dfa_t->struct.re_dfa_t *}, 60478{struct.re_state_table_entry}, 60515{struct.re_dfastate_t}, 60552{re_token_t->struct.{ , , , , , , ,  } *}, 60589{struct.{ , , , , , , ,  }}, 60626{re_node_set->struct.{ , ,  } *}, 60663{struct.{ , ,  }}, 60700{__syscall_slong_t->long int[123]}, 60737{re_dfastate_t->struct.re_dfastate_t * *}, 60785{long unsigned int}, 60876{struct.bin_tree_t}, 60914{struct.{ , , , , , , , , ,  }}, 60960{struct.re_dfa_t} ]
+  5209 : (33)[ 59334{struct.hash_tuning}, 59370{struct.hash_entry}, 59549{struct._ftsent}, 59571{char *}, 59597{struct.{ , , , , , , , , , , , , ,  }}, 59635{struct.stat[123]}, 59657{struct.stat}, 59679{struct._ftsent *}, 59704{struct.dev_type}, 59725{char}, 59766{struct._ftsent * *}, 59844{struct.hash_table}, 59887{struct.exclude_segment}, 59917{struct.patopts}, 59963{struct.di_ent}, 59983{struct.ino_map_ent}, 60003{struct.Active_dir}, 60055{struct.patopts *}, 60150{struct.mount_entry}, 60200{union.{ ,  }}, 60335{re_dfa_t->struct.re_dfa_t *}, 60479{struct.re_state_table_entry}, 60516{struct.re_dfastate_t}, 60553{re_token_t->struct.{ , , , , , , ,  } *}, 60590{struct.{ , , , , , , ,  }}, 60627{re_node_set->struct.{ , ,  } *}, 60664{struct.{ , ,  }}, 60701{__syscall_slong_t->long int[123]}, 60738{re_dfastate_t->struct.re_dfastate_t * *}, 60786{long unsigned int}, 60877{struct.bin_tree_t}, 60915{struct.{ , , , , , , , , ,  }}, 60961{struct.re_dfa_t} ]
+  5211 : (33)[ 59335{struct.hash_tuning}, 59371{struct.hash_entry}, 59550{struct._ftsent}, 59572{char *}, 59598{struct.{ , , , , , , , , , , , , ,  }}, 59636{struct.stat[123]}, 59658{struct.stat}, 59680{struct._ftsent *}, 59705{struct.dev_type}, 59726{char}, 59767{struct._ftsent * *}, 59845{struct.hash_table}, 59888{struct.exclude_segment}, 59918{struct.patopts}, 59964{struct.di_ent}, 59984{struct.ino_map_ent}, 60004{struct.Active_dir}, 60056{struct.patopts *}, 60151{struct.mount_entry}, 60201{union.{ ,  }}, 60336{re_dfa_t->struct.re_dfa_t *}, 60480{struct.re_state_table_entry}, 60517{struct.re_dfastate_t}, 60554{re_token_t->struct.{ , , , , , , ,  } *}, 60591{struct.{ , , , , , , ,  }}, 60628{re_node_set->struct.{ , ,  } *}, 60665{struct.{ , ,  }}, 60702{__syscall_slong_t->long int[123]}, 60739{re_dfastate_t->struct.re_dfastate_t * *}, 60787{long unsigned int}, 60878{struct.bin_tree_t}, 60916{struct.{ , , , , , , , , ,  }}, 60962{struct.re_dfa_t} ]
+  5214 : (33)[ 59336{struct.hash_tuning}, 59372{struct.hash_entry}, 59551{struct._ftsent}, 59573{char *}, 59599{struct.{ , , , , , , , , , , , , ,  }}, 59637{struct.stat[123]}, 59659{struct.stat}, 59681{struct._ftsent *}, 59706{struct.dev_type}, 59727{char}, 59768{struct._ftsent * *}, 59846{struct.hash_table}, 59889{struct.exclude_segment}, 59919{struct.patopts}, 59965{struct.di_ent}, 59985{struct.ino_map_ent}, 60005{struct.Active_dir}, 60057{struct.patopts *}, 60152{struct.mount_entry}, 60202{union.{ ,  }}, 60337{re_dfa_t->struct.re_dfa_t *}, 60481{struct.re_state_table_entry}, 60518{struct.re_dfastate_t}, 60555{re_token_t->struct.{ , , , , , , ,  } *}, 60592{struct.{ , , , , , , ,  }}, 60629{re_node_set->struct.{ , ,  } *}, 60666{struct.{ , ,  }}, 60703{__syscall_slong_t->long int[123]}, 60740{re_dfastate_t->struct.re_dfastate_t * *}, 60788{long unsigned int}, 60879{struct.bin_tree_t}, 60917{struct.{ , , , , , , , , ,  }}, 60963{struct.re_dfa_t} ]
+  5561 : (1)[ 59137{int} ]
+  5622 : (1)[ 59136{const unsigned short *} ]
+  5643 : (1)[ 59135{const unsigned short *} ]
+  5685 : (1)[ 59138{int} ]
+  5704 : (1)[ 60948{ *} ]
+  5757 : (1)[ 59219{struct._IO_FILE} ]
+  9115 : (1)[ 59084{int} ]
+  9140 : (1)[ 59085{int} ]
+  9176 : (1)[ 59031{int} ]
+  9935 : (33)[ 59337{struct.hash_tuning}, 59373{struct.hash_entry}, 59552{struct._ftsent}, 59574{char *}, 59600{struct.{ , , , , , , , , , , , , ,  }}, 59638{struct.stat[123]}, 59660{struct.stat}, 59682{struct._ftsent *}, 59707{struct.dev_type}, 59728{char}, 59769{struct._ftsent * *}, 59847{struct.hash_table}, 59890{struct.exclude_segment}, 59920{struct.patopts}, 59966{struct.di_ent}, 59986{struct.ino_map_ent}, 60006{struct.Active_dir}, 60058{struct.patopts *}, 60153{struct.mount_entry}, 60203{union.{ ,  }}, 60338{re_dfa_t->struct.re_dfa_t *}, 60482{struct.re_state_table_entry}, 60519{struct.re_dfastate_t}, 60556{re_token_t->struct.{ , , , , , , ,  } *}, 60593{struct.{ , , , , , , ,  }}, 60630{re_node_set->struct.{ , ,  } *}, 60667{struct.{ , ,  }}, 60704{__syscall_slong_t->long int[123]}, 60741{re_dfastate_t->struct.re_dfastate_t * *}, 60789{long unsigned int}, 60880{struct.bin_tree_t}, 60918{struct.{ , , , , , , , , ,  }}, 60964{struct.re_dfa_t} ]
+  9942 : (33)[ 59338{struct.hash_tuning}, 59374{struct.hash_entry}, 59553{struct._ftsent}, 59575{char *}, 59601{struct.{ , , , , , , , , , , , , ,  }}, 59639{struct.stat[123]}, 59661{struct.stat}, 59683{struct._ftsent *}, 59708{struct.dev_type}, 59729{char}, 59770{struct._ftsent * *}, 59848{struct.hash_table}, 59891{struct.exclude_segment}, 59921{struct.patopts}, 59967{struct.di_ent}, 59987{struct.ino_map_ent}, 60007{struct.Active_dir}, 60059{struct.patopts *}, 60154{struct.mount_entry}, 60204{union.{ ,  }}, 60339{re_dfa_t->struct.re_dfa_t *}, 60483{struct.re_state_table_entry}, 60520{struct.re_dfastate_t}, 60557{re_token_t->struct.{ , , , , , , ,  } *}, 60594{struct.{ , , , , , , ,  }}, 60631{re_node_set->struct.{ , ,  } *}, 60668{struct.{ , ,  }}, 60705{__syscall_slong_t->long int[123]}, 60742{re_dfastate_t->struct.re_dfastate_t * *}, 60790{long unsigned int}, 60881{struct.bin_tree_t}, 60919{struct.{ , , , , , , , , ,  }}, 60965{struct.re_dfa_t} ]
+  9945 : (33)[ 59039{struct.hash_table}, 59476{char *}, 59479{struct._ftsent}, 59482{char}, 59485{struct._ftsent *}, 59497{struct.{ , , , , , , , , , , , , ,  }}, 59504{struct.stat[123]}, 59507{struct.stat}, 59516{struct._ftsent * *}, 59521{struct.hash_entry}, 59529{struct.exclude_segment}, 59534{struct.patopts}, 59535{struct.hash_tuning}, 59744{struct.patopts *}, 59784{struct.mount_entry}, 59815{struct.dev_type}, 59831{union.{ ,  }}, 59939{re_dfa_t->struct.re_dfa_t *}, 60258{struct.di_ent}, 60259{struct.ino_map_ent}, 60260{struct.Active_dir}, 60484{struct.re_state_table_entry}, 60521{struct.re_dfastate_t}, 60558{re_token_t->struct.{ , , , , , , ,  } *}, 60595{struct.{ , , , , , , ,  }}, 60632{re_node_set->struct.{ , ,  } *}, 60669{struct.{ , ,  }}, 60706{__syscall_slong_t->long int[123]}, 60743{re_dfastate_t->struct.re_dfastate_t * *}, 60791{long unsigned int}, 60882{struct.bin_tree_t}, 60920{struct.{ , , , , , , , , ,  }}, 60951{struct.re_dfa_t} ]
+  9987 : (33)[ 59271{struct.hash_entry}, 59339{struct.hash_tuning}, 59554{struct._ftsent}, 59576{char *}, 59602{struct.{ , , , , , , , , , , , , ,  }}, 59640{struct.stat[123]}, 59662{struct.stat}, 59684{struct._ftsent *}, 59709{struct.dev_type}, 59730{char}, 59771{struct._ftsent * *}, 59849{struct.hash_table}, 59892{struct.exclude_segment}, 59922{struct.patopts}, 59968{struct.di_ent}, 59988{struct.ino_map_ent}, 60008{struct.Active_dir}, 60060{struct.patopts *}, 60155{struct.mount_entry}, 60205{union.{ ,  }}, 60340{re_dfa_t->struct.re_dfa_t *}, 60485{struct.re_state_table_entry}, 60522{struct.re_dfastate_t}, 60559{re_token_t->struct.{ , , , , , , ,  } *}, 60596{struct.{ , , , , , , ,  }}, 60633{re_node_set->struct.{ , ,  } *}, 60670{struct.{ , ,  }}, 60707{__syscall_slong_t->long int[123]}, 60744{re_dfastate_t->struct.re_dfastate_t * *}, 60792{long unsigned int}, 60883{struct.bin_tree_t}, 60921{struct.{ , , , , , , , , ,  }}, 60966{struct.re_dfa_t} ]
+  10586 : (33)[ 59038{struct.hash_entry}, 59455{struct.hash_tuning}, 59555{struct._ftsent}, 59577{char *}, 59603{struct.{ , , , , , , , , , , , , ,  }}, 59641{struct.stat[123]}, 59663{struct.stat}, 59685{struct._ftsent *}, 59731{char}, 59772{struct._ftsent * *}, 59826{struct.dev_type}, 59850{struct.hash_table}, 59893{struct.exclude_segment}, 59923{struct.patopts}, 60061{struct.patopts *}, 60156{struct.mount_entry}, 60174{struct.di_ent}, 60175{struct.ino_map_ent}, 60176{struct.Active_dir}, 60206{union.{ ,  }}, 60341{re_dfa_t->struct.re_dfa_t *}, 60486{struct.re_state_table_entry}, 60523{struct.re_dfastate_t}, 60560{re_token_t->struct.{ , , , , , , ,  } *}, 60597{struct.{ , , , , , , ,  }}, 60634{re_node_set->struct.{ , ,  } *}, 60671{struct.{ , ,  }}, 60708{__syscall_slong_t->long int[123]}, 60745{re_dfastate_t->struct.re_dfastate_t * *}, 60793{long unsigned int}, 60884{struct.bin_tree_t}, 60922{struct.{ , , , , , , , , ,  }}, 60967{struct.re_dfa_t} ]
+  10946 : (33)[ 59314{struct.hash_entry}, 59503{struct.hash_tuning}, 59556{struct._ftsent}, 59578{char *}, 59585{struct.dev_type}, 59604{struct.{ , , , , , , , , , , , , ,  }}, 59642{struct.stat[123]}, 59664{struct.stat}, 59686{struct._ftsent *}, 59732{char}, 59773{struct._ftsent * *}, 59832{struct.di_ent}, 59833{struct.ino_map_ent}, 59834{struct.Active_dir}, 59851{struct.hash_table}, 59894{struct.exclude_segment}, 59924{struct.patopts}, 60062{struct.patopts *}, 60157{struct.mount_entry}, 60207{union.{ ,  }}, 60342{re_dfa_t->struct.re_dfa_t *}, 60487{struct.re_state_table_entry}, 60524{struct.re_dfastate_t}, 60561{re_token_t->struct.{ , , , , , , ,  } *}, 60598{struct.{ , , , , , , ,  }}, 60635{re_node_set->struct.{ , ,  } *}, 60672{struct.{ , ,  }}, 60709{__syscall_slong_t->long int[123]}, 60746{re_dfastate_t->struct.re_dfastate_t * *}, 60794{long unsigned int}, 60885{struct.bin_tree_t}, 60923{struct.{ , , , , , , , , ,  }}, 60968{struct.re_dfa_t} ]
+  11630 : (1)[ 59019{struct.lconv} ]
+  12469 : (1)[ 59123{char} ]
+  12475 : (1)[ 59124{char} ]
+  12616 : (1)[ 59032{struct.ino_map} ]
+  12624 : (33)[ 59340{struct.hash_tuning}, 59375{struct.hash_entry}, 59557{struct._ftsent}, 59579{char *}, 59605{struct.{ , , , , , , , , , , , , ,  }}, 59643{struct.stat[123]}, 59665{struct.stat}, 59687{struct._ftsent *}, 59710{struct.dev_type}, 59733{char}, 59774{struct._ftsent * *}, 59852{struct.hash_table}, 59895{struct.exclude_segment}, 59925{struct.patopts}, 59969{struct.di_ent}, 59989{struct.ino_map_ent}, 60009{struct.Active_dir}, 60063{struct.patopts *}, 60158{struct.mount_entry}, 60208{union.{ ,  }}, 60343{re_dfa_t->struct.re_dfa_t *}, 60488{struct.re_state_table_entry}, 60525{struct.re_dfastate_t}, 60562{re_token_t->struct.{ , , , , , , ,  } *}, 60599{struct.{ , , , , , , ,  }}, 60636{re_node_set->struct.{ , ,  } *}, 60673{struct.{ , ,  }}, 60710{__syscall_slong_t->long int[123]}, 60747{re_dfastate_t->struct.re_dfastate_t * *}, 60795{long unsigned int}, 60886{struct.bin_tree_t}, 60924{struct.{ , , , , , , , , ,  }}, 60969{struct.re_dfa_t} ]
+  12626 : (33)[ 59341{struct.hash_tuning}, 59376{struct.hash_entry}, 59558{struct._ftsent}, 59580{char *}, 59606{struct.{ , , , , , , , , , , , , ,  }}, 59644{struct.stat[123]}, 59666{struct.stat}, 59688{struct._ftsent *}, 59711{struct.dev_type}, 59734{char}, 59775{struct._ftsent * *}, 59853{struct.hash_table}, 59896{struct.exclude_segment}, 59926{struct.patopts}, 59970{struct.di_ent}, 59990{struct.ino_map_ent}, 60010{struct.Active_dir}, 60064{struct.patopts *}, 60159{struct.mount_entry}, 60209{union.{ ,  }}, 60344{re_dfa_t->struct.re_dfa_t *}, 60489{struct.re_state_table_entry}, 60526{struct.re_dfastate_t}, 60563{re_token_t->struct.{ , , , , , , ,  } *}, 60600{struct.{ , , , , , , ,  }}, 60637{re_node_set->struct.{ , ,  } *}, 60674{struct.{ , ,  }}, 60711{__syscall_slong_t->long int[123]}, 60748{re_dfastate_t->struct.re_dfastate_t * *}, 60796{long unsigned int}, 60887{struct.bin_tree_t}, 60925{struct.{ , , , , , , , , ,  }}, 60970{struct.re_dfa_t} ]
+  12803 : (33)[ 59265{struct.ino_map_ent}, 59419{struct.di_ent}, 59422{struct.Active_dir}, 59493{struct.hash_entry}, 59613{struct.hash_tuning}, 59619{struct.dev_type}, 59740{struct._ftsent *}, 59751{struct._ftsent}, 59755{char *}, 59786{struct.{ , , , , , , , , , , , , ,  }}, 59801{struct.stat[123]}, 59805{struct.stat}, 59809{char}, 59817{struct._ftsent * *}, 59854{struct.hash_table}, 60025{struct.exclude_segment}, 60040{struct.patopts}, 60171{struct.patopts *}, 60276{struct.mount_entry}, 60305{union.{ ,  }}, 60409{re_dfa_t->struct.re_dfa_t *}, 60490{struct.re_state_table_entry}, 60527{struct.re_dfastate_t}, 60564{re_token_t->struct.{ , , , , , , ,  } *}, 60601{struct.{ , , , , , , ,  }}, 60638{re_node_set->struct.{ , ,  } *}, 60675{struct.{ , ,  }}, 60712{__syscall_slong_t->long int[123]}, 60749{re_dfastate_t->struct.re_dfastate_t * *}, 60797{long unsigned int}, 60888{struct.bin_tree_t}, 60926{struct.{ , , , , , , , , ,  }}, 60982{struct.re_dfa_t} ]
+  13180 : (1)[ 59074{const unsigned short *} ]
+  13205 : (1)[ 59073{const unsigned short *} ]
+  13600 : (1)[ 59007{int} ]
+  13619 : (1)[ 59008{int} ]
+  13853 : (1)[ 59005{int} ]
+  13882 : (1)[ 59006{int} ]
+  14619 : (1)[ 59002{const unsigned short *} ]
+  15280 : (1)[ 59291{char} ]
+  15408 : (1)[ 59107{int} ]
+  15466 : (1)[ 59108{int} ]
+  15593 : (1)[ 59128{int} ]
+  15753 : (1)[ 59129{int} ]
+  16011 : (1)[ 59001{struct.quoting_options} ]
+  16316 : (1)[ 58997{struct.timespec} ]
+  16392 : (1)[ 58995{struct.timespec} ]
+  16419 : (1)[ 58993{struct.timespec} ]
+  16421 : (1)[ 58991{struct.timespec} ]
+  16490 : (1)[ 58989{struct.timespec} ]
+  16521 : (1)[ 58987{struct.timespec} ]
+  17058 : (36)[ 59022{struct.mount_entry}, 59110{struct.exclude_segment}, 59150{char *}, 59151{char}, 59155{struct.pattern_buffer}, 59233{struct.exclude}, 59238{union.{ ,  }}, 59382{struct.patopts *}, 59385{struct.di_ent}, 59388{struct.ino_map_ent}, 59391{struct.Active_dir}, 59424{struct.patopts}, 59431{union.{ ,  }}, 59456{re_dfa_t->struct.re_dfa_t *}, 59494{struct.hash_entry}, 59614{struct.hash_tuning}, 59620{struct.dev_type}, 59626{struct._ftsent}, 59741{struct._ftsent *}, 59746{struct.stat[123]}, 59747{struct.stat}, 59787{struct.{ , , , , , , , , , , , , ,  }}, 59818{struct._ftsent * *}, 59855{struct.hash_table}, 60491{struct.re_state_table_entry}, 60528{struct.re_dfastate_t}, 60565{re_token_t->struct.{ , , , , , , ,  } *}, 60602{struct.{ , , , , , , ,  }}, 60639{re_node_set->struct.{ , ,  } *}, 60676{struct.{ , ,  }}, 60713{__syscall_slong_t->long int[123]}, 60750{re_dfastate_t->struct.re_dfastate_t * *}, 60798{long unsigned int}, 60889{struct.bin_tree_t}, 60927{struct.{ , , , , , , , , ,  }}, 60949{struct.re_dfa_t} ]
+  17125 : (37)[ 59349{char *}, 59350{char}, 59362{struct.slotvec}, 59383{struct.patopts *}, 59395{struct.slotvec *}, 59414{struct.dulevel *}, 59415{struct.dulevel}, 59425{struct.patopts}, 59432{union.{ ,  }}, 59457{re_dfa_t->struct.re_dfa_t *}, 59511{struct.exclude_segment}, 59716{struct.hash_entry}, 59823{struct._ftsent}, 59827{struct.stat[123]}, 59828{struct.stat}, 59829{struct.hash_tuning}, 59862{struct._ftsent *}, 59876{struct.{ , , , , , , , , , , , , ,  }}, 59877{struct.mount_entry}, 59878{struct._ftsent * *}, 59907{struct.hash_table}, 59908{struct.dev_type}, 60369{struct.di_ent}, 60376{struct.ino_map_ent}, 60383{struct.Active_dir}, 60492{struct.re_state_table_entry}, 60529{struct.re_dfastate_t}, 60566{re_token_t->struct.{ , , , , , , ,  } *}, 60603{struct.{ , , , , , , ,  }}, 60640{re_node_set->struct.{ , ,  } *}, 60677{struct.{ , ,  }}, 60714{__syscall_slong_t->long int[123]}, 60751{re_dfastate_t->struct.re_dfastate_t * *}, 60799{long unsigned int}, 60890{struct.bin_tree_t}, 60928{struct.{ , , , , , , , , ,  }}, 60950{struct.re_dfa_t} ]
+  17275 : (2)[ 59268{struct.dulevel *}, 59269{struct.dulevel} ]
+  17352 : (1)[ 59036{int} ]
+  17483 : (1)[ 58986{int} ]
+  17520 : (1)[ 59004{int} ]
+  17525 : (1)[ 59003{int} ]
+  17849 : (1)[ 58985{int} ]
+  17860 : (1)[ 59201{const unsigned short *} ]
+  17918 : (1)[ 59199{int} ]
+  17923 : (1)[ 59198{int} ]
+  18364 : (1)[ 58984{int} ]
+  18375 : (1)[ 59171{const unsigned short *} ]
+  18433 : (1)[ 59170{int} ]
+  18438 : (1)[ 59169{int} ]
+  18729 : (1)[ 59161{int} ]
+  18741 : (1)[ 59162{int} ]
+  18943 : (1)[ 58982{int} ]
+  18956 : (1)[ 58981{int} ]
+  18966 : (1)[ 58980{int} ]
+  18971 : (35)[ 59156{struct.{ , , , , , , , , , , , , ,  }}, 59205{ *}, 59242{union.{ ,  }}, 59323{struct._ftsent}, 59381{char *}, 59405{struct.stat[123]}, 59406{struct.stat}, 59417{char}, 59423{struct._ftsent *}, 59435{struct._ftsent * *}, 59461{struct.hash_table}, 59522{struct.hash_entry}, 59536{struct.hash_tuning}, 59897{struct.exclude_segment}, 59927{struct.patopts}, 59952{struct.dev_type}, 60065{struct.patopts *}, 60160{struct.mount_entry}, 60210{union.{ ,  }}, 60345{re_dfa_t->struct.re_dfa_t *}, 60370{struct.di_ent}, 60377{struct.ino_map_ent}, 60384{struct.Active_dir}, 60493{struct.re_state_table_entry}, 60530{struct.re_dfastate_t}, 60567{re_token_t->struct.{ , , , , , , ,  } *}, 60604{struct.{ , , , , , , ,  }}, 60641{re_node_set->struct.{ , ,  } *}, 60678{struct.{ , ,  }}, 60715{__syscall_slong_t->long int[123]}, 60752{re_dfastate_t->struct.re_dfastate_t * *}, 60800{long unsigned int}, 60891{struct.bin_tree_t}, 60929{struct.{ , , , , , , , , ,  }}, 60971{struct.re_dfa_t} ]
+  19398 : (1)[ 58979{int} ]
+  19413 : (33)[ 59279{char}, 59281{struct._ftsent *}, 59305{struct._ftsent}, 59306{struct._ftsent * *}, 59312{struct.stat[123]}, 59313{struct.stat}, 59320{char *}, 59428{struct.hash_table}, 59459{struct.{ , , , , , , , , , , , , ,  }}, 59523{struct.hash_entry}, 59537{struct.hash_tuning}, 59898{struct.exclude_segment}, 59928{struct.patopts}, 59953{struct.dev_type}, 60066{struct.patopts *}, 60161{struct.mount_entry}, 60211{union.{ ,  }}, 60346{re_dfa_t->struct.re_dfa_t *}, 60371{struct.di_ent}, 60378{struct.ino_map_ent}, 60385{struct.Active_dir}, 60494{struct.re_state_table_entry}, 60531{struct.re_dfastate_t}, 60568{re_token_t->struct.{ , , , , , , ,  } *}, 60605{struct.{ , , , , , , ,  }}, 60642{re_node_set->struct.{ , ,  } *}, 60679{struct.{ , ,  }}, 60716{__syscall_slong_t->long int[123]}, 60753{re_dfastate_t->struct.re_dfastate_t * *}, 60801{long unsigned int}, 60892{struct.bin_tree_t}, 60930{struct.{ , , , , , , , , ,  }}, 60972{struct.re_dfa_t} ]
+  19468 : (34)[ 59140{struct._ftsent}, 59145{char *}, 59212{struct.stat[123]}, 59213{struct.stat}, 59243{int}, 59315{char}, 59321{struct._ftsent *}, 59359{struct._ftsent * *}, 59418{long unsigned int}, 59429{struct.hash_table}, 59460{struct.{ , , , , , , , , , , , , ,  }}, 59524{struct.hash_entry}, 59538{struct.hash_tuning}, 59899{struct.exclude_segment}, 59929{struct.patopts}, 59954{struct.dev_type}, 60067{struct.patopts *}, 60162{struct.mount_entry}, 60212{union.{ ,  }}, 60347{re_dfa_t->struct.re_dfa_t *}, 60372{struct.di_ent}, 60379{struct.ino_map_ent}, 60386{struct.Active_dir}, 60495{struct.re_state_table_entry}, 60532{struct.re_dfastate_t}, 60569{re_token_t->struct.{ , , , , , , ,  } *}, 60606{struct.{ , , , , , , ,  }}, 60643{re_node_set->struct.{ , ,  } *}, 60680{struct.{ , ,  }}, 60717{__syscall_slong_t->long int[123]}, 60754{re_dfastate_t->struct.re_dfastate_t * *}, 60893{struct.bin_tree_t}, 60931{struct.{ , , , , , , , , ,  }}, 60973{struct.re_dfa_t} ]
+  19614 : (1)[ 59132{int} ]
+  19628 : (1)[ 58978{int} ]
+  19634 : (1)[ 59131{int} ]
+  19654 : (1)[ 59130{int} ]
+  19840 : (33)[ 59266{struct._ftsent *}, 59292{struct._ftsent * *}, 59451{struct._ftsent}, 59471{char *}, 59472{char}, 59483{struct.stat[123]}, 59484{struct.stat}, 59527{struct.{ , , , , , , , , , , , , ,  }}, 59528{struct.hash_table}, 59625{struct.hash_tuning}, 59695{struct.hash_entry}, 59900{struct.exclude_segment}, 59930{struct.patopts}, 60019{struct.dev_type}, 60068{struct.patopts *}, 60163{struct.mount_entry}, 60213{union.{ ,  }}, 60348{re_dfa_t->struct.re_dfa_t *}, 60373{struct.di_ent}, 60380{struct.ino_map_ent}, 60387{struct.Active_dir}, 60496{struct.re_state_table_entry}, 60533{struct.re_dfastate_t}, 60570{re_token_t->struct.{ , , , , , , ,  } *}, 60607{struct.{ , , , , , , ,  }}, 60644{re_node_set->struct.{ , ,  } *}, 60681{struct.{ , ,  }}, 60718{__syscall_slong_t->long int[123]}, 60755{re_dfastate_t->struct.re_dfastate_t * *}, 60802{long unsigned int}, 60894{struct.bin_tree_t}, 60932{struct.{ , , , , , , , , ,  }}, 60974{struct.re_dfa_t} ]
+  19946 : (33)[ 59342{struct.hash_tuning}, 59377{struct.hash_entry}, 59559{struct._ftsent}, 59581{char *}, 59607{struct.{ , , , , , , , , , , , , ,  }}, 59645{struct.stat[123]}, 59667{struct.stat}, 59689{struct._ftsent *}, 59712{struct.dev_type}, 59735{char}, 59776{struct._ftsent * *}, 59856{struct.hash_table}, 59901{struct.exclude_segment}, 59931{struct.patopts}, 59971{struct.di_ent}, 59991{struct.ino_map_ent}, 60011{struct.Active_dir}, 60069{struct.patopts *}, 60164{struct.mount_entry}, 60214{union.{ ,  }}, 60349{re_dfa_t->struct.re_dfa_t *}, 60497{struct.re_state_table_entry}, 60534{struct.re_dfastate_t}, 60571{re_token_t->struct.{ , , , , , , ,  } *}, 60608{struct.{ , , , , , , ,  }}, 60645{re_node_set->struct.{ , ,  } *}, 60682{struct.{ , ,  }}, 60719{__syscall_slong_t->long int[123]}, 60756{re_dfastate_t->struct.re_dfastate_t * *}, 60803{long unsigned int}, 60895{struct.bin_tree_t}, 60933{struct.{ , , , , , , , , ,  }}, 60975{struct.re_dfa_t} ]
+  19948 : (33)[ 59343{struct.hash_tuning}, 59378{struct.hash_entry}, 59560{struct._ftsent}, 59582{char *}, 59608{struct.{ , , , , , , , , , , , , ,  }}, 59646{struct.stat[123]}, 59668{struct.stat}, 59690{struct._ftsent *}, 59713{struct.dev_type}, 59736{char}, 59777{struct._ftsent * *}, 59857{struct.hash_table}, 59902{struct.exclude_segment}, 59932{struct.patopts}, 59972{struct.di_ent}, 59992{struct.ino_map_ent}, 60012{struct.Active_dir}, 60070{struct.patopts *}, 60165{struct.mount_entry}, 60215{union.{ ,  }}, 60350{re_dfa_t->struct.re_dfa_t *}, 60498{struct.re_state_table_entry}, 60535{struct.re_dfastate_t}, 60572{re_token_t->struct.{ , , , , , , ,  } *}, 60609{struct.{ , , , , , , ,  }}, 60646{re_node_set->struct.{ , ,  } *}, 60683{struct.{ , ,  }}, 60720{__syscall_slong_t->long int[123]}, 60757{re_dfastate_t->struct.re_dfastate_t * *}, 60804{long unsigned int}, 60896{struct.bin_tree_t}, 60934{struct.{ , , , , , , , , ,  }}, 60976{struct.re_dfa_t} ]
+  19963 : (33)[ 59477{char *}, 59480{struct._ftsent}, 59498{struct.{ , , , , , , , , , , , , ,  }}, 59505{struct.stat[123]}, 59508{struct.stat}, 59514{char}, 59519{struct.hash_table}, 59525{struct.hash_entry}, 59530{struct._ftsent *}, 59539{struct.hash_tuning}, 59586{struct._ftsent * *}, 59903{struct.exclude_segment}, 59933{struct.patopts}, 60020{struct.dev_type}, 60071{struct.patopts *}, 60166{struct.mount_entry}, 60216{union.{ ,  }}, 60351{re_dfa_t->struct.re_dfa_t *}, 60374{struct.di_ent}, 60381{struct.ino_map_ent}, 60388{struct.Active_dir}, 60499{struct.re_state_table_entry}, 60536{struct.re_dfastate_t}, 60573{re_token_t->struct.{ , , , , , , ,  } *}, 60610{struct.{ , , , , , , ,  }}, 60647{re_node_set->struct.{ , ,  } *}, 60684{struct.{ , ,  }}, 60721{__syscall_slong_t->long int[123]}, 60758{re_dfastate_t->struct.re_dfastate_t * *}, 60805{long unsigned int}, 60897{struct.bin_tree_t}, 60935{struct.{ , , , , , , , , ,  }}, 60977{struct.re_dfa_t} ]
+  20283 : (1)[ 59101{int} ]
+  20304 : (1)[ 59100{int} ]
+  20318 : (1)[ 59099{int} ]
+  20352 : (1)[ 59106{int} ]
+  20526 : (1)[ 59093{int} ]
+  20653 : (1)[ 59092{int} ]
+  20869 : (1)[ 59091{int} ]
+  21069 : (1)[ 58977{int} ]
+  21099 : (1)[ 58976{int} ]
+  21134 : (1)[ 59090{int} ]
+  21180 : (1)[ 59089{int} ]
+  21212 : (1)[ 59088{int} ]
+  21558 : (1)[ 58975{int} ]
+  21587 : (1)[ 59126{int} ]
+  21594 : (1)[ 59127{int} ]
+  21723 : (1)[ 59120{int} ]
+  21791 : (1)[ 59119{int} ]
+  21831 : (1)[ 58974{int} ]
+  21925 : (1)[ 59115{int} ]
+  22036 : (1)[ 58973{int} ]
+  22043 : (2)[ 59040{struct.dirent}, 59042{char *} ]
+  22051 : (1)[ 59114{int} ]
+  22056 : (1)[ 59113{int} ]
+  22143 : (1)[ 59111{int} ]
+  22170 : (1)[ 59112{int} ]
+  22233 : (1)[ 58972{int} ]
+  22519 : (33)[ 59478{char *}, 59481{struct._ftsent}, 59499{struct.{ , , , , , , , , , , , , ,  }}, 59506{struct.stat[123]}, 59509{struct.stat}, 59515{char}, 59520{struct.hash_table}, 59526{struct.hash_entry}, 59531{struct._ftsent *}, 59540{struct.hash_tuning}, 59587{struct._ftsent * *}, 59904{struct.exclude_segment}, 59934{struct.patopts}, 60021{struct.dev_type}, 60072{struct.patopts *}, 60167{struct.mount_entry}, 60217{union.{ ,  }}, 60352{re_dfa_t->struct.re_dfa_t *}, 60375{struct.di_ent}, 60382{struct.ino_map_ent}, 60389{struct.Active_dir}, 60500{struct.re_state_table_entry}, 60537{struct.re_dfastate_t}, 60574{re_token_t->struct.{ , , , , , , ,  } *}, 60611{struct.{ , , , , , , ,  }}, 60648{re_node_set->struct.{ , ,  } *}, 60685{struct.{ , ,  }}, 60722{__syscall_slong_t->long int[123]}, 60759{re_dfastate_t->struct.re_dfastate_t * *}, 60806{long unsigned int}, 60898{struct.bin_tree_t}, 60936{struct.{ , , , , , , , , ,  }}, 60978{struct.re_dfa_t} ]
+  22751 : (33)[ 59037{struct.Active_dir}, 59386{struct.di_ent}, 59389{struct.ino_map_ent}, 59495{struct.hash_entry}, 59615{struct.hash_tuning}, 59621{struct.dev_type}, 59742{struct._ftsent *}, 59752{struct._ftsent}, 59756{char *}, 59788{struct.{ , , , , , , , , , , , , ,  }}, 59802{struct.stat[123]}, 59806{struct.stat}, 59810{char}, 59819{struct._ftsent * *}, 59858{struct.hash_table}, 60026{struct.exclude_segment}, 60041{struct.patopts}, 60172{struct.patopts *}, 60277{struct.mount_entry}, 60306{union.{ ,  }}, 60410{re_dfa_t->struct.re_dfa_t *}, 60501{struct.re_state_table_entry}, 60538{struct.re_dfastate_t}, 60575{re_token_t->struct.{ , , , , , , ,  } *}, 60612{struct.{ , , , , , , ,  }}, 60649{re_node_set->struct.{ , ,  } *}, 60686{struct.{ , ,  }}, 60723{__syscall_slong_t->long int[123]}, 60760{re_dfastate_t->struct.re_dfastate_t * *}, 60807{long unsigned int}, 60899{struct.bin_tree_t}, 60937{struct.{ , , , , , , , , ,  }}, 60983{struct.re_dfa_t} ]
+  22958 : (33)[ 59344{struct.hash_tuning}, 59379{struct.hash_entry}, 59561{struct._ftsent}, 59583{char *}, 59609{struct.{ , , , , , , , , , , , , ,  }}, 59647{struct.stat[123]}, 59669{struct.stat}, 59691{struct._ftsent *}, 59714{struct.dev_type}, 59737{char}, 59778{struct._ftsent * *}, 59859{struct.hash_table}, 59905{struct.exclude_segment}, 59935{struct.patopts}, 59973{struct.di_ent}, 59993{struct.ino_map_ent}, 60013{struct.Active_dir}, 60073{struct.patopts *}, 60168{struct.mount_entry}, 60218{union.{ ,  }}, 60353{re_dfa_t->struct.re_dfa_t *}, 60502{struct.re_state_table_entry}, 60539{struct.re_dfastate_t}, 60576{re_token_t->struct.{ , , , , , , ,  } *}, 60613{struct.{ , , , , , , ,  }}, 60650{re_node_set->struct.{ , ,  } *}, 60687{struct.{ , ,  }}, 60724{__syscall_slong_t->long int[123]}, 60761{re_dfastate_t->struct.re_dfastate_t * *}, 60808{long unsigned int}, 60900{struct.bin_tree_t}, 60938{struct.{ , , , , , , , , ,  }}, 60979{struct.re_dfa_t} ]
+  22960 : (33)[ 59345{struct.hash_tuning}, 59380{struct.hash_entry}, 59562{struct._ftsent}, 59584{char *}, 59610{struct.{ , , , , , , , , , , , , ,  }}, 59648{struct.stat[123]}, 59670{struct.stat}, 59692{struct._ftsent *}, 59715{struct.dev_type}, 59738{char}, 59779{struct._ftsent * *}, 59860{struct.hash_table}, 59906{struct.exclude_segment}, 59936{struct.patopts}, 59974{struct.di_ent}, 59994{struct.ino_map_ent}, 60014{struct.Active_dir}, 60074{struct.patopts *}, 60169{struct.mount_entry}, 60219{union.{ ,  }}, 60354{re_dfa_t->struct.re_dfa_t *}, 60503{struct.re_state_table_entry}, 60540{struct.re_dfastate_t}, 60577{re_token_t->struct.{ , , , , , , ,  } *}, 60614{struct.{ , , , , , , ,  }}, 60651{re_node_set->struct.{ , ,  } *}, 60688{struct.{ , ,  }}, 60725{__syscall_slong_t->long int[123]}, 60762{re_dfastate_t->struct.re_dfastate_t * *}, 60809{long unsigned int}, 60901{struct.bin_tree_t}, 60939{struct.{ , , , , , , , , ,  }}, 60980{struct.re_dfa_t} ]
+  23007 : (33)[ 59035{struct.dev_type}, 59387{struct.di_ent}, 59390{struct.ino_map_ent}, 59392{struct.Active_dir}, 59496{struct.hash_entry}, 59616{struct.hash_tuning}, 59743{struct._ftsent *}, 59753{struct._ftsent}, 59757{char *}, 59789{struct.{ , , , , , , , , , , , , ,  }}, 59803{struct.stat[123]}, 59807{struct.stat}, 59811{char}, 59820{struct._ftsent * *}, 59861{struct.hash_table}, 60027{struct.exclude_segment}, 60042{struct.patopts}, 60173{struct.patopts *}, 60278{struct.mount_entry}, 60307{union.{ ,  }}, 60411{re_dfa_t->struct.re_dfa_t *}, 60504{struct.re_state_table_entry}, 60541{struct.re_dfastate_t}, 60578{re_token_t->struct.{ , , , , , , ,  } *}, 60615{struct.{ , , , , , , ,  }}, 60652{re_node_set->struct.{ , ,  } *}, 60689{struct.{ , ,  }}, 60726{__syscall_slong_t->long int[123]}, 60763{re_dfastate_t->struct.re_dfastate_t * *}, 60810{long unsigned int}, 60902{struct.bin_tree_t}, 60940{struct.{ , , , , , , , , ,  }}, 60984{struct.re_dfa_t} ]
+  23387 : (1)[ 58971{int} ]
+  23430 : (1)[ 58970{int} ]
+  23439 : (1)[ 58969{int} ]
+  23550 : (1)[ 59025{int} ]
+  23557 : (1)[ 59030{int} ]
+  23717 : (1)[ 59220{struct._IO_FILE} ]
+  24048 : (1)[ 59012{int} ]
+  24055 : (1)[ 59018{int} ]
+  24083 : (1)[ 59014{struct.mntent} ]
+  24326 : (1)[ 59009{int} ]
+  24346 : (1)[ 59013{int} ]
+  24725 : (33)[ 59251{struct.re_dfa_t}, 59748{struct.exclude_segment}, 59780{struct.patopts}, 59812{char *}, 59824{struct._ftsent}, 59830{struct.hash_entry}, 59866{struct.stat[123]}, 59868{struct.stat}, 59870{char}, 59874{struct._ftsent *}, 59937{struct.{ , , , , , , , , , , , , ,  }}, 59940{struct.patopts *}, 59942{struct.hash_tuning}, 60015{struct._ftsent * *}, 60017{struct.hash_table}, 60022{struct.dev_type}, 60028{struct.mount_entry}, 60120{union.{ ,  }}, 60256{re_dfa_t->struct.re_dfa_t *}, 60453{struct.di_ent}, 60454{struct.ino_map_ent}, 60455{struct.Active_dir}, 60505{struct.re_state_table_entry}, 60542{struct.re_dfastate_t}, 60579{re_token_t->struct.{ , , , , , , ,  } *}, 60616{struct.{ , , , , , , ,  }}, 60653{re_node_set->struct.{ , ,  } *}, 60690{struct.{ , ,  }}, 60727{__syscall_slong_t->long int[123]}, 60764{re_dfastate_t->struct.re_dfastate_t * *}, 60811{long unsigned int}, 60903{struct.bin_tree_t}, 60941{struct.{ , , , , , , , , ,  }} ]
+  25063 : (33)[ 59351{__syscall_slong_t->long int[123]}, 59396{struct.{ , , , , , , ,  }}, 59399{struct.{ , ,  }}, 59402{struct.re_state_table_entry}, 59440{re_token_t->struct.{ , , , , , , ,  } *}, 59443{re_node_set->struct.{ , ,  } *}, 59452{struct.re_dfastate_t}, 59462{struct.bin_tree_t}, 60030{struct._ftsent *}, 60034{struct._ftsent}, 60043{char *}, 60102{struct.hash_entry}, 60116{struct.{ , , , , , , , , , , , , ,  }}, 60122{char}, 60126{struct.hash_tuning}, 60130{struct.stat[123]}, 60134{struct.stat}, 60138{struct._ftsent * *}, 60187{struct.hash_table}, 60220{struct.exclude_segment}, 60262{struct.patopts}, 60279{struct.patopts *}, 60355{struct.dev_type}, 60399{struct.mount_entry}, 60403{union.{ ,  }}, 60456{re_dfa_t->struct.re_dfa_t *}, 60765{re_dfastate_t->struct.re_dfastate_t * *}, 60812{long unsigned int}, 60816{struct.di_ent}, 60820{struct.ino_map_ent}, 60824{struct.Active_dir}, 60942{struct.{ , , , , , , , , ,  }}, 60985{struct.re_dfa_t} ]
+  25082 : (33)[ 59352{__syscall_slong_t->long int[123]}, 59397{struct.{ , , , , , , ,  }}, 59400{struct.{ , ,  }}, 59403{struct.re_state_table_entry}, 59441{re_token_t->struct.{ , , , , , , ,  } *}, 59444{re_node_set->struct.{ , ,  } *}, 59453{struct.re_dfastate_t}, 59463{struct.bin_tree_t}, 60031{struct._ftsent *}, 60035{struct._ftsent}, 60044{char *}, 60103{struct.hash_entry}, 60117{struct.{ , , , , , , , , , , , , ,  }}, 60123{char}, 60127{struct.hash_tuning}, 60131{struct.stat[123]}, 60135{struct.stat}, 60139{struct._ftsent * *}, 60188{struct.hash_table}, 60221{struct.exclude_segment}, 60263{struct.patopts}, 60280{struct.patopts *}, 60356{struct.dev_type}, 60400{struct.mount_entry}, 60404{union.{ ,  }}, 60457{re_dfa_t->struct.re_dfa_t *}, 60766{re_dfastate_t->struct.re_dfastate_t * *}, 60813{long unsigned int}, 60817{struct.di_ent}, 60821{struct.ino_map_ent}, 60825{struct.Active_dir}, 60943{struct.{ , , , , , , , , ,  }}, 60986{struct.re_dfa_t} ]
+  25098 : (2)[ 58999{char *}, 59000{char} ]
+  25191 : (33)[ 59353{__syscall_slong_t->long int[123]}, 59398{struct.{ , , , , , , ,  }}, 59401{struct.{ , ,  }}, 59404{struct.re_state_table_entry}, 59442{re_token_t->struct.{ , , , , , , ,  } *}, 59445{re_node_set->struct.{ , ,  } *}, 59454{struct.re_dfastate_t}, 59464{struct.bin_tree_t}, 60032{struct._ftsent *}, 60036{struct._ftsent}, 60045{char *}, 60104{struct.hash_entry}, 60118{struct.{ , , , , , , , , , , , , ,  }}, 60124{char}, 60128{struct.hash_tuning}, 60132{struct.stat[123]}, 60136{struct.stat}, 60140{struct._ftsent * *}, 60189{struct.hash_table}, 60222{struct.exclude_segment}, 60264{struct.patopts}, 60281{struct.patopts *}, 60357{struct.dev_type}, 60401{struct.mount_entry}, 60405{union.{ ,  }}, 60458{re_dfa_t->struct.re_dfa_t *}, 60767{re_dfastate_t->struct.re_dfastate_t * *}, 60814{long unsigned int}, 60818{struct.di_ent}, 60822{struct.ino_map_ent}, 60826{struct.Active_dir}, 60944{struct.{ , , , , , , , , ,  }}, 60987{struct.re_dfa_t} ]
+  26728 : (33)[ 59322{__syscall_slong_t->long int[123]}, 59346{long unsigned int}, 59357{struct.{ , ,  }}, 59436{re_dfastate_t->struct.re_dfastate_t * *}, 59486{struct.re_dfastate_t}, 59791{struct.bin_tree_t}, 59943{struct.re_state_table_entry}, 60075{re_token_t->struct.{ , , , , , , ,  } *}, 60084{struct.{ , , , , , , ,  }}, 60093{re_node_set->struct.{ , ,  } *}, 60106{char *}, 60178{struct._ftsent}, 60224{struct.hash_entry}, 60234{struct.stat[123]}, 60244{struct.stat}, 60266{struct._ftsent *}, 60283{char}, 60294{struct.hash_table}, 60308{struct.exclude_segment}, 60317{struct.hash_tuning}, 60359{struct._ftsent * *}, 60390{struct.{ , , , , , , , , , , , , ,  }}, 60412{struct.dev_type}, 60425{struct.patopts}, 60435{struct.patopts *}, 60444{struct.mount_entry}, 60460{union.{ ,  }}, 60769{re_dfa_t->struct.re_dfa_t *}, 60828{struct.di_ent}, 60838{struct.ino_map_ent}, 60848{struct.Active_dir}, 60858{struct.{ , , , , , , , , ,  }}, 60990{struct.re_dfa_t} ]
+  26921 : (33)[ 59310{__syscall_slong_t->long int[123]}, 59311{long unsigned int}, 59458{struct.{ , ,  }}, 59500{struct.re_dfastate_t}, 59512{re_dfastate_t->struct.re_dfastate_t * *}, 59792{struct.bin_tree_t}, 59944{struct.re_state_table_entry}, 60076{re_token_t->struct.{ , , , , , , ,  } *}, 60085{struct.{ , , , , , , ,  }}, 60094{re_node_set->struct.{ , ,  } *}, 60107{char *}, 60179{struct._ftsent}, 60225{struct.hash_entry}, 60235{struct.stat[123]}, 60245{struct.stat}, 60267{struct._ftsent *}, 60284{char}, 60295{struct.hash_table}, 60309{struct.exclude_segment}, 60318{struct.hash_tuning}, 60360{struct._ftsent * *}, 60391{struct.{ , , , , , , , , , , , , ,  }}, 60413{struct.dev_type}, 60426{struct.patopts}, 60436{struct.patopts *}, 60445{struct.mount_entry}, 60461{union.{ ,  }}, 60770{re_dfa_t->struct.re_dfa_t *}, 60829{struct.di_ent}, 60839{struct.ino_map_ent}, 60849{struct.Active_dir}, 60859{struct.{ , , , , , , , , ,  }}, 60991{struct.re_dfa_t} ]
+  27472 : (33)[ 58983{struct.re_dfastate_t}, 59095{struct.{ , ,  }}, 59361{struct.re_state_table_entry}, 59411{re_token_t->struct.{ , , , , , , ,  } *}, 59412{struct.{ , , , , , , ,  }}, 59413{re_node_set->struct.{ , ,  } *}, 59434{struct.bin_tree_t}, 59532{__syscall_slong_t->long int[123]}, 59533{long unsigned int}, 59617{re_dfastate_t->struct.re_dfastate_t * *}, 60033{struct._ftsent *}, 60037{struct._ftsent}, 60046{char *}, 60105{struct.hash_entry}, 60119{struct.{ , , , , , , , , , , , , ,  }}, 60125{char}, 60129{struct.hash_tuning}, 60133{struct.stat[123]}, 60137{struct.stat}, 60141{struct._ftsent * *}, 60190{struct.hash_table}, 60223{struct.exclude_segment}, 60265{struct.patopts}, 60282{struct.patopts *}, 60358{struct.dev_type}, 60402{struct.mount_entry}, 60406{union.{ ,  }}, 60459{re_dfa_t->struct.re_dfa_t *}, 60819{struct.di_ent}, 60823{struct.ino_map_ent}, 60827{struct.Active_dir}, 60860{struct.{ , , , , , , , , ,  }}, 60988{struct.re_dfa_t} ]
+  27614 : (33)[ 59264{struct.{ , ,  }}, 59318{__syscall_slong_t->long int[123]}, 59437{re_dfastate_t->struct.re_dfastate_t * *}, 59450{long unsigned int}, 59487{struct.re_dfastate_t}, 59793{struct.bin_tree_t}, 59945{struct.re_state_table_entry}, 60077{re_token_t->struct.{ , , , , , , ,  } *}, 60086{struct.{ , , , , , , ,  }}, 60095{re_node_set->struct.{ , ,  } *}, 60108{char *}, 60180{struct._ftsent}, 60226{struct.hash_entry}, 60236{struct.stat[123]}, 60246{struct.stat}, 60268{struct._ftsent *}, 60285{char}, 60296{struct.hash_table}, 60310{struct.exclude_segment}, 60319{struct.hash_tuning}, 60361{struct._ftsent * *}, 60392{struct.{ , , , , , , , , , , , , ,  }}, 60414{struct.dev_type}, 60427{struct.patopts}, 60437{struct.patopts *}, 60446{struct.mount_entry}, 60462{union.{ ,  }}, 60771{re_dfa_t->struct.re_dfa_t *}, 60830{struct.di_ent}, 60840{struct.ino_map_ent}, 60850{struct.Active_dir}, 60861{struct.{ , , , , , , , , ,  }}, 60992{struct.re_dfa_t} ]
+  27966 : (33)[ 59473{re_dfastate_t->struct.re_dfastate_t * *}, 59624{__syscall_slong_t->long int[123]}, 59693{long unsigned int}, 59745{struct.{ , ,  }}, 59783{struct.re_dfastate_t}, 59794{struct.bin_tree_t}, 59946{struct.re_state_table_entry}, 60078{re_token_t->struct.{ , , , , , , ,  } *}, 60087{struct.{ , , , , , , ,  }}, 60096{re_node_set->struct.{ , ,  } *}, 60109{char *}, 60181{struct._ftsent}, 60227{struct.hash_entry}, 60237{struct.stat[123]}, 60247{struct.stat}, 60269{struct._ftsent *}, 60286{char}, 60297{struct.hash_table}, 60311{struct.exclude_segment}, 60320{struct.hash_tuning}, 60362{struct._ftsent * *}, 60393{struct.{ , , , , , , , , , , , , ,  }}, 60415{struct.dev_type}, 60428{struct.patopts}, 60438{struct.patopts *}, 60447{struct.mount_entry}, 60463{union.{ ,  }}, 60772{re_dfa_t->struct.re_dfa_t *}, 60831{struct.di_ent}, 60841{struct.ino_map_ent}, 60851{struct.Active_dir}, 60862{struct.{ , , , , , , , , ,  }}, 60993{struct.re_dfa_t} ]
+  28024 : (33)[ 59316{__syscall_slong_t->long int[123]}, 59319{long unsigned int}, 59358{struct.{ , ,  }}, 59438{re_dfastate_t->struct.re_dfastate_t * *}, 59488{struct.re_dfastate_t}, 59795{struct.bin_tree_t}, 59947{struct.re_state_table_entry}, 60079{re_token_t->struct.{ , , , , , , ,  } *}, 60088{struct.{ , , , , , , ,  }}, 60097{re_node_set->struct.{ , ,  } *}, 60110{char *}, 60182{struct._ftsent}, 60228{struct.hash_entry}, 60238{struct.stat[123]}, 60248{struct.stat}, 60270{struct._ftsent *}, 60287{char}, 60298{struct.hash_table}, 60312{struct.exclude_segment}, 60321{struct.hash_tuning}, 60363{struct._ftsent * *}, 60394{struct.{ , , , , , , , , , , , , ,  }}, 60416{struct.dev_type}, 60429{struct.patopts}, 60439{struct.patopts *}, 60448{struct.mount_entry}, 60464{union.{ ,  }}, 60773{re_dfa_t->struct.re_dfa_t *}, 60832{struct.di_ent}, 60842{struct.ino_map_ent}, 60852{struct.Active_dir}, 60863{struct.{ , , , , , , , , ,  }}, 60994{struct.re_dfa_t} ]
+  28084 : (33)[ 59309{__syscall_slong_t->long int[123]}, 59384{struct.{ , ,  }}, 59416{long unsigned int}, 59439{re_dfastate_t->struct.re_dfastate_t * *}, 59489{struct.re_dfastate_t}, 59796{struct.bin_tree_t}, 59948{struct.re_state_table_entry}, 60080{re_token_t->struct.{ , , , , , , ,  } *}, 60089{struct.{ , , , , , , ,  }}, 60098{re_node_set->struct.{ , ,  } *}, 60111{char *}, 60183{struct._ftsent}, 60229{struct.hash_entry}, 60239{struct.stat[123]}, 60249{struct.stat}, 60271{struct._ftsent *}, 60288{char}, 60299{struct.hash_table}, 60313{struct.exclude_segment}, 60322{struct.hash_tuning}, 60364{struct._ftsent * *}, 60395{struct.{ , , , , , , , , , , , , ,  }}, 60417{struct.dev_type}, 60430{struct.patopts}, 60440{struct.patopts *}, 60449{struct.mount_entry}, 60465{union.{ ,  }}, 60774{re_dfa_t->struct.re_dfa_t *}, 60833{struct.di_ent}, 60843{struct.ino_map_ent}, 60853{struct.Active_dir}, 60864{struct.{ , , , , , , , , ,  }}, 60995{struct.re_dfa_t} ]
+  29910 : (2)[ 59307{__syscall_slong_t->long int[123]}, 59347{long unsigned int} ]
+  30032 : (2)[ 59308{__syscall_slong_t->long int[123]}, 59348{long unsigned int} ]
+  30250 : (1)[ 58967{struct.{ , , , , , , ,  }} ]
+  30315 : (33)[ 60999{__syscall_slong_t->long int[123]}, 61000{re_token_t->struct.{ , , , , , , ,  } *}, 61001{struct.{ , , , , , , ,  }}, 61002{re_node_set->struct.{ , ,  } *}, 61003{struct.{ , ,  }}, 61004{long unsigned int}, 61005{struct.re_state_table_entry}, 61006{struct.bin_tree_t}, 61007{re_dfastate_t->struct.re_dfastate_t * *}, 61008{struct.re_dfastate_t}, 61009{struct.exclude_segment}, 61010{struct.patopts}, 61011{struct.hash_entry}, 61012{struct._ftsent}, 61013{struct.stat[123]}, 61014{struct.stat}, 61015{char *}, 61016{char}, 61017{struct._ftsent * *}, 61018{struct._ftsent *}, 61019{struct.hash_tuning}, 61020{struct.{ , , , , , , , , , , , , ,  }}, 61021{struct.patopts *}, 61022{struct.{ , , , , , , , , ,  }}, 61023{struct.di_ent}, 61024{struct.ino_map_ent}, 61025{struct.Active_dir}, 61026{struct.dev_type}, 61027{struct.hash_table}, 61028{union.{ ,  }}, 61029{struct.mount_entry}, 61030{re_dfa_t->struct.re_dfa_t *}, 61031{struct.re_dfa_t} ]
+  30855 : (1)[ 59159{struct.bin_tree_storage_t} ]
+  32313 : (1)[ 59141{__syscall_slong_t->long int[123]} ]
+  32317 : (1)[ 59139{struct.{ , , , , , , , , ,  }} ]
+  32638 : (2)[ 59272{int *}, 59284{__syscall_slong_t->long int[123]} ]
+  33059 : (1)[ 59204{const unsigned short *} ]
+  33154 : (1)[ 59142{__syscall_slong_t->long int[123]} ]
+  33168 : (1)[ 59125{struct.{ , , , , , , , , ,  }} ]
+  34158 : (2)[ 59273{__syscall_slong_t->long int[123]}, 59295{int *} ]
+  34209 : (1)[ 59071{const unsigned short *} ]
+  34240 : (1)[ 59070{const unsigned short *} ]
+  34281 : (1)[ 59069{const unsigned short *} ]
+  34312 : (1)[ 59068{const unsigned short *} ]
+  34353 : (1)[ 59067{const unsigned short *} ]
+  34384 : (1)[ 59066{const unsigned short *} ]
+  34425 : (1)[ 59065{const unsigned short *} ]
+  34456 : (1)[ 59064{const unsigned short *} ]
+  34497 : (1)[ 59063{const unsigned short *} ]
+  34528 : (1)[ 59062{const unsigned short *} ]
+  34569 : (1)[ 59061{const unsigned short *} ]
+  34600 : (1)[ 59060{const unsigned short *} ]
+  34641 : (1)[ 59059{const unsigned short *} ]
+  34672 : (1)[ 59058{const unsigned short *} ]
+  34713 : (1)[ 59057{const unsigned short *} ]
+  34744 : (1)[ 59056{const unsigned short *} ]
+  34785 : (1)[ 59055{const unsigned short *} ]
+  34816 : (1)[ 59053{const unsigned short *} ]
+  34857 : (1)[ 59052{const unsigned short *} ]
+  34888 : (1)[ 59051{const unsigned short *} ]
+  34929 : (1)[ 59050{const unsigned short *} ]
+  34960 : (1)[ 59049{const unsigned short *} ]
+  35001 : (1)[ 59048{const unsigned short *} ]
+  35032 : (1)[ 59047{const unsigned short *} ]
+  35855 : (2)[ 59274{int *}, 59296{__syscall_slong_t->long int[123]} ]
+  35865 : (2)[ 59275{int *}, 59297{__syscall_slong_t->long int[123]} ]
+  36640 : (1)[ 59024{const unsigned short *} ]
+  37006 : (1)[ 59023{const unsigned short *} ]
+  37595 : (3)[ 59286{int *}, 59301{int}, 59324{char *} ]
+  37623 : (2)[ 59287{__syscall_slong_t->long int[123]}, 59325{char *} ]
+  37652 : (2)[ 59283{char *}, 59285{char} ]
+  38189 : (2)[ 59256{__syscall_slong_t->long int[123]}, 59326{char *} ]
+  39737 : (33)[ 59694{char *}, 59749{struct.exclude_segment}, 59781{struct.patopts}, 59822{struct.hash_entry}, 59825{struct._ftsent}, 59867{struct.stat[123]}, 59869{struct.stat}, 59871{char}, 59873{struct.hash_tuning}, 59875{struct._ftsent *}, 59938{struct.{ , , , , , , , , , , , , ,  }}, 59941{struct.patopts *}, 60016{struct._ftsent * *}, 60018{struct.hash_table}, 60023{struct.dev_type}, 60029{struct.mount_entry}, 60121{union.{ ,  }}, 60257{re_dfa_t->struct.re_dfa_t *}, 60422{struct.di_ent}, 60423{struct.ino_map_ent}, 60424{struct.Active_dir}, 60506{struct.re_state_table_entry}, 60543{struct.re_dfastate_t}, 60580{re_token_t->struct.{ , , , , , , ,  } *}, 60617{struct.{ , , , , , , ,  }}, 60654{re_node_set->struct.{ , ,  } *}, 60691{struct.{ , ,  }}, 60728{__syscall_slong_t->long int[123]}, 60768{re_dfastate_t->struct.re_dfastate_t * *}, 60815{long unsigned int}, 60904{struct.bin_tree_t}, 60945{struct.{ , , , , , , , , ,  }}, 60952{struct.re_dfa_t} ]
+  40419 : (2)[ 59280{re_dfastate_t->struct.re_dfastate_t * *}, 59298{re_dfastate_t->struct.re_dfastate_t *} ]
+  41392 : (2)[ 59303{struct.re_backref_cache_entry}, 59393{struct.re_backref_cache_entry *} ]
+  41400 : (1)[ 59253{re_sub_match_top_t->struct.{ , , , , ,  } * *} ]
+  43035 : (2)[ 59072{re_dfastate_t->struct.re_dfastate_t * *}, 59299{re_dfastate_t->struct.re_dfastate_t *} ]
+  43055 : (1)[ 59211{re_dfastate_t->struct.re_dfastate_t * *} ]
+  43405 : (3)[ 59258{struct.re_fail_stack_ent_t}, 59259{struct.re_fail_stack_ent_t *}, 59262{struct.{ , ,  }} ]
+  43434 : (2)[ 59026{struct.{ ,  }}, 59028{regmatch_t->struct.{ ,  } *} ]
+  43441 : (2)[ 59027{struct.{ ,  }}, 59029{regmatch_t->struct.{ ,  } *} ]
+  44466 : (3)[ 59260{struct.re_fail_stack_ent_t}, 59261{struct.re_fail_stack_ent_t *}, 59263{struct.{ , ,  }} ]
+  44503 : (1)[ 59410{__syscall_slong_t->long int[123]} ]
+  45748 : (2)[ 59276{__syscall_slong_t->long int[123]}, 59277{long unsigned int} ]
+  46104 : (33)[ 59094{struct.re_dfastate_t}, 59096{struct.{ , ,  }}, 59782{__syscall_slong_t->long int[123]}, 59790{struct.re_state_table_entry}, 59814{long unsigned int}, 59821{re_dfastate_t->struct.re_dfastate_t * *}, 59863{struct.{ , , , , , , ,  }}, 59864{re_token_t->struct.{ , , , , , , ,  } *}, 59865{re_node_set->struct.{ , ,  } *}, 59872{struct.bin_tree_t}, 60112{char *}, 60177{struct._ftsent}, 60191{struct._ftsent *}, 60230{struct.hash_entry}, 60240{struct.stat[123]}, 60250{struct.stat}, 60254{struct.{ , , , , , , , , , , , , ,  }}, 60255{char}, 60261{struct.hash_tuning}, 60292{struct._ftsent * *}, 60293{struct.exclude_segment}, 60300{struct.hash_table}, 60326{struct.patopts}, 60368{struct.patopts *}, 60407{struct.mount_entry}, 60418{struct.dev_type}, 60434{union.{ ,  }}, 60469{re_dfa_t->struct.re_dfa_t *}, 60834{struct.di_ent}, 60844{struct.ino_map_ent}, 60854{struct.Active_dir}, 60905{struct.{ , , , , , , , , ,  }}, 60989{struct.re_dfa_t} ]
+  48366 : (2)[ 59255{__syscall_slong_t->long int[123]}, 59278{long unsigned int} ]
+  49378 : (2)[ 59257{re_dfastate_t->struct.re_dfastate_t *}, 59282{re_dfastate_t->struct.re_dfastate_t * *} ]
+  50272 : (4)[ 59185{bitset_t->bitset_word_t->long unsigned int[123][123]}, 59186{struct.dests_alloc}, 59187{re_node_set->struct.{ , ,  } *}, 59394{struct.{ , ,  }} ]
+  50324 : (33)[ 59470{re_dfastate_t->struct.re_dfastate_t * *}, 59474{__syscall_slong_t->long int[123]}, 59475{long unsigned int}, 59510{struct.re_dfastate_t}, 59513{struct.{ , ,  }}, 59797{struct.bin_tree_t}, 59949{struct.re_state_table_entry}, 60081{re_token_t->struct.{ , , , , , , ,  } *}, 60090{struct.{ , , , , , , ,  }}, 60099{re_node_set->struct.{ , ,  } *}, 60113{char *}, 60184{struct._ftsent}, 60231{struct.hash_entry}, 60241{struct.stat[123]}, 60251{struct.stat}, 60272{struct._ftsent *}, 60289{char}, 60301{struct.hash_table}, 60314{struct.exclude_segment}, 60323{struct.hash_tuning}, 60365{struct._ftsent * *}, 60396{struct.{ , , , , , , , , , , , , ,  }}, 60419{struct.dev_type}, 60431{struct.patopts}, 60441{struct.patopts *}, 60450{struct.mount_entry}, 60466{union.{ ,  }}, 60775{re_dfa_t->struct.re_dfa_t *}, 60835{struct.di_ent}, 60845{struct.ino_map_ent}, 60855{struct.Active_dir}, 60865{struct.{ , , , , , , , , ,  }}, 60996{struct.re_dfa_t} ]
+  50375 : (2)[ 59207{re_dfastate_t->struct.re_dfastate_t * *}, 59209{re_dfastate_t->struct.re_dfastate_t *} ]
+  50383 : (2)[ 59208{re_dfastate_t->struct.re_dfastate_t * *}, 59210{re_dfastate_t->struct.re_dfastate_t *} ]
+  50627 : (33)[ 59181{re_dfastate_t->struct.re_dfastate_t * *}, 59466{__syscall_slong_t->long int[123]}, 59468{long unsigned int}, 59490{struct.{ , ,  }}, 59501{struct.re_dfastate_t}, 59798{struct.bin_tree_t}, 59950{struct.re_state_table_entry}, 60082{re_token_t->struct.{ , , , , , , ,  } *}, 60091{struct.{ , , , , , , ,  }}, 60100{re_node_set->struct.{ , ,  } *}, 60114{char *}, 60185{struct._ftsent}, 60232{struct.hash_entry}, 60242{struct.stat[123]}, 60252{struct.stat}, 60273{struct._ftsent *}, 60290{char}, 60302{struct.hash_table}, 60315{struct.exclude_segment}, 60324{struct.hash_tuning}, 60366{struct._ftsent * *}, 60397{struct.{ , , , , , , , , , , , , ,  }}, 60420{struct.dev_type}, 60432{struct.patopts}, 60442{struct.patopts *}, 60451{struct.mount_entry}, 60467{union.{ ,  }}, 60776{re_dfa_t->struct.re_dfa_t *}, 60836{struct.di_ent}, 60846{struct.ino_map_ent}, 60856{struct.Active_dir}, 60866{struct.{ , , , , , , , , ,  }}, 60997{struct.re_dfa_t} ]
+  50727 : (33)[ 59173{re_dfastate_t->struct.re_dfastate_t * *}, 59467{__syscall_slong_t->long int[123]}, 59469{long unsigned int}, 59491{struct.{ , ,  }}, 59502{struct.re_dfastate_t}, 59799{struct.bin_tree_t}, 59951{struct.re_state_table_entry}, 60083{re_token_t->struct.{ , , , , , , ,  } *}, 60092{struct.{ , , , , , , ,  }}, 60101{re_node_set->struct.{ , ,  } *}, 60115{char *}, 60186{struct._ftsent}, 60233{struct.hash_entry}, 60243{struct.stat[123]}, 60253{struct.stat}, 60274{struct._ftsent *}, 60291{char}, 60303{struct.hash_table}, 60316{struct.exclude_segment}, 60325{struct.hash_tuning}, 60367{struct._ftsent * *}, 60398{struct.{ , , , , , , , , , , , , ,  }}, 60421{struct.dev_type}, 60433{struct.patopts}, 60443{struct.patopts *}, 60452{struct.mount_entry}, 60468{union.{ ,  }}, 60777{re_dfa_t->struct.re_dfa_t *}, 60837{struct.di_ent}, 60847{struct.ino_map_ent}, 60857{struct.Active_dir}, 60867{struct.{ , , , , , , , , ,  }}, 60998{struct.re_dfa_t} ]
+  52120 : (1)[ 59446{struct.{ , ,  }} ]
+  52542 : (2)[ 59160{re_dfastate_t->struct.re_dfastate_t *}, 59465{re_dfastate_t->struct.re_dfastate_t * *} ]
+  53028 : (1)[ 59449{re_sub_match_last_t->struct.{ , ,  } * *} ]
+  53049 : (2)[ 59157{struct.{ , ,  }}, 59517{struct.{ , ,  }} ]
+  53976 : (2)[ 59426{struct.re_backref_cache_entry}, 59427{struct.re_backref_cache_entry *} ]
+  54178 : (1)[ 59252{re_sub_match_top_t->struct.{ , , , , ,  } * *} ]
+  54199 : (1)[ 59293{struct.{ , , , , ,  }} ]
+  54645 : (2)[ 59143{struct.{ ,  }}, 59144{regmatch_t->struct.{ ,  } *} ]
+  55262 : (2)[ 59206{char}, 59288{char *} ]
+  55474 : (2)[ 59133{char *}, 59134{struct.tm_zone} ]
+  55703 : (1)[ 59148{int} ]
+  55710 : (1)[ 59149{int} ]
+  55819 : (1)[ 59105{int} ]
+  55906 : (1)[ 59103{int} ]
+  55918 : (1)[ 59102{int} ]
+  55926 : (1)[ 59104{int} ]
+  56549 : (1)[ 59087{int} ]
+  56557 : (1)[ 59086{int} ]
+  56965 : (2)[ 59202{char}, 59203{char *} ]
+  57236 : (1)[ 59190{int} ]
+  57243 : (1)[ 59191{int} ]
+  57277 : (1)[ 59188{int} ]
+  57284 : (1)[ 59189{int} ]
+  57501 : (1)[ 59174{int} ]
+  57544 : (1)[ 59172{int} ]
+  57551 : (1)[ 59175{int} ]
+  59304 : (1)[ 59354{struct.{ , ,  }} ]
+  5032708 : (1)[ 59192{struct.{ , ,  }} ]
+  479032708 : (1)[ 59193{struct.{ , ,  }} ]
+  528300003 : (1)[ 59054{_Bool} ]
+  528300004 : (1)[ 59109{char *} ]
+  528300005 : (1)[ 59116{long unsigned int} ]
+  528300006 : (1)[ 59044{_Bool} ]
+  528300007 : (1)[ 59239{int} ]
+  1293300003 : (1)[ 59011{_Bool} ]
+  1293300004 : (1)[ 59147{char *} ]
+  1293300005 : (1)[ 59117{long unsigned int} ]
+  1293300006 : (1)[ 59045{_Bool} ]
+  1293300007 : (1)[ 59240{int} ]
+  1293500003 : (1)[ 59010{_Bool} ]
+  1293500004 : (1)[ 59146{char *} ]
+  1293500005 : (1)[ 59118{long unsigned int} ]
+  1293500006 : (1)[ 59046{_Bool} ]
+  1293500007 : (1)[ 59241{int} ]
+  2465500006 : (1)[ 59254{long unsigned int} ]
+  2465500016 : (1)[ 59244{char *} ]
+  2465500025 : (1)[ 59246{int} ]
+  3226200001 : (1)[ 59235{union.{ , ,  }} ]
+  3226400001 : (1)[ 59236{union.{ , ,  }} ]
+  4013800006 : (1)[ 59237{long unsigned int} ]
+  4013800015 : (1)[ 59097{int} ]
+  4013800016 : (1)[ 59245{char *} ]
+  4013800017 : (1)[ 59249{__syscall_slong_t->long int[123]} ]
+  4013800025 : (1)[ 59247{int} ]
+  4013800027 : (1)[ 59200{int} ]
+  4013800028 : (1)[ 59083{long unsigned int} ]
+  4013800030 : (1)[ 59098{re_dfastate_t->struct.re_dfastate_t * *} ]
+  4013800031 : (1)[ 59248{long unsigned int} ]
+  4013800034 : (1)[ 59082{struct.re_backref_cache_entry *} ]
+  4013800035 : (1)[ 59080{int} ]
+  4013800036 : (1)[ 59250{long unsigned int} ]
+  4013800038 : (1)[ 59081{re_sub_match_top_t->struct.{ , , , , ,  } * *} ]
+Total: 2006
+==================================

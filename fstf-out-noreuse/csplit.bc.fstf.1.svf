@@ -1,0 +1,471 @@
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           378
+TotalCycle          10
+MaxNodeInCycle      12
+NodeInCycle         26
+TotalEdge           1427
+CalRetPairInCycle   38
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+TotalPointers       37832
+TotalObjects        2529
+TotalFieldObjects   355
+MaxStructSize       39
+TotalPAGEdges       71520
+FunctionObjs        378
+GlobalObjs          42
+HeapObjs            79
+StackObjs           1879
+FIObjNum            84
+FSObjNum            2444
+VarStructObj        58
+VarArrayObj         20
+ConstStructObj      3
+ConstArrayObj       3
+NonPtrObj           1461
+AddrsNum            2950
+LoadsNum            10725
+StoresNum           4150
+CopysNum            2985
+GepsNum             4355
+CallsNum            1861
+ReturnsNum          524
+IndCallSites        2
+TotalPTAPAGEdges    16155
+TotalCallSite       1422
+LocalVarInRecur     224
+BitCastNumber       696
+BBWith2Succ         2113
+BBWith3Succ         45
+-------------------------------------------------------
+#######################################################
+
+*********Constraint Graph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+AvgIn/OutCopyEdge   0.799326
+AvgIn/OutLoadEdge   0.33735
+AvgIn/OutAddrEdge   0.15959
+AvgIn/OutEdge       1.37531
+NumOfCGNode         40493
+TotalValidNode      16016
+TotalValidObjNode   2446
+NumOfCGEdge         19471
+NumOfAddrs          2556
+NumOfCopys          8482
+NumOfGeps           4320
+NumOfLoads          5403
+NumOfStores         1266
+MaxInCopyEdge       55
+MaxOutCopyEdge      684
+MaxInLoadEdge       125
+MaxOutLoadEdge      128
+MaxInStoreEdge      11
+MaxOutStoreEdge     127
+AvgIn/OutStoreEdge  0
+MaxInAddrEdge       1
+MaxOutAddrEdge      184
+#######################################################
+
+*********Andersen Pointer Analysis Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           1.189
+SCCDetectTime       0.415
+SCCMergeTime        0.076
+LoadStoreTime       0.083
+CopyGepTime         0.431
+UpdateCGTime        0.001
+AvgPtsSetSize       3.89241
+AvgTopLvlPtsSize    10.4109
+CollapseTime        0.003
+TotalPointers       37832
+Pointers            37591
+TotalObjects        2884
+AddrProcessed       2711
+LoadProcessed       31256
+StoreProcessed      7165
+CopyProcessed       14620
+GepProcessed        7308
+NumOfSFRs           0
+NumOfFieldExpand    0
+DYFieldPtrs         241
+MemObjects          2529
+DYFieldObjs         355
+MaxPtsSetSize       53
+Iterations          7
+IndCallSites        2
+IndEdgeSolved       7
+NumOfSCCDetect      7
+TotalCycleNum       49
+TotalPWCCycleNum    6
+NodesInCycles       646
+MaxNodesInSCC       356
+NullPointer         119
+PointsToConstPtr    882
+PointsToBlkPtr      0
+#######################################################
+
+****Memory SSA Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalMSSATime       0.246
+GenRegionTime       0.141
+GenMUCHITime        0.047
+InsertPHITime       0.008
+SSARenameTime       0.015
+AverageRegSize      2.26096
+MaxRegSize          83
+MemRegions          2533
+FunEntryChi         3645
+FunRetMu            3615
+CSChiNode           1990
+CSMuNode            3340
+LoadMuNode          12584
+StoreChiNode        4634
+FunHasEntryChi      298
+FunHasRetMu         295
+CSHasChi            621
+CSHasMu             652
+LoadHasMu           10725
+StoreHasChi         4045
+BBHasMSSAPhi        1145
+MSSAPhi             6631
+#######################################################
+
+****SVFG Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           0.155
+ConnDirEdgeTime     0
+ConnIndEdgeTime     0.062
+TLNodeTime          0
+ATNodeTime          0.019
+OptTime             0.074
+AvgWeight           4.13397
+TotalNode           35181
+TotalEdge           66967
+MSSAPhi             2915
+FormalIn            1215
+FormalOut           62
+FormalParam         0
+FormalRet           0
+ActualIn            4
+ActualOut           567
+ActualParam         0
+ActualRet           0
+DirectEdge          32511
+IndirectEdge        34456
+IndCallEdge         7308
+IndRetEdge          3847
+DirectCallEdge      1861
+DirectRetEdge       524
+AvgInDegree         1
+AvgOutDegree        1
+MaxInDegree         63
+MaxOutDegree        634
+AvgIndInDeg         2
+AvgIndOutDeg        4
+MaxIndInDeg         61
+MaxIndOutDeg        128
+PHI                 1671
+Addr                2950
+Copy                2524
+Gep                 4355
+Load                10725
+Store               4150
+#######################################################
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           378
+TotalCycle          10
+MaxNodeInCycle      12
+NodeInCycle         26
+TotalEdge           1427
+CalRetPairInCycle   38
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+TotalPointers       37832
+TotalObjects        2540
+TotalFieldObjects   355
+MaxStructSize       39
+TotalPAGEdges       71520
+FunctionObjs        378
+GlobalObjs          42
+HeapObjs            90
+StackObjs           1879
+FIObjNum            89
+FSObjNum            2450
+VarStructObj        58
+VarArrayObj         20
+ConstStructObj      3
+ConstArrayObj       3
+NonPtrObj           1461
+AddrsNum            2950
+LoadsNum            10725
+StoresNum           4150
+CopysNum            2985
+GepsNum             4355
+CallsNum            1861
+ReturnsNum          524
+IndCallSites        2
+TotalPTAPAGEdges    16155
+TotalCallSite       1422
+LocalVarInRecur     224
+BitCastNumber       696
+BBWith2Succ         2113
+BBWith3Succ         45
+-------------------------------------------------------
+#######################################################
+
+****Flow-Sensitive Pointer Analysis Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           6.999
+StoreTime           0.021
+CopyGepTime         0.172
+UpdateCGTime        0.001
+AvgTopLvlPtsSize    2.5394
+SolveTime           6.857
+SCCTime             0.231
+ProcessTime         0.892
+PropagationTime     5.379
+DirectPropaTime     0.007
+IndirectPropaTime   0
+Strong/WeakUpdTime  0.018
+AddrTime            0.018
+LoadTime            0.215
+AvgPtsSize          30.7208
+AvgAddrTakenVarPts  6.56734
+AvgINPtsSize        36.113
+AvgOUTPtsSize       34.5179
+AverageSCCSize      27.3034
+TotalPointers       37832
+Pointers            37591
+TotalObjects        2895
+StoresNum           4150
+CopysNum            2524
+DYFieldPtrs         241
+MemObjects          2540
+DYFieldObjs         355
+Iterations          4
+IndEdgeSolved       7
+NullPointer         1324
+PointsToConstPtr    0
+PointsToBlkPtr      14
+StrongUpdates       941
+FI_SNodesHaveIN     420
+FI_SNodesHaveOUT    0
+FO_SNodesHaveIN     0
+FO_SNodesHaveOUT    0
+AI_SNodesHaveIN     0
+AI_SNodesHaveOUT    0
+AO_SNodesHaveIN     314
+AO_SNodesHaveOUT    0
+LD_SNodesHaveIN     10725
+SNodesHaveIN        12858
+LD_SNodesHaveOUT    0
+SNodesHaveOUT       811
+ST_SNodesHaveIN     413
+ST_SNodesHaveOUT    811
+PHI_SNodesHaveIN    986
+PHI_SNodesHaveOUT   0
+VarHaveIN           67826
+VarHaveOUT          6355
+VarHaveIN_FI        5185
+VarHaveOUT_FI       0
+VarHaveIN_FO        0
+VarHaveOUT_FO       0
+VarHaveIN_AI        0
+VarHaveOUT_AI       0
+VarHaveIN_AO        4736
+VarHaveOUT_AO       0
+VarHaveIN_LD        39903
+VarHaveOUT_LD       0
+VarHaveIN_ST        6747
+VarHaveOUT_ST       6355
+VarHaveIN_PHI       11255
+VarHaveOUT_PHI      0
+MaxPtsSize          73
+MaxTopLvlPtsSize    73
+MaxINPtsSize        73
+MaxOUTPtsSize       73
+NumOfAddrTakenVar   4967
+MaxAddrTakenVarPts  73
+ProcessedAddr       6103
+ProcessedCopy       6665
+ProcessedGep        13820
+ProcessedLoad       58707
+ProcessedStore      16523
+ProcessedPhi        4253
+ProcessedAParam     0
+ProcessedFRet       0
+ProcessedMSSANode   33620
+NumOfNodesInSCC     10348
+MaxSCCSize          8500
+NumOfSCC            379
+#######################################################
+eval-indirect-calls 7 4 3 
+eval-ctir-aliases 41596050 1502508 40093542 
+=== Original objects to clones ===
+  1 : (11)[ 41472{long unsigned int[123]}, 41473{const int[123]}, 41474{char}, 41475{char *}, 41476{struct.re_state_table_entry}, 41477{struct.{ , ,  }}, 41478{struct.{ , , , , , , ,  }}, 41488{re_token_t->struct.{ , , , , , , ,  } *}, 41489{struct.bin_tree_t}, 41490{re_node_set->struct.{ , ,  } *}, 41491{struct.re_dfastate_t} ]
+  174 : (1)[ 41344{intmax_t->__intmax_t->long int} ]
+  575 : (1)[ 41330{int} ]
+  607 : (1)[ 41329{int} ]
+  687 : (1)[ 41277{int} ]
+  1053 : (1)[ 41274{int} ]
+  1300 : (1)[ 41273{int} ]
+  1990 : (1)[ 41270{int} ]
+  2153 : (1)[ 41269{int} ]
+  2445 : (1)[ 41268{int} ]
+  2855 : (1)[ 41267{int} ]
+  3502 : (1)[ 41265{const unsigned short *} ]
+  3717 : (1)[ 41264{int} ]
+  3731 : (1)[ 41263{int} ]
+  3742 : (1)[ 41262{int} ]
+  3820 : (1)[ 41260{int} ]
+  3827 : (1)[ 41261{int} ]
+  3868 : (1)[ 41361{struct._IO_FILE} ]
+  3898 : (1)[ 41257{int} ]
+  3905 : (1)[ 41259{int} ]
+  3916 : (1)[ 41428{struct._IO_FILE} ]
+  3924 : (1)[ 41256{int} ]
+  3931 : (1)[ 41258{int} ]
+  4100 : (1)[ 41254{int} ]
+  4118 : (1)[ 41255{int} ]
+  4353 : (1)[ 41333{int} ]
+  4382 : (1)[ 41334{int} ]
+  5125 : (1)[ 41281{const unsigned short *} ]
+  5799 : (1)[ 41381{char} ]
+  5938 : (1)[ 41278{int} ]
+  5996 : (1)[ 41279{int} ]
+  6123 : (1)[ 41275{int} ]
+  6286 : (1)[ 41276{int} ]
+  6547 : (1)[ 41247{struct.quoting_options} ]
+  6789 : (1)[ 41272{int} ]
+  6795 : (1)[ 41271{int} ]
+  7350 : (6)[ 41327{struct.buffer_record}, 41328{struct.line}, 41357{char}, 41380{char *}, 41382{struct.cstring *}, 41383{struct.cstring} ]
+  7423 : (4)[ 41415{struct.slotvec}, 41416{struct.slotvec *}, 41429{struct.control *}, 41438{struct.control} ]
+  7689 : (1)[ 41320{int} ]
+  7697 : (1)[ 41319{int} ]
+  7701 : (1)[ 41318{int} ]
+  7712 : (1)[ 41317{int} ]
+  7719 : (1)[ 41316{int} ]
+  7735 : (1)[ 41253{int} ]
+  7741 : (1)[ 41252{int} ]
+  7862 : (1)[ 41315{int} ]
+  7901 : (1)[ 41251{int} ]
+  7906 : (1)[ 41250{int} ]
+  8237 : (1)[ 41314{int} ]
+  8248 : (1)[ 41246{const unsigned short *} ]
+  8308 : (1)[ 41245{int} ]
+  8313 : (1)[ 41244{int} ]
+  8604 : (1)[ 41243{int} ]
+  8616 : (1)[ 41312{int} ]
+  8844 : (1)[ 41242{int} ]
+  8887 : (1)[ 41241{int} ]
+  8894 : (1)[ 41311{int} ]
+  9274 : (1)[ 41350{struct.re_dfa_t} ]
+  9615 : (8)[ 41405{long unsigned int[123]}, 41417{struct.{ , , , , , , ,  }}, 41420{struct.{ , ,  }}, 41423{struct.re_state_table_entry}, 41445{re_token_t->struct.{ , , , , , , ,  } *}, 41479{struct.bin_tree_t}, 41482{re_node_set->struct.{ , ,  } *}, 41485{struct.re_dfastate_t} ]
+  9634 : (8)[ 41406{long unsigned int[123]}, 41418{struct.{ , , , , , , ,  }}, 41421{struct.{ , ,  }}, 41424{struct.re_state_table_entry}, 41446{re_token_t->struct.{ , , , , , , ,  } *}, 41480{struct.bin_tree_t}, 41483{re_node_set->struct.{ , ,  } *}, 41486{struct.re_dfastate_t} ]
+  9650 : (2)[ 41284{char *}, 41285{char} ]
+  9744 : (8)[ 41407{long unsigned int[123]}, 41419{struct.{ , , , , , , ,  }}, 41422{struct.{ , ,  }}, 41425{struct.re_state_table_entry}, 41447{re_token_t->struct.{ , , , , , , ,  } *}, 41481{struct.bin_tree_t}, 41484{re_node_set->struct.{ , ,  } *}, 41487{struct.re_dfastate_t} ]
+  11284 : (5)[ 41399{long unsigned int[123]}, 41403{intmax_t->__intmax_t->long int}, 41413{struct.{ , ,  }}, 41440{re_dfastate_t->struct.re_dfastate_t * *}, 41453{struct.re_dfastate_t} ]
+  11477 : (5)[ 41393{long unsigned int[123]}, 41394{intmax_t->__intmax_t->long int}, 41444{struct.{ , ,  }}, 41459{re_dfastate_t->struct.re_dfastate_t * *}, 41463{struct.re_dfastate_t} ]
+  12028 : (5)[ 41335{struct.re_dfastate_t}, 41336{struct.{ , ,  }}, 41408{struct.re_state_table_entry}, 41430{struct.{ , , , , , , ,  }}, 41439{re_token_t->struct.{ , , , , , , ,  } *} ]
+  12171 : (5)[ 41360{struct.{ , ,  }}, 41397{long unsigned int[123]}, 41441{re_dfastate_t->struct.re_dfastate_t * *}, 41454{struct.re_dfastate_t}, 41465{intmax_t->__intmax_t->long int} ]
+  12523 : (1)[ 41448{re_dfastate_t->struct.re_dfastate_t * *} ]
+  12581 : (5)[ 41396{long unsigned int[123]}, 41398{intmax_t->__intmax_t->long int}, 41414{struct.{ , ,  }}, 41442{re_dfastate_t->struct.re_dfastate_t * *}, 41455{struct.re_dfastate_t} ]
+  12641 : (5)[ 41392{long unsigned int[123]}, 41426{struct.{ , ,  }}, 41431{intmax_t->__intmax_t->long int}, 41443{re_dfastate_t->struct.re_dfastate_t * *}, 41456{struct.re_dfastate_t} ]
+  14470 : (2)[ 41391{long unsigned int[123]}, 41404{intmax_t->__intmax_t->long int} ]
+  14592 : (2)[ 41390{long unsigned int[123]}, 41409{intmax_t->__intmax_t->long int} ]
+  14810 : (1)[ 41230{struct.{ , , , , , , ,  }} ]
+  15416 : (1)[ 41313{struct.bin_tree_storage_t} ]
+  16874 : (1)[ 41308{long unsigned int[123]} ]
+  16878 : (1)[ 41307{struct.{ , , , , , , , , ,  }} ]
+  17200 : (2)[ 41368{const int[123]}, 41369{long unsigned int[123]} ]
+  17622 : (1)[ 41226{const unsigned short *} ]
+  17718 : (1)[ 41309{long unsigned int[123]} ]
+  17732 : (1)[ 41280{struct.{ , , , , , , , , ,  }} ]
+  18722 : (2)[ 41370{long unsigned int[123]}, 41384{const int[123]} ]
+  18773 : (1)[ 41310{const unsigned short *} ]
+  18804 : (1)[ 41306{const unsigned short *} ]
+  18845 : (1)[ 41305{const unsigned short *} ]
+  18876 : (1)[ 41304{const unsigned short *} ]
+  18917 : (1)[ 41303{const unsigned short *} ]
+  18948 : (1)[ 41302{const unsigned short *} ]
+  18989 : (1)[ 41301{const unsigned short *} ]
+  19020 : (1)[ 41300{const unsigned short *} ]
+  19061 : (1)[ 41299{const unsigned short *} ]
+  19092 : (1)[ 41298{const unsigned short *} ]
+  19133 : (1)[ 41297{const unsigned short *} ]
+  19165 : (1)[ 41296{const unsigned short *} ]
+  19206 : (1)[ 41295{const unsigned short *} ]
+  19237 : (1)[ 41294{const unsigned short *} ]
+  19278 : (1)[ 41293{const unsigned short *} ]
+  19309 : (1)[ 41292{const unsigned short *} ]
+  19350 : (1)[ 41291{const unsigned short *} ]
+  19381 : (1)[ 41290{const unsigned short *} ]
+  19422 : (1)[ 41289{const unsigned short *} ]
+  19454 : (1)[ 41288{const unsigned short *} ]
+  19495 : (1)[ 41287{const unsigned short *} ]
+  19526 : (1)[ 41286{const unsigned short *} ]
+  19567 : (1)[ 41283{const unsigned short *} ]
+  19599 : (1)[ 41282{const unsigned short *} ]
+  20423 : (2)[ 41371{const int[123]}, 41385{long unsigned int[123]} ]
+  20433 : (2)[ 41372{const int[123]}, 41386{long unsigned int[123]} ]
+  21208 : (1)[ 41249{const unsigned short *} ]
+  21577 : (1)[ 41248{const unsigned short *} ]
+  22166 : (3)[ 41379{const int[123]}, 41387{int}, 41400{char *} ]
+  22194 : (2)[ 41373{long unsigned int[123]}, 41401{char *} ]
+  22223 : (2)[ 41377{char *}, 41378{char} ]
+  22762 : (2)[ 41356{long unsigned int[123]}, 41402{char *} ]
+  27628 : (1)[ 41266{re_dfastate_t->struct.re_dfastate_t * *} ]
+  27648 : (1)[ 41343{re_dfastate_t->struct.re_dfastate_t * *} ]
+  27998 : (3)[ 41351{struct.re_fail_stack_ent_t}, 41352{struct.re_fail_stack_ent_t *}, 41353{struct.{ , ,  }} ]
+  28027 : (2)[ 41237{struct.{ ,  }}, 41239{regmatch_t->struct.{ ,  } *} ]
+  28034 : (2)[ 41238{struct.{ ,  }}, 41240{regmatch_t->struct.{ ,  } *} ]
+  29059 : (3)[ 41358{struct.re_fail_stack_ent_t}, 41359{struct.re_fail_stack_ent_t *}, 41389{struct.{ , ,  }} ]
+  29096 : (1)[ 41427{long unsigned int[123]} ]
+  30342 : (2)[ 41374{long unsigned int[123]}, 41375{intmax_t->__intmax_t->long int} ]
+  30698 : (5)[ 41332{struct.re_dfastate_t}, 41337{struct.{ , ,  }}, 41469{struct.re_state_table_entry}, 41470{struct.{ , , , , , , ,  }}, 41471{re_token_t->struct.{ , , , , , , ,  } *} ]
+  32960 : (2)[ 41354{long unsigned int[123]}, 41376{intmax_t->__intmax_t->long int} ]
+  34867 : (3)[ 41232{bitset_t->bitset_word_t->long unsigned int[123][123]}, 41233{struct.dests_alloc}, 41234{re_node_set->struct.{ , ,  } *} ]
+  34919 : (5)[ 41449{re_dfastate_t->struct.re_dfastate_t * *}, 41452{long unsigned int[123]}, 41462{struct.re_dfastate_t}, 41464{struct.{ , ,  }}, 41466{intmax_t->__intmax_t->long int} ]
+  34970 : (2)[ 41339{re_dfastate_t->struct.re_dfastate_t * *}, 41341{re_dfastate_t->struct.re_dfastate_t *} ]
+  34978 : (2)[ 41340{re_dfastate_t->struct.re_dfastate_t * *}, 41342{re_dfastate_t->struct.re_dfastate_t *} ]
+  35222 : (5)[ 41235{re_dfastate_t->struct.re_dfastate_t * *}, 41450{long unsigned int[123]}, 41457{struct.re_dfastate_t}, 41460{struct.{ , ,  }}, 41467{intmax_t->__intmax_t->long int} ]
+  35322 : (5)[ 41236{re_dfastate_t->struct.re_dfastate_t * *}, 41451{long unsigned int[123]}, 41458{struct.re_dfastate_t}, 41461{struct.{ , ,  }}, 41468{intmax_t->__intmax_t->long int} ]
+  37137 : (1)[ 41227{re_dfastate_t->struct.re_dfastate_t *} ]
+  37644 : (1)[ 41228{struct.{ , ,  }} ]
+  39245 : (2)[ 41224{struct.{ ,  }}, 41225{regmatch_t->struct.{ ,  } *} ]
+  39860 : (2)[ 41338{char}, 41395{char *} ]
+  40154 : (1)[ 41222{int} ]
+  40162 : (1)[ 41221{int} ]
+  40214 : (2)[ 41223{char *}, 41331{char} ]
+  41388 : (1)[ 41410{struct.{ , ,  }} ]
+  920300006 : (1)[ 41355{intmax_t->__intmax_t->long int} ]
+  920300025 : (1)[ 41348{int} ]
+  1682300001 : (1)[ 41345{union.{ , ,  }} ]
+  1682500001 : (1)[ 41346{union.{ , ,  }} ]
+  2472700006 : (1)[ 41347{intmax_t->__intmax_t->long int} ]
+  2472700025 : (1)[ 41349{int} ]
+  2759300004 : (1)[ 41321{struct.{ , ,  }} ]
+  3233400004 : (1)[ 41322{struct.{ , ,  }} ]
+Total: 250
+==================================
