@@ -1,0 +1,1 @@
+for f in ../*.bc; do echo ================== $f ==================; f=`basename $f`; ag solvetime | ag $f | ag -o '[0-9]+\.[0-9]+' | paste -sd+ | bc -l | xargs printf '%f / 3\n' | bc -l ; done
