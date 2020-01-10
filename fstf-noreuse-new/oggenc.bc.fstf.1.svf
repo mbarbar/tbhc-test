@@ -1,0 +1,506 @@
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           491
+TotalCycle          9
+MaxNodeInCycle      3
+NodeInCycle         11
+TotalEdge           1925
+CalRetPairInCycle   19
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+TotalPointers       85061
+TotalObjects        6956
+TotalFieldObjects   12968
+MaxStructSize       314
+TotalPAGEdges       193417
+FunctionObjs        491
+GlobalObjs          3014
+HeapObjs            159
+StackObjs           3284
+FIObjNum            3118
+FSObjNum            3837
+VarStructObj        112
+VarArrayObj         1846
+ConstStructObj      1091
+ConstArrayObj       80
+NonPtrObj           4398
+AddrsNum            8389
+LoadsNum            21959
+StoresNum           19475
+CopysNum            5609
+GepsNum             21327
+CallsNum            2420
+ReturnsNum          621
+IndCallSites        45
+TotalPTAPAGEdges    48479
+TotalCallSite       1891
+LocalVarInRecur     75
+BitCastNumber       646
+BBWith2Succ         2393
+BBWith3Succ         15
+-------------------------------------------------------
+#######################################################
+
+*********Constraint Graph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+AvgIn/OutCopyEdge   0.825557
+AvgIn/OutLoadEdge   0.212243
+AvgIn/OutAddrEdge   0.132323
+AvgIn/OutEdge       1.32595
+NumOfCGNode         91787
+TotalValidNode      45608
+TotalValidObjNode   6011
+NumOfCGEdge         54439
+NumOfAddrs          6035
+NumOfCopys          16437
+NumOfGeps           21215
+NumOfLoads          9680
+NumOfStores         7107
+MaxInCopyEdge       2983
+MaxOutCopyEdge      325
+MaxInLoadEdge       58
+MaxOutLoadEdge      160
+MaxInStoreEdge      30
+MaxOutStoreEdge     1500
+AvgIn/OutStoreEdge  0
+MaxInAddrEdge       1
+MaxOutAddrEdge      234
+#######################################################
+
+*********Andersen Pointer Analysis Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           34.783
+SCCDetectTime       2.77
+SCCMergeTime        1.141
+LoadStoreTime       25.825
+CopyGepTime         3.631
+UpdateCGTime        0.005
+AvgPtsSetSize       393.228
+AvgTopLvlPtsSize    193.051
+CollapseTime        0.459
+TotalPointers       85061
+Pointers            74412
+TotalObjects        19924
+AddrProcessed       7188
+LoadProcessed       749149
+StoreProcessed      143416
+CopyProcessed       27459
+GepProcessed        33516
+NumOfSFRs           0
+NumOfFieldExpand    0
+DYFieldPtrs         10649
+MemObjects          6956
+DYFieldObjs         12968
+MaxPtsSetSize       3013
+Iterations          13
+IndCallSites        45
+IndEdgeSolved       79
+NumOfSCCDetect      13
+TotalCycleNum       71
+TotalPWCCycleNum    19
+NodesInCycles       1591
+MaxNodesInSCC       1172
+NullPointer         1707
+PointsToConstPtr    35
+PointsToBlkPtr      0
+#######################################################
+
+****Memory SSA Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalMSSATime       1.768
+GenRegionTime       1.591
+GenMUCHITime        0.09
+InsertPHITime       0.014
+SSARenameTime       0.017
+AverageRegSize      33.396
+MaxRegSize          3016
+MemRegions          4200
+FunEntryChi         5273
+FunRetMu            5273
+CSChiNode           1537
+CSMuNode            2718
+LoadMuNode          21323
+StoreChiNode        7837
+FunHasEntryChi      428
+FunHasRetMu         428
+CSHasChi            723
+CSHasMu             806
+LoadHasMu           21959
+StoreHasChi         7819
+BBHasMSSAPhi        1631
+MSSAPhi             7676
+#######################################################
+
+****SVFG Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           0.331
+ConnDirEdgeTime     0
+ConnIndEdgeTime     0.178
+TLNodeTime          0
+ATNodeTime          0.033
+OptTime             0.12
+AvgWeight           73.0618
+TotalNode           93174
+TotalEdge           168064
+MSSAPhi             3456
+FormalIn            1891
+FormalOut           856
+FormalParam         0
+FormalRet           0
+ActualIn            126
+ActualOut           663
+ActualParam         0
+ActualRet           0
+DirectEdge          93885
+IndirectEdge        74179
+IndCallEdge         7529
+IndRetEdge          2911
+DirectCallEdge      2420
+DirectRetEdge       621
+AvgInDegree         1
+AvgOutDegree        1
+MaxInDegree         11357
+MaxOutDegree        2341
+AvgIndInDeg         2
+AvgIndOutDeg        3
+MaxIndInDeg         11357
+MaxIndOutDeg        213
+PHI                 2200
+Addr                8389
+Copy                5357
+Gep                 21327
+Load                21959
+Store               19475
+#######################################################
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           491
+TotalCycle          9
+MaxNodeInCycle      3
+NodeInCycle         11
+TotalEdge           1885
+CalRetPairInCycle   19
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+TotalPointers       85061
+TotalObjects        6958
+TotalFieldObjects   12968
+MaxStructSize       314
+TotalPAGEdges       193417
+FunctionObjs        491
+GlobalObjs          3014
+HeapObjs            161
+StackObjs           3284
+FIObjNum            3122
+FSObjNum            3835
+VarStructObj        112
+VarArrayObj         1846
+ConstStructObj      1091
+ConstArrayObj       80
+NonPtrObj           4398
+AddrsNum            8389
+LoadsNum            21959
+StoresNum           19475
+CopysNum            5609
+GepsNum             21327
+CallsNum            2420
+ReturnsNum          621
+IndCallSites        45
+TotalPTAPAGEdges    48479
+TotalCallSite       1891
+LocalVarInRecur     75
+BitCastNumber       646
+BBWith2Succ         2393
+BBWith3Succ         15
+-------------------------------------------------------
+#######################################################
+
+****Flow-Sensitive Pointer Analysis Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           158.778
+StoreTime           0.111
+CopyGepTime         2.161
+UpdateCGTime        0.141
+AvgTopLvlPtsSize    4.42776
+SolveTime           158.399
+SCCTime             0.942
+ProcessTime         4.687
+PropagationTime     151.698
+DirectPropaTime     0.049
+IndirectPropaTime   0
+Strong/WeakUpdTime  0.087
+AddrTime            0.097
+LoadTime            0.852
+AvgPtsSize          20.9236
+AvgAddrTakenVarPts  3.18261
+AvgINPtsSize        36.2682
+AvgOUTPtsSize       36.7782
+AverageSCCSize      11.2923
+TotalPointers       85061
+Pointers            74412
+TotalObjects        19926
+StoresNum           19475
+CopysNum            5357
+DYFieldPtrs         10649
+MemObjects          6958
+DYFieldObjs         12968
+Iterations          6
+IndEdgeSolved       39
+NullPointer         3867
+PointsToConstPtr    0
+PointsToBlkPtr      15
+StrongUpdates       1625
+FI_SNodesHaveIN     434
+FI_SNodesHaveOUT    0
+FO_SNodesHaveIN     0
+FO_SNodesHaveOUT    0
+AI_SNodesHaveIN     0
+AI_SNodesHaveOUT    0
+AO_SNodesHaveIN     409
+AO_SNodesHaveOUT    0
+LD_SNodesHaveIN     21959
+SNodesHaveIN        24338
+LD_SNodesHaveOUT    0
+SNodesHaveOUT       1400
+ST_SNodesHaveIN     733
+ST_SNodesHaveOUT    1400
+PHI_SNodesHaveIN    803
+PHI_SNodesHaveOUT   0
+VarHaveIN           36963
+VarHaveOUT          5495
+VarHaveIN_FI        2638
+VarHaveOUT_FI       0
+VarHaveIN_FO        0
+VarHaveOUT_FO       0
+VarHaveIN_AI        0
+VarHaveOUT_AI       0
+VarHaveIN_AO        3096
+VarHaveOUT_AO       0
+VarHaveIN_LD        22538
+VarHaveOUT_LD       0
+VarHaveIN_ST        4810
+VarHaveOUT_ST       5495
+VarHaveIN_PHI       3881
+VarHaveOUT_PHI      0
+MaxPtsSize          314
+MaxTopLvlPtsSize    314
+MaxINPtsSize        314
+MaxOUTPtsSize       314
+NumOfAddrTakenVar   23164
+MaxAddrTakenVarPts  314
+ProcessedAddr       25602
+ProcessedCopy       18752
+ProcessedGep        82001
+ProcessedLoad       136554
+ProcessedStore      77807
+ProcessedPhi        7701
+ProcessedAParam     0
+ProcessedFRet       0
+ProcessedMSSANode   51361
+NumOfNodesInSCC     15877
+MaxSCCSize          10007
+NumOfSCC            1406
+#######################################################
+eval-indirect-calls 22 1 2 0 0 0 0 0 0 0 0 0 0 0 0 0 2 2 1 4 3 1 0 0 0 0 0 0 4 4 4 0 0 0 0 0 0 0 0 0 0 3 2 2 2 2 
+clones 799
+eval-ctir-aliases 568131060 2051686 566079374 
+=== Original objects to clones ===
+  1 : (2)[ 106420{char}, 106421{const char *} ]
+  9189 : (1)[ 105671{int *} ]
+  9642 : (1)[ 105717{struct.{ , , , , ,  }} ]
+  10121 : (1)[ 105813{struct.{ , , , , ,  }} ]
+  10157 : (2)[ 105821{char}, 105822{const char *} ]
+  10756 : (1)[ 105805{const char *} ]
+  11409 : (1)[ 105801{float *} ]
+  11564 : (2)[ 105784{int *}, 105785{struct.{ , , , , , , , ,  }} ]
+  11706 : (1)[ 105770{struct.{ , , , , , ,  }} ]
+  13096 : (1)[ 105758{struct.alloc_chain} ]
+  13132 : (9)[ 105928{char}, 106053{float}, 106054{float *}, 106055{int *}, 106056{long int * *}, 106057{int *[123]}, 106058{float * *}, 106059{int * * *}, 106236{long int *} ]
+  14004 : (2)[ 105731{int *}, 105732{struct.{ , , , , , , , , , , , , ,  }} ]
+  14324 : (2)[ 105725{int *}, 105726{struct.{ , , , , , , , , , , ,  }} ]
+  15637 : (2)[ 105902{char}, 105935{const char *} ]
+  15851 : (2)[ 105740{int *}, 105741{struct.vorbis_info_residue0} ]
+  16043 : (1)[ 105721{struct.{ , , , , , , , , , ,  }} ]
+  16101 : (2)[ 105722{codebook->struct.codebook * * *}, 105806{int *[123]} ]
+  16136 : (1)[ 105894{codebook->struct.codebook * *} ]
+  16226 : (1)[ 105807{int *[123]} ]
+  16257 : (1)[ 105898{int *} ]
+  16564 : (1)[ 105716{long int *} ]
+  16572 : (1)[ 105715{float * *} ]
+  16789 : (1)[ 105713{int * * *} ]
+  20080 : (2)[ 105695{int *}, 105696{struct.vorbis_info_mapping0} ]
+  20469 : (1)[ 105693{int *} ]
+  20514 : (1)[ 105692{float *} ]
+  21129 : (1)[ 105687{float * *} ]
+  21139 : (1)[ 105686{float * *} ]
+  21149 : (1)[ 105685{int *} ]
+  21159 : (1)[ 105684{int *[123]} ]
+  21710 : (1)[ 105683{float * *} ]
+  21720 : (1)[ 105682{int *} ]
+  21730 : (1)[ 105681{int *} ]
+  21740 : (1)[ 105680{vorbis_look_transform->null (void) * *} ]
+  24882 : (2)[ 105676{float *}, 105677{float} ]
+  25297 : (1)[ 105675{float *} ]
+  25476 : (1)[ 105674{float *} ]
+  26727 : (1)[ 105673{float * *} ]
+  26896 : (1)[ 105672{float * *} ]
+  28931 : (1)[ 105871{int} ]
+  30843 : (1)[ 105820{long int *} ]
+  30850 : (1)[ 105819{float *} ]
+  31288 : (1)[ 105812{float *} ]
+  31296 : (1)[ 105811{float *} ]
+  31304 : (1)[ 105810{float *} ]
+  31312 : (1)[ 105809{float *} ]
+  31320 : (1)[ 105808{float *} ]
+  35461 : (1)[ 105757{int} ]
+  35587 : (1)[ 105899{char} ]
+  35665 : (2)[ 105839{const char *}, 105900{char} ]
+  35696 : (1)[ 105901{char} ]
+  35740 : (1)[ 105756{int} ]
+  36240 : (1)[ 105897{char} ]
+  36273 : (2)[ 105842{struct.{ ,  }}, 105843{adv_opt->struct.{ ,  } *} ]
+  36340 : (1)[ 105849{char * *} ]
+  36347 : (1)[ 105851{char} ]
+  36380 : (1)[ 105847{char * *} ]
+  36411 : (1)[ 105845{char * *} ]
+  36418 : (1)[ 105852{char} ]
+  36442 : (1)[ 105844{char * *} ]
+  36449 : (1)[ 105853{char} ]
+  36478 : (1)[ 105848{char * *} ]
+  36485 : (1)[ 105854{char} ]
+  36521 : (1)[ 105850{char * *} ]
+  36528 : (1)[ 105855{char} ]
+  36675 : (1)[ 105841{char} ]
+  36701 : (1)[ 105823{char} ]
+  36726 : (1)[ 105840{const char *} ]
+  36844 : (1)[ 105846{char * *} ]
+  36851 : (1)[ 105856{char} ]
+  37755 : (4)[ 105793{struct.{ , , , , ,  }}, 105968{struct.{ , , , , , ,  }}, 106040{struct.{ , , ,  }}, 106047{struct.{ , ,  }} ]
+  37899 : (1)[ 105838{char} ]
+  38040 : (2)[ 105749{char}, 105824{const char *} ]
+  38285 : (1)[ 105748{const char *} ]
+  38322 : (1)[ 105804{int} ]
+  38336 : (1)[ 105803{int} ]
+  38350 : (1)[ 105802{int} ]
+  38401 : (4)[ 105771{struct.{ , , , , , ,  }}, 105953{struct.{ , , ,  }}, 105962{struct.{ , ,  }}, 106422{struct.{ , , , , ,  }} ]
+  38426 : (1)[ 105903{float * *} ]
+  38476 : (2)[ 106468{float}, 106469{float *} ]
+  38546 : (4)[ 105767{struct.{ , ,  }}, 105954{struct.{ , , ,  }}, 105969{struct.{ , , , , , ,  }}, 106423{struct.{ , , , , ,  }} ]
+  38559 : (1)[ 105896{float * *} ]
+  38688 : (4)[ 105763{struct.{ , , ,  }}, 105963{struct.{ , ,  }}, 105970{struct.{ , , , , , ,  }}, 106424{struct.{ , , , , ,  }} ]
+  39581 : (10)[ 105861{long int *}, 105862{struct.codec_setup_info}, 105863{vorbis_look_transform->null (void) * *}, 105864{int *}, 105865{static_codebook->struct.static_codebook * *}, 105866{vorbis_info_psy->struct.vorbis_info_psy *[123]}, 105867{struct.{ , , , , , , , , , ,  }}, 105868{struct.highlevel_encode_setup}, 105869{vorbis_info_mode->struct.{ , , ,  } *[123]}, 105870{struct.bitrate_manager_info} ]
+  41667 : (13)[ 105913{struct.{ , , , ,  }}, 105944{struct.{ , , , , , , , , , , , , ,  }}, 105946{envelope_band->struct.{ , , ,  }[123]}, 105948{struct.{ , , ,  }}, 105995{vorbis_look_transform->null (void) * *}, 106007{struct.{ , , , , , , , , , , ,  }}, 106066{int}, 106120{ogg_packet->struct.{ , , , , ,  } *}, 106138{struct.{ , , , , ,  }}, 106156{int *}, 106174{long int *}, 106210{struct.{ , , ,  }}, 106238{long int} ]
+  41724 : (2)[ 105752{struct.vorbis_block_internal}, 105857{int *} ]
+  41768 : (6)[ 105904{char}, 105958{int *}, 105960{long int *}, 106256{const char *}, 106322{int}, 106324{long int} ]
+  41780 : (6)[ 105872{int *}, 105905{char}, 105930{int}, 105961{long int *}, 106257{const char *}, 106325{long int} ]
+  41790 : (6)[ 105906{char}, 105931{long int}, 105932{long int *}, 105959{int *}, 106258{const char *}, 106323{int} ]
+  41882 : (13)[ 105873{struct.{ , , , ,  }}, 105876{struct.{ , , , , , , , , , , ,  }}, 105879{vorbis_look_transform->null (void) * *}, 105882{struct.{ , , , , , , , , , , , , ,  }}, 105885{struct.{ , , ,  }}, 105888{envelope_band->struct.{ , , ,  }[123]}, 106067{int}, 106121{ogg_packet->struct.{ , , , , ,  } *}, 106139{struct.{ , , , , ,  }}, 106157{int *}, 106175{long int *}, 106211{struct.{ , , ,  }}, 106239{long int} ]
+  41934 : (13)[ 105874{struct.{ , , , ,  }}, 105877{struct.{ , , , , , , , , , , ,  }}, 105880{vorbis_look_transform->null (void) * *}, 105883{struct.{ , , , , , , , , , , , , ,  }}, 105886{struct.{ , , ,  }}, 105889{envelope_band->struct.{ , , ,  }[123]}, 106068{int}, 106122{ogg_packet->struct.{ , , , , ,  } *}, 106140{struct.{ , , , , ,  }}, 106158{int *}, 106176{long int *}, 106212{struct.{ , , ,  }}, 106240{long int} ]
+  41984 : (13)[ 105875{struct.{ , , , ,  }}, 105878{struct.{ , , , , , , , , , , ,  }}, 105881{vorbis_look_transform->null (void) * *}, 105884{struct.{ , , , , , , , , , , , , ,  }}, 105887{struct.{ , , ,  }}, 105890{envelope_band->struct.{ , , ,  }[123]}, 106069{int}, 106123{ogg_packet->struct.{ , , , , ,  } *}, 106141{struct.{ , , , , ,  }}, 106159{int *}, 106177{long int *}, 106213{struct.{ , , ,  }}, 106241{long int} ]
+  42849 : (2)[ 106042{float}, 106192{float *} ]
+  42947 : (1)[ 105719{float *} ]
+  46734 : (9)[ 105936{char}, 106193{float}, 106194{float *}, 106195{int *}, 106196{long int * *}, 106197{int *[123]}, 106198{float * *}, 106199{int * * *}, 106237{long int *} ]
+  47219 : (5)[ 106269{int *}, 106282{struct.{ , , , , ,  }}, 106286{float *}, 106309{int}, 106330{float} ]
+  47882 : (2)[ 105714{float *}, 105937{float} ]
+  48443 : (1)[ 105720{float *} ]
+  48453 : (2)[ 105711{float *}, 105712{float} ]
+  48648 : (1)[ 105710{double *} ]
+  48656 : (1)[ 105709{double *} ]
+  48935 : (1)[ 105708{float *} ]
+  49216 : (6)[ 105929{char}, 105940{int *}, 105941{long int *}, 106278{const char *}, 106313{int}, 106314{long int} ]
+  49261 : (6)[ 105923{char}, 105925{int *}, 105934{long int *}, 105938{int}, 106276{const char *}, 106306{long int} ]
+  49275 : (6)[ 105924{char}, 105926{long int *}, 105933{int *}, 105939{long int}, 106277{const char *}, 106305{int} ]
+  49292 : (2)[ 105957{const char *}, 106021{char} ]
+  50350 : (4)[ 105832{struct.private_state}, 105833{drft_lookup->struct.{ , ,  }[123]}, 105834{int *}, 105835{vorbis_look_transform->null (void) * *[123]} ]
+  50369 : (14)[ 105836{vorbis_look_transform->null (void) * *}, 106205{struct.{ , , , , , , , , , , ,  }}, 106230{float}, 106263{struct.{ , , , , , , , , , , , , ,  }}, 106265{envelope_band->struct.{ , , ,  }[123]}, 106267{struct.{ , , ,  }}, 106270{int *}, 106290{struct.{ , , , ,  }}, 106319{int}, 106334{ogg_packet->struct.{ , , , , ,  } *}, 106336{struct.{ , , , , ,  }}, 106338{long int *}, 106350{struct.{ , , ,  }}, 106365{long int} ]
+  50376 : (14)[ 105837{vorbis_look_transform->null (void) * *}, 106206{struct.{ , , , , , , , , , , ,  }}, 106231{float}, 106264{struct.{ , , , , , , , , , , , , ,  }}, 106266{envelope_band->struct.{ , , ,  }[123]}, 106268{struct.{ , , ,  }}, 106271{int *}, 106291{struct.{ , , , ,  }}, 106320{int}, 106335{ogg_packet->struct.{ , , , , ,  } *}, 106337{struct.{ , , , , ,  }}, 106339{long int *}, 106351{struct.{ , , ,  }}, 106366{long int} ]
+  50487 : (10)[ 105907{struct.codebook}, 106200{struct.vorbis_info_psy}, 106233{struct.static_codebook}, 106234{float *}, 106261{struct.{ , , ,  }}, 106279{long int *}, 106285{float * *}, 106379{float * * *}, 106398{int *}, 106401{const char *} ]
+  50526 : (13)[ 105908{struct.{ , , , , , , , , , , ,  }}, 105910{vorbis_look_transform->null (void) * *}, 105985{struct.{ , , , , , , , , , , , , ,  }}, 105988{envelope_band->struct.{ , , ,  }[123]}, 105991{struct.{ , , ,  }}, 106043{struct.{ , , , ,  }}, 106070{int}, 106124{ogg_packet->struct.{ , , , , ,  } *}, 106142{struct.{ , , , , ,  }}, 106160{int *}, 106178{long int *}, 106214{struct.{ , , ,  }}, 106242{long int} ]
+  50593 : (10)[ 105909{struct.codebook}, 106209{struct.vorbis_info_psy}, 106235{struct.static_codebook}, 106260{float *}, 106262{struct.{ , , ,  }}, 106292{long int *}, 106310{float * *}, 106384{float * * *}, 106400{int *}, 106402{const char *} ]
+  50655 : (1)[ 105860{float * *} ]
+  50666 : (1)[ 105942{float * *} ]
+  50685 : (2)[ 105983{float}, 105994{float *} ]
+  50725 : (13)[ 105911{vorbis_look_transform->null (void) * *}, 105986{struct.{ , , , , , , , , , , , , ,  }}, 105989{envelope_band->struct.{ , , ,  }[123]}, 105992{struct.{ , , ,  }}, 106008{struct.{ , , , , , , , , , , ,  }}, 106044{struct.{ , , , ,  }}, 106071{int}, 106125{ogg_packet->struct.{ , , , , ,  } *}, 106143{struct.{ , , , , ,  }}, 106161{int *}, 106179{long int *}, 106215{struct.{ , , ,  }}, 106243{long int} ]
+  50735 : (13)[ 105912{vorbis_look_transform->null (void) * *}, 105987{struct.{ , , , , , , , , , , , , ,  }}, 105990{envelope_band->struct.{ , , ,  }[123]}, 105993{struct.{ , , ,  }}, 106009{struct.{ , , , , , , , , , , ,  }}, 106045{struct.{ , , , ,  }}, 106072{int}, 106126{ogg_packet->struct.{ , , , , ,  } *}, 106144{struct.{ , , , , ,  }}, 106162{int *}, 106180{long int *}, 106216{struct.{ , , ,  }}, 106244{long int} ]
+  50846 : (13)[ 105707{struct.{ , , ,  }}, 105914{struct.{ , , , ,  }}, 105945{struct.{ , , , , , , , , , , , , ,  }}, 105947{envelope_band->struct.{ , , ,  }[123]}, 105949{struct.{ , , ,  }}, 105996{vorbis_look_transform->null (void) * *}, 106010{struct.{ , , , , , , , , , , ,  }}, 106073{int}, 106127{ogg_packet->struct.{ , , , , ,  } *}, 106145{struct.{ , , , , ,  }}, 106163{int *}, 106181{long int *}, 106245{long int} ]
+  50936 : (5)[ 106201{float *}, 106370{int *}, 106380{struct.{ , , , , ,  }}, 106387{float}, 106390{int} ]
+  51075 : (5)[ 105984{float *}, 106299{struct.{ , , , , ,  }}, 106302{int *}, 106315{int}, 106331{float} ]
+  51161 : (5)[ 106300{struct.{ , , , , ,  }}, 106303{int *}, 106307{float *}, 106316{int}, 106332{float} ]
+  51170 : (5)[ 106301{struct.{ , , , , ,  }}, 106304{int *}, 106308{float *}, 106317{int}, 106333{float} ]
+  51337 : (13)[ 105915{struct.{ , , , ,  }}, 105997{vorbis_look_transform->null (void) * *}, 106011{struct.{ , , , , , , , , , , ,  }}, 106074{int}, 106084{struct.{ , , , , , , , , , , , , ,  }}, 106094{envelope_band->struct.{ , , ,  }[123]}, 106104{struct.{ , , ,  }}, 106128{ogg_packet->struct.{ , , , , ,  } *}, 106146{struct.{ , , , , ,  }}, 106164{int *}, 106182{long int *}, 106217{struct.{ , , ,  }}, 106246{long int} ]
+  51344 : (13)[ 105916{struct.{ , , , ,  }}, 105998{vorbis_look_transform->null (void) * *}, 106012{struct.{ , , , , , , , , , , ,  }}, 106075{int}, 106085{struct.{ , , , , , , , , , , , , ,  }}, 106095{envelope_band->struct.{ , , ,  }[123]}, 106105{struct.{ , , ,  }}, 106129{ogg_packet->struct.{ , , , , ,  } *}, 106147{struct.{ , , , , ,  }}, 106165{int *}, 106183{long int *}, 106218{struct.{ , , ,  }}, 106247{long int} ]
+  51366 : (13)[ 105917{struct.{ , , , ,  }}, 105999{vorbis_look_transform->null (void) * *}, 106013{struct.{ , , , , , , , , , , ,  }}, 106076{int}, 106086{struct.{ , , , , , , , , , , , , ,  }}, 106096{envelope_band->struct.{ , , ,  }[123]}, 106106{struct.{ , , ,  }}, 106130{ogg_packet->struct.{ , , , , ,  } *}, 106148{struct.{ , , , , ,  }}, 106166{int *}, 106184{long int *}, 106219{struct.{ , , ,  }}, 106248{long int} ]
+  51402 : (13)[ 105918{struct.{ , , , ,  }}, 106000{vorbis_look_transform->null (void) * *}, 106014{struct.{ , , , , , , , , , , ,  }}, 106077{int}, 106087{struct.{ , , , , , , , , , , , , ,  }}, 106097{envelope_band->struct.{ , , ,  }[123]}, 106107{struct.{ , , ,  }}, 106131{ogg_packet->struct.{ , , , , ,  } *}, 106149{struct.{ , , , , ,  }}, 106167{int *}, 106185{long int *}, 106220{struct.{ , , ,  }}, 106249{long int} ]
+  51411 : (13)[ 105919{struct.{ , , , ,  }}, 106001{vorbis_look_transform->null (void) * *}, 106015{struct.{ , , , , , , , , , , ,  }}, 106078{int}, 106088{struct.{ , , , , , , , , , , , , ,  }}, 106098{envelope_band->struct.{ , , ,  }[123]}, 106108{struct.{ , , ,  }}, 106132{ogg_packet->struct.{ , , , , ,  } *}, 106150{struct.{ , , , , ,  }}, 106168{int *}, 106186{long int *}, 106221{struct.{ , , ,  }}, 106250{long int} ]
+  51420 : (13)[ 105920{struct.{ , , , ,  }}, 106002{vorbis_look_transform->null (void) * *}, 106016{struct.{ , , , , , , , , , , ,  }}, 106079{int}, 106089{struct.{ , , , , , , , , , , , , ,  }}, 106099{envelope_band->struct.{ , , ,  }[123]}, 106109{struct.{ , , ,  }}, 106133{ogg_packet->struct.{ , , , , ,  } *}, 106151{struct.{ , , , , ,  }}, 106169{int *}, 106187{long int *}, 106222{struct.{ , , ,  }}, 106251{long int} ]
+  51432 : (13)[ 105921{struct.{ , , , ,  }}, 106003{vorbis_look_transform->null (void) * *}, 106017{struct.{ , , , , , , , , , , ,  }}, 106080{int}, 106090{struct.{ , , , , , , , , , , , , ,  }}, 106100{envelope_band->struct.{ , , ,  }[123]}, 106110{struct.{ , , ,  }}, 106134{ogg_packet->struct.{ , , , , ,  } *}, 106152{struct.{ , , , , ,  }}, 106170{int *}, 106188{long int *}, 106223{struct.{ , , ,  }}, 106252{long int} ]
+  51439 : (13)[ 105922{struct.{ , , , ,  }}, 106004{vorbis_look_transform->null (void) * *}, 106018{struct.{ , , , , , , , , , , ,  }}, 106081{int}, 106091{struct.{ , , , , , , , , , , , , ,  }}, 106101{envelope_band->struct.{ , , ,  }[123]}, 106111{struct.{ , , ,  }}, 106135{ogg_packet->struct.{ , , , , ,  } *}, 106153{struct.{ , , , , ,  }}, 106171{int *}, 106189{long int *}, 106224{struct.{ , , ,  }}, 106253{long int} ]
+  51465 : (13)[ 105950{struct.{ , , , ,  }}, 106005{vorbis_look_transform->null (void) * *}, 106019{struct.{ , , , , , , , , , , ,  }}, 106082{int}, 106092{struct.{ , , , , , , , , , , , , ,  }}, 106102{envelope_band->struct.{ , , ,  }[123]}, 106112{struct.{ , , ,  }}, 106136{ogg_packet->struct.{ , , , , ,  } *}, 106154{struct.{ , , , , ,  }}, 106172{int *}, 106190{long int *}, 106225{struct.{ , , ,  }}, 106254{long int} ]
+  51471 : (13)[ 105951{struct.{ , , , ,  }}, 106006{vorbis_look_transform->null (void) * *}, 106020{struct.{ , , , , , , , , , , ,  }}, 106083{int}, 106093{struct.{ , , , , , , , , , , , , ,  }}, 106103{envelope_band->struct.{ , , ,  }[123]}, 106113{struct.{ , , ,  }}, 106137{ogg_packet->struct.{ , , , , ,  } *}, 106155{struct.{ , , , , ,  }}, 106173{int *}, 106191{long int *}, 106226{struct.{ , , ,  }}, 106255{long int} ]
+  51520 : (5)[ 105706{int *}, 106202{float *}, 106381{struct.{ , , , , ,  }}, 106388{float}, 106391{int} ]
+  51531 : (5)[ 105705{float *}, 106371{int *}, 106382{struct.{ , , , , ,  }}, 106389{float}, 106392{int} ]
+  51800 : (14)[ 106227{struct.{ , , , , , , , , , , ,  }}, 106228{vorbis_look_transform->null (void) * *}, 106259{float}, 106283{int *}, 106287{struct.{ , , , , , , , , , , , , ,  }}, 106288{envelope_band->struct.{ , , ,  }[123]}, 106289{struct.{ , , ,  }}, 106329{struct.{ , , , ,  }}, 106353{int}, 106359{ogg_packet->struct.{ , , , , ,  } *}, 106360{struct.{ , , , , ,  }}, 106361{long int *}, 106368{struct.{ , , ,  }}, 106378{long int} ]
+  51806 : (14)[ 106207{struct.{ , , , , , , , , , , ,  }}, 106208{vorbis_look_transform->null (void) * *}, 106232{float}, 106272{int *}, 106273{struct.{ , , , , , , , , , , , , ,  }}, 106274{envelope_band->struct.{ , , ,  }[123]}, 106275{struct.{ , , ,  }}, 106312{struct.{ , , , ,  }}, 106346{int}, 106347{ogg_packet->struct.{ , , , , ,  } *}, 106348{struct.{ , , , , ,  }}, 106349{long int *}, 106362{struct.{ , , ,  }}, 106369{long int} ]
+  52034 : (5)[ 106022{float *}, 106025{long int *}, 106114{float * *}, 106117{struct.vorbis_info_psy}, 106326{float * * *} ]
+  52043 : (5)[ 106023{float *}, 106026{long int *}, 106115{float * *}, 106118{struct.vorbis_info_psy}, 106327{float * * *} ]
+  52052 : (5)[ 106024{float *}, 106027{long int *}, 106116{float * *}, 106119{struct.vorbis_info_psy}, 106328{float * * *} ]
+  52443 : (5)[ 106028{float * *}, 106030{struct.vorbis_info_psy}, 106032{float *}, 106280{long int *}, 106311{float * * *} ]
+  52457 : (1)[ 106203{float *} ]
+  52683 : (1)[ 105704{int *[123]} ]
+  52732 : (1)[ 105703{int *} ]
+  52739 : (2)[ 106050{int *}, 106204{const char *} ]
+  52815 : (2)[ 106034{int *}, 106036{const char *} ]
+  52863 : (2)[ 106037{const char *}, 106051{int *} ]
+  52948 : (2)[ 106039{const char *}, 106052{int *} ]
+  53374 : (3)[ 105694{int *}, 105831{int}, 106367{const char *} ]
+  53697 : (3)[ 105691{float *}, 106035{int *}, 106038{const char *} ]
+  54151 : (1)[ 105690{float *} ]
+  54156 : (5)[ 105688{float * * *}, 106029{float * *}, 106031{struct.vorbis_info_psy}, 106033{float *}, 106281{long int *} ]
+  54477 : (1)[ 105689{float * *} ]
+  54547 : (1)[ 105891{float *} ]
+  55691 : (12)[ 105678{int *}, 105679{struct.{ , , , , , , , , , , , , ,  }}, 106383{struct.vorbis_info_psy}, 106394{float *}, 106397{struct.{ , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,  }}, 106403{struct.codebook}, 106404{struct.static_codebook}, 106407{struct.{ , , ,  }}, 106408{long int *}, 106410{float * *}, 106418{float * * *}, 106419{const char *} ]
+  56654 : (12)[ 105927{struct.vorbis_info_psy}, 106046{float *}, 106293{struct.{ , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,  }}, 106318{long int *}, 106342{struct.codebook}, 106345{float * *}, 106352{struct.{ , , , , , , , , , , , , ,  }}, 106356{struct.static_codebook}, 106374{struct.{ , , ,  }}, 106399{float * * *}, 106411{int *}, 106414{const char *} ]
+  57586 : (12)[ 106294{struct.{ , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,  }}, 106296{struct.{ , , , , , , , , , , , , ,  }}, 106340{struct.vorbis_info_psy}, 106343{struct.codebook}, 106354{float *}, 106357{struct.static_codebook}, 106375{struct.{ , , ,  }}, 106376{long int *}, 106385{float * *}, 106405{float * * *}, 106412{int *}, 106415{const char *} ]
+  57594 : (12)[ 106284{struct.{ , , ,  }}, 106295{struct.{ , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,  }}, 106297{struct.{ , , , , , , , , , , , , ,  }}, 106341{struct.vorbis_info_psy}, 106344{struct.codebook}, 106355{float *}, 106358{struct.static_codebook}, 106377{long int *}, 106386{float * *}, 106406{float * * *}, 106413{int *}, 106416{const char *} ]
+  57852 : (13)[ 105761{struct.vorbis_info_residue0}, 105762{int *}, 106298{struct.{ , , , , , , , , , , , , ,  }}, 106321{struct.{ , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,  }}, 106363{struct.codebook}, 106364{struct.vorbis_info_psy}, 106372{struct.static_codebook}, 106373{float *}, 106393{struct.{ , , ,  }}, 106395{long int *}, 106396{float * *}, 106409{float * * *}, 106417{const char *} ]
+  59576 : (1)[ 105952{float} ]
+  59590 : (1)[ 106467{float} ]
+  59866 : (1)[ 105892{float} ]
+  61265 : (1)[ 105830{char * *} ]
+  61281 : (2)[ 105829{int *}, 105943{char * *} ]
+  61310 : (1)[ 106229{char} ]
+  63066 : (1)[ 105893{float} ]
+  66340 : (1)[ 105800{int} ]
+  66375 : (1)[ 105799{int} ]
+  73190 : (1)[ 105760{float * *} ]
+  74589 : (1)[ 105755{float * *} ]
+  74821 : (1)[ 105754{float * *} ]
+  74965 : (1)[ 105750{const char *} ]
+  75116 : (1)[ 105751{const char *} ]
+  79606 : (1)[ 105730{float *} ]
+  79615 : (1)[ 105729{float *} ]
+  79624 : (1)[ 105728{float *} ]
+  79633 : (1)[ 105727{float *} ]
+  80030 : (2)[ 105724{double *}, 105895{double} ]
+  80284 : (1)[ 105723{double *} ]
+Total: 668
+==================================
