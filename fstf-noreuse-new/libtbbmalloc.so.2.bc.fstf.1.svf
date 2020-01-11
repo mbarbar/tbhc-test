@@ -1,0 +1,416 @@
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           744
+TotalCycle          10
+MaxNodeInCycle      46
+NodeInCycle         162
+TotalEdge           5922
+CalRetPairInCycle   3921
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+TotalPointers       26560
+TotalObjects        3109
+TotalFieldObjects   451
+MaxStructSize       83
+TotalPAGEdges       48817
+FunctionObjs        744
+GlobalObjs          180
+HeapObjs            18
+StackObjs           2144
+FIObjNum            5
+FSObjNum            3103
+VarStructObj        158
+VarArrayObj         13
+ConstStructObj      1
+ConstArrayObj       4
+NonPtrObj           1634
+AddrsNum            3423
+LoadsNum            5444
+StoresNum           4229
+CopysNum            2161
+GepsNum             2752
+CallsNum            2263
+ReturnsNum          611
+IndCallSites        170
+TotalPTAPAGEdges    15104
+TotalCallSite       1702
+LocalVarInRecur     517
+BitCastNumber       615
+BBWith2Succ         1209
+BBWith3Succ         14
+-------------------------------------------------------
+#######################################################
+
+*********Constraint Graph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+AvgIn/OutCopyEdge   0.78275
+AvgIn/OutLoadEdge   0.244267
+AvgIn/OutAddrEdge   0.21628
+AvgIn/OutEdge       1.41794
+NumOfCGNode         30463
+TotalValidNode      14435
+TotalValidObjNode   3043
+NumOfCGEdge         17346
+NumOfAddrs          3122
+NumOfCopys          8552
+NumOfGeps           2747
+NumOfLoads          3526
+NumOfStores         2521
+MaxInCopyEdge       402
+MaxOutCopyEdge      229
+MaxInLoadEdge       36
+MaxOutLoadEdge      32
+MaxInStoreEdge      135
+MaxOutStoreEdge     196
+AvgIn/OutStoreEdge  0
+MaxInAddrEdge       1
+MaxOutAddrEdge      196
+#######################################################
+
+*********Andersen Pointer Analysis Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           0.514
+SCCDetectTime       0.152
+SCCMergeTime        0.027
+LoadStoreTime       0.029
+CopyGepTime         0.174
+UpdateCGTime        0.043
+AvgPtsSetSize       5.44471
+AvgTopLvlPtsSize    11.1724
+CollapseTime        0
+TotalPointers       26560
+Pointers            26165
+TotalObjects        3560
+AddrProcessed       3303
+LoadProcessed       3332
+StoreProcessed      3158
+CopyProcessed       5866
+GepProcessed        2000
+NumOfSFRs           0
+NumOfFieldExpand    0
+DYFieldPtrs         395
+MemObjects          3109
+DYFieldObjs         451
+MaxPtsSetSize       273
+Iterations          4
+IndCallSites        170
+IndEdgeSolved       4390
+NumOfSCCDetect      4
+TotalCycleNum       37
+TotalPWCCycleNum    2
+NodesInCycles       620
+MaxNodesInSCC       108
+NullPointer         662
+PointsToConstPtr    18
+PointsToBlkPtr      0
+#######################################################
+
+****Memory SSA Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalMSSATime       0.479
+GenRegionTime       0.414
+GenMUCHITime        0.036
+InsertPHITime       0.004
+SSARenameTime       0.008
+AverageRegSize      10.3573
+MaxRegSize          271
+MemRegions          3014
+FunEntryChi         4235
+FunRetMu            4235
+CSChiNode           2291
+CSMuNode            3264
+LoadMuNode          5120
+StoreChiNode        3115
+FunHasEntryChi      684
+FunHasRetMu         697
+CSHasChi            890
+CSHasMu             1060
+LoadHasMu           5444
+StoreHasChi         3325
+BBHasMSSAPhi        741
+MSSAPhi             3318
+#######################################################
+
+****SVFG Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           0.099
+ConnDirEdgeTime     0
+ConnIndEdgeTime     0.039
+TLNodeTime          0
+ATNodeTime          0.013
+OptTime             0.047
+AvgWeight           11.0999
+TotalNode           28987
+TotalEdge           39961
+MSSAPhi             2079
+FormalIn            2104
+FormalOut           1119
+FormalParam         0
+FormalRet           0
+ActualIn            769
+ActualOut           1373
+ActualParam         0
+ActualRet           0
+DirectEdge          23353
+IndirectEdge        16608
+IndCallEdge         3856
+IndRetEdge          2651
+DirectCallEdge      2263
+DirectRetEdge       611
+AvgInDegree         1
+AvgOutDegree        1
+MaxInDegree         265
+MaxOutDegree        924
+AvgIndInDeg         1
+AvgIndOutDeg        2
+MaxIndInDeg         265
+MaxIndOutDeg        265
+PHI                 2104
+Addr                3423
+Copy                1999
+Gep                 2752
+Load                5444
+Store               4229
+#######################################################
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           744
+TotalCycle          3
+MaxNodeInCycle      21
+NodeInCycle         29
+TotalEdge           1532
+CalRetPairInCycle   39
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+TotalPointers       26560
+TotalObjects        3109
+TotalFieldObjects   451
+MaxStructSize       83
+TotalPAGEdges       48817
+FunctionObjs        744
+GlobalObjs          180
+HeapObjs            18
+StackObjs           2144
+FIObjNum            64
+FSObjNum            3044
+VarStructObj        158
+VarArrayObj         13
+ConstStructObj      1
+ConstArrayObj       4
+NonPtrObj           1634
+AddrsNum            3423
+LoadsNum            5444
+StoresNum           4229
+CopysNum            2161
+GepsNum             2752
+CallsNum            2263
+ReturnsNum          611
+IndCallSites        170
+TotalPTAPAGEdges    15104
+TotalCallSite       1702
+LocalVarInRecur     203
+BitCastNumber       615
+BBWith2Succ         1209
+BBWith3Succ         14
+-------------------------------------------------------
+#######################################################
+
+****Flow-Sensitive Pointer Analysis Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           0.496
+StoreTime           0.006
+CopyGepTime         0.015
+UpdateCGTime        0
+AvgTopLvlPtsSize    0.734745
+SolveTime           0.417
+SCCTime             0.061
+ProcessTime         0.105
+PropagationTime     0.197
+DirectPropaTime     0.005
+IndirectPropaTime   0
+Strong/WeakUpdTime  0.003
+AddrTime            0.015
+LoadTime            0.016
+AvgPtsSize          1.29309
+AvgAddrTakenVarPts  0.498841
+AvgINPtsSize        5.48316
+AvgOUTPtsSize       3.63848
+AverageSCCSize      35.4188
+TotalPointers       26560
+Pointers            26165
+TotalObjects        3560
+StoresNum           4229
+CopysNum            1999
+DYFieldPtrs         395
+MemObjects          3109
+DYFieldObjs         451
+Iterations          2
+IndEdgeSolved       0
+NullPointer         1176
+PointsToConstPtr    0
+PointsToBlkPtr      6
+StrongUpdates       1498
+FI_SNodesHaveIN     63
+FI_SNodesHaveOUT    0
+FO_SNodesHaveIN     0
+FO_SNodesHaveOUT    0
+AI_SNodesHaveIN     0
+AI_SNodesHaveOUT    0
+AO_SNodesHaveIN     80
+AO_SNodesHaveOUT    0
+LD_SNodesHaveIN     5444
+SNodesHaveIN        5772
+LD_SNodesHaveOUT    0
+SNodesHaveOUT       416
+ST_SNodesHaveIN     22
+ST_SNodesHaveOUT    416
+PHI_SNodesHaveIN    163
+PHI_SNodesHaveOUT   0
+VarHaveIN           1277
+VarHaveOUT          473
+VarHaveIN_FI        194
+VarHaveOUT_FI       0
+VarHaveIN_FO        0
+VarHaveOUT_FO       0
+VarHaveIN_AI        0
+VarHaveOUT_AI       0
+VarHaveIN_AO        164
+VarHaveOUT_AO       0
+VarHaveIN_LD        537
+VarHaveOUT_LD       0
+VarHaveIN_ST        24
+VarHaveOUT_ST       473
+VarHaveIN_PHI       358
+VarHaveOUT_PHI      0
+MaxPtsSize          59
+MaxTopLvlPtsSize    59
+MaxINPtsSize        59
+MaxOUTPtsSize       59
+NumOfAddrTakenVar   3450
+MaxAddrTakenVarPts  59
+ProcessedAddr       3518
+ProcessedCopy       2309
+ProcessedGep        3296
+ProcessedLoad       6600
+ProcessedStore      4915
+ProcessedPhi        2588
+ProcessedAParam     0
+ProcessedFRet       0
+ProcessedMSSANode   9535
+NumOfNodesInSCC     5667
+MaxSCCSize          5004
+NumOfSCC            160
+#######################################################
+eval-indirect-calls 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+clones 122
+eval-ctir-aliases 12072150 66770 12005380 
+=== Original objects to clones ===
+  1236 : (1)[ 31078{unsigned int} ]
+  1253 : (1)[ 31079{unsigned int} ]
+  1290 : (1)[ 31071{unsigned int} ]
+  1319 : (1)[ 31074{unsigned int} ]
+  1350 : (7)[ 31114{struct.MemRegion}, 31155{struct.BackRefMaster}, 31162{struct.BackRefBlock}, 31166{struct.BackRefBlock *[123]}, 31173{class.MallocMutex}, 31174{class.no_copy}, 31175{class.no_assign} ]
+  1513 : (1)[ 31070{unsigned int} ]
+  1526 : (1)[ 31073{unsigned int} ]
+  1619 : (1)[ 31119{class.MallocMutex &} ]
+  1664 : (1)[ 31120{volatile int8_t->signed char *} ]
+  1682 : (1)[ 31121{volatile int8_t->signed char *} ]
+  1710 : (1)[ 31147{volatile int8_t->signed char *} ]
+  1747 : (1)[ 31148{volatile int8_t->signed char *} ]
+  1910 : (1)[ 31072{uintptr_t->long unsigned int[123]} ]
+  2067 : (1)[ 31122{uintptr_t->long unsigned int[123]} ]
+  2140 : (1)[ 31149{uintptr_t->long unsigned int[123]} ]
+  2202 : (1)[ 31123{uintptr_t->long unsigned int[123]} ]
+  2213 : (1)[ 31124{uintptr_t->long unsigned int[123]} ]
+  2365 : (1)[ 31150{uintptr_t->long unsigned int[123]} ]
+  2378 : (1)[ 31146{uintptr_t->long unsigned int[123]} ]
+  2773 : (1)[ 31125{class.MallocMutex &} ]
+  3055 : (1)[ 31126{uintptr_t->long unsigned int[123]} ]
+  3072 : (1)[ 31127{uintptr_t->long unsigned int[123]} ]
+  3089 : (1)[ 31128{uintptr_t->long unsigned int[123]} ]
+  5701 : (1)[ 31136{uintptr_t->long unsigned int[123]} ]
+  5718 : (1)[ 31137{uintptr_t->long unsigned int[123]} ]
+  6355 : (1)[ 31065{class.MaxRequestComparator} ]
+  6574 : (1)[ 31142{uintptr_t->long unsigned int[123]} ]
+  6578 : (1)[ 31066{class.MaxRequestComparator *} ]
+  7060 : (1)[ 31141{long unsigned int} ]
+  7062 : (1)[ 31100{long unsigned int} ]
+  7336 : (1)[ 31084{uintptr_t->long unsigned int[123]} ]
+  7338 : (1)[ 31083{uintptr_t->long unsigned int[123]} ]
+  7809 : (1)[ 31113{unsigned char} ]
+  7819 : (1)[ 31060{unsigned int} ]
+  7829 : (1)[ 31061{unsigned int} ]
+  8639 : (1)[ 31058{struct.OpCleanToThreshold *} ]
+  8800 : (1)[ 31056{class.CacheBinFunctor<rml::internal::LargeObjectCacheProps<rml::internal::HugeBinStructureProps<8388608, 1099511627776>, 1, 1, 4> > &} ]
+  8980 : (1)[ 31057{class.CacheBinFunctor<rml::internal::LargeObjectCacheProps<rml::internal::HugeBinStructureProps<8388608, 1099511627776>, 1, 1, 4> > &} ]
+  9026 : (1)[ 31143{uintptr_t->long unsigned int[123]} ]
+  9049 : (1)[ 31129{uintptr_t->long unsigned int[123]} ]
+  9064 : (1)[ 31144{uintptr_t->long unsigned int[123]} ]
+  9088 : (1)[ 31130{uintptr_t->long unsigned int[123]} ]
+  9486 : (1)[ 31131{uintptr_t->long unsigned int[123]} ]
+  9791 : (1)[ 31132{struct.CacheBinOperation *} ]
+  10284 : (1)[ 31152{struct.CacheBinOperation *} ]
+  10417 : (1)[ 31151{struct.CacheBinOperation *} ]
+  10605 : (1)[ 31133{struct.CacheBinOperation *} ]
+  10671 : (1)[ 31134{struct.CacheBinOperation *} ]
+  10707 : (1)[ 31062{union.converter<rml::internal::CacheBinOperation *>} ]
+  10804 : (1)[ 31135{uintptr_t->long unsigned int[123]} ]
+  10900 : (1)[ 31145{const volatile struct.CacheBinOperation * *} ]
+  10902 : (1)[ 31059{union.ptr_converter<rml::internal::CacheBinOperation *const volatile *>} ]
+  11398 : (1)[ 31067{class.CacheBinFunctor<rml::internal::LargeObjectCacheProps<rml::internal::LargeBinStructureProps<8192, 8388608>, 2, 2, 16> > &} ]
+  11516 : (1)[ 31068{class.CacheBinFunctor<rml::internal::LargeObjectCacheProps<rml::internal::LargeBinStructureProps<8192, 8388608>, 2, 2, 16> > &} ]
+  13333 : (1)[ 31075{struct.OpCleanAll *} ]
+  13798 : (1)[ 31099{struct.OpUpdateUsedSize *} ]
+  14251 : (1)[ 31091{struct.OpPutList *} ]
+  14594 : (1)[ 31085{struct.OpGet *} ]
+  15248 : (1)[ 31101{long unsigned int} ]
+  15463 : (1)[ 31080{class.BackRefIdx} ]
+  15531 : (1)[ 31081{class.BackRefIdx} ]
+  15558 : (1)[ 31138{class.BackRefIdx} ]
+  15747 : (1)[ 31082{class.BackRefIdx} ]
+  19690 : (1)[ 31107{struct.___itt_domain} ]
+  19972 : (1)[ 31102{struct.___itt_string_handle} ]
+  21521 : (5)[ 31153{class.TLSData}, 31154{class.Bin[123]}, 31164{class.Bin}, 31168{struct.FreeObject}, 31172{struct.TLSRemote} ]
+  22161 : (1)[ 31064{class.ResOfGet} ]
+  22502 : (1)[ 31063{class.ThreadId} ]
+  25946 : (1)[ 31077{const struct.parseFileItem[123] &} ]
+  26048 : (1)[ 31076{const struct.parseFileItem[123] &} ]
+  26690 : (1)[ 31139{class.BackRefIdx} ]
+  27529 : (1)[ 31140{class.BackRefIdx} ]
+  28084 : (1)[ 31069{volatile int8_t->signed char *} ]
+  28849 : (1)[ 31055{unsigned int} ]
+  28946 : (1)[ 31054{unsigned int} ]
+  29230 : (1)[ 31098{unsigned int} ]
+  29313 : (1)[ 31097{unsigned int} ]
+  29388 : (1)[ 31096{unsigned int} ]
+  29405 : (1)[ 31095{unsigned int} ]
+  29524 : (1)[ 31094{unsigned int} ]
+  29538 : (1)[ 31093{unsigned int} ]
+  29572 : (1)[ 31092{unsigned int} ]
+  29605 : (1)[ 31090{unsigned int} ]
+  29644 : (1)[ 31089{unsigned int} ]
+  29688 : (1)[ 31088{unsigned int} ]
+  29732 : (1)[ 31087{unsigned int} ]
+  29831 : (1)[ 31086{unsigned int} ]
+  31170 : (1)[ 31171{bool} ]
+Total: 98
+==================================
