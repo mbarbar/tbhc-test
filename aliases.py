@@ -31,10 +31,10 @@ def process_aliases(aliases_argv, name):
     aliases_out = {}
     """.format(name, *(aliases_out + [" ".join(aliases_out)])))
 
-if len(sys.argv) != 4:
-    print("usage: {} fspta-aliases fstf-noreuse fstf-reuse".format(sys.argv[0]))
-    sys.exit(1)
+#if len(sys.argv) != 4:
+#    print("usage: {} fspta-aliases fstf-noreuse fstf-reuse".format(sys.argv[0]))
+#    sys.exit(1)
 
-process_aliases(sys.argv[1], "FSPTA-ALIASES")
-process_aliases(sys.argv[2], "FSTF-NOREUSE")
-process_aliases(sys.argv[3], "FSTF-REUSE")
+process_aliases(sys.argv[1], "ALIASES")
+#process_aliases(sys.argv[2], "FSTF-NOREUSE")
+#process_aliases(sys.argv[3], "FSTF-REUSE")
