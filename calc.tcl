@@ -50,6 +50,6 @@ foreach fname $files {
 
 dict for {benchmark t} $times {
     set alias_results [dict get $aliases $benchmark]
-    puts [format "%30s : %5f - %s" $benchmark [expr double($t) / 3] $alias_results]
+    puts [format "%40s : %5f - %s" $benchmark [expr double($t) / 3] $alias_results]
 }
 
