@@ -1,0 +1,517 @@
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           367
+TotalEdge           1374
+TotalCycle          10
+MaxNodeInCycle      8
+NodeInCycle         22
+CalRetPairInCycle   41
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+TotalPointers       37942
+TotalObjects        2436
+TotalFieldObjects   392
+MaxStructSize       39
+TotalPAGEdges       71694
+FunctionObjs        367
+GlobalObjs          16
+HeapObjs            76
+StackObjs           1873
+FIObjNum            85
+FSObjNum            2350
+VarStructObj        62
+VarArrayObj         20
+ConstStructObj      3
+ConstArrayObj       3
+NonPtrObj           1394
+AddrsNum            2842
+LoadsNum            10630
+StoresNum           4091
+CopysNum            3167
+GepsNum             4494
+CallsNum            1867
+ReturnsNum          552
+IndCallSites        7
+TotalPTAPAGEdges    16297
+TotalCallSite       1368
+LocalVarInRecur     225
+BitCastNumber       732
+BBWith2Succ         2136
+BBWith3Succ         45
+-------------------------------------------------------
+#######################################################
+
+*********Constraint Graph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+AvgIn/OutCopyEdge   0.817589
+AvgIn/OutLoadEdge   0.336093
+AvgIn/OutAddrEdge   0.153996
+AvgIn/OutEdge       1.38791
+NumOfCGNode         40461
+TotalValidNode      15942
+TotalValidObjNode   2346
+NumOfCGEdge         19671
+NumOfAddrs          2455
+NumOfCopys          8601
+NumOfGeps           4433
+NumOfLoads          5358
+NumOfStores         1279
+MaxInCopyEdge       45
+MaxOutCopyEdge      656
+MaxInLoadEdge       111
+MaxOutLoadEdge      128
+MaxInStoreEdge      11
+MaxOutStoreEdge     113
+AvgIn/OutStoreEdge  0
+MaxInAddrEdge       1
+MaxOutAddrEdge      183
+#######################################################
+
+*********Andersen Pointer Analysis Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           1.495
+CollapseTime        0.003
+CopyGepTime         0.433
+UpdateCGTime        0.001
+AvgTopLvlPtsSize    8.51233
+SCCDetectTime       0.599
+SCCMergeTime        0.145
+LoadStoreTime       0.083
+AvgPtsSetSize       3.19488
+PointsToConstPtr    774
+PointsToBlkPtr      0
+TotalPointers       37942
+Pointers            37699
+TotalObjects        2828
+AddrProcessed       2617
+LoadProcessed       26649
+StoreProcessed      5523
+CopyProcessed       13762
+GepProcessed        6908
+NumOfSFRs           0
+NumOfFieldExpand    0
+DYFieldPtrs         243
+MemObjects          2436
+DYFieldObjs         392
+MaxPtsSetSize       52
+Iterations          7
+IndCallSites        7
+IndEdgeSolved       13
+NumOfSCCDetect      7
+TotalCycleNum       61
+TotalPWCCycleNum    12
+NodesInCycles       732
+MaxNodesInSCC       331
+NullPointer         75
+#######################################################
+
+****Memory SSA Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalMSSATime       0.251
+GenRegionTime       0.142
+GenMUCHITime        0.058
+InsertPHITime       0.004
+SSARenameTime       0.006
+AverageRegSize      2.0998
+MaxRegSize          83
+MemRegions          2485
+FunEntryChi         3562
+FunRetMu            3556
+CSChiNode           1895
+CSMuNode            3279
+LoadMuNode          12289
+StoreChiNode        4534
+FunHasEntryChi      302
+FunHasRetMu         299
+CSHasChi            612
+CSHasMu             701
+LoadHasMu           10630
+StoreHasChi         4043
+BBHasMSSAPhi        1126
+MSSAPhi             6373
+#######################################################
+
+****SVFG Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           0.188
+ConnDirEdgeTime     0
+ConnIndEdgeTime     0.07
+TLNodeTime          0
+ATNodeTime          0.02
+OptTime             0.098
+AvgWeight           3.57741
+MSSAPhi             2854
+TotalNode           35219
+FormalIn            1204
+FormalOut           91
+FormalParam         0
+FormalRet           0
+ActualIn            8
+ActualOut           598
+ActualParam         0
+ActualRet           0
+TotalEdge           67641
+DirectEdge          32645
+IndirectEdge        34996
+IndCallEdge         7657
+IndRetEdge          3721
+DirectCallEdge      1867
+DirectRetEdge       552
+AvgInDegree         1
+AvgOutDegree        1
+MaxInDegree         63
+MaxOutDegree        584
+AvgIndInDeg         2
+AvgIndOutDeg        4
+MaxIndInDeg         61
+MaxIndOutDeg        128
+PHI                 1704
+Addr                2842
+Copy                2660
+Gep                 4494
+Load                10630
+Store               4091
+#######################################################
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           367
+TotalEdge           1374
+TotalCycle          10
+MaxNodeInCycle      8
+NodeInCycle         22
+CalRetPairInCycle   41
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+TotalPointers       37942
+TotalObjects        2440
+TotalFieldObjects   392
+MaxStructSize       39
+TotalPAGEdges       71694
+FunctionObjs        367
+GlobalObjs          16
+HeapObjs            80
+StackObjs           1873
+FIObjNum            91
+FSObjNum            2348
+VarStructObj        62
+VarArrayObj         20
+ConstStructObj      3
+ConstArrayObj       3
+NonPtrObj           1394
+AddrsNum            2842
+LoadsNum            10630
+StoresNum           4091
+CopysNum            3167
+GepsNum             4494
+CallsNum            1867
+ReturnsNum          552
+IndCallSites        7
+TotalPTAPAGEdges    16297
+TotalCallSite       1368
+LocalVarInRecur     225
+BitCastNumber       732
+BBWith2Succ         2136
+BBWith3Succ         45
+-------------------------------------------------------
+#######################################################
+
+****Flow-Sensitive Pointer Analysis Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           1.29
+SolveTime           1.129
+SCCTime             0.287
+ProcessTime         0.384
+PropagationTime     0.282
+DirectPropaTime     0.019
+IndirectPropaTime   0
+Strong/WeakUpdTime  0.012
+AddrTime            0.021
+CopyGepTime         0.058
+LoadTime            0.089
+UpdateCGTime        0
+AvgPtsSize          3.50621
+AvgTopLvlPtsSize    2.42197
+AvgAddrTakenVarPts  0.886863
+AvgINPtsSize        4.88486
+AvgOUTPtsSize       4.4897
+AverageSCCSize      26.8277
+StoreTime           0.014
+PointsToConstPtr    0
+PointsToBlkPtr      15
+StrongUpdates       942
+FI_SNodesHaveIN     420
+FI_SNodesHaveOUT    0
+FO_SNodesHaveIN     0
+FO_SNodesHaveOUT    0
+AI_SNodesHaveIN     0
+AI_SNodesHaveOUT    0
+AO_SNodesHaveIN     250
+AO_SNodesHaveOUT    0
+LD_SNodesHaveIN     10630
+SNodesHaveIN        12617
+LD_SNodesHaveOUT    0
+SNodesHaveOUT       1015
+ST_SNodesHaveIN     382
+ST_SNodesHaveOUT    1015
+PHI_SNodesHaveIN    935
+PHI_SNodesHaveOUT   0
+VarHaveIN           10040
+VarHaveOUT          1262
+VarHaveIN_FI        942
+VarHaveOUT_FI       0
+VarHaveIN_FO        0
+VarHaveOUT_FO       0
+VarHaveIN_AI        0
+VarHaveOUT_AI       0
+VarHaveIN_AO        486
+VarHaveOUT_AO       0
+VarHaveIN_LD        6554
+VarHaveOUT_LD       0
+VarHaveIN_ST        587
+VarHaveOUT_ST       1262
+VarHaveIN_PHI       1471
+VarHaveOUT_PHI      0
+MaxPtsSize          27
+MaxTopLvlPtsSize    27
+MaxINPtsSize        27
+MaxOUTPtsSize       27
+NumOfAddrTakenVar   5047
+MaxAddrTakenVarPts  27
+ProcessedAddr       5835
+ProcessedCopy       6290
+ProcessedGep        14720
+ProcessedLoad       34778
+ProcessedStore      11338
+ProcessedPhi        4449
+ProcessedAParam     0
+ProcessedFRet       0
+ProcessedMSSANode   15341
+NumOfNodesInSCC     10275
+MaxSCCSize          8257
+NumOfSCC            383
+TotalPointers       37942
+Pointers            37699
+TotalObjects        2832
+StoresNum           4091
+CopysNum            2660
+DYFieldPtrs         243
+MemObjects          2440
+DYFieldObjs         392
+Iterations          4
+IndEdgeSolved       13
+NullPointer         735
+#######################################################
+eval-indirect-calls 13 3 2 3 1 0 0 4 
+eval-ctir-aliases 40430522 1261476 39169046 
+@@@@@@@@@ TBHC STATISTICS @@@@@@@@@
+  === Original objects to clones ===
+      1 : (4)[ 41580{int *}, 41581{intmax_t->long int[1]}, 41582{char *}, 41583{char} ]
+      234 : (2)[ 41457{struct.quoting_options}, 41514{int *} ]
+      237 : (3)[ 41445{struct.quoting_options}, 41453{unsigned int}, 41515{int *} ]
+      268 : (1)[ 41577{char *} ]
+      269 : (4)[ 41468{long int}, 41469{char *}, 41556{struct.slotvec *}, 41557{struct.slotvec} ]
+      1323 : (1)[ 41429{unsigned int} ]
+      1340 : (1)[ 41367{unsigned int} ]
+      1345 : (1)[ 41366{unsigned int} ]
+      2359 : (2)[ 41586{struct.re_dfa_t}, 41593{struct.re_pattern_buffer} ]
+      2513 : (1)[ 41339{unsigned int} ]
+      2580 : (2)[ 41331{struct.mbchar}, 41333{struct.mbuiter_multi} ]
+      2684 : (2)[ 41323{struct.mbchar}, 41325{struct.mbuiter_multi} ]
+      2686 : (2)[ 41317{struct.mbchar}, 41319{struct.mbuiter_multi} ]
+      2938 : (2)[ 41308{struct.mbchar}, 41310{struct.mbuiter_multi} ]
+      3236 : (1)[ 41307{unsigned int} ]
+      3250 : (1)[ 41306{unsigned int} ]
+      3261 : (1)[ 41305{unsigned int} ]
+      3540 : (2)[ 41297{struct.mbchar}, 41299{struct.mbuiter_multi} ]
+      3642 : (2)[ 41289{struct.mbchar}, 41291{struct.mbuiter_multi} ]
+      4062 : (1)[ 41462{unsigned int} ]
+      4082 : (1)[ 41465{unsigned int} ]
+      4317 : (1)[ 41442{unsigned int} ]
+      4346 : (1)[ 41443{unsigned int} ]
+      5085 : (1)[ 41379{const unsigned short *} ]
+      5750 : (1)[ 41473{char} ]
+      5879 : (1)[ 41431{unsigned int} ]
+      5937 : (1)[ 41432{unsigned int} ]
+      6064 : (1)[ 41365{unsigned int} ]
+      6228 : (1)[ 41456{unsigned int} ]
+      6295 : (2)[ 41516{int *}, 41533{struct.quoting_options} ]
+      6346 : (2)[ 41517{int *}, 41534{struct.quoting_options} ]
+      6416 : (2)[ 41518{int *}, 41554{unsigned int} ]
+      6489 : (2)[ 41519{int *}, 41555{unsigned int} ]
+      6557 : (2)[ 41520{int *}, 41542{struct.quoting_options} ]
+      8003 : (5)[ 41427{char}, 41428{struct.valinfo}, 41430{intmax_t->long int[1]}, 41474{union.{ mpz_t->intmax_t->long int[1], char * }}, 41523{char *} ]
+      8076 : (2)[ 41547{struct.slotvec *}, 41548{struct.slotvec} ]
+      8357 : (1)[ 41425{unsigned int} ]
+      8394 : (1)[ 41284{unsigned int} ]
+      8399 : (1)[ 41283{unsigned int} ]
+      8892 : (5)[ 41497{struct.re_dfa_t}, 41561{intmax_t->long int[1]}, 41569{char *}, 41571{char}, 41585{struct.re_pattern_buffer} ]
+      10903 : (1)[ 41536{intmax_t->long int[1]} ]
+      11096 : (1)[ 41531{intmax_t->long int[1]} ]
+      11647 : (2)[ 41446{struct.re_dfastate_t}, 41447{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }} ]
+      12200 : (1)[ 41537{intmax_t->long int[1]} ]
+      14093 : (1)[ 41530{intmax_t->long int[1]} ]
+      14215 : (1)[ 41532{intmax_t->long int[1]} ]
+      14498 : (8)[ 41572{re_token_t->struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int } *}, 41573{struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int }}, 41574{intmax_t->long int[1]}, 41575{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }}, 41576{re_node_set->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * } *}, 41578{struct.bin_tree_t}, 41579{struct.bin_tree_storage_t}, 41584{bin_tree_t->struct.bin_tree_t *} ]
+      14530 : (2)[ 41601{re_token_t->struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int } *}, 41603{struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int }} ]
+      14540 : (2)[ 41602{re_token_t->struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int } *}, 41604{struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int }} ]
+      15039 : (1)[ 41426{struct.bin_tree_storage_t} ]
+      16500 : (1)[ 41397{intmax_t->long int[1]} ]
+      16504 : (1)[ 41395{struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int }} ]
+      16828 : (1)[ 41507{int *} ]
+      17250 : (1)[ 41316{const unsigned short *} ]
+      17346 : (1)[ 41398{intmax_t->long int[1]} ]
+      17360 : (1)[ 41378{struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int }} ]
+      18401 : (1)[ 41406{const unsigned short *} ]
+      18432 : (1)[ 41405{const unsigned short *} ]
+      18473 : (1)[ 41404{const unsigned short *} ]
+      18504 : (1)[ 41403{const unsigned short *} ]
+      18545 : (1)[ 41402{const unsigned short *} ]
+      18576 : (1)[ 41401{const unsigned short *} ]
+      18617 : (1)[ 41400{const unsigned short *} ]
+      18649 : (1)[ 41399{const unsigned short *} ]
+      18690 : (1)[ 41396{const unsigned short *} ]
+      18721 : (1)[ 41394{const unsigned short *} ]
+      18762 : (1)[ 41393{const unsigned short *} ]
+      18794 : (1)[ 41392{const unsigned short *} ]
+      18835 : (1)[ 41391{const unsigned short *} ]
+      18866 : (1)[ 41390{const unsigned short *} ]
+      18907 : (1)[ 41389{const unsigned short *} ]
+      18938 : (1)[ 41388{const unsigned short *} ]
+      18979 : (1)[ 41387{const unsigned short *} ]
+      19010 : (1)[ 41386{const unsigned short *} ]
+      19051 : (1)[ 41385{const unsigned short *} ]
+      19083 : (1)[ 41384{const unsigned short *} ]
+      19124 : (1)[ 41383{const unsigned short *} ]
+      19155 : (1)[ 41382{const unsigned short *} ]
+      19196 : (1)[ 41381{const unsigned short *} ]
+      19228 : (1)[ 41380{const unsigned short *} ]
+      20052 : (1)[ 41508{int *} ]
+      20062 : (1)[ 41509{int *} ]
+      20837 : (1)[ 41286{const unsigned short *} ]
+      21206 : (1)[ 41285{const unsigned short *} ]
+      21796 : (2)[ 41522{int *}, 41539{char *} ]
+      21824 : (2)[ 41510{intmax_t->long int[1]}, 41540{char *} ]
+      21853 : (1)[ 41521{char *} ]
+      22392 : (2)[ 41511{intmax_t->long int[1]}, 41541{char *} ]
+      24353 : (2)[ 41340{struct.re_string_t}, 41342{struct.{ re_string_t->struct.re_string_t, const const re_dfa_t->struct.re_dfa_t *, int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * *, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, struct.re_backref_cache_entry *, int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_sub_match_top_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, state_array_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * } *, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_sub_match_last_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, state_array_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * } } * * } * * }} ]
+      24634 : (1)[ 41513{re_dfastate_t->struct.re_dfastate_t * *} ]
+      25608 : (2)[ 41538{struct.re_backref_cache_entry}, 41546{struct.re_backref_cache_entry *} ]
+      25616 : (1)[ 41505{re_sub_match_top_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, state_array_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * } *, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_sub_match_last_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, state_array_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * } } * * } * *} ]
+      27221 : (2)[ 41288{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }}, 41373{struct.{ re_dfastate_t->struct.re_dfastate_t * *, re_dfastate_t->struct.re_dfastate_t * *, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_node_set->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * } }} ]
+      27256 : (1)[ 41287{re_dfastate_t->struct.re_dfastate_t * *} ]
+      27276 : (1)[ 41472{re_dfastate_t->struct.re_dfastate_t * *} ]
+      27626 : (3)[ 41498{struct.re_fail_stack_ent_t}, 41499{struct.re_fail_stack_ent_t *}, 41500{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }} ]
+      27655 : (2)[ 41421{struct.{ regoff_t->ssize_t->__ssize_t->long int, regoff_t->ssize_t->__ssize_t->long int }}, 41423{regmatch_t->struct.{ regoff_t->ssize_t->__ssize_t->long int, regoff_t->ssize_t->__ssize_t->long int } *} ]
+      27662 : (2)[ 41422{struct.{ regoff_t->ssize_t->__ssize_t->long int, regoff_t->ssize_t->__ssize_t->long int }}, 41424{regmatch_t->struct.{ regoff_t->ssize_t->__ssize_t->long int, regoff_t->ssize_t->__ssize_t->long int } *} ]
+      28688 : (3)[ 41501{struct.re_fail_stack_ent_t}, 41502{struct.re_fail_stack_ent_t *}, 41529{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }} ]
+      29971 : (1)[ 41512{intmax_t->long int[1]} ]
+      30327 : (2)[ 41444{struct.re_dfastate_t}, 41448{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }} ]
+      31963 : (2)[ 41278{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }}, 41279{struct.{ re_dfastate_t->struct.re_dfastate_t * *, re_dfastate_t->struct.re_dfastate_t * *, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_node_set->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * } }} ]
+      32589 : (1)[ 41503{intmax_t->long int[1]} ]
+      33602 : (1)[ 41506{re_dfastate_t->struct.re_dfastate_t * *} ]
+      34496 : (5)[ 41271{struct.dests_alloc}, 41272{bitset_t->bitset_word_t->long unsigned int[4][256]}, 41273{intmax_t->long int[1]}, 41274{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }}, 41275{re_node_set->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * } *} ]
+      34599 : (1)[ 41470{re_dfastate_t->struct.re_dfastate_t * *} ]
+      34607 : (1)[ 41471{re_dfastate_t->struct.re_dfastate_t * *} ]
+      34851 : (1)[ 41276{re_dfastate_t->struct.re_dfastate_t * *} ]
+      34951 : (1)[ 41277{re_dfastate_t->struct.re_dfastate_t * *} ]
+      36344 : (1)[ 41562{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * }} ]
+      36766 : (1)[ 41568{re_dfastate_t->struct.re_dfastate_t * *} ]
+      37252 : (1)[ 41565{re_sub_match_last_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, state_array_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * } } * *} ]
+      37273 : (2)[ 41268{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, state_array_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * } }}, 41570{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * }} ]
+      38200 : (2)[ 41558{struct.re_backref_cache_entry *}, 41559{struct.re_backref_cache_entry} ]
+      38402 : (1)[ 41504{re_sub_match_top_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, state_array_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * } *, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_sub_match_last_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, state_array_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * } } * * } * *} ]
+      38423 : (1)[ 41526{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, state_array_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * } *, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_sub_match_last_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, state_array_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * } } * * }} ]
+      38872 : (2)[ 41266{struct.{ regoff_t->ssize_t->__ssize_t->long int, regoff_t->ssize_t->__ssize_t->long int }}, 41267{regmatch_t->struct.{ regoff_t->ssize_t->__ssize_t->long int, regoff_t->ssize_t->__ssize_t->long int } *} ]
+      39041 : (1)[ 41495{intmax_t->long int[1]} ]
+      39059 : (1)[ 41493{intmax_t->long int[1]} ]
+      39104 : (1)[ 41496{intmax_t->long int[1]} ]
+      39123 : (1)[ 41494{intmax_t->long int[1]} ]
+      39497 : (2)[ 41535{char *}, 41567{char} ]
+      39795 : (1)[ 41270{unsigned int} ]
+      39803 : (1)[ 41262{unsigned int} ]
+      40049 : (1)[ 41263{unsigned int} ]
+      40061 : (1)[ 41264{unsigned int} ]
+      40228 : (2)[ 41265{char *}, 41441{char} ]
+      41280 : (1)[ 41449{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }} ]
+      41290 : (1)[ 41480{char *} ]
+      41292 : (1)[ 41293{_Bool} ]
+      41298 : (1)[ 41479{char *} ]
+      41300 : (1)[ 41302{_Bool} ]
+      41309 : (1)[ 41478{char *} ]
+      41311 : (1)[ 41312{_Bool} ]
+      41318 : (1)[ 41477{char *} ]
+      41320 : (1)[ 41368{_Bool} ]
+      41324 : (1)[ 41476{char *} ]
+      41326 : (1)[ 41327{_Bool} ]
+      41332 : (1)[ 41475{char *} ]
+      41334 : (1)[ 41335{_Bool} ]
+      41346 : (1)[ 41463{long int} ]
+      41348 : (1)[ 41357{re_dfastate_t->struct.re_dfastate_t * *} ]
+      41349 : (1)[ 41487{long int} ]
+      41351 : (1)[ 41458{unsigned int} ]
+      41354 : (1)[ 41490{long int} ]
+      41355 : (1)[ 41356{unsigned int} ]
+      41372 : (1)[ 41489{intmax_t->long int[1]} ]
+      41409 : (1)[ 41454{re_sub_match_top_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, state_array_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * } *, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_sub_match_last_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, state_array_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * } } * * } * *} ]
+      41410 : (1)[ 41460{struct.re_backref_cache_entry *} ]
+      41411 : (1)[ 41466{unsigned int} ]
+      41415 : (1)[ 41485{unsigned int} ]
+      41417 : (1)[ 41483{char *} ]
+      41433 : (1)[ 41491{long int} ]
+      41528 : (2)[ 41543{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * }}, 41566{re_dfastate_t->struct.re_dfastate_t * *} ]
+      258000003 : (1)[ 41336{_Bool} ]
+      268400003 : (1)[ 41328{_Bool} ]
+      268600003 : (1)[ 41369{_Bool} ]
+      293800003 : (1)[ 41313{_Bool} ]
+      354000003 : (1)[ 41303{_Bool} ]
+      364200003 : (1)[ 41294{_Bool} ]
+      882100016 : (1)[ 41484{char *} ]
+      882100025 : (1)[ 41486{unsigned int} ]
+      1644900001 : (1)[ 41481{union.{ unsigned char, unsigned char *, wchar_t->int }} ]
+      1645100001 : (1)[ 41482{union.{ unsigned char, unsigned char *, wchar_t->int }} ]
+      2435300027 : (1)[ 41467{unsigned int} ]
+      2435300028 : (1)[ 41464{long int} ]
+      2435300030 : (1)[ 41358{re_dfastate_t->struct.re_dfastate_t * *} ]
+      2435300031 : (1)[ 41488{long int} ]
+      2435300034 : (1)[ 41461{struct.re_backref_cache_entry *} ]
+      2435300035 : (1)[ 41459{unsigned int} ]
+      2435300036 : (1)[ 41492{long int} ]
+      2435300038 : (1)[ 41455{re_sub_match_top_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, state_array_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * } *, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_sub_match_last_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, state_array_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * } } * * } * *} ]
+      3196300004 : (1)[ 41450{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }} ]
+  Total: 237
+  ==================================
+  INITIALISE : 7634
+  TBWU       : 35766
+  TBSSU      : 2651
+  TBSU       : 11577
+  REUSE      : 3701
+  AGG CASE   : 3419
+
+  STACK/GLOBAL OBJECTS
+    INITIALISE : 495
+    TBWU       : 24496
+    TBSSU      : 955
+    TBSU       : 4039
+    REUSE      : 458
+    AGG CASE   : 2580
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+!!!!!! VALIDATING TBHC TESTS !!!!!!
