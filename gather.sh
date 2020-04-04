@@ -11,11 +11,11 @@ fi
 
 mkdir "$outdir"
 
-for run in 1 2 3; do
+for run in `seq 1 10`; do
     echo "======== RUN $run ========"
     for f in *.bc; do
         command="/usr/bin/time -o $outdir/$f.$analysis.$run.time $svf -$analysis $f > $outdir/$f.$analysis.$run.svf"
-        echo "Running: '$command' for run $run"
+        echo "Running: '$command' for run #$run"
         eval $command
     done
 done
