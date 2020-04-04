@@ -1,0 +1,519 @@
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           520
+TotalEdge           1650
+TotalCycle          4
+MaxNodeInCycle      2
+NodeInCycle         6
+CalRetPairInCycle   13
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+BBWith2Succ         1744
+BBWith3Succ         51
+BitCastNumber       340
+TotalPTAPAGEdges    12417
+TotalCallSite       1486
+LocalVarInRecur     169
+IndCallSites        25
+ReturnsNum          562
+CallsNum            1530
+GepsNum             2309
+CopysNum            2480
+StoresNum           4115
+LoadsNum            7151
+AddrsNum            3316
+NonPtrObj           1546
+ConstArrayObj       14
+ConstStructObj      2
+VarArrayObj         40
+VarStructObj        58
+FSObjNum            2624
+FIObjNum            59
+StackObjs           1817
+HeapObjs            40
+GlobalObjs          116
+FunctionObjs        520
+TotalPAGEdges       53368
+MaxStructSize       29
+TotalFieldObjects   311
+TotalObjects        2684
+TotalPointers       29634
+-------------------------------------------------------
+#######################################################
+
+*********Constraint Graph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+AvgIn/OutCopyEdge   0.692112
+AvgIn/OutLoadEdge   0.276108
+AvgIn/OutAddrEdge   0.243837
+AvgIn/OutEdge       1.33664
+NumOfCGNode         32439
+TotalValidNode      12209
+TotalValidObjNode   2663
+NumOfCGEdge         13342
+NumOfAddrs          2977
+NumOfCopys          6344
+NumOfGeps           2106
+NumOfLoads          3371
+NumOfStores         1521
+MaxInCopyEdge       52
+MaxOutCopyEdge      206
+MaxInLoadEdge       76
+MaxOutLoadEdge      66
+MaxInStoreEdge      52
+MaxOutStoreEdge     80
+AvgIn/OutStoreEdge  0
+MaxInAddrEdge       1
+MaxOutAddrEdge      375
+#######################################################
+
+*********Andersen Pointer Analysis Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           0.776
+CollapseTime        0.003
+CopyGepTime         0.281
+UpdateCGTime        0.002
+AvgTopLvlPtsSize    3.71135
+AvgPtsSetSize       1.28687
+LoadStoreTime       0.028
+SCCMergeTime        0.049
+SCCDetectTime       0.303
+PointsToConstPtr    465
+PointsToBlkPtr      0
+NullPointer         60
+MaxNodesInSCC       135
+NodesInCycles       776
+TotalPWCCycleNum    19
+TotalCycleNum       86
+NumOfSCCDetect      6
+IndEdgeSolved       189
+IndCallSites        25
+MaxPtsSetSize       52
+DYFieldObjs         311
+MemObjects          2684
+DYFieldPtrs         177
+NumOfFieldExpand    0
+NumOfSFRs           0
+GepProcessed        2657
+CopyProcessed       9726
+StoreProcessed      2035
+LoadProcessed       5212
+AddrProcessed       3057
+TotalObjects        2995
+TotalPointers       29634
+Pointers            29457
+Iterations          6
+#######################################################
+
+****Memory SSA Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+AverageRegSize      1.58375
+SSARenameTime       0.009
+InsertPHITime       0.003
+GenMUCHITime        0.035
+GenRegionTime       0.094
+TotalMSSATime       0.145
+BBHasMSSAPhi        972
+MSSAPhi             4557
+StoreHasChi         3663
+LoadHasMu           7151
+CSHasMu             658
+CSHasChi            497
+FunHasRetMu         402
+FunHasEntryChi      405
+StoreChiNode        3879
+LoadMuNode          7624
+CSMuNode            2351
+CSChiNode           1123
+FunRetMu            3333
+FunEntryChi         3348
+MemRegions          2376
+MaxRegSize          41
+#######################################################
+
+****SVFG Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           0.121
+ConnDirEdgeTime     0
+ConnIndEdgeTime     0.049
+TLNodeTime          0
+ATNodeTime          0.015
+OptTime             0.057
+AvgWeight           1.84308
+TotalNode           27164
+FormalIn            1382
+FormalOut           371
+FormalParam         0
+FormalRet           0
+ActualIn            42
+ActualOut           356
+ActualParam         0
+ActualRet           0
+TotalEdge           47524
+DirectEdge          23881
+IndirectEdge        23643
+IndCallEdge         3880
+IndRetEdge          1628
+DirectCallEdge      1530
+DirectRetEdge       562
+AvgInDegree         1
+AvgOutDegree        1
+MaxInDegree         230
+MaxOutDegree        549
+AvgIndInDeg         2
+AvgIndOutDeg        3
+MaxIndInDeg         230
+MaxIndOutDeg        150
+MSSAPhi             1801
+PHI                 1862
+Addr                3316
+Copy                1994
+Gep                 2309
+Load                7151
+Store               4115
+#######################################################
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           520
+TotalEdge           1494
+TotalCycle          4
+MaxNodeInCycle      2
+NodeInCycle         6
+CalRetPairInCycle   13
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+BBWith2Succ         1744
+BBWith3Succ         51
+BitCastNumber       340
+TotalPTAPAGEdges    12417
+TotalCallSite       1486
+LocalVarInRecur     169
+IndCallSites        25
+ReturnsNum          562
+CallsNum            1530
+GepsNum             2309
+CopysNum            2480
+StoresNum           4115
+LoadsNum            7151
+AddrsNum            3316
+NonPtrObj           1546
+ConstArrayObj       14
+ConstStructObj      2
+VarArrayObj         40
+VarStructObj        58
+FSObjNum            2603
+FIObjNum            96
+StackObjs           1817
+HeapObjs            56
+GlobalObjs          116
+FunctionObjs        520
+TotalPAGEdges       53368
+MaxStructSize       29
+TotalFieldObjects   311
+TotalObjects        2700
+TotalPointers       29634
+-------------------------------------------------------
+#######################################################
+
+****Flow-Sensitive Pointer Analysis Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           4.302
+SolveTime           4.219
+SCCTime             0.174
+ProcessTime         1.476
+PropagationTime     2.202
+DirectPropaTime     0.025
+IndirectPropaTime   0
+Strong/WeakUpdTime  0.029
+AddrTime            0.025
+CopyGepTime         0.246
+LoadTime            0.604
+UpdateCGTime        0
+AvgPtsSize          49.0922
+AvgTopLvlPtsSize    13.8221
+AvgAddrTakenVarPts  9.77629
+AvgINPtsSize        83.7418
+AvgOUTPtsSize       66.1071
+AverageSCCSize      12.9649
+StoreTime           0.057
+PointsToConstPtr    0
+PointsToBlkPtr      40
+StrongUpdates       1189
+FI_SNodesHaveIN     351
+FI_SNodesHaveOUT    0
+FO_SNodesHaveIN     0
+FO_SNodesHaveOUT    0
+AI_SNodesHaveIN     0
+AI_SNodesHaveOUT    0
+AO_SNodesHaveIN     184
+AO_SNodesHaveOUT    0
+LD_SNodesHaveIN     2742
+SNodesHaveIN        4413
+LD_SNodesHaveOUT    0
+SNodesHaveOUT       1236
+ST_SNodesHaveIN     494
+ST_SNodesHaveOUT    1236
+PHI_SNodesHaveIN    642
+PHI_SNodesHaveOUT   0
+VarHaveIN           8924
+VarHaveOUT          2531
+VarHaveIN_FI        1262
+VarHaveOUT_FI       0
+VarHaveIN_FO        0
+VarHaveOUT_FO       0
+VarHaveIN_AI        0
+VarHaveOUT_AI       0
+VarHaveIN_AO        674
+VarHaveOUT_AO       0
+VarHaveIN_LD        4632
+VarHaveOUT_LD       0
+VarHaveIN_ST        1038
+VarHaveOUT_ST       2531
+VarHaveIN_PHI       1318
+VarHaveOUT_PHI      0
+MaxPtsSize          158
+MaxTopLvlPtsSize    158
+MaxINPtsSize        158
+MaxOUTPtsSize       158
+NumOfAddrTakenVar   9119
+MaxAddrTakenVarPts  158
+ProcessedAddr       6878
+ProcessedCopy       7745
+ProcessedGep        18483
+ProcessedLoad       59761
+ProcessedStore      27329
+ProcessedPhi        10190
+ProcessedAParam     0
+ProcessedFRet       0
+ProcessedMSSANode   37375
+NumOfNodesInSCC     5173
+MaxSCCSize          2823
+NumOfSCC            399
+NullPointer         142
+IndEdgeSolved       33
+DYFieldObjs         311
+MemObjects          2700
+DYFieldPtrs         177
+CopysNum            1994
+StoresNum           4115
+TotalObjects        3011
+TotalPointers       29634
+Pointers            29457
+Iterations          4
+#######################################################
+eval-indirect-calls 14 2 2 2 2 2 2 2 1 3 3 0 0 0 2 3 3 0 0 0 1 0 1 1 0 1 
+@@@@@@@@@ TBHC STATISTICS @@@@@@@@@
+  === Original objects to clones ===
+      1 : (16)[ 33462{struct.hash_tuning}, 33466{char *}, 33488{char}, 33581{const enum int[5]}, 33582{const int[12]}, 33599{struct.hash_entry}, 33600{struct.color_ext_type}, 33601{struct.pending}, 33602{struct.userid}, 33603{struct.ignore_pattern}, 33604{struct.bin_str}, 33605{struct.F_triple}, 33606{struct.fileinfo}, 33607{struct.stat}, 33608{struct.dev_ino}, 33609{__syscall_slong_t->long int[3]} ]
+      24 : (1)[ 33425{long unsigned int} ]
+      48 : (2)[ 33287{struct.obstack}, 33460{char *} ]
+      67 : (1)[ 33269{struct.obstack} ]
+      69 : (1)[ 33270{struct.obstack} ]
+      147 : (4)[ 33391{struct.bin_str[24]}, 33406{struct.bin_str}, 33429{char *}, 33461{long unsigned int} ]
+      194 : (1)[ 33415{unsigned int} ]
+      196 : (1)[ 33416{long unsigned int} ]
+      215 : (1)[ 33385{char *} ]
+      277 : (1)[ 33382{const enum int[5]} ]
+      287 : (2)[ 33381{char *}, 33495{char} ]
+      295 : (1)[ 33373{char * *} ]
+      315 : (13)[ 33501{char *}, 33502{struct.userid}, 33505{char}, 33513{struct.color_ext_type}, 33514{struct.bin_str}, 33520{struct.hash_entry}, 33524{__syscall_slong_t->long int[3]}, 33529{struct.pending}, 33549{struct.ignore_pattern}, 33553{struct.fileinfo}, 33557{struct.stat}, 33583{struct.F_triple}, 33591{struct.dev_ino} ]
+      378 : (1)[ 33370{const qsortFunc->int fn(V->const void *, V->const void *) *[7][7][7][7]} ]
+      464 : (1)[ 33360{char * *} ]
+      622 : (2)[ 33353{struct.option}, 33354{const struct.option[44]} ]
+      642 : (1)[ 33408{char * *} ]
+      659 : (1)[ 33409{char * *} ]
+      680 : (1)[ 33410{char * *} ]
+      704 : (1)[ 33411{char * *} ]
+      715 : (1)[ 33412{char * *} ]
+      753 : (2)[ 33413{char * *}, 33448{char *} ]
+      956 : (1)[ 33414{char * *} ]
+      1015 : (1)[ 33323{char * *} ]
+      1021 : (2)[ 33356{struct.quoting_options}, 33467{const int[12]} ]
+      1024 : (3)[ 33344{struct.quoting_options}, 33454{unsigned int}, 33468{const int[12]} ]
+      1055 : (13)[ 33499{char *}, 33509{__syscall_slong_t->long int[3]}, 33528{char}, 33547{struct.color_ext_type}, 33548{struct.userid}, 33562{struct.hash_entry}, 33564{struct.pending}, 33568{struct.bin_str}, 33569{struct.fileinfo}, 33571{struct.ignore_pattern}, 33573{struct.stat}, 33584{struct.F_triple}, 33592{struct.dev_ino} ]
+      1056 : (4)[ 33319{long unsigned int}, 33320{char *}, 33484{struct.slotvec *}, 33485{struct.slotvec} ]
+      1809 : (2)[ 33252{char}, 33480{char *} ]
+      1865 : (2)[ 33254{char}, 33481{char *} ]
+      2263 : (1)[ 33445{char} ]
+      2406 : (2)[ 33441{char}, 33442{char *} ]
+      2565 : (2)[ 33443{char *}, 33444{char} ]
+      2616 : (1)[ 33249{char} ]
+      2628 : (1)[ 33248{char} ]
+      3338 : (2)[ 33453{char *}, 33457{char} ]
+      3402 : (1)[ 33312{unsigned int} ]
+      3549 : (1)[ 33311{unsigned int} ]
+      3556 : (1)[ 33310{unsigned int} ]
+      3623 : (1)[ 33309{unsigned int} ]
+      4524 : (1)[ 33244{unsigned int} ]
+      4685 : (1)[ 33243{unsigned int} ]
+      4689 : (3)[ 33260{struct.dirent}, 33395{char *}, 33463{char} ]
+      4754 : (1)[ 33263{unsigned int} ]
+      4766 : (1)[ 33262{unsigned int} ]
+      5305 : (1)[ 33251{unsigned int} ]
+      6279 : (1)[ 33423{const unsigned short *} ]
+      6336 : (1)[ 33422{const unsigned short *} ]
+      11412 : (1)[ 33342{unsigned int} ]
+      11421 : (1)[ 33247{unsigned int} ]
+      11426 : (1)[ 33246{unsigned int} ]
+      11912 : (1)[ 33330{unsigned int} ]
+      11927 : (1)[ 33371{unsigned int} ]
+      11974 : (1)[ 33329{unsigned int} ]
+      12003 : (1)[ 33384{unsigned int} ]
+      12053 : (1)[ 33328{unsigned int} ]
+      12058 : (1)[ 33327{unsigned int} ]
+      12072 : (1)[ 33242{unsigned int} ]
+      12396 : (1)[ 33386{char} ]
+      12765 : (1)[ 33482{char *} ]
+      13315 : (1)[ 33421{char} ]
+      13327 : (1)[ 33420{const unsigned short *} ]
+      13587 : (13)[ 33407{char *}, 33506{char}, 33515{struct.userid}, 33521{struct.hash_entry}, 33530{struct.pending}, 33535{struct.color_ext_type}, 33540{struct.bin_str}, 33544{__syscall_slong_t->long int[3]}, 33550{struct.ignore_pattern}, 33554{struct.fileinfo}, 33558{struct.stat}, 33585{struct.F_triple}, 33593{struct.dev_ino} ]
+      13609 : (1)[ 33404{unsigned int} ]
+      13616 : (1)[ 33403{unsigned int} ]
+      13623 : (1)[ 33405{unsigned int} ]
+      13641 : (13)[ 33437{char *}, 33507{char}, 33516{struct.userid}, 33522{struct.hash_entry}, 33531{struct.pending}, 33536{struct.color_ext_type}, 33541{struct.bin_str}, 33545{__syscall_slong_t->long int[3]}, 33551{struct.ignore_pattern}, 33555{struct.fileinfo}, 33559{struct.stat}, 33586{struct.F_triple}, 33594{struct.dev_ino} ]
+      13664 : (13)[ 33438{char *}, 33508{char}, 33517{struct.userid}, 33523{struct.hash_entry}, 33532{struct.pending}, 33537{struct.color_ext_type}, 33542{struct.bin_str}, 33546{__syscall_slong_t->long int[3]}, 33552{struct.ignore_pattern}, 33556{struct.fileinfo}, 33560{struct.stat}, 33587{struct.F_triple}, 33595{struct.dev_ino} ]
+      13696 : (1)[ 33392{unsigned int} ]
+      14527 : (1)[ 33368{unsigned int} ]
+      14535 : (1)[ 33367{unsigned int} ]
+      14546 : (1)[ 33366{unsigned int} ]
+      14852 : (1)[ 33365{unsigned int} ]
+      14914 : (1)[ 33364{unsigned int} ]
+      14920 : (1)[ 33363{unsigned int} ]
+      15126 : (1)[ 33372{unsigned int} ]
+      15243 : (1)[ 33359{unsigned int} ]
+      15256 : (1)[ 33358{unsigned int} ]
+      15267 : (1)[ 33357{unsigned int} ]
+      15383 : (1)[ 33355{char *} ]
+      15542 : (1)[ 33351{unsigned int} ]
+      15571 : (1)[ 33350{unsigned int} ]
+      15588 : (1)[ 33348{unsigned int} ]
+      17524 : (1)[ 33331{struct.hash_table} ]
+      17565 : (1)[ 33483{struct.hash_entry} ]
+      18164 : (1)[ 33478{struct.hash_entry} ]
+      18524 : (13)[ 33476{struct.hash_entry}, 33565{struct.pending}, 33570{char *}, 33572{struct.ignore_pattern}, 33574{char}, 33575{struct.fileinfo}, 33576{struct.color_ext_type}, 33577{__syscall_slong_t->long int[3]}, 33578{struct.stat}, 33579{struct.bin_str}, 33580{struct.userid}, 33588{struct.F_triple}, 33596{struct.dev_ino} ]
+      19397 : (1)[ 33315{struct.lconv} ]
+      20222 : (1)[ 33446{char} ]
+      20228 : (1)[ 33447{char} ]
+      20398 : (1)[ 33307{struct.passwd} ]
+      20540 : (1)[ 33305{struct.passwd} ]
+      20635 : (1)[ 33304{struct.group} ]
+      20775 : (1)[ 33301{struct.group} ]
+      21061 : (2)[ 33435{const int[12]}, 33436{unsigned int} ]
+      21471 : (1)[ 33474{char} ]
+      21700 : (1)[ 33265{const unsigned short *} ]
+      21724 : (1)[ 33264{const unsigned short *} ]
+      25144 : (1)[ 33393{unsigned int} ]
+      25163 : (1)[ 33394{unsigned int} ]
+      25389 : (1)[ 33261{unsigned int} ]
+      25418 : (1)[ 33343{unsigned int} ]
+      26152 : (1)[ 33341{const unsigned short *} ]
+      26811 : (1)[ 33475{char} ]
+      26937 : (1)[ 33325{unsigned int} ]
+      26995 : (1)[ 33326{unsigned int} ]
+      27122 : (1)[ 33300{unsigned int} ]
+      27282 : (1)[ 33318{unsigned int} ]
+      27349 : (1)[ 33469{const int[12]} ]
+      27400 : (1)[ 33470{const int[12]} ]
+      27468 : (1)[ 33471{const int[12]} ]
+      27538 : (1)[ 33472{const int[12]} ]
+      27540 : (1)[ 33245{struct.quoting_options} ]
+      27606 : (1)[ 33473{const int[12]} ]
+      27865 : (1)[ 33314{unsigned int} ]
+      27884 : (1)[ 33313{unsigned int} ]
+      27925 : (1)[ 33299{unsigned int} ]
+      27944 : (1)[ 33298{unsigned int} ]
+      27956 : (1)[ 33297{unsigned int} ]
+      27978 : (1)[ 33296{unsigned int} ]
+      27993 : (1)[ 33295{unsigned int} ]
+      28008 : (1)[ 33294{unsigned int} ]
+      28025 : (1)[ 33293{unsigned int} ]
+      28042 : (1)[ 33292{unsigned int} ]
+      28059 : (1)[ 33291{unsigned int} ]
+      28076 : (1)[ 33286{unsigned int} ]
+      28088 : (1)[ 33285{unsigned int} ]
+      28100 : (1)[ 33284{unsigned int} ]
+      28112 : (1)[ 33283{unsigned int} ]
+      28139 : (1)[ 33268{unsigned int} ]
+      28151 : (1)[ 33267{unsigned int} ]
+      28169 : (1)[ 33266{unsigned int} ]
+      28273 : (1)[ 33432{struct.timespec} ]
+      28307 : (1)[ 33430{struct.timespec} ]
+      28334 : (1)[ 33428{struct.timespec} ]
+      28336 : (1)[ 33424{struct.timespec} ]
+      28405 : (1)[ 33419{struct.timespec} ]
+      28436 : (1)[ 33418{struct.timespec} ]
+      28981 : (19)[ 33303{struct.userid}, 33308{struct.ignore_pattern}, 33347{struct.F_triple}, 33377{struct.dev_ino}, 33390{struct.pending}, 33439{struct.bin_str}, 33440{struct.color_ext_type}, 33449{void * *}, 33450{struct.quoting_options}, 33455{unsigned int}, 33456{char}, 33459{char *}, 33465{struct.fileinfo *}, 33477{struct.fileinfo}, 33479{void *}, 33486{struct.stat}, 33496{const int[12]}, 33498{__syscall_slong_t->long int[3]}, 33503{struct.hash_entry} ]
+      29048 : (18)[ 33487{char *}, 33489{struct.fileinfo *}, 33490{struct.slotvec *}, 33491{struct.slotvec}, 33492{struct.column_info *}, 33493{struct.column_info}, 33494{char}, 33525{__syscall_slong_t->long int[3]}, 33527{struct.userid}, 33538{struct.color_ext_type}, 33539{struct.hash_entry}, 33543{struct.pending}, 33561{struct.bin_str}, 33563{struct.ignore_pattern}, 33566{struct.fileinfo}, 33567{struct.stat}, 33589{struct.F_triple}, 33597{struct.dev_ino} ]
+      29311 : (1)[ 33259{unsigned int} ]
+      29315 : (1)[ 33258{unsigned int} ]
+      29324 : (1)[ 33257{unsigned int} ]
+      29331 : (1)[ 33256{unsigned int} ]
+      29347 : (1)[ 33239{unsigned int} ]
+      29353 : (1)[ 33238{unsigned int} ]
+      29411 : (13)[ 33458{char}, 33464{char *}, 33504{struct.userid}, 33510{struct.color_ext_type}, 33511{struct.hash_entry}, 33512{struct.pending}, 33518{struct.bin_str}, 33519{struct.ignore_pattern}, 33526{__syscall_slong_t->long int[3]}, 33533{struct.fileinfo}, 33534{struct.stat}, 33590{struct.F_triple}, 33598{struct.dev_ino} ]
+      29419 : (1)[ 33369{unsigned int} ]
+      29464 : (1)[ 33255{unsigned int} ]
+      29483 : (1)[ 33380{unsigned int} ]
+      29488 : (1)[ 33379{unsigned int} ]
+      29494 : (1)[ 33378{unsigned int} ]
+      29499 : (1)[ 33376{unsigned int} ]
+      29505 : (1)[ 33374{unsigned int} ]
+      29512 : (1)[ 33375{unsigned int} ]
+      29531 : (1)[ 33500{char} ]
+      29620 : (1)[ 33253{unsigned int} ]
+      29631 : (1)[ 33237{const unsigned short *} ]
+      29689 : (1)[ 33236{unsigned int} ]
+      29694 : (1)[ 33235{unsigned int} ]
+      30135 : (1)[ 33250{unsigned int} ]
+      30146 : (1)[ 33434{const unsigned short *} ]
+      30204 : (1)[ 33427{unsigned int} ]
+      30209 : (1)[ 33426{unsigned int} ]
+      31246 : (3)[ 33361{struct.tm_zone}, 33362{char *}, 33497{char} ]
+      31475 : (1)[ 33345{unsigned int} ]
+      31482 : (1)[ 33346{unsigned int} ]
+      31591 : (1)[ 33241{unsigned int} ]
+      31678 : (1)[ 33388{unsigned int} ]
+      31690 : (1)[ 33387{unsigned int} ]
+      31698 : (1)[ 33389{unsigned int} ]
+      32346 : (1)[ 33324{unsigned int} ]
+      32354 : (1)[ 33240{unsigned int} ]
+      32437 : (2)[ 33349{char *}, 33352{char} ]
+      32509 : (1)[ 33321{unsigned int} ]
+      32521 : (1)[ 33322{unsigned int} ]
+  Total: 334
+  ==================================
+  INITIALISE : 4071
+  TBWU       : 430370
+  TBSSU      : 3576
+  TBSU       : 23505
+  REUSE      : 0
+  AGG CASE   : 1157
+
+  STACK/GLOBAL OBJECTS
+    INITIALISE : 1122
+    TBWU       : 24640
+    TBSSU      : 757
+    TBSU       : 4410
+    REUSE      : 0
+    AGG CASE   : 241
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+!!!!!! VALIDATING TBHC TESTS !!!!!!
