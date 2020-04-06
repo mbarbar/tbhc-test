@@ -16,6 +16,7 @@ set aliases [dict create]
 
 foreach fname $files {
     set matched [regexp {([a-zA-Z0-9-]*\.bc)} $fname benchmark]
+    dict set aliases $benchmark "alias data not found"
     if {!$matched} {
         puts "Unexpected filename: $fname"
         exit 1
@@ -45,8 +46,6 @@ foreach fname $files {
         set matched [regexp {eval-ctir-aliases ([0-9]+) [0-9]+ ([0-9]+)} $line full queries no_aliases]
         if {$matched} {
             dict set aliases $benchmark [format "%d %5f" $queries [expr double($no_aliases) / $queries]]
-        } else {
-            dict set aliases $benchmark "alias data not found"
         }
     }
 }
