@@ -15,7 +15,7 @@ mkdir "$outdir"
 for run in `seq 1 $runs`; do
     echo "======== RUN $run ========"
     for f in *.bc; do
-        command="/usr/bin/time -o $outdir/$f.$run.time $svf $analysis_args $f > $outdir/$f.$run.svf"
+        command="/usr/bin/time -v -o $outdir/$f.$run.time $svf $analysis_args $f > $outdir/$f.$run.svf"
         echo "Running: '$command' for run #$run"
         eval $command
     done
