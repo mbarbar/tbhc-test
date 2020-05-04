@@ -3,20 +3,20 @@
 svf=$1
 analysis_args=$2
 outdir=$3
-runs=$4
+type=$4
 
 if [ "$#" -ne 4 ]; then
-    echo "usage: $0 svf-binary analysis-args out-dir #runs"
+    echo "usage: $0 svf-binary analysis-args out-dir type"
     exit 1
 fi
 
 mkdir "$outdir"
 
-for run in `seq 1 $runs`; do
-    echo "======== RUN $run ========"
-    for f in *.bc; do
-        command="/usr/bin/time -v -o $outdir/$f.$run.time $svf $analysis_args $f > $outdir/$f.$run.svf"
-        echo "Running: '$command' for run #$run"
-        eval $command
-    done
+echo "======== gather.sh ========"
+for f in *.bc; do
+    echo $type > $outdir/$f.svf
+    command="/usr/bin/time -v -o $outdir/$f.time $svf $analysis_args $f >> $outdir/$f.svf"
+    echo "-------- $f --------"
+    echo "Running: '$command' for '$type'"
+    eval $command
 done
