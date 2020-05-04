@@ -5,3 +5,5 @@
 ./gather.sh $1 '-fspta                  -ctir-alias-eval' fspta-alias  fspta-alias
 ./gather.sh $1 '-fstbhc                 -ctir-alias-eval' fstbhc       fstbhc
 ./gather.sh $1 '-fstbhc -tbhc-all-reuse -ctir-alias-eval' fstbhc-reuse fstbhc-reuse
+
+./table.awk fspta-time/* fspta-alias/* fstbhc/* fstbhc-reuse/*
