@@ -1,4 +1,4 @@
-#!/usr/bin/nawk -f
+#!/usr/bin/awk -f
 
 # Round to two decimal places.
 function f2(n) {
