@@ -32,10 +32,10 @@ BEGIN {
     # fstbhc since alias testing requires full SVFG. fspta
     # does not require full SVFG for normal solving whereas
     # fstbhc does.
-    Fspta_time = "fspta-time"
-    Fspta_alias = "fspta-alias"
-    Fstbhc = "fstbhc"
-    Fstbhc_reuse = "fstbhc-reuse"
+    Fspta_time = "sparse-time"
+    Fspta_alias = "sparse-alias"
+    Fstbhc = "typeclone"
+    Fstbhc_reuse = "typeclone-reuse"
 
     Time = "time"
     Obj = "obj"
