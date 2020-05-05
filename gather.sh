@@ -15,7 +15,7 @@ mkdir "$outdir"
 echo "======== gather.sh ========"
 for f in *.bc; do
     echo $type > $outdir/$f.svf
-    command="/usr/bin/time -v -o $outdir/$f.time $svf $analysis_args $f >> $outdir/$f.svf"
+    command="$svf $analysis_args $f >> $outdir/$f.svf"
     echo "-------- $f --------"
     echo "Running: '$command' for '$type'"
     eval $command
