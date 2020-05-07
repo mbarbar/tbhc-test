@@ -20,7 +20,7 @@ for f in *.bc; do
     curr_pc=`echo "$pc + (25/$total_bc) * $curr_bc" | bc -l`
     printf "  ################### %2.2f%% done; next: $type for $f ###################  \n" $curr_pc
     echo $type > $outdir/$f.svf
-    command="$svf $analysis_args $f >> $outdir/$f.svf"
+    command="$svf -print-dchg $analysis_args $f >> $outdir/$f.svf"
     echo "Running: '$command' for '$type'\n"
     eval $command
     curr_bc=`expr $curr_bc + 1`

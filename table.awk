@@ -27,6 +27,53 @@ function pcimprov(f, t) {
     return ((t - f) / f) * 100
 }
 
+function collect_instcount() {
+    for (i in Benchmarks) {
+        bench = Benchmarks[i]
+        while ("./instcount " bench | getline) {
+            if ($0 ~ /^Loads/) {
+                stats[bench,Inst_loads] = $2 " " $3
+            } else if ($0 ~ /^Stores/) {
+                stats[bench,Inst_stores] = $2 " " $3
+            } else if ($0 ~ /^GEPs/) {
+                stats[bench,Inst_geps] = $2 " " $3
+            }
+        }
+
+        close("./instcount" bench)
+    }
+}
+
+function collect_du() {
+    for (i in Benchmarks) {
+        bench = Benchmarks[i]
+        "du " bench | getline
+        stats[bench,Du] = $1
+    }
+}
+
+function collect_scc() {
+    for (i in Benchmarks) {
+        bench = Benchmarks[i]
+        bench_ll = bench
+        sub(/\.bc/, ".ll", bench_ll)
+
+        source_files = ""
+        while ("./get-source-files.sh " bench_ll | getline) {
+            source_files = source_files " /home/paper133/coreutils/" $0
+        }
+
+        stats[bench,Scc] = 0
+        while ("scc " source_files | getline) {
+            if ($0 ~ /^C Header/) {
+                stats[bench,Scc] += $7
+            } else if ($0 ~ /^C  /) {
+                stats[bench,Scc] += $6
+            }
+        }
+    }
+}
+
 BEGIN {
     # Because time differs for fspta alias/time but not for
     # fstbhc since alias testing requires full SVFG. fspta
@@ -41,12 +88,21 @@ BEGIN {
     Obj = "obj"
     Alias_total = "alias-total"
     Alias_no = "alias-no"
+    Type_canon = "canon"
+    Type_structs = "structs"
+    Type_largest = "largest"
+    Inst_loads = "inst-loads"
+    Inst_stores = "inst-stores"
+    Inst_geps = "inst-geps"
+    Scc = "scc"
 
     # Same order as in paper.
     Benchmarks_n = split("du.bc date.bc touch.bc ptx.bc csplit.bc expr.bc "\
                          "tac.bc nl.bc mv.bc ls.bc ginstall.bc sort.bc", Benchmarks, " ")
 
-    output_type = "none"
+    collect_instcount()
+    collect_du()
+    collect_scc()
 }
 
 FNR == 1 {
@@ -100,6 +156,49 @@ FNR == 1 {
 # Total number of no-alias results.
 /NO +:/ {
     stats[benchmark,type,Alias_no] = $3
+}
+
+/# Canonical types/ {
+    stats[benchmark,Type_canon] = $5
+}
+
+/# structs/ {
+    stats[benchmark,Type_structs] = $4
+}
+
+/Largest struct/ {
+    stats[benchmark,Type_largest] = $4
+}
+
+function output_meta_line() {
+    print " + ----------- + ----- + ------- + ---------------------------------------- + --------- + ------- +"
+}
+
+function output_meta() {
+    print "    Table 2: META"
+    output_meta_line()
+    printf "| %11s | %5s | %7s | %40s | %9s | %7s |\n",
+           "Bench.", "LOC", "Size", "Instructions (ctir annotated)", "# Canon.", "Largest"
+    printf "| %11s | %5s | %7s |            ----------------------------- | %9s | %7s |\n",
+           "", "", "", "types", "struct"
+    printf "| %11s | %5s | %7s | %12s | %10s | %12s | %9s | %7s |\n",
+           "", "", "", "Loads", "Stores", "GEPs", "(structs)", ""
+    output_meta_line()
+
+    for (i = 1; i <= Benchmarks_n; i++) {
+        bench = Benchmarks[i]
+        printf "| %11s | %5s | %7s | %12s | %10s | %12s | %9s | %7s |\n",
+               bench,
+               stats[bench,Scc],
+               stats[bench,Du] " KB",
+               stats[bench,Inst_loads],
+               stats[bench,Inst_stores],
+               stats[bench,Inst_geps],
+               stats[bench,Type_canon] " (" stats[bench,Type_structs] ")",
+               stats[bench,Type_largest]
+    }
+
+    output_meta_line()
 }
 
 function output_time_line() {
@@ -208,6 +307,8 @@ function output_alias() {
 }
 
 END {
+    output_meta()
+    print ""
     output_time()
     print ""
     output_alias()
