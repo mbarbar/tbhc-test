@@ -177,17 +177,17 @@ function output_meta_line() {
 function output_meta() {
     print "    Table 2: META"
     output_meta_line()
-    printf "| %11s | %5s | %7s | %40s | %9s | %7s |\n",
+    printf " | %11s | %5s | %7s | %40s | %9s | %7s |\n",
            "Bench.", "LOC", "Size", "Instructions (ctir annotated)", "# Canon.", "Largest"
-    printf "| %11s | %5s | %7s |            ----------------------------- | %9s | %7s |\n",
+    printf " | %11s | %5s | %7s |            ----------------------------- | %9s | %7s |\n",
            "", "", "", "types", "struct"
-    printf "| %11s | %5s | %7s | %12s | %10s | %12s | %9s | %7s |\n",
+    printf " | %11s | %5s | %7s | %12s | %10s | %12s | %9s | %7s |\n",
            "", "", "", "Loads", "Stores", "GEPs", "(structs)", ""
     output_meta_line()
 
     for (i = 1; i <= Benchmarks_n; i++) {
         bench = Benchmarks[i]
-        printf "| %11s | %5s | %7s | %12s | %10s | %12s | %9s | %7s |\n",
+        printf " | %11s | %5s | %7s | %12s | %10s | %12s | %9s | %7s |\n",
                bench,
                stats[bench,Scc],
                stats[bench,Du] " KB",
