@@ -1,0 +1,500 @@
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           448
+TotalEdge           1393
+TotalCycle          4
+MaxNodeInCycle      2
+NodeInCycle         5
+CalRetPairInCycle   9
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+BBWith2Succ         1374
+BBWith3Succ         37
+BitCastNumber       220
+TotalPTAPAGEdges    12458
+TotalCallSite       1393
+LocalVarInRecur     76
+IndCallSites        19
+ReturnsNum          472
+CallsNum            1438
+GepsNum             2921
+CopysNum            1912
+StoresNum           3698
+LoadsNum            7894
+AddrsNum            2888
+NonPtrObj           1291
+ConstArrayObj       6
+ConstStructObj      2
+VarArrayObj         30
+VarStructObj        55
+FSObjNum            2250
+FIObjNum            47
+StackObjs           1559
+HeapObjs            22
+GlobalObjs          57
+FunctionObjs        448
+TotalPAGEdges       54464
+MaxStructSize       36
+TotalFieldObjects   356
+TotalObjects        2298
+TotalPointers       28838
+-------------------------------------------------------
+#######################################################
+
+*********Constraint Graph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+AvgIn/OutCopyEdge   0.70854
+AvgIn/OutLoadEdge   0.31472
+AvgIn/OutAddrEdge   0.20875
+AvgIn/OutEdge       1.34764
+NumOfCGNode         31135
+TotalValidNode      11909
+TotalValidObjNode   2273
+NumOfCGEdge         13563
+NumOfAddrs          2486
+NumOfCopys          5738
+NumOfGeps           2700
+NumOfLoads          3748
+NumOfStores         1377
+MaxInCopyEdge       50
+MaxOutCopyEdge      369
+MaxInLoadEdge       183
+MaxOutLoadEdge      54
+MaxInStoreEdge      30
+MaxOutStoreEdge     191
+AvgIn/OutStoreEdge  0
+MaxInAddrEdge       1
+MaxOutAddrEdge      285
+#######################################################
+
+*********Andersen Pointer Analysis Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           1.115
+CollapseTime        0.003
+CopyGepTime         0.363
+UpdateCGTime        0.002
+AvgTopLvlPtsSize    5.53488
+AvgPtsSetSize       1.98935
+LoadStoreTime       0.034
+SCCMergeTime        0.081
+SCCDetectTime       0.456
+PointsToConstPtr    752
+PointsToBlkPtr      0
+NullPointer         101
+MaxNodesInSCC       394
+NodesInCycles       936
+TotalPWCCycleNum    15
+TotalCycleNum       88
+NumOfSCCDetect      8
+IndEdgeSolved       18
+IndCallSites        19
+MaxPtsSetSize       27
+DYFieldObjs         356
+MemObjects          2298
+DYFieldPtrs         320
+NumOfFieldExpand    0
+NumOfSFRs           0
+GepProcessed        3778
+CopyProcessed       8942
+StoreProcessed      3555
+LoadProcessed       8038
+AddrProcessed       2581
+TotalObjects        2654
+TotalPointers       28838
+Pointers            28518
+Iterations          8
+#######################################################
+
+****Memory SSA Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+AverageRegSize      1.5704
+SSARenameTime       0.011
+InsertPHITime       0.002
+GenMUCHITime        0.031
+GenRegionTime       0.096
+TotalMSSATime       0.147
+BBHasMSSAPhi        839
+MSSAPhi             4066
+StoreHasChi         3471
+LoadHasMu           7894
+CSHasMu             540
+CSHasChi            455
+FunHasRetMu         318
+FunHasEntryChi      327
+StoreChiNode        3867
+LoadMuNode          8580
+CSMuNode            2520
+CSChiNode           1426
+FunRetMu            2809
+FunEntryChi         2847
+MemRegions          2088
+MaxRegSize          38
+#######################################################
+
+****SVFG Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           0.115
+ConnDirEdgeTime     0
+ConnIndEdgeTime     0.046
+TLNodeTime          0
+ATNodeTime          0.013
+OptTime             0.056
+AvgWeight           2.24581
+TotalNode           26559
+FormalIn            908
+FormalOut           48
+FormalParam         0
+FormalRet           0
+ActualIn            14
+ActualOut           489
+ActualParam         0
+ActualRet           0
+TotalEdge           49017
+DirectEdge          25190
+IndirectEdge        23827
+IndCallEdge         3916
+IndRetEdge          1838
+DirectCallEdge      1439
+DirectRetEdge       472
+AvgInDegree         1
+AvgOutDegree        1
+MaxInDegree         120
+MaxOutDegree        434
+AvgIndInDeg         1
+AvgIndOutDeg        3
+MaxIndInDeg         120
+MaxIndOutDeg        75
+MSSAPhi             1699
+PHI                 1555
+Addr                2888
+Copy                1536
+Gep                 2921
+Load                7894
+Store               3698
+#######################################################
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           448
+TotalEdge           1387
+TotalCycle          4
+MaxNodeInCycle      2
+NodeInCycle         5
+CalRetPairInCycle   9
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+BBWith2Succ         1374
+BBWith3Succ         37
+BitCastNumber       220
+TotalPTAPAGEdges    12458
+TotalCallSite       1393
+LocalVarInRecur     76
+IndCallSites        19
+ReturnsNum          472
+CallsNum            1438
+GepsNum             2921
+CopysNum            1912
+StoresNum           3698
+LoadsNum            7894
+AddrsNum            2888
+NonPtrObj           1291
+ConstArrayObj       6
+ConstStructObj      2
+VarArrayObj         30
+VarStructObj        55
+FSObjNum            2232
+FIObjNum            65
+StackObjs           1559
+HeapObjs            22
+GlobalObjs          57
+FunctionObjs        448
+TotalPAGEdges       54464
+MaxStructSize       36
+TotalFieldObjects   357
+TotalObjects        2298
+TotalPointers       28838
+-------------------------------------------------------
+#######################################################
+
+****Flow-Sensitive Pointer Analysis Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           12.534
+SolveTime           12.425
+SCCTime             0.197
+ProcessTime         6.571
+PropagationTime     4.893
+DirectPropaTime     0.05
+IndirectPropaTime   0
+Strong/WeakUpdTime  0.12
+AddrTime            0.011
+CopyGepTime         0.972
+LoadTime            3.001
+UpdateCGTime        0.002
+AvgPtsSize          100.728
+AvgTopLvlPtsSize    33.3577
+AvgAddrTakenVarPts  8.26418
+AvgINPtsSize        143.425
+AvgOUTPtsSize       146.196
+AverageSCCSize      24.3837
+StoreTime           0.249
+PointsToConstPtr    0
+PointsToBlkPtr      98
+StrongUpdates       1077
+FI_SNodesHaveIN     301
+FI_SNodesHaveOUT    0
+FO_SNodesHaveIN     0
+FO_SNodesHaveOUT    0
+AI_SNodesHaveIN     0
+AI_SNodesHaveOUT    0
+AO_SNodesHaveIN     274
+AO_SNodesHaveOUT    0
+LD_SNodesHaveIN     3405
+SNodesHaveIN        5345
+LD_SNodesHaveOUT    0
+SNodesHaveOUT       1247
+ST_SNodesHaveIN     677
+ST_SNodesHaveOUT    1247
+PHI_SNodesHaveIN    688
+PHI_SNodesHaveOUT   0
+VarHaveIN           12976
+VarHaveOUT          2851
+VarHaveIN_FI        1077
+VarHaveOUT_FI       0
+VarHaveIN_FO        0
+VarHaveOUT_FO       0
+VarHaveIN_AI        0
+VarHaveOUT_AI       0
+VarHaveIN_AO        1044
+VarHaveOUT_AO       0
+VarHaveIN_LD        6940
+VarHaveOUT_LD       0
+VarHaveIN_ST        2230
+VarHaveOUT_ST       2851
+VarHaveIN_PHI       1685
+VarHaveOUT_PHI      0
+MaxPtsSize          229
+MaxTopLvlPtsSize    229
+MaxINPtsSize        229
+MaxOUTPtsSize       229
+NumOfAddrTakenVar   16644
+MaxAddrTakenVarPts  229
+ProcessedAddr       6068
+ProcessedCopy       10818
+ProcessedGep        38345
+ProcessedLoad       112221
+ProcessedStore      47833
+ProcessedPhi        13648
+ProcessedAParam     0
+ProcessedFRet       0
+ProcessedMSSANode   48316
+NumOfNodesInSCC     8071
+MaxSCCSize          6344
+NumOfSCC            331
+NullPointer         118
+IndEdgeSolved       12
+DYFieldObjs         357
+MemObjects          2298
+DYFieldPtrs         320
+CopysNum            1536
+StoresNum           3698
+TotalObjects        2655
+TotalPointers       28838
+Pointers            28518
+Iterations          4
+#######################################################
+eval-indirect-calls 9 1 0 2 0 0 0 0 2 2 0 0 0 1 1 0 1 1 0 1 
+@@@@@@@@@ TBHC STATISTICS @@@@@@@@@
+  === Original objects to clones ===
+      1 : (20)[ 32319{struct.hash_tuning}, 32515{char *}, 32516{const int[11]}, 32517{char}, 32518{struct.tempnode}, 32519{int}, 32520{const _Bool *}, 32521{struct.hash_entry}, 32522{struct.keyfield}, 32523{_Bool}, 32524{struct.line}, 32525{long unsigned int}, 32526{struct.keyfield *}, 32527{void * *}, 32528{const struct.line *}, 32529{struct.hash_entry *}, 32530{struct._IO_FILE}, 32531{struct.merge_node}, 32532{struct.merge_node *}, 32533{const struct.line * *} ]
+      213 : (2)[ 32160{struct.option}, 32161{const struct.option[31]} ]
+      242 : (1)[ 32248{char * *} ]
+      255 : (1)[ 32249{char * *} ]
+      319 : (1)[ 32308{struct.keyfield *} ]
+      358 : (2)[ 32304{char *}, 32320{struct.line} ]
+      363 : (1)[ 32310{struct.tempnode *} ]
+      376 : (1)[ 32159{const _Bool *} ]
+      417 : (2)[ 32157{struct.month}, 32158{struct.month[12]} ]
+      420 : (12)[ 32156{char *}, 32371{struct.keyfield}, 32417{void * *}, 32427{struct.tempnode}, 32439{char}, 32449{struct.line}, 32460{const _Bool *}, 32463{struct.hash_entry}, 32484{struct.merge_node}, 32489{struct._IO_FILE}, 32492{const struct.line *}, 32508{int} ]
+      423 : (4)[ 32193{struct.md5_ctx}, 32194{const int[11]}, 32271{char *}, 32330{int} ]
+      471 : (1)[ 32297{struct.stat} ]
+      508 : (12)[ 32155{const _Bool *}, 32372{struct.keyfield}, 32418{void * *}, 32428{struct.tempnode}, 32440{char}, 32446{char *}, 32450{struct.line}, 32464{struct.hash_entry}, 32485{struct.merge_node}, 32490{struct._IO_FILE}, 32493{const struct.line *}, 32509{int} ]
+      511 : (12)[ 32154{const _Bool *}, 32373{struct.keyfield}, 32419{void * *}, 32429{struct.tempnode}, 32441{char}, 32447{char *}, 32451{struct.line}, 32465{struct.hash_entry}, 32486{struct.merge_node}, 32491{struct._IO_FILE}, 32494{const struct.line *}, 32510{int} ]
+      517 : (1)[ 32318{long unsigned int} ]
+      634 : (2)[ 32237{struct.quoting_options}, 32311{const int[11]} ]
+      637 : (3)[ 32232{struct.quoting_options}, 32303{int}, 32312{const int[11]} ]
+      668 : (12)[ 32360{char *}, 32431{const _Bool *}, 32435{struct.keyfield}, 32436{char}, 32442{struct.tempnode}, 32461{struct.line}, 32466{void * *}, 32475{struct.hash_entry}, 32487{struct.merge_node}, 32496{const struct.line *}, 32499{struct._IO_FILE}, 32505{int} ]
+      669 : (4)[ 32238{long unsigned int}, 32239{char *}, 32325{struct.slotvec *}, 32326{struct.slotvec} ]
+      1247 : (1)[ 32150{struct.lconv} ]
+      2377 : (1)[ 32399{char *} ]
+      2412 : (12)[ 32430{char *}, 32432{const _Bool *}, 32437{char}, 32438{struct.keyfield}, 32443{struct.tempnode}, 32462{struct.line}, 32467{void * *}, 32476{struct.hash_entry}, 32488{struct.merge_node}, 32497{const struct.line *}, 32500{struct._IO_FILE}, 32506{int} ]
+      2662 : (1)[ 32140{const unsigned short *} ]
+      2681 : (1)[ 32139{const unsigned short *} ]
+      2735 : (1)[ 32141{char *} ]
+      2767 : (1)[ 32138{const unsigned short *} ]
+      2907 : (2)[ 32294{char * *}, 32332{char *} ]
+      3296 : (2)[ 32295{char * *}, 32333{char *} ]
+      4256 : (2)[ 32350{int}, 32362{long unsigned int[16]} ]
+      4444 : (1)[ 32401{char *} ]
+      4942 : (1)[ 32129{int} ]
+      5090 : (1)[ 32247{const FILE->struct._IO_FILE * *} ]
+      5378 : (1)[ 32126{int} ]
+      5388 : (1)[ 32345{char *} ]
+      5592 : (12)[ 32329{char}, 32338{char *}, 32339{struct.line}, 32349{struct.tempnode}, 32363{void * *}, 32374{struct.keyfield}, 32389{const _Bool *}, 32397{struct._IO_FILE}, 32411{const struct.line *}, 32452{struct.hash_entry}, 32468{struct.merge_node}, 32477{int} ]
+      6495 : (1)[ 32149{int} ]
+      7881 : (2)[ 32400{int}, 32424{char *} ]
+      8919 : (1)[ 32351{int} ]
+      8929 : (4)[ 32265{char *}, 32268{const int[11]}, 32269{struct.md5_ctx}, 32309{struct.md5_ctx[2]} ]
+      9015 : (1)[ 32352{int} ]
+      9306 : (1)[ 32222{int} ]
+      9315 : (1)[ 32153{int} ]
+      9320 : (1)[ 32152{int} ]
+      10797 : (1)[ 32128{int} ]
+      10809 : (1)[ 32385{struct._IO_FILE} ]
+      10923 : (1)[ 32125{int} ]
+      10929 : (1)[ 32164{int} ]
+      10938 : (1)[ 32124{int} ]
+      10943 : (1)[ 32123{int} ]
+      11024 : (1)[ 32122{int} ]
+      11036 : (1)[ 32163{int} ]
+      11042 : (1)[ 32121{int} ]
+      11064 : (1)[ 32120{int} ]
+      11077 : (1)[ 32162{int} ]
+      11860 : (12)[ 32305{struct.tempnode}, 32340{struct.line}, 32343{char}, 32358{char *}, 32361{struct._IO_FILE}, 32364{void * *}, 32375{struct.keyfield}, 32390{const _Bool *}, 32421{const struct.line *}, 32444{struct.hash_entry}, 32469{struct.merge_node}, 32478{int} ]
+      11886 : (1)[ 32106{int} ]
+      12761 : (1)[ 32102{int} ]
+      12820 : (1)[ 32135{int} ]
+      12882 : (1)[ 32133{int} ]
+      12887 : (1)[ 32132{int} ]
+      12899 : (1)[ 32148{int} ]
+      12915 : (1)[ 32131{int} ]
+      12935 : (12)[ 32306{struct.tempnode}, 32341{struct.line}, 32344{char}, 32359{char *}, 32365{void * *}, 32376{struct.keyfield}, 32391{const _Bool *}, 32398{struct._IO_FILE}, 32422{const struct.line *}, 32445{struct.hash_entry}, 32470{struct.merge_node}, 32479{int} ]
+      12942 : (1)[ 32130{int} ]
+      12950 : (1)[ 32147{int} ]
+      13165 : (1)[ 32101{const unsigned short *} ]
+      13631 : (1)[ 32105{int} ]
+      13644 : (1)[ 32104{int} ]
+      13655 : (1)[ 32103{int} ]
+      15856 : (4)[ 32195{const int[11]}, 32197{struct.md5_ctx}, 32266{char *}, 32380{int} ]
+      15878 : (1)[ 32331{int} ]
+      16196 : (4)[ 32196{const int[11]}, 32198{struct.md5_ctx}, 32267{char *}, 32381{int} ]
+      17610 : (1)[ 32276{struct.hash_table} ]
+      17652 : (1)[ 32423{struct.hash_entry} ]
+      18254 : (1)[ 32337{struct.hash_entry} ]
+      18614 : (12)[ 32324{struct.hash_entry}, 32495{struct.tempnode}, 32498{char}, 32501{struct.line}, 32502{char *}, 32503{const _Bool *}, 32504{struct.keyfield}, 32507{void * *}, 32511{const struct.line *}, 32512{struct._IO_FILE}, 32513{struct.merge_node}, 32514{int} ]
+      19920 : (1)[ 32291{const unsigned short *} ]
+      19944 : (1)[ 32290{const unsigned short *} ]
+      20005 : (1)[ 32287{char} ]
+      20012 : (1)[ 32288{char} ]
+      20418 : (1)[ 32253{int} ]
+      20435 : (1)[ 32224{int} ]
+      20529 : (1)[ 32252{int} ]
+      20552 : (1)[ 32254{int} ]
+      20578 : (1)[ 32246{char} ]
+      20715 : (1)[ 32241{int} ]
+      20732 : (1)[ 32242{int} ]
+      20966 : (1)[ 32230{int} ]
+      20995 : (1)[ 32231{int} ]
+      21729 : (1)[ 32221{const unsigned short *} ]
+      22390 : (1)[ 32321{char} ]
+      22518 : (1)[ 32250{int} ]
+      22576 : (1)[ 32251{int} ]
+      22703 : (1)[ 32205{int} ]
+      22865 : (1)[ 32236{int} ]
+      22932 : (2)[ 32313{const int[11]}, 32327{struct.quoting_options} ]
+      22983 : (2)[ 32314{const int[11]}, 32328{struct.quoting_options} ]
+      23051 : (2)[ 32315{const int[11]}, 32334{struct.quoting_options} ]
+      23122 : (2)[ 32316{const int[11]}, 32335{struct.quoting_options} ]
+      23124 : (1)[ 32274{struct.quoting_options} ]
+      23190 : (2)[ 32317{const int[11]}, 32336{struct.quoting_options} ]
+      23450 : (12)[ 32355{struct.line}, 32366{void * *}, 32377{struct.keyfield}, 32382{struct.tempnode}, 32386{char *}, 32392{const _Bool *}, 32408{char}, 32415{struct._IO_FILE}, 32453{struct.hash_entry}, 32457{const struct.line *}, 32471{struct.merge_node}, 32480{int} ]
+      23726 : (1)[ 32168{int} ]
+      23729 : (1)[ 32167{int} ]
+      23853 : (1)[ 32165{int} ]
+      23879 : (1)[ 32223{int} ]
+      26692 : (1)[ 32228{int} ]
+      26699 : (1)[ 32229{int} ]
+      27226 : (24)[ 32255{struct.sortfile *}, 32256{struct.sortfile}, 32257{char * *}, 32258{struct.randread_source}, 32259{struct.isaac}, 32260{struct.isaac_state}, 32261{long unsigned int[16]}, 32262{struct.heap}, 32263{void * *}, 32264{char *}, 32270{const struct.line * *}, 32272{struct.buffer *}, 32273{struct.buffer}, 32275{const FILE->struct._IO_FILE * *}, 32286{struct.tempnode}, 32289{struct.merge_node}, 32292{struct.keyfield}, 32307{char}, 32342{struct.line}, 32353{int}, 32393{const _Bool *}, 32425{const struct.line *}, 32433{struct._IO_FILE}, 32434{struct.hash_entry} ]
+      27295 : (15)[ 32347{struct.slotvec *}, 32348{struct.slotvec}, 32354{char * *}, 32367{void * *}, 32370{char}, 32396{char *}, 32412{struct.line}, 32413{struct.tempnode}, 32414{const _Bool *}, 32420{struct.keyfield}, 32426{const struct.line *}, 32448{struct._IO_FILE}, 32454{struct.hash_entry}, 32472{struct.merge_node}, 32481{int} ]
+      27449 : (2)[ 32243{struct.sortfile}, 32244{struct.sortfile *} ]
+      27535 : (1)[ 32240{int} ]
+      27635 : (1)[ 32235{int} ]
+      27676 : (1)[ 32146{int} ]
+      27685 : (1)[ 32234{int} ]
+      27690 : (1)[ 32233{int} ]
+      27720 : (2)[ 32293{char * *}, 32322{char *} ]
+      27774 : (1)[ 32145{int} ]
+      27785 : (1)[ 32227{const unsigned short *} ]
+      27844 : (1)[ 32226{int} ]
+      27849 : (1)[ 32225{int} ]
+      28241 : (2)[ 32296{char * *}, 32323{char *} ]
+      28294 : (1)[ 32137{int} ]
+      28305 : (1)[ 32220{const unsigned short *} ]
+      28363 : (1)[ 32214{int} ]
+      28368 : (1)[ 32213{int} ]
+      28659 : (1)[ 32199{int} ]
+      28671 : (1)[ 32202{int} ]
+      28899 : (1)[ 32170{int} ]
+      28942 : (1)[ 32169{int} ]
+      28949 : (1)[ 32171{int} ]
+      29195 : (1)[ 32134{int} ]
+      30577 : (1)[ 32144{int} ]
+      30585 : (1)[ 32127{int} ]
+      30727 : (1)[ 32142{int} ]
+      30734 : (1)[ 32143{int} ]
+      30787 : (12)[ 32346{struct._IO_FILE}, 32356{struct.line}, 32368{void * *}, 32378{struct.keyfield}, 32383{struct.tempnode}, 32387{char *}, 32394{const _Bool *}, 32409{char}, 32455{struct.hash_entry}, 32458{const struct.line *}, 32473{struct.merge_node}, 32482{int} ]
+      30813 : (1)[ 32203{int} ]
+      30820 : (1)[ 32204{int} ]
+      30831 : (12)[ 32357{struct.line}, 32369{void * *}, 32379{struct.keyfield}, 32384{struct.tempnode}, 32388{char *}, 32395{const _Bool *}, 32410{char}, 32416{struct._IO_FILE}, 32456{struct.hash_entry}, 32459{const struct.line *}, 32474{struct.merge_node}, 32483{int} ]
+      30837 : (1)[ 32200{int} ]
+      30844 : (1)[ 32201{int} ]
+      30863 : (2)[ 32136{char *}, 32245{char} ]
+      30921 : (1)[ 32119{int} ]
+      31000 : (1)[ 32118{int} ]
+      31011 : (1)[ 32219{int} ]
+      31101 : (1)[ 32117{int} ]
+      31118 : (1)[ 32115{struct.timespec} ]
+      31147 : (1)[ 32113{struct.timespec} ]
+      31149 : (1)[ 32111{struct.timespec} ]
+      31218 : (1)[ 32109{struct.timespec} ]
+      31249 : (1)[ 32107{struct.timespec} ]
+      111100003 : (1)[ 32186{struct.obstack} ]
+      111100014 : (1)[ 32179{struct.obstack} ]
+      111100025 : (1)[ 32172{struct.obstack} ]
+      1072400000 : (1)[ 32215{const int[11]} ]
+      1284000000 : (1)[ 32216{const int[11]} ]
+  Total: 3034 (379 clones)
+  ==================================
+  INITIALISE : 8680
+  TBWU       : 1409409
+  TBSSU      : 8811
+  TBSU       : 0
+  REUSE      : 61665
+  AGG CASE   : 36691
+
+  STACK/GLOBAL OBJECTS
+    INITIALISE : 4485
+    TBWU       : 731598
+    TBSSU      : 4665
+    TBSU       : 0
+    REUSE      : 29259
+    AGG CASE   : 20705
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+!!!!!! VALIDATING TBHC TESTS !!!!!!

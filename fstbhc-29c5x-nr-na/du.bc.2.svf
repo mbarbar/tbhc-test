@@ -1,0 +1,598 @@
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           572
+TotalEdge           2085
+TotalCycle          11
+MaxNodeInCycle      4
+NodeInCycle         17
+CalRetPairInCycle   23
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+BBWith2Succ         3117
+BBWith3Succ         62
+BitCastNumber       872
+TotalPTAPAGEdges    23215
+TotalCallSite       2020
+LocalVarInRecur     323
+IndCallSites        16
+ReturnsNum          707
+CallsNum            2443
+GepsNum             6110
+CopysNum            4111
+StoresNum           6132
+LoadsNum            14909
+AddrsNum            4316
+NonPtrObj           2090
+ConstArrayObj       6
+ConstStructObj      3
+VarArrayObj         27
+VarStructObj        83
+FSObjNum            3561
+FIObjNum            125
+StackObjs           2766
+HeapObjs            106
+GlobalObjs          46
+FunctionObjs        572
+TotalPAGEdges       100514
+MaxStructSize       39
+TotalFieldObjects   604
+TotalObjects        3687
+TotalPointers       53923
+-------------------------------------------------------
+#######################################################
+
+*********Constraint Graph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+AvgIn/OutCopyEdge   0.788668
+AvgIn/OutLoadEdge   0.339468
+AvgIn/OutAddrEdge   0.165297
+AvgIn/OutEdge       1.38402
+NumOfCGNode         57818
+TotalValidNode      22874
+TotalValidObjNode   3597
+NumOfCGEdge         27877
+NumOfAddrs          3781
+NumOfCopys          12034
+NumOfGeps           6006
+NumOfLoads          7765
+NumOfStores         2072
+MaxInCopyEdge       104
+MaxOutCopyEdge      1211
+MaxInLoadEdge       204
+MaxOutLoadEdge      128
+MaxInStoreEdge      25
+MaxOutStoreEdge     213
+AvgIn/OutStoreEdge  0
+MaxInAddrEdge       1
+MaxOutAddrEdge      300
+#######################################################
+
+*********Andersen Pointer Analysis Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           3.103
+CollapseTime        0.016
+CopyGepTime         0.964
+UpdateCGTime        0.003
+AvgTopLvlPtsSize    26.8628
+AvgPtsSetSize       10.0946
+LoadStoreTime       0.283
+SCCMergeTime        0.251
+SCCDetectTime       1.192
+PointsToConstPtr    2078
+PointsToBlkPtr      0
+NullPointer         173
+MaxNodesInSCC       548
+NodesInCycles       1015
+TotalPWCCycleNum    14
+TotalCycleNum       96
+NumOfSCCDetect      9
+IndEdgeSolved       81
+IndCallSites        16
+MaxPtsSetSize       91
+DYFieldObjs         604
+MemObjects          3687
+DYFieldPtrs         350
+NumOfFieldExpand    0
+NumOfSFRs           0
+GepProcessed        12846
+CopyProcessed       29273
+StoreProcessed      25129
+LoadProcessed       116629
+AddrProcessed       3985
+TotalObjects        4291
+TotalPointers       53923
+Pointers            53573
+Iterations          9
+#######################################################
+
+****Memory SSA Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+AverageRegSize      2.65872
+SSARenameTime       0.014
+InsertPHITime       0.015
+GenMUCHITime        0.077
+GenRegionTime       0.352
+TotalMSSATime       0.466
+BBHasMSSAPhi        1656
+MSSAPhi             8852
+StoreHasChi         5949
+LoadHasMu           14909
+CSHasMu             890
+CSHasChi            799
+FunHasRetMu         460
+FunHasEntryChi      463
+StoreChiNode        6892
+LoadMuNode          17392
+CSMuNode            3530
+CSChiNode           2009
+FunRetMu            4846
+FunEntryChi         4858
+MemRegions          3651
+MaxRegSize          102
+#######################################################
+
+****SVFG Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           0.293
+ConnDirEdgeTime     0
+ConnIndEdgeTime     0.114
+TLNodeTime          0
+ATNodeTime          0.029
+OptTime             0.15
+AvgWeight           9.1671
+TotalNode           48941
+FormalIn            1525
+FormalOut           191
+FormalParam         0
+FormalRet           0
+ActualIn            25
+ActualOut           534
+ActualParam         0
+ActualRet           0
+TotalEdge           91023
+DirectEdge          45714
+IndirectEdge        45309
+IndCallEdge         8007
+IndRetEdge          3971
+DirectCallEdge      2443
+DirectRetEdge       707
+AvgInDegree         1
+AvgOutDegree        1
+MaxInDegree         100
+MaxOutDegree        975
+AvgIndInDeg         1
+AvgIndOutDeg        4
+MaxIndInDeg         100
+MaxIndOutDeg        132
+MSSAPhi             3678
+PHI                 2519
+Addr                4316
+Copy                3344
+Gep                 6110
+Load                14909
+Store               6132
+#######################################################
+
+*********CallGraph Stats***************
+################ (program : )###############
+-------------------------------------------------------
+TotalNode           572
+TotalEdge           2081
+TotalCycle          11
+MaxNodeInCycle      4
+NodeInCycle         17
+CalRetPairInCycle   23
+#######################################################
+
+*********General Stats***************
+################ (program : )###############
+BBWith2Succ         3117
+BBWith3Succ         62
+BitCastNumber       872
+TotalPTAPAGEdges    23215
+TotalCallSite       2020
+LocalVarInRecur     329
+IndCallSites        16
+ReturnsNum          707
+CallsNum            2443
+GepsNum             6110
+CopysNum            4111
+StoresNum           6132
+LoadsNum            14909
+AddrsNum            4316
+NonPtrObj           2090
+ConstArrayObj       6
+ConstStructObj      3
+VarArrayObj         27
+VarStructObj        83
+FSObjNum            3536
+FIObjNum            150
+StackObjs           2766
+HeapObjs            106
+GlobalObjs          46
+FunctionObjs        572
+TotalPAGEdges       100514
+MaxStructSize       39
+TotalFieldObjects   605
+TotalObjects        3687
+TotalPointers       53923
+-------------------------------------------------------
+#######################################################
+
+****Flow-Sensitive Pointer Analysis Statistics****
+
+************************
+################ (program : )###############
+-------------------------------------------------------
+TotalTime           96.097
+SolveTime           95.854
+SCCTime             0.664
+ProcessTime         27.818
+PropagationTime     65.726
+DirectPropaTime     0.054
+IndirectPropaTime   0
+Strong/WeakUpdTime  0.349
+AddrTime            0.053
+CopyGepTime         3.573
+LoadTime            14.91
+UpdateCGTime        0.006
+AvgPtsSize          285.11
+AvgTopLvlPtsSize    41.4477
+AvgAddrTakenVarPts  10.0235
+AvgINPtsSize        331.775
+AvgOUTPtsSize       331.395
+AverageSCCSize      20.2311
+StoreTime           0.461
+PointsToConstPtr    0
+PointsToBlkPtr      47
+StrongUpdates       1558
+FI_SNodesHaveIN     465
+FI_SNodesHaveOUT    0
+FO_SNodesHaveIN     0
+FO_SNodesHaveOUT    0
+AI_SNodesHaveIN     0
+AI_SNodesHaveOUT    0
+AO_SNodesHaveIN     298
+AO_SNodesHaveOUT    0
+LD_SNodesHaveIN     6567
+SNodesHaveIN        9383
+LD_SNodesHaveOUT    0
+SNodesHaveOUT       1629
+ST_SNodesHaveIN     801
+ST_SNodesHaveOUT    1629
+PHI_SNodesHaveIN    1252
+PHI_SNodesHaveOUT   0
+VarHaveIN           90454
+VarHaveOUT          12707
+VarHaveIN_FI        5925
+VarHaveOUT_FI       0
+VarHaveIN_FO        0
+VarHaveOUT_FO       0
+VarHaveIN_AI        0
+VarHaveOUT_AI       0
+VarHaveIN_AO        4593
+VarHaveOUT_AO       0
+VarHaveIN_LD        56251
+VarHaveOUT_LD       0
+VarHaveIN_ST        12638
+VarHaveOUT_ST       12707
+VarHaveIN_PHI       11047
+VarHaveOUT_PHI      0
+MaxPtsSize          695
+MaxTopLvlPtsSize    695
+MaxINPtsSize        695
+MaxOUTPtsSize       695
+NumOfAddrTakenVar   36680
+MaxAddrTakenVarPts  695
+ProcessedAddr       13525
+ProcessedCopy       18289
+ProcessedGep        61288
+ProcessedLoad       207845
+ProcessedStore      66177
+ProcessedPhi        16795
+ProcessedAParam     0
+ProcessedFRet       0
+ProcessedMSSANode   88405
+NumOfNodesInSCC     12867
+MaxSCCSize          9877
+NumOfSCC            636
+NullPointer         1597
+IndEdgeSolved       77
+DYFieldObjs         605
+MemObjects          3687
+DYFieldPtrs         350
+CopysNum            3344
+StoresNum           6132
+TotalObjects        4292
+TotalPointers       53923
+Pointers            53573
+Iterations          6
+#######################################################
+eval-indirect-calls 30 1 1 2 2 1 15 15 0 0 0 3 15 15 0 3 4 
+@@@@@@@@@ TBHC STATISTICS @@@@@@@@@
+  === Original objects to clones ===
+      1 : (28)[ 59321{struct.hash_tuning}, 59397{struct._ftsent}, 59453{struct.hash_entry}, 59458{char *}, 59479{struct.stat}, 59510{struct.hash_table}, 59536{struct._ftsent *}, 59572{struct.cycle_check_state}, 59593{struct.dev_ino}, 59615{struct._ftsent * *}, 59645{char}, 59678{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59708{struct.exclude_segment}, 59738{struct.mount_entry}, 59819{struct.dev_type}, 59937{struct.di_ent}, 59960{struct.ino_map_ent}, 59983{struct.Active_dir}, 60051{__syscall_slong_t->long int[3]}, 60052{int *}, 60053{const enum unsigned int[5]}, 60055{struct.re_state_table_entry}, 60056{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }}, 60057{struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int }}, 60059{re_token_t->struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int } *}, 60060{re_node_set->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * } *}, 60061{struct.re_dfastate_t}, 60062{struct.bin_tree_t} ]
+      91 : (1)[ 59246{int} ]
+      94 : (1)[ 59247{long unsigned int} ]
+      178 : (2)[ 59237{struct.option}, 59238{const struct.option[26]} ]
+      197 : (1)[ 59248{long unsigned int} ]
+      225 : (1)[ 59240{char * *} ]
+      272 : (1)[ 59241{char * *} ]
+      316 : (1)[ 59284{char *} ]
+      322 : (1)[ 59127{struct.duinfo} ]
+      432 : (1)[ 59249{char * *} ]
+      482 : (2)[ 59097{struct.quoting_options}, 59312{int *} ]
+      485 : (3)[ 59095{struct.quoting_options}, 59285{int}, 59313{int *} ]
+      516 : (18)[ 59509{char *}, 59898{struct._ftsent}, 59902{struct.hash_entry}, 59911{struct.stat}, 59920{char}, 59925{struct.hash_table}, 59929{struct.exclude_segment}, 59931{struct._ftsent *}, 59932{struct.mount_entry}, 60006{struct._ftsent * *}, 60008{struct.cycle_check_state}, 60009{struct.dev_ino}, 60010{struct.hash_tuning}, 60011{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 60019{struct.dev_type}, 60047{struct.di_ent}, 60048{struct.ino_map_ent}, 60049{struct.Active_dir} ]
+      517 : (4)[ 59089{long unsigned int}, 59091{char *}, 59332{struct.slotvec *}, 59333{struct.slotvec} ]
+      1133 : (1)[ 59279{char} ]
+      1295 : (1)[ 59087{int} ]
+      1441 : (2)[ 59264{char}, 59282{char *} ]
+      1556 : (1)[ 59086{int} ]
+      1654 : (1)[ 59085{int} ]
+      1883 : (1)[ 59082{int} ]
+      1888 : (1)[ 59081{int} ]
+      1923 : (1)[ 59080{int} ]
+      2035 : (1)[ 59077{struct.timespec} ]
+      3328 : (1)[ 59215{struct.argv_iterator} ]
+      3369 : (1)[ 59209{struct.argv_iterator} ]
+      3532 : (18)[ 59378{struct.hash_entry}, 59398{struct._ftsent}, 59430{struct.hash_tuning}, 59459{char *}, 59480{struct.stat}, 59511{struct.hash_table}, 59537{struct._ftsent *}, 59573{struct.cycle_check_state}, 59594{struct.dev_ino}, 59616{struct._ftsent * *}, 59646{char}, 59679{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59709{struct.exclude_segment}, 59739{struct.mount_entry}, 59820{struct.dev_type}, 59938{struct.di_ent}, 59961{struct.ino_map_ent}, 59984{struct.Active_dir} ]
+      3578 : (1)[ 59199{int} ]
+      3592 : (1)[ 59198{int} ]
+      3603 : (1)[ 59197{int} ]
+      3632 : (1)[ 59193{struct.di_set} ]
+      3642 : (18)[ 59379{struct.hash_entry}, 59399{struct._ftsent}, 59431{struct.hash_tuning}, 59460{char *}, 59481{struct.stat}, 59512{struct.hash_table}, 59538{struct._ftsent *}, 59574{struct.cycle_check_state}, 59595{struct.dev_ino}, 59617{struct._ftsent * *}, 59647{char}, 59680{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59710{struct.exclude_segment}, 59740{struct.mount_entry}, 59821{struct.dev_type}, 59939{struct.di_ent}, 59962{struct.ino_map_ent}, 59985{struct.Active_dir} ]
+      3644 : (18)[ 59380{struct.hash_entry}, 59400{struct._ftsent}, 59432{struct.hash_tuning}, 59461{char *}, 59482{struct.stat}, 59513{struct.hash_table}, 59539{struct._ftsent *}, 59575{struct.cycle_check_state}, 59596{struct.dev_ino}, 59618{struct._ftsent * *}, 59648{char}, 59681{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59711{struct.exclude_segment}, 59741{struct.mount_entry}, 59822{struct.dev_type}, 59940{struct.di_ent}, 59963{struct.ino_map_ent}, 59986{struct.Active_dir} ]
+      3646 : (18)[ 59381{struct.hash_entry}, 59401{struct._ftsent}, 59433{struct.hash_tuning}, 59462{char *}, 59483{struct.stat}, 59514{struct.hash_table}, 59540{struct._ftsent *}, 59576{struct.cycle_check_state}, 59597{struct.dev_ino}, 59619{struct._ftsent * *}, 59649{char}, 59682{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59712{struct.exclude_segment}, 59742{struct.mount_entry}, 59823{struct.dev_type}, 59941{struct.di_ent}, 59964{struct.ino_map_ent}, 59987{struct.Active_dir} ]
+      3905 : (18)[ 59302{struct.di_ent}, 59502{struct.ino_map_ent}, 59503{struct.Active_dir}, 59764{char *}, 59777{struct._ftsent}, 59790{struct.hash_entry}, 59797{struct.hash_tuning}, 59807{struct.stat}, 59812{struct.exclude_segment}, 59842{struct.mount_entry}, 59851{struct._ftsent *}, 59855{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59865{char}, 59881{struct.cycle_check_state}, 59886{struct.dev_ino}, 59891{struct.hash_table}, 59903{struct._ftsent * *}, 59912{struct.dev_type} ]
+      3953 : (18)[ 59382{struct.hash_entry}, 59402{struct._ftsent}, 59434{struct.hash_tuning}, 59463{char *}, 59484{struct.stat}, 59515{struct.hash_table}, 59541{struct._ftsent *}, 59577{struct.cycle_check_state}, 59598{struct.dev_ino}, 59620{struct._ftsent * *}, 59650{char}, 59683{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59713{struct.exclude_segment}, 59743{struct.mount_entry}, 59824{struct.dev_type}, 59942{struct.di_ent}, 59965{struct.ino_map_ent}, 59988{struct.Active_dir} ]
+      5200 : (18)[ 59383{struct.hash_entry}, 59403{struct._ftsent}, 59435{struct.hash_tuning}, 59464{char *}, 59485{struct.stat}, 59516{struct.hash_table}, 59542{struct._ftsent *}, 59578{struct.cycle_check_state}, 59599{struct.dev_ino}, 59621{struct._ftsent * *}, 59651{char}, 59684{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59714{struct.exclude_segment}, 59744{struct.mount_entry}, 59825{struct.dev_type}, 59943{struct.di_ent}, 59966{struct.ino_map_ent}, 59989{struct.Active_dir} ]
+      5202 : (18)[ 59384{struct.hash_entry}, 59404{struct._ftsent}, 59436{struct.hash_tuning}, 59465{char *}, 59486{struct.stat}, 59517{struct.hash_table}, 59543{struct._ftsent *}, 59579{struct.cycle_check_state}, 59600{struct.dev_ino}, 59622{struct._ftsent * *}, 59652{char}, 59685{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59715{struct.exclude_segment}, 59745{struct.mount_entry}, 59826{struct.dev_type}, 59944{struct.di_ent}, 59967{struct.ino_map_ent}, 59990{struct.Active_dir} ]
+      5209 : (18)[ 59385{struct.hash_entry}, 59405{struct._ftsent}, 59437{struct.hash_tuning}, 59466{char *}, 59487{struct.stat}, 59518{struct.hash_table}, 59544{struct._ftsent *}, 59580{struct.cycle_check_state}, 59601{struct.dev_ino}, 59623{struct._ftsent * *}, 59653{char}, 59686{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59716{struct.exclude_segment}, 59746{struct.mount_entry}, 59827{struct.dev_type}, 59945{struct.di_ent}, 59968{struct.ino_map_ent}, 59991{struct.Active_dir} ]
+      5211 : (18)[ 59386{struct.hash_entry}, 59406{struct._ftsent}, 59438{struct.hash_tuning}, 59467{char *}, 59488{struct.stat}, 59519{struct.hash_table}, 59545{struct._ftsent *}, 59581{struct.cycle_check_state}, 59602{struct.dev_ino}, 59624{struct._ftsent * *}, 59654{char}, 59687{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59717{struct.exclude_segment}, 59747{struct.mount_entry}, 59828{struct.dev_type}, 59946{struct.di_ent}, 59969{struct.ino_map_ent}, 59992{struct.Active_dir} ]
+      5214 : (18)[ 59387{struct.hash_entry}, 59407{struct._ftsent}, 59439{struct.hash_tuning}, 59468{char *}, 59489{struct.stat}, 59520{struct.hash_table}, 59546{struct._ftsent *}, 59582{struct.cycle_check_state}, 59603{struct.dev_ino}, 59625{struct._ftsent * *}, 59655{char}, 59688{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59718{struct.exclude_segment}, 59748{struct.mount_entry}, 59829{struct.dev_type}, 59947{struct.di_ent}, 59970{struct.ino_map_ent}, 59993{struct.Active_dir} ]
+      5283 : (1)[ 59050{struct.mbchar} ]
+      5561 : (1)[ 59222{int} ]
+      5622 : (1)[ 59221{const unsigned short *} ]
+      5643 : (1)[ 59220{const unsigned short *} ]
+      5685 : (1)[ 59223{int} ]
+      5704 : (1)[ 60054{void fn(struct.exclude *, const char *, int) *} ]
+      5757 : (1)[ 59265{struct._IO_FILE} ]
+      9115 : (1)[ 59025{int} ]
+      9140 : (1)[ 59029{int} ]
+      9176 : (1)[ 59024{int} ]
+      9935 : (18)[ 59388{struct.hash_entry}, 59408{struct._ftsent}, 59440{struct.hash_tuning}, 59469{char *}, 59490{struct.stat}, 59521{struct.hash_table}, 59547{struct._ftsent *}, 59583{struct.cycle_check_state}, 59604{struct.dev_ino}, 59626{struct._ftsent * *}, 59656{char}, 59689{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59719{struct.exclude_segment}, 59749{struct.mount_entry}, 59830{struct.dev_type}, 59948{struct.di_ent}, 59971{struct.ino_map_ent}, 59994{struct.Active_dir} ]
+      9942 : (18)[ 59389{struct.hash_entry}, 59409{struct._ftsent}, 59441{struct.hash_tuning}, 59470{char *}, 59491{struct.stat}, 59522{struct.hash_table}, 59548{struct._ftsent *}, 59584{struct.cycle_check_state}, 59605{struct.dev_ino}, 59627{struct._ftsent * *}, 59657{char}, 59690{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59720{struct.exclude_segment}, 59750{struct.mount_entry}, 59831{struct.dev_type}, 59949{struct.di_ent}, 59972{struct.ino_map_ent}, 59995{struct.Active_dir} ]
+      9945 : (18)[ 59038{struct.hash_table}, 59325{struct.exclude_segment}, 59340{struct._ftsent *}, 59342{struct._ftsent}, 59359{struct.stat}, 59361{char *}, 59363{struct.cycle_check_state}, 59364{struct.dev_ino}, 59366{struct._ftsent * *}, 59417{char}, 59567{struct.mount_entry}, 59669{struct.hash_tuning}, 59674{struct.hash_entry}, 59691{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59860{struct.dev_type}, 60013{struct.di_ent}, 60015{struct.ino_map_ent}, 60017{struct.Active_dir} ]
+      9987 : (18)[ 59390{struct.hash_entry}, 59410{struct._ftsent}, 59442{struct.hash_tuning}, 59471{char *}, 59492{struct.stat}, 59523{struct.hash_table}, 59549{struct._ftsent *}, 59585{struct.cycle_check_state}, 59606{struct.dev_ino}, 59628{struct._ftsent * *}, 59658{char}, 59692{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59721{struct.exclude_segment}, 59751{struct.mount_entry}, 59832{struct.dev_type}, 59950{struct.di_ent}, 59973{struct.ino_map_ent}, 59996{struct.Active_dir} ]
+      10586 : (18)[ 59372{struct.hash_entry}, 59705{struct._ftsent}, 59706{char *}, 59707{struct.hash_tuning}, 59769{struct.exclude_segment}, 59770{struct.mount_entry}, 59773{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59774{struct.stat}, 59776{struct._ftsent *}, 59794{struct.cycle_check_state}, 59795{struct.dev_ino}, 59803{char}, 59804{struct._ftsent * *}, 59806{struct.hash_table}, 59913{struct.dev_type}, 60021{struct.di_ent}, 60023{struct.ino_map_ent}, 60025{struct.Active_dir} ]
+      10946 : (18)[ 59329{struct.hash_entry}, 59765{char *}, 59778{struct._ftsent}, 59798{struct.hash_tuning}, 59808{struct.stat}, 59813{struct.exclude_segment}, 59817{struct._ftsent *}, 59843{struct.mount_entry}, 59856{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59864{struct._ftsent * *}, 59866{char}, 59882{struct.cycle_check_state}, 59887{struct.dev_ino}, 59892{struct.hash_table}, 59914{struct.dev_type}, 60028{struct.di_ent}, 60029{struct.ino_map_ent}, 60030{struct.Active_dir} ]
+      11630 : (1)[ 59016{struct.lconv} ]
+      12469 : (1)[ 59280{char} ]
+      12475 : (1)[ 59281{char} ]
+      12616 : (1)[ 59026{struct.ino_map} ]
+      12624 : (18)[ 59391{struct.hash_entry}, 59411{struct._ftsent}, 59443{struct.hash_tuning}, 59472{char *}, 59493{struct.stat}, 59524{struct.hash_table}, 59550{struct._ftsent *}, 59586{struct.cycle_check_state}, 59607{struct.dev_ino}, 59629{struct._ftsent * *}, 59659{char}, 59693{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59722{struct.exclude_segment}, 59752{struct.mount_entry}, 59833{struct.dev_type}, 59951{struct.di_ent}, 59974{struct.ino_map_ent}, 59997{struct.Active_dir} ]
+      12626 : (18)[ 59392{struct.hash_entry}, 59412{struct._ftsent}, 59444{struct.hash_tuning}, 59473{char *}, 59494{struct.stat}, 59525{struct.hash_table}, 59551{struct._ftsent *}, 59587{struct.cycle_check_state}, 59608{struct.dev_ino}, 59630{struct._ftsent * *}, 59660{char}, 59694{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59723{struct.exclude_segment}, 59753{struct.mount_entry}, 59834{struct.dev_type}, 59952{struct.di_ent}, 59975{struct.ino_map_ent}, 59998{struct.Active_dir} ]
+      12803 : (18)[ 59288{struct.ino_map_ent}, 59501{struct.di_ent}, 59504{struct.Active_dir}, 59766{char *}, 59779{struct._ftsent}, 59791{struct.hash_entry}, 59799{struct.hash_tuning}, 59809{struct.stat}, 59814{struct.exclude_segment}, 59844{struct.mount_entry}, 59852{struct._ftsent *}, 59857{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59867{char}, 59883{struct.cycle_check_state}, 59888{struct.dev_ino}, 59893{struct.hash_table}, 59904{struct._ftsent * *}, 59915{struct.dev_type} ]
+      12933 : (1)[ 59007{struct.mbchar} ]
+      12935 : (1)[ 59005{struct.mbchar} ]
+      13180 : (1)[ 59031{const unsigned short *} ]
+      13205 : (1)[ 59030{const unsigned short *} ]
+      13600 : (1)[ 59043{int} ]
+      13619 : (1)[ 59044{int} ]
+      13853 : (1)[ 59002{int} ]
+      13882 : (1)[ 59003{int} ]
+      14619 : (1)[ 59001{const unsigned short *} ]
+      15280 : (1)[ 59323{char} ]
+      15408 : (1)[ 59036{int} ]
+      15466 : (1)[ 59037{int} ]
+      15593 : (1)[ 59068{int} ]
+      15753 : (1)[ 59069{int} ]
+      15820 : (1)[ 59314{int *} ]
+      15871 : (1)[ 59315{int *} ]
+      15939 : (1)[ 59316{int *} ]
+      16009 : (1)[ 59317{int *} ]
+      16011 : (1)[ 59000{struct.quoting_options} ]
+      16077 : (1)[ 59318{int *} ]
+      16316 : (1)[ 58997{struct.timespec} ]
+      16392 : (1)[ 58995{struct.timespec} ]
+      16419 : (1)[ 58993{struct.timespec} ]
+      16421 : (1)[ 58991{struct.timespec} ]
+      16490 : (1)[ 58989{struct.timespec} ]
+      16521 : (1)[ 58987{struct.timespec} ]
+      17058 : (20)[ 59019{struct.mount_entry}, 59161{struct.exclude_segment}, 59184{struct.pattern_buffer}, 59200{char *}, 59283{struct.exclude}, 59286{char}, 59420{struct.di_ent}, 59423{struct.ino_map_ent}, 59426{struct.Active_dir}, 59565{struct._ftsent}, 59677{struct.stat}, 59695{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59730{struct.hash_tuning}, 59735{struct.cycle_check_state}, 59736{struct.dev_ino}, 59737{struct._ftsent *}, 59763{struct.hash_entry}, 59775{struct._ftsent * *}, 59785{struct.hash_table}, 59900{struct.dev_type} ]
+      17125 : (24)[ 59358{char *}, 59368{struct.slotvec *}, 59369{struct.slotvec}, 59428{struct.dulevel *}, 59429{struct.dulevel}, 59454{char}, 59557{struct.duinfo}, 59558{struct.timespec}, 59731{struct.exclude_segment}, 59802{struct.hash_tuning}, 59818{struct._ftsent}, 59850{struct.hash_entry}, 59862{struct.stat}, 59880{struct.mount_entry}, 59907{struct._ftsent *}, 59908{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59917{struct.cycle_check_state}, 59918{struct.dev_ino}, 59919{struct.hash_table}, 59924{struct._ftsent * *}, 59930{struct.dev_type}, 60041{struct.di_ent}, 60042{struct.ino_map_ent}, 60043{struct.Active_dir} ]
+      17275 : (4)[ 59300{struct.dulevel *}, 59301{struct.dulevel}, 59339{struct.duinfo}, 59349{struct.timespec} ]
+      17352 : (1)[ 59076{int} ]
+      17483 : (1)[ 58986{int} ]
+      17520 : (1)[ 59058{int} ]
+      17525 : (1)[ 59057{int} ]
+      17849 : (1)[ 58985{int} ]
+      17860 : (1)[ 59252{const unsigned short *} ]
+      17918 : (1)[ 59251{int} ]
+      17923 : (1)[ 59250{int} ]
+      18364 : (1)[ 58984{int} ]
+      18375 : (1)[ 59204{const unsigned short *} ]
+      18433 : (1)[ 59202{int} ]
+      18438 : (1)[ 59201{int} ]
+      18729 : (1)[ 59191{int} ]
+      18741 : (1)[ 59192{int} ]
+      18943 : (1)[ 58982{int} ]
+      18956 : (1)[ 58981{int} ]
+      18966 : (1)[ 58980{int} ]
+      18971 : (20)[ 59185{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59186{int *}, 59187{struct.I_ring}, 59347{struct._ftsent}, 59370{char *}, 59450{struct.stat}, 59499{struct.hash_tuning}, 59552{struct._ftsent *}, 59563{struct.hash_entry}, 59571{char}, 59588{struct.cycle_check_state}, 59609{struct.dev_ino}, 59631{struct._ftsent * *}, 59704{struct.hash_table}, 59724{struct.exclude_segment}, 59786{struct.mount_entry}, 59835{struct.dev_type}, 59953{struct.di_ent}, 59976{struct.ino_map_ent}, 59999{struct.Active_dir} ]
+      19398 : (1)[ 58979{int} ]
+      19413 : (18)[ 59311{struct._ftsent *}, 59331{char}, 59334{struct._ftsent}, 59335{struct._ftsent * *}, 59345{char *}, 59346{struct.stat}, 59350{struct.cycle_check_state}, 59352{struct.dev_ino}, 59451{struct.hash_table}, 59614{struct.hash_tuning}, 59644{struct.hash_entry}, 59696{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59732{struct.exclude_segment}, 59796{struct.mount_entry}, 59836{struct.dev_type}, 59954{struct.di_ent}, 59977{struct.ino_map_ent}, 60000{struct.Active_dir} ]
+      19468 : (18)[ 59174{struct._ftsent}, 59179{char *}, 59259{struct.stat}, 59351{struct.cycle_check_state}, 59353{struct.dev_ino}, 59354{struct._ftsent *}, 59371{char}, 59419{struct._ftsent * *}, 59452{struct.hash_table}, 59500{struct.hash_tuning}, 59564{struct.hash_entry}, 59697{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59725{struct.exclude_segment}, 59771{struct.mount_entry}, 59837{struct.dev_type}, 59955{struct.di_ent}, 59978{struct.ino_map_ent}, 60001{struct.Active_dir} ]
+      19614 : (1)[ 59170{int} ]
+      19628 : (1)[ 58978{int} ]
+      19634 : (1)[ 59169{int} ]
+      19654 : (1)[ 59168{int} ]
+      19840 : (18)[ 59299{struct._ftsent *}, 59324{struct._ftsent * *}, 59449{char *}, 59508{struct._ftsent}, 59532{char}, 59533{struct.stat}, 59534{struct.cycle_check_state}, 59535{struct.dev_ino}, 59643{struct.hash_table}, 59670{struct.hash_tuning}, 59698{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59733{struct.exclude_segment}, 59758{struct.hash_entry}, 59845{struct.mount_entry}, 59901{struct.dev_type}, 60022{struct.di_ent}, 60024{struct.ino_map_ent}, 60026{struct.Active_dir} ]
+      19946 : (18)[ 59393{struct.hash_entry}, 59413{struct._ftsent}, 59445{struct.hash_tuning}, 59474{char *}, 59495{struct.stat}, 59526{struct.hash_table}, 59553{struct._ftsent *}, 59589{struct.cycle_check_state}, 59610{struct.dev_ino}, 59632{struct._ftsent * *}, 59661{char}, 59699{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59726{struct.exclude_segment}, 59754{struct.mount_entry}, 59838{struct.dev_type}, 59956{struct.di_ent}, 59979{struct.ino_map_ent}, 60002{struct.Active_dir} ]
+      19948 : (18)[ 59394{struct.hash_entry}, 59414{struct._ftsent}, 59446{struct.hash_tuning}, 59475{char *}, 59496{struct.stat}, 59527{struct.hash_table}, 59554{struct._ftsent *}, 59590{struct.cycle_check_state}, 59611{struct.dev_ino}, 59633{struct._ftsent * *}, 59662{char}, 59700{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59727{struct.exclude_segment}, 59755{struct.mount_entry}, 59839{struct.dev_type}, 59957{struct.di_ent}, 59980{struct.ino_map_ent}, 60003{struct.Active_dir} ]
+      19963 : (18)[ 59327{struct.cycle_check_state}, 59341{struct._ftsent *}, 59343{struct._ftsent}, 59360{struct.stat}, 59362{char *}, 59365{struct.dev_ino}, 59367{struct._ftsent * *}, 59418{char}, 59478{struct.hash_table}, 59671{struct.hash_tuning}, 59675{struct.hash_entry}, 59701{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59734{struct.exclude_segment}, 59846{struct.mount_entry}, 59861{struct.dev_type}, 60014{struct.di_ent}, 60016{struct.ino_map_ent}, 60018{struct.Active_dir} ]
+      20283 : (1)[ 59156{int} ]
+      20304 : (1)[ 59155{int} ]
+      20318 : (1)[ 59153{int} ]
+      20352 : (1)[ 59158{int} ]
+      20526 : (1)[ 59084{int} ]
+      20653 : (1)[ 59083{int} ]
+      20869 : (1)[ 59079{int} ]
+      21069 : (1)[ 58977{int} ]
+      21099 : (1)[ 58976{int} ]
+      21134 : (1)[ 59075{int} ]
+      21180 : (1)[ 59073{int} ]
+      21212 : (1)[ 59071{int} ]
+      21558 : (1)[ 58975{int} ]
+      21587 : (1)[ 59060{int} ]
+      21594 : (1)[ 59061{int} ]
+      21723 : (1)[ 59046{int} ]
+      21791 : (1)[ 59045{int} ]
+      21831 : (1)[ 58974{int} ]
+      21925 : (1)[ 59042{int} ]
+      22036 : (1)[ 58973{int} ]
+      22043 : (2)[ 59047{struct.dirent}, 59049{char *} ]
+      22051 : (1)[ 59041{int} ]
+      22056 : (1)[ 59040{int} ]
+      22143 : (1)[ 59039{int} ]
+      22170 : (1)[ 59059{int} ]
+      22233 : (1)[ 58972{int} ]
+      22751 : (18)[ 59035{struct.Active_dir}, 59421{struct.di_ent}, 59424{struct.ino_map_ent}, 59767{char *}, 59780{struct._ftsent}, 59792{struct.hash_entry}, 59800{struct.hash_tuning}, 59810{struct.stat}, 59815{struct.exclude_segment}, 59847{struct.mount_entry}, 59853{struct._ftsent *}, 59858{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59868{char}, 59884{struct.cycle_check_state}, 59889{struct.dev_ino}, 59894{struct.hash_table}, 59905{struct._ftsent * *}, 59916{struct.dev_type} ]
+      22958 : (18)[ 59395{struct.hash_entry}, 59415{struct._ftsent}, 59447{struct.hash_tuning}, 59476{char *}, 59497{struct.stat}, 59528{struct.hash_table}, 59555{struct._ftsent *}, 59591{struct.cycle_check_state}, 59612{struct.dev_ino}, 59634{struct._ftsent * *}, 59663{char}, 59702{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59728{struct.exclude_segment}, 59756{struct.mount_entry}, 59840{struct.dev_type}, 59958{struct.di_ent}, 59981{struct.ino_map_ent}, 60004{struct.Active_dir} ]
+      22960 : (18)[ 59396{struct.hash_entry}, 59416{struct._ftsent}, 59448{struct.hash_tuning}, 59477{char *}, 59498{struct.stat}, 59529{struct.hash_table}, 59556{struct._ftsent *}, 59592{struct.cycle_check_state}, 59613{struct.dev_ino}, 59635{struct._ftsent * *}, 59664{char}, 59703{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59729{struct.exclude_segment}, 59757{struct.mount_entry}, 59841{struct.dev_type}, 59959{struct.di_ent}, 59982{struct.ino_map_ent}, 60005{struct.Active_dir} ]
+      23007 : (18)[ 59032{struct.dev_type}, 59422{struct.di_ent}, 59425{struct.ino_map_ent}, 59427{struct.Active_dir}, 59768{char *}, 59781{struct._ftsent}, 59793{struct.hash_entry}, 59801{struct.hash_tuning}, 59811{struct.stat}, 59816{struct.exclude_segment}, 59848{struct.mount_entry}, 59854{struct._ftsent *}, 59859{struct.{ struct._ftsent *, struct._ftsent *, struct._ftsent * *, dev_t->__dev_t->long unsigned int, char *, int, int, size_t->long unsigned int, size_t->long unsigned int, int fn(const struct._ftsent * *, const struct._ftsent * *) *, int, struct.hash_table *, union.{ struct.hash_table *, struct.cycle_check_state * }, I_ring->struct.I_ring }}, 59869{char}, 59885{struct.cycle_check_state}, 59890{struct.dev_ino}, 59895{struct.hash_table}, 59906{struct._ftsent * *} ]
+      23387 : (1)[ 58971{int} ]
+      23430 : (1)[ 58970{int} ]
+      23439 : (1)[ 58969{int} ]
+      23550 : (1)[ 59218{int} ]
+      23557 : (1)[ 59219{int} ]
+      23717 : (1)[ 59266{struct._IO_FILE} ]
+      24048 : (1)[ 59009{int} ]
+      24055 : (1)[ 59015{int} ]
+      24083 : (1)[ 59011{struct.mntent} ]
+      24326 : (1)[ 59004{int} ]
+      24346 : (1)[ 59010{int} ]
+      24725 : (1)[ 59289{struct.re_dfa_t} ]
+      25063 : (8)[ 59373{__syscall_slong_t->long int[3]}, 59455{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }}, 59559{struct.re_state_table_entry}, 59568{struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int }}, 59637{re_token_t->struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int } *}, 59640{re_node_set->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * } *}, 59666{struct.re_dfastate_t}, 59759{struct.bin_tree_t} ]
+      25082 : (8)[ 59374{__syscall_slong_t->long int[3]}, 59456{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }}, 59560{struct.re_state_table_entry}, 59569{struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int }}, 59638{re_token_t->struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int } *}, 59641{re_node_set->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * } *}, 59667{struct.re_dfastate_t}, 59760{struct.bin_tree_t} ]
+      25098 : (1)[ 58999{char *} ]
+      25191 : (8)[ 59375{__syscall_slong_t->long int[3]}, 59457{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }}, 59561{struct.re_state_table_entry}, 59570{struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int }}, 59639{re_token_t->struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int } *}, 59642{re_node_set->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * } *}, 59668{struct.re_dfastate_t}, 59761{struct.bin_tree_t} ]
+      26728 : (9)[ 59348{__syscall_slong_t->long int[3]}, 59672{struct.re_dfastate_t}, 59782{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }}, 59870{struct.re_state_table_entry}, 59873{re_token_t->struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int } *}, 59875{struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int }}, 59877{re_node_set->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * } *}, 59909{re_dfastate_t->struct.re_dfastate_t * *}, 59928{struct.bin_tree_t} ]
+      26921 : (1)[ 59336{__syscall_slong_t->long int[3]} ]
+      27472 : (9)[ 58983{struct.re_dfastate_t}, 59118{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }}, 59505{re_token_t->struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int } *}, 59506{struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int }}, 59507{re_node_set->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * } *}, 59530{struct.re_state_table_entry}, 59636{struct.bin_tree_t}, 59849{__syscall_slong_t->long int[3]}, 59896{re_dfastate_t->struct.re_dfastate_t * *} ]
+      27614 : (9)[ 59298{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }}, 59562{__syscall_slong_t->long int[3]}, 59566{re_dfastate_t->struct.re_dfastate_t * *}, 59673{struct.re_dfastate_t}, 59676{struct.bin_tree_t}, 59871{struct.re_state_table_entry}, 59874{re_token_t->struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int } *}, 59876{struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int }}, 59878{re_node_set->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * } *} ]
+      27966 : (10)[ 59784{re_dfastate_t->struct.re_dfastate_t * *}, 59863{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }}, 59899{__syscall_slong_t->long int[3]}, 59927{struct.re_dfastate_t}, 60012{struct.bin_tree_t}, 60036{struct.re_state_table_entry}, 60037{re_token_t->struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int } *}, 60038{struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int }}, 60039{re_node_set->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * } *}, 60058{struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int }} ]
+      28024 : (1)[ 59344{__syscall_slong_t->long int[3]} ]
+      29910 : (1)[ 59337{__syscall_slong_t->long int[3]} ]
+      30032 : (1)[ 59338{__syscall_slong_t->long int[3]} ]
+      30250 : (1)[ 58967{struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int }} ]
+      30855 : (1)[ 59190{struct.bin_tree_storage_t} ]
+      32313 : (1)[ 59175{__syscall_slong_t->long int[3]} ]
+      32317 : (1)[ 59173{struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int }} ]
+      32638 : (2)[ 59303{int *}, 59306{__syscall_slong_t->long int[3]} ]
+      33059 : (1)[ 59163{const unsigned short *} ]
+      33154 : (1)[ 59176{__syscall_slong_t->long int[3]} ]
+      33168 : (1)[ 59164{struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int }} ]
+      34158 : (2)[ 59307{__syscall_slong_t->long int[3]}, 59326{int *} ]
+      34209 : (1)[ 59115{const unsigned short *} ]
+      34240 : (1)[ 59114{const unsigned short *} ]
+      34281 : (1)[ 59113{const unsigned short *} ]
+      34312 : (1)[ 59112{const unsigned short *} ]
+      34353 : (1)[ 59111{const unsigned short *} ]
+      34384 : (1)[ 59110{const unsigned short *} ]
+      34425 : (1)[ 59109{const unsigned short *} ]
+      34456 : (1)[ 59108{const unsigned short *} ]
+      34497 : (1)[ 59107{const unsigned short *} ]
+      34528 : (1)[ 59106{const unsigned short *} ]
+      34569 : (1)[ 59105{const unsigned short *} ]
+      34600 : (1)[ 59104{const unsigned short *} ]
+      34641 : (1)[ 59103{const unsigned short *} ]
+      34672 : (1)[ 59102{const unsigned short *} ]
+      34713 : (1)[ 59101{const unsigned short *} ]
+      34744 : (1)[ 59100{const unsigned short *} ]
+      34785 : (1)[ 59099{const unsigned short *} ]
+      34816 : (1)[ 59098{const unsigned short *} ]
+      34857 : (1)[ 59096{const unsigned short *} ]
+      34888 : (1)[ 59094{const unsigned short *} ]
+      34929 : (1)[ 59093{const unsigned short *} ]
+      34960 : (1)[ 59092{const unsigned short *} ]
+      35001 : (1)[ 59090{const unsigned short *} ]
+      35032 : (1)[ 59088{const unsigned short *} ]
+      35855 : (2)[ 59304{int *}, 59308{__syscall_slong_t->long int[3]} ]
+      35865 : (2)[ 59305{int *}, 59309{__syscall_slong_t->long int[3]} ]
+      36640 : (1)[ 59034{const unsigned short *} ]
+      37006 : (1)[ 59033{const unsigned short *} ]
+      37595 : (2)[ 59319{int *}, 59355{char *} ]
+      37623 : (2)[ 59320{__syscall_slong_t->long int[3]}, 59356{char *} ]
+      37652 : (1)[ 59297{char *} ]
+      38189 : (2)[ 59291{__syscall_slong_t->long int[3]}, 59357{char *} ]
+      40138 : (2)[ 59064{struct.re_string_t}, 59066{struct.{ re_string_t->struct.re_string_t, const const re_dfa_t->struct.re_dfa_t *, int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * *, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, struct.re_backref_cache_entry *, int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_sub_match_top_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, state_array_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * } *, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_sub_match_last_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, state_array_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * } } * * } * * }} ]
+      43000 : (1)[ 59063{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }} ]
+      43035 : (1)[ 59062{re_dfastate_t->struct.re_dfastate_t * *} ]
+      43055 : (1)[ 59258{re_dfastate_t->struct.re_dfastate_t * *} ]
+      43405 : (3)[ 59292{struct.re_fail_stack_ent_t}, 59293{struct.re_fail_stack_ent_t *}, 59294{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }} ]
+      43434 : (2)[ 59020{struct.{ regoff_t->ssize_t->__ssize_t->long int, regoff_t->ssize_t->__ssize_t->long int }}, 59022{regmatch_t->struct.{ regoff_t->ssize_t->__ssize_t->long int, regoff_t->ssize_t->__ssize_t->long int } *} ]
+      43441 : (2)[ 59021{struct.{ regoff_t->ssize_t->__ssize_t->long int, regoff_t->ssize_t->__ssize_t->long int }}, 59023{regmatch_t->struct.{ regoff_t->ssize_t->__ssize_t->long int, regoff_t->ssize_t->__ssize_t->long int } *} ]
+      44466 : (3)[ 59295{struct.re_fail_stack_ent_t}, 59296{struct.re_fail_stack_ent_t *}, 59330{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }} ]
+      44503 : (1)[ 59531{__syscall_slong_t->long int[3]} ]
+      45748 : (1)[ 59310{__syscall_slong_t->long int[3]} ]
+      46104 : (9)[ 59117{struct.re_dfastate_t}, 59119{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }}, 59872{__syscall_slong_t->long int[3]}, 59897{re_dfastate_t->struct.re_dfastate_t * *}, 60007{struct.bin_tree_t}, 60031{re_token_t->struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int } *}, 60032{struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int }}, 60033{re_node_set->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * } *}, 60034{struct.re_state_table_entry} ]
+      47740 : (1)[ 59224{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }} ]
+      48366 : (1)[ 59290{__syscall_slong_t->long int[3]} ]
+      50272 : (5)[ 59227{bitset_t->bitset_word_t->long unsigned int[4][256]}, 59228{__syscall_slong_t->long int[3]}, 59229{struct.dests_alloc}, 59230{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }}, 59231{re_node_set->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * } *} ]
+      50324 : (9)[ 59762{re_dfastate_t->struct.re_dfastate_t * *}, 59787{struct.re_dfastate_t}, 59789{__syscall_slong_t->long int[3]}, 59805{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }}, 59910{struct.bin_tree_t}, 59933{re_token_t->struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int } *}, 59934{struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int }}, 59935{re_node_set->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * } *}, 59936{struct.re_state_table_entry} ]
+      50375 : (1)[ 59256{re_dfastate_t->struct.re_dfastate_t * *} ]
+      50383 : (1)[ 59257{re_dfastate_t->struct.re_dfastate_t * *} ]
+      50627 : (9)[ 59214{re_dfastate_t->struct.re_dfastate_t * *}, 59772{__syscall_slong_t->long int[3]}, 59783{struct.re_dfastate_t}, 59788{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }}, 59879{struct.bin_tree_t}, 59921{re_token_t->struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int } *}, 59922{struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int }}, 59923{re_node_set->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * } *}, 59926{struct.re_state_table_entry} ]
+      50727 : (9)[ 59206{re_dfastate_t->struct.re_dfastate_t * *}, 60020{__syscall_slong_t->long int[3]}, 60027{struct.re_dfastate_t}, 60035{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * }}, 60040{struct.bin_tree_t}, 60044{re_token_t->struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int } *}, 60045{struct.{ union.{ unsigned char, re_bitset_ptr_t->bitset_word_t->long unsigned int *, re_charset_t->struct.{ wchar_t->int *, wchar_t->int *, wchar_t->int *, wctype_t->long unsigned int *, unsigned int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int } *, Idx->regoff_t->ssize_t->__ssize_t->long int, re_context_type->enum unsigned int }, re_token_type_t->enum unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int }}, 60046{re_node_set->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int * } *}, 60050{struct.re_state_table_entry} ]
+      53049 : (1)[ 59188{struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, state_array_t->struct.{ Idx->regoff_t->ssize_t->__ssize_t->long int, Idx->regoff_t->ssize_t->__ssize_t->long int, re_dfastate_t->struct.re_dfastate_t * * } }} ]
+      54645 : (2)[ 59177{struct.{ regoff_t->ssize_t->__ssize_t->long int, regoff_t->ssize_t->__ssize_t->long int }}, 59178{regmatch_t->struct.{ regoff_t->ssize_t->__ssize_t->long int, regoff_t->ssize_t->__ssize_t->long int } *} ]
+      55262 : (2)[ 59322{char *}, 59665{char} ]
+      55474 : (3)[ 59171{struct.tm_zone}, 59172{char *}, 59287{char} ]
+      55703 : (1)[ 59159{int} ]
+      55710 : (1)[ 59160{int} ]
+      55819 : (1)[ 59157{int} ]
+      55906 : (1)[ 59165{int} ]
+      55918 : (1)[ 59166{int} ]
+      55926 : (1)[ 59167{int} ]
+      56549 : (1)[ 59196{int} ]
+      56557 : (1)[ 59116{int} ]
+      56965 : (2)[ 59253{char}, 59254{char *} ]
+      57236 : (1)[ 59236{int} ]
+      57243 : (1)[ 59239{int} ]
+      57277 : (1)[ 59234{int} ]
+      57284 : (1)[ 59235{int} ]
+      57501 : (1)[ 59207{int} ]
+      57544 : (1)[ 59205{int} ]
+      57551 : (1)[ 59208{int} ]
+  Total: 5283 (991 clones)
+  ==================================
+  INITIALISE : 23969
+  TBWU       : 4027388
+  TBSSU      : 11788
+  TBSU       : 319834
+  REUSE      : 0
+  AGG CASE   : 67272
+
+  STACK/GLOBAL OBJECTS
+    INITIALISE : 11556
+    TBWU       : 2193271
+    TBSSU      : 815
+    TBSU       : 162541
+    REUSE      : 0
+    AGG CASE   : 38333
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+!!!!!! VALIDATING TBHC TESTS !!!!!!
