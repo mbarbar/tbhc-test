@@ -45,7 +45,7 @@ foreach fname $files {
 
         set matched [regexp {eval-ctir-aliases ([0-9]+) [0-9]+ ([0-9]+)} $line full queries no_aliases]
         if {$matched} {
-            dict set aliases $benchmark [format "%d %5f" $queries [expr double($no_aliases) / $queries]]
+            dict set aliases $benchmark [format "%d %d %5f" $queries $no_aliases [expr double($no_aliases) / $queries]]
         }
     }
 }
