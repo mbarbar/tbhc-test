@@ -133,8 +133,8 @@ FNR == 1 {
 # For all analysis types, but will be overwritten by fstbhc ("Total:").
 /TotalObjects/ {
     obj_field_count++;
-    # First obj_field_count is for the pre-analysis.
-    if (obj_field_count != 2) {
+    # First few TotalObjects are for pre-analysis/static program stats.
+    if (obj_field_count != 4) {
         next
     }
 
